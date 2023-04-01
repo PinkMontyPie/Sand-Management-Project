@@ -55,19 +55,21 @@ public class main_ui extends javax.swing.JFrame {
         jLabelTime = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
 
+        jLabelProgram.setBackground(new java.awt.Color(255, 255, 255));
         jLabelProgram.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        jLabelProgram.setForeground(new java.awt.Color(51, 51, 51));
+        jLabelProgram.setForeground(new java.awt.Color(255, 255, 255));
         jLabelProgram.setText("SAND Management Progarm");
 
         jLabelDate.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        jLabelDate.setForeground(new java.awt.Color(51, 51, 51));
+        jLabelDate.setForeground(new java.awt.Color(255, 255, 255));
         jLabelDate.setText("Date");
 
         jLabelTime.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        jLabelTime.setForeground(new java.awt.Color(51, 51, 51));
+        jLabelTime.setForeground(new java.awt.Color(255, 255, 255));
         jLabelTime.setText("Time");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

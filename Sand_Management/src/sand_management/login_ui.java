@@ -31,9 +31,6 @@ public class login_ui extends javax.swing.JFrame {
         System.out.println(date);
     }
     
-    public void ProgressBar(){
-        jProgressBar.setValue(0);
-    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -43,8 +40,8 @@ public class login_ui extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabelDate = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        jUser = new javax.swing.JTextField();
+        jPassword = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -124,8 +121,8 @@ public class login_ui extends javax.swing.JFrame {
                         .addGroup(jMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
                             .addGroup(jMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextField1)
-                                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jUser)
+                                .addComponent(jPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel6)))
                     .addGroup(jMainPanelLayout.createSequentialGroup()
                         .addGap(340, 340, 340)
@@ -145,11 +142,11 @@ public class login_ui extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jUser, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(48, 48, 48)
@@ -172,11 +169,16 @@ public class login_ui extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        main_ui show = new main_ui();
-        show.setVisible(true);
+        if(jUser.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Insert Username");
+        }else {
+            main_ui show = new main_ui();
+            show.setVisible(true);
+        }
     }//GEN-LAST:event_jButton1MouseClicked
 
     /**
@@ -227,8 +229,8 @@ public class login_ui extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelDate;
     private javax.swing.JPanel jMainPanel;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JPasswordField jPassword;
     private javax.swing.JProgressBar jProgressBar;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jUser;
     // End of variables declaration//GEN-END:variables
 }
