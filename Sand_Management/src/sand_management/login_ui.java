@@ -166,7 +166,6 @@ public class login_ui extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         main_ui show = new main_ui();
         show.setVisible(true);
-        System.out.println("Login done");
     }//GEN-LAST:event_jButton1MouseClicked
 
     /**
