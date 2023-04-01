@@ -9,12 +9,10 @@ package sand_management;
  * @author mee
  */
 public class Sand_Management {
-
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String[] args) {
-        // TODO code application logic here
+        login_ui show = new login_ui();
+        show.setVisible(true);
     }
     
 }
