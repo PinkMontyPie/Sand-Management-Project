@@ -46,10 +46,10 @@ public class login_ui extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jProgressBar = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setResizable(false);
 
         jMainPanel.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -107,8 +107,6 @@ public class login_ui extends javax.swing.JFrame {
             }
         });
 
-        jProgressBar.setForeground(new java.awt.Color(51, 255, 51));
-
         javax.swing.GroupLayout jMainPanelLayout = new javax.swing.GroupLayout(jMainPanel);
         jMainPanel.setLayout(jMainPanelLayout);
         jMainPanelLayout.setHorizontalGroup(
@@ -131,7 +129,6 @@ public class login_ui extends javax.swing.JFrame {
                         .addGap(336, 336, 336)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(268, Short.MAX_VALUE))
-            .addComponent(jProgressBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jMainPanelLayout.setVerticalGroup(
             jMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,8 +146,7 @@ public class login_ui extends javax.swing.JFrame {
                 .addComponent(jPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
-                .addComponent(jProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(52, 52, 52))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -173,11 +169,15 @@ public class login_ui extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        String user=jUser.getText();
+        String pass=jPassword.getText();
+        
         if(jUser.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Insert Username");
         }else {
             main_ui show = new main_ui();
             show.setVisible(true);
+            this.setVisible(false);
         }
     }//GEN-LAST:event_jButton1MouseClicked
 
@@ -230,7 +230,6 @@ public class login_ui extends javax.swing.JFrame {
     private javax.swing.JPanel jMainPanel;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField jPassword;
-    private javax.swing.JProgressBar jProgressBar;
     private javax.swing.JTextField jUser;
     // End of variables declaration//GEN-END:variables
 }
