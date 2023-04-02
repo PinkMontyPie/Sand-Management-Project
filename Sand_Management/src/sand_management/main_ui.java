@@ -30,12 +30,11 @@ public class main_ui extends javax.swing.JFrame {
         setTime();
     }
     
-<<<<<<< Updated upstream
-    
-    
-
-=======
->>>>>>> Stashed changes
+   /*aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaA
+    aaaa
+    aaaa
+    aaa
+    aaa*/
     public void setDate() {
         dateFormat = new SimpleDateFormat("EEEE dd MMMMM yyyy");
         date = dateFormat.format(Calendar.getInstance().getTime());
