@@ -6,15 +6,12 @@ package sand_management;
 
 import java.text.*;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author Pai
  */
 public class main_ui extends javax.swing.JFrame {
-
     SimpleDateFormat timeFormat;
     SimpleDateFormat dateFormat;
     String time;
@@ -29,7 +26,6 @@ public class main_ui extends javax.swing.JFrame {
         setDate();
         setTime();
     }
-    
     
     public void setDate() {
         dateFormat = new SimpleDateFormat("EEEE dd MMMMM yyyy");
