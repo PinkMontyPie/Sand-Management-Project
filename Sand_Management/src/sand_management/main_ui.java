@@ -19,7 +19,9 @@ public class main_ui extends javax.swing.JFrame {
     SimpleDateFormat dateFormat;
     String time;
     String date;
-
+    
+    //kuyfuckmepls
+    
     public main_ui() {
         initComponents();
         Start();
@@ -30,11 +32,7 @@ public class main_ui extends javax.swing.JFrame {
         setTime();
     }
     
-   /*aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaA
-    aaaa
-    aaaa
-    aaa
-    aaa*/
+    
     public void setDate() {
         dateFormat = new SimpleDateFormat("EEEE dd MMMMM yyyy");
         date = dateFormat.format(Calendar.getInstance().getTime());
