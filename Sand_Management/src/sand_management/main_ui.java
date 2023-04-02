@@ -22,7 +22,7 @@ public class main_ui extends javax.swing.JFrame {
         Start();
     }
     
-    
+    //big kak
     
     public void Start(){
         setDate();
