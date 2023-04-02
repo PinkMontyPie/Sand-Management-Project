@@ -64,11 +64,11 @@ public class main_ui extends javax.swing.JFrame {
         jLabelProgram.setForeground(new java.awt.Color(255, 255, 255));
         jLabelProgram.setText("SAND Management Progarm");
 
-        jLabelDate.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        jLabelDate.setFont(new java.awt.Font("Angsana New", 1, 24)); // NOI18N
         jLabelDate.setForeground(new java.awt.Color(255, 255, 255));
         jLabelDate.setText("Date");
 
-        jLabelTime.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        jLabelTime.setFont(new java.awt.Font("Angsana New", 1, 24)); // NOI18N
         jLabelTime.setForeground(new java.awt.Color(255, 255, 255));
         jLabelTime.setText("Time");
 
@@ -79,7 +79,7 @@ public class main_ui extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jLabelProgram)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1499, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1518, Short.MAX_VALUE)
                 .addComponent(jLabelTime)
                 .addGap(29, 29, 29)
                 .addComponent(jLabelDate)

@@ -50,6 +50,7 @@ public class login_ui extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setResizable(false);
 
         jMainPanel.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -60,7 +61,7 @@ public class login_ui extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("SAND Management Program");
 
-        jLabelDate.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        jLabelDate.setFont(new java.awt.Font("Angsana New", 1, 24)); // NOI18N
         jLabelDate.setForeground(new java.awt.Color(255, 255, 255));
         jLabelDate.setText("Date");
 
