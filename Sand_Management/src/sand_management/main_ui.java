@@ -20,8 +20,6 @@ public class main_ui extends javax.swing.JFrame {
     String time;
     String date;
     
-    //kuyfuckmepls
-    
     public main_ui() {
         initComponents();
         Start();
