@@ -4,7 +4,8 @@
  */
 package sand_management;
 
-import java.awt.*;
+import config_DB.ConfigDB;
+import java.sql.Connection;
 import java.text.*;
 import java.util.*;
 import javax.swing.*;
@@ -16,10 +17,12 @@ import javax.swing.*;
 public class login_ui extends javax.swing.JFrame {
     SimpleDateFormat dateFormat;
     String date;
+    Connection con = null;
     
     public login_ui() {
         initComponents();
         Date();
+        con = ConfigDB.connectDB();
     }
     
     //Start code here!!!!

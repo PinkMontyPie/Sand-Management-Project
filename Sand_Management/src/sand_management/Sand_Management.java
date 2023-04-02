@@ -13,6 +13,7 @@ public class Sand_Management {
     public static void main(String[] args) {
         login_ui show = new login_ui();
         show.setVisible(true);
+        
     }
     
 }
