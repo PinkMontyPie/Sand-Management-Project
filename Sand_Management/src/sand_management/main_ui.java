@@ -25,6 +25,9 @@ public class main_ui extends javax.swing.JFrame {
         setDate();
         setTime();
     }
+    
+    
+    
 
     public void setDate() {
         dateFormat = new SimpleDateFormat("EEEE dd MMMMM yyyy");
