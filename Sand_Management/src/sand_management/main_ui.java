@@ -22,13 +22,20 @@ public class main_ui extends javax.swing.JFrame {
 
     public main_ui() {
         initComponents();
+        Start();
+    }
+    
+    public void Start(){
         setDate();
         setTime();
     }
     
+<<<<<<< Updated upstream
     
     
 
+=======
+>>>>>>> Stashed changes
     public void setDate() {
         dateFormat = new SimpleDateFormat("EEEE dd MMMMM yyyy");
         date = dateFormat.format(Calendar.getInstance().getTime());
