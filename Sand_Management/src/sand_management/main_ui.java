@@ -22,6 +22,8 @@ public class main_ui extends javax.swing.JFrame {
         Start();
     }
     
+    //KuyView
+    
     public void Start(){
         setDate();
         setTime();
