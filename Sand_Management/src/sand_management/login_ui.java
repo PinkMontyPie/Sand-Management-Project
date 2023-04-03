@@ -172,16 +172,9 @@ public class login_ui extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        String user=jUser.getText();
-        String pass=jPassword.getText();
-        
-        if(jUser.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Insert Username");
-        }else {
-            main_ui show = new main_ui();
-            show.setVisible(true);
-            this.setVisible(false);
-        }
+        main_ui show = new main_ui();
+        show.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton1MouseClicked
 
     /**
