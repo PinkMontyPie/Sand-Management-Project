@@ -61,10 +61,12 @@ public class main_ui extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButtonsell = new javax.swing.JButton();
         jButtonbuy = new javax.swing.JButton();
+        jButtonbuy1 = new javax.swing.JButton();
+        jButtonbuy2 = new javax.swing.JButton();
+        jButtonbuy3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(1920, 1080));
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setPreferredSize(new java.awt.Dimension(1920, 190));
@@ -82,7 +84,6 @@ public class main_ui extends javax.swing.JFrame {
         jLabelTime.setForeground(new java.awt.Color(255, 255, 255));
         jLabelTime.setText("Time");
 
-        jButtonlogout.setBackground(new java.awt.Color(255, 255, 255));
         jButtonlogout.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jButtonlogout.setForeground(new java.awt.Color(255, 51, 51));
         jButtonlogout.setText("Logout");
@@ -105,6 +106,17 @@ public class main_ui extends javax.swing.JFrame {
 
         jButtonbuy.setText("Buy");
 
+        jButtonbuy1.setText("Stock");
+        jButtonbuy1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonbuy1ActionPerformed(evt);
+            }
+        });
+
+        jButtonbuy2.setText("Delivery");
+
+        jButtonbuy3.setText("Print");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -114,7 +126,7 @@ public class main_ui extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabelProgram)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1514, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabelTime)
                         .addGap(29, 29, 29)
                         .addComponent(jLabelDate))
@@ -122,10 +134,20 @@ public class main_ui extends javax.swing.JFrame {
                         .addComponent(jButtonsell, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonbuy, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonbuy1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonbuy2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonbuy3, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(1009, 1009, 1009)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonlogout, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel1))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButtonlogout, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(38, 38, 38))
         );
         jPanel1Layout.setVerticalGroup(
@@ -142,7 +164,10 @@ public class main_ui extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jButtonlogout, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButtonsell, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-                    .addComponent(jButtonbuy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButtonbuy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonbuy1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonbuy2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonbuy3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -172,6 +197,10 @@ public class main_ui extends javax.swing.JFrame {
         show.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButtonlogoutMouseClicked
+
+    private void jButtonbuy1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonbuy1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonbuy1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -211,6 +240,9 @@ public class main_ui extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonbuy;
+    private javax.swing.JButton jButtonbuy1;
+    private javax.swing.JButton jButtonbuy2;
+    private javax.swing.JButton jButtonbuy3;
     private javax.swing.JButton jButtonlogout;
     private javax.swing.JButton jButtonsell;
     private javax.swing.JLabel jLabel1;
