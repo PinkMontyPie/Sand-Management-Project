@@ -4,6 +4,10 @@
  */
 package sand_management;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.text.*;
 import java.util.*;
 
@@ -16,14 +20,13 @@ public class main_ui extends javax.swing.JFrame {
     SimpleDateFormat dateFormat;
     String time;
     String date;
+    private All_Data user; 
     
-    public main_ui() {
+    public main_ui(All_Data a1) {
         initComponents();
+        this.user = a1;
         Start();
     }
-    
-    //big kak
-    //Big is very kak
     
     public void Start(){
         setDate();
@@ -58,13 +61,12 @@ public class main_ui extends javax.swing.JFrame {
         jLabelDate = new javax.swing.JLabel();
         jLabelTime = new javax.swing.JLabel();
         jButtonlogout = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jfirstname_lastname = new javax.swing.JLabel();
         jButtonsell = new javax.swing.JButton();
         jButtonbuy = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(1920, 1080));
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setPreferredSize(new java.awt.Dimension(1920, 190));
@@ -82,7 +84,6 @@ public class main_ui extends javax.swing.JFrame {
         jLabelTime.setForeground(new java.awt.Color(255, 255, 255));
         jLabelTime.setText("Time");
 
-        jButtonlogout.setBackground(new java.awt.Color(255, 255, 255));
         jButtonlogout.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jButtonlogout.setForeground(new java.awt.Color(255, 51, 51));
         jButtonlogout.setText("Logout");
@@ -92,9 +93,18 @@ public class main_ui extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Angsana New", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("User");
+        jfirstname_lastname.setFont(new java.awt.Font("Angsana New", 1, 24)); // NOI18N
+        jfirstname_lastname.setForeground(new java.awt.Color(255, 255, 255));
+        jfirstname_lastname.setText("User");
+        jfirstname_lastname.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jfirstname_lastnameAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
 
         jButtonsell.setText("Sell");
         jButtonsell.addActionListener(new java.awt.event.ActionListener() {
@@ -125,7 +135,7 @@ public class main_ui extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButtonlogout, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))))
+                            .addComponent(jfirstname_lastname, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addGap(38, 38, 38))
         );
         jPanel1Layout.setVerticalGroup(
@@ -138,7 +148,7 @@ public class main_ui extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(jfirstname_lastname)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonlogout, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButtonsell, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
@@ -173,6 +183,30 @@ public class main_ui extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButtonlogoutMouseClicked
 
+    private void jfirstname_lastnameAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jfirstname_lastnameAncestorAdded
+        // TODO add your handling code here:
+        Connection c = null;
+        Statement stmt = null;
+                try {
+                    Class.forName("org.sqlite.JDBC");
+                    c = DriverManager.getConnection("jdbc:sqlite:user.db");
+                    c.setAutoCommit(false);
+                    stmt = c.createStatement();
+                    String a1 = user.getUser();
+                    ResultSet rs = stmt.executeQuery( "SELECT * FROM user WHERE username = '"+a1+"'" );
+                    String  first = rs.getString("first_name");
+                    String  last = rs.getString("last_name");
+                    jfirstname_lastname.setText(first + " " + last);
+                    rs.close();
+                    stmt.close();
+                    c.close();
+                } 
+                catch ( Exception b ) {
+                   System.err.println( b.getClass().getName() + ": " + b.getMessage() );
+                   System.exit(0);
+                }
+    }//GEN-LAST:event_jfirstname_lastnameAncestorAdded
+
     /**
      * @param args the command line arguments
      */
@@ -204,7 +238,7 @@ public class main_ui extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new main_ui().setVisible(true);
+                new main_ui(new All_Data()).setVisible(true);
             }
         });
     }
@@ -213,10 +247,10 @@ public class main_ui extends javax.swing.JFrame {
     private javax.swing.JButton jButtonbuy;
     private javax.swing.JButton jButtonlogout;
     private javax.swing.JButton jButtonsell;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelDate;
     private javax.swing.JLabel jLabelProgram;
     private javax.swing.JLabel jLabelTime;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jfirstname_lastname;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,9 +6,12 @@ package sand_management;
 
 import config_DB.ConfigDB;
 import java.sql.Connection;
+import java.sql.*;
+import javax.swing.*;
 import java.text.*;
 import java.util.*;
-import javax.swing.*;
+
+
 
 /**
  *
@@ -17,12 +20,11 @@ import javax.swing.*;
 public class login_ui extends javax.swing.JFrame {
     SimpleDateFormat dateFormat;
     String date;
-    Connection con = null;
     
     public login_ui() {
         initComponents();
         Date();
-        con = ConfigDB.connectDB();
+        
     }
     
     //Start code here!!!!
@@ -44,11 +46,11 @@ public class login_ui extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabelDate = new javax.swing.JLabel();
         jUser = new javax.swing.JTextField();
-        jPassword = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jPasswordField1 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -85,6 +87,17 @@ public class login_ui extends javax.swing.JFrame {
                 .addComponent(jLabelDate, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        jUser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jUserMouseClicked(evt);
+            }
+        });
+        jUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jUserActionPerformed(evt);
+            }
+        });
+
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 36)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
         jLabel4.setText("Login");
@@ -110,6 +123,12 @@ public class login_ui extends javax.swing.JFrame {
             }
         });
 
+        jPasswordField1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPasswordField1MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jMainPanelLayout = new javax.swing.GroupLayout(jMainPanel);
         jMainPanel.setLayout(jMainPanelLayout);
         jMainPanelLayout.setHorizontalGroup(
@@ -119,12 +138,11 @@ public class login_ui extends javax.swing.JFrame {
                 .addGroup(jMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jMainPanelLayout.createSequentialGroup()
                         .addGap(262, 262, 262)
-                        .addGroup(jMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel5)
-                            .addGroup(jMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jUser)
-                                .addComponent(jPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel6)))
+                            .addComponent(jUser, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                            .addComponent(jLabel6)
+                            .addComponent(jPasswordField1)))
                     .addGroup(jMainPanelLayout.createSequentialGroup()
                         .addGap(340, 340, 340)
                         .addComponent(jLabel4))
@@ -146,7 +164,7 @@ public class login_ui extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52))
@@ -172,10 +190,59 @@ public class login_ui extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        main_ui show = new main_ui();
+        /*main_ui show = new main_ui();
         show.setVisible(true);
-        this.setVisible(false);
+        this.setVisible(false);*/
+                Connection c = null;
+                Statement stmt = null;
+                String a1 = jUser.getText();
+                String a2 = String.valueOf(jPasswordField1.getPassword());
+                try {
+                    Class.forName("org.sqlite.JDBC");
+                    c = DriverManager.getConnection("jdbc:sqlite:user.db");
+                    c.setAutoCommit(false);
+                    stmt = c.createStatement();
+                    ResultSet rs = stmt.executeQuery( "SELECT * FROM user WHERE username = '"+a1+"'" );
+                    String  user = rs.getString("username");
+                    String  pass = rs.getString("password");
+                    String  first = rs.getString("first_name");
+                    if (user.equals(a1) && pass.equals(a2)){
+                        JOptionPane.showMessageDialog(null, "Login Success",
+                        "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
+                        All_Data account = new All_Data();
+                        account.setUser(a1);
+                        account.setFirst(first);
+                        main_ui main_display = new main_ui(account);
+                        main_display.setVisible(true);
+                        dispose();
+                    }else{
+                        System.out.println("Username :"+a1);
+                        System.out.println("Password :"+a2);
+                        JOptionPane.showMessageDialog(null, "Invalid Username or Password Step 2.",
+                        "ALERT", JOptionPane.WARNING_MESSAGE);
+                    }
+                   
+                    rs.close();
+                    stmt.close();
+                    c.close();
+                }catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Invalid Code",
+                        "ALERT", JOptionPane.WARNING_MESSAGE);
+                }
+        
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jUserActionPerformed
+
+    private void jUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jUserMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jUserMouseClicked
+
+    private void jPasswordField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordField1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -225,7 +292,7 @@ public class login_ui extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelDate;
     private javax.swing.JPanel jMainPanel;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPassword;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jUser;
     // End of variables declaration//GEN-END:variables
 }
