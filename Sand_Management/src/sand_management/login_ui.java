@@ -51,6 +51,7 @@ public class login_ui extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jPasswordField1 = new javax.swing.JPasswordField();
+        jCheckBox1 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -129,6 +130,14 @@ public class login_ui extends javax.swing.JFrame {
             }
         });
 
+        jCheckBox1.setBackground(new java.awt.Color(204, 204, 204));
+        jCheckBox1.setText("Show Password");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jMainPanelLayout = new javax.swing.GroupLayout(jMainPanel);
         jMainPanel.setLayout(jMainPanelLayout);
         jMainPanelLayout.setHorizontalGroup(
@@ -137,18 +146,20 @@ public class login_ui extends javax.swing.JFrame {
             .addGroup(jMainPanelLayout.createSequentialGroup()
                 .addGroup(jMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jMainPanelLayout.createSequentialGroup()
-                        .addGap(262, 262, 262)
-                        .addGroup(jMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel5)
-                            .addComponent(jUser, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                            .addComponent(jLabel6)
-                            .addComponent(jPasswordField1)))
-                    .addGroup(jMainPanelLayout.createSequentialGroup()
                         .addGap(340, 340, 340)
                         .addComponent(jLabel4))
                     .addGroup(jMainPanelLayout.createSequentialGroup()
                         .addGap(336, 336, 336)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jMainPanelLayout.createSequentialGroup()
+                        .addGap(262, 262, 262)
+                        .addGroup(jMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCheckBox1)
+                            .addGroup(jMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel5)
+                                .addComponent(jUser, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                                .addComponent(jLabel6)
+                                .addComponent(jPasswordField1)))))
                 .addContainerGap(268, Short.MAX_VALUE))
         );
         jMainPanelLayout.setVerticalGroup(
@@ -165,7 +176,9 @@ public class login_ui extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
+                .addGap(5, 5, 5)
+                .addComponent(jCheckBox1)
+                .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52))
         );
@@ -241,6 +254,16 @@ public class login_ui extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jPasswordField1MouseClicked
 
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        // TODO add your handling code here:
+        if (jCheckBox1.isSelected()){
+            jPasswordField1.setEchoChar((char)0);
+        }
+        else{
+            jPasswordField1.setEchoChar('*');
+        }
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -282,6 +305,7 @@ public class login_ui extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
