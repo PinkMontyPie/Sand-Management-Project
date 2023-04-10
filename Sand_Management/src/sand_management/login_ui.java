@@ -190,9 +190,6 @@ public class login_ui extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        /*main_ui show = new main_ui();
-        show.setVisible(true);
-        this.setVisible(false);*/
                 Connection c = null;
                 Statement stmt = null;
                 String a1 = jUser.getText();
