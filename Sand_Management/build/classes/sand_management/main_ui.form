@@ -205,7 +205,7 @@
           <Font name="Leelawadee UI" size="24" style="0"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\theet\OneDrive\&#xe40;&#xe14;&#xe2a;&#xe01;&#xe4c;&#xe17;&#xe47;&#xe2d;&#xe1b;\Sand-Management-Project\Sand_Management\picture\group_1.png"/>
+          <Image iconType="3" name="/sand_management/picture/group_1.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="&#xe1b;&#xe23;&#xe30;&#xe27;&#xe31;&#xe15;&#xe34;&#xe1e;&#xe19;&#xe31;&#xe01;&#xe07;&#xe32;&#xe19;"/>
       </Properties>
@@ -219,7 +219,7 @@
           <Font name="Leelawadee UI" size="24" style="0"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\theet\OneDrive\&#xe40;&#xe14;&#xe2a;&#xe01;&#xe4c;&#xe17;&#xe47;&#xe2d;&#xe1b;\Sand-Management-Project\Sand_Management\picture\delivery_1.png"/>
+          <Image iconType="3" name="/sand_management/picture/delivery_1.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="&#xe01;&#xe32;&#xe23;&#xe08;&#xe31;&#xe14;&#xe2a;&#xe48;&#xe07;&#xe2a;&#xe34;&#xe19;&#xe04;&#xe49;&#xe32;"/>
       </Properties>
@@ -233,7 +233,7 @@
           <Font name="Leelawadee UI" size="24" style="0"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\theet\OneDrive\&#xe40;&#xe14;&#xe2a;&#xe01;&#xe4c;&#xe17;&#xe47;&#xe2d;&#xe1b;\Sand-Management-Project\Sand_Management\picture\Dealer_1.png"/>
+          <Image iconType="3" name="/sand_management/picture/Dealer_1.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="&#xe15;&#xe31;&#xe27;&#xe41;&#xe17;&#xe19;&#xe08;&#xe33;&#xe2b;&#xe19;&#xe48;&#xe32;&#xe22;"/>
       </Properties>
@@ -247,7 +247,7 @@
           <Font name="Leelawadee UI" size="24" style="0"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\theet\OneDrive\&#xe40;&#xe14;&#xe2a;&#xe01;&#xe4c;&#xe17;&#xe47;&#xe2d;&#xe1b;\Sand-Management-Project\Sand_Management\picture\customer_1.png"/>
+          <Image iconType="3" name="/sand_management/picture/customer_1.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="&#xe25;&#xe39;&#xe01;&#xe04;&#xe49;&#xe32;"/>
       </Properties>
@@ -261,7 +261,7 @@
           <Font name="Leelawadee UI" size="24" style="0"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\theet\OneDrive\&#xe40;&#xe14;&#xe2a;&#xe01;&#xe4c;&#xe17;&#xe47;&#xe2d;&#xe1b;\Sand-Management-Project\Sand_Management\picture\storage-box_1.png"/>
+          <Image iconType="3" name="/sand_management/picture/storage-box_1.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="&#xe04;&#xe25;&#xe31;&#xe07;&#xe2a;&#xe34;&#xe19;&#xe04;&#xe49;&#xe32;"/>
       </Properties>
@@ -275,7 +275,7 @@
           <Font name="Leelawadee UI" size="24" style="0"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\theet\OneDrive\&#xe40;&#xe14;&#xe2a;&#xe01;&#xe4c;&#xe17;&#xe47;&#xe2d;&#xe1b;\Sand-Management-Project\Sand_Management\picture\payment-method_1.png"/>
+          <Image iconType="3" name="/sand_management/picture/payment-method_1.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="&#xe2a;&#xe31;&#xe48;&#xe07;&#xe0b;&#xe37;&#xe49;&#xe2d;&#xe2a;&#xe34;&#xe19;&#xe04;&#xe49;&#xe32;"/>
       </Properties>
@@ -289,7 +289,7 @@
           <Font name="Leelawadee UI" size="24" style="0"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\theet\OneDrive\&#xe40;&#xe14;&#xe2a;&#xe01;&#xe4c;&#xe17;&#xe47;&#xe2d;&#xe1b;\Sand-Management-Project\Sand_Management\picture\report_1.png"/>
+          <Image iconType="3" name="/sand_management/picture/report_1.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="&#xe23;&#xe32;&#xe22;&#xe07;&#xe32;&#xe19;"/>
       </Properties>
@@ -303,7 +303,7 @@
           <Font name="Leelawadee UI" size="24" style="0"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\theet\OneDrive\&#xe40;&#xe14;&#xe2a;&#xe01;&#xe4c;&#xe17;&#xe47;&#xe2d;&#xe1b;\Sand-Management-Project\Sand_Management\picture\trade_1.png"/>
+          <Image iconType="3" name="/sand_management/picture/trade_1.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="&#xe02;&#xe32;&#xe22;&#xe2a;&#xe34;&#xe19;&#xe04;&#xe49;&#xe32;"/>
       </Properties>

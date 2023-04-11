@@ -149,7 +149,7 @@ public class main_ui extends javax.swing.JFrame {
         );
 
         jButton1.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\theet\\OneDrive\\เดสก์ท็อป\\Sand-Management-Project\\Sand_Management\\picture\\group_1.png")); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/group_1.png"))); // NOI18N
         jButton1.setText("ประวัติพนักงาน");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,7 +158,7 @@ public class main_ui extends javax.swing.JFrame {
         });
 
         jButton2.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\theet\\OneDrive\\เดสก์ท็อป\\Sand-Management-Project\\Sand_Management\\picture\\delivery_1.png")); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/delivery_1.png"))); // NOI18N
         jButton2.setText("การจัดส่งสินค้า");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,7 +167,7 @@ public class main_ui extends javax.swing.JFrame {
         });
 
         jButton3.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\theet\\OneDrive\\เดสก์ท็อป\\Sand-Management-Project\\Sand_Management\\picture\\Dealer_1.png")); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/Dealer_1.png"))); // NOI18N
         jButton3.setText("ตัวแทนจำหน่าย");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -176,7 +176,7 @@ public class main_ui extends javax.swing.JFrame {
         });
 
         jButton4.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\theet\\OneDrive\\เดสก์ท็อป\\Sand-Management-Project\\Sand_Management\\picture\\customer_1.png")); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/customer_1.png"))); // NOI18N
         jButton4.setText("ลูกค้า");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,7 +185,7 @@ public class main_ui extends javax.swing.JFrame {
         });
 
         jButton5.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon("C:\\Users\\theet\\OneDrive\\เดสก์ท็อป\\Sand-Management-Project\\Sand_Management\\picture\\storage-box_1.png")); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/storage-box_1.png"))); // NOI18N
         jButton5.setText("คลังสินค้า");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,7 +194,7 @@ public class main_ui extends javax.swing.JFrame {
         });
 
         jButton6.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
-        jButton6.setIcon(new javax.swing.ImageIcon("C:\\Users\\theet\\OneDrive\\เดสก์ท็อป\\Sand-Management-Project\\Sand_Management\\picture\\payment-method_1.png")); // NOI18N
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/payment-method_1.png"))); // NOI18N
         jButton6.setText("สั่งซื้อสินค้า");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -203,7 +203,7 @@ public class main_ui extends javax.swing.JFrame {
         });
 
         jButton7.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
-        jButton7.setIcon(new javax.swing.ImageIcon("C:\\Users\\theet\\OneDrive\\เดสก์ท็อป\\Sand-Management-Project\\Sand_Management\\picture\\report_1.png")); // NOI18N
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/report_1.png"))); // NOI18N
         jButton7.setText("รายงาน");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -212,7 +212,7 @@ public class main_ui extends javax.swing.JFrame {
         });
 
         jButton8.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
-        jButton8.setIcon(new javax.swing.ImageIcon("C:\\Users\\theet\\OneDrive\\เดสก์ท็อป\\Sand-Management-Project\\Sand_Management\\picture\\trade_1.png")); // NOI18N
+        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/trade_1.png"))); // NOI18N
         jButton8.setText("ขายสินค้า");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
