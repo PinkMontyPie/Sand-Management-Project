@@ -15,7 +15,7 @@ import java.util.*;
  *
  * @author theet
  */
-public class Employee_History extends javax.swing.JFrame {
+public class employee_history_ui extends javax.swing.JFrame {
     SimpleDateFormat timeFormat;
     SimpleDateFormat dateFormat;
     String time;
@@ -24,8 +24,9 @@ public class Employee_History extends javax.swing.JFrame {
     /**
      * Creates new form Employee_History
      */
-    public Employee_History(All_Data a1) {
+    public employee_history_ui(All_Data a1) {
         initComponents();
+        this.setTitle("Sand Management Program | Employee");
         this.user = a1;
         Start();
     }
@@ -78,9 +79,9 @@ public class Employee_History extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
 
         jLabelProgram.setBackground(new java.awt.Color(255, 255, 255));
-        jLabelProgram.setFont(new java.awt.Font("Helvetica Neue", 1, 36)); // NOI18N
+        jLabelProgram.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         jLabelProgram.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelProgram.setText("SAND Management Progarm");
+        jLabelProgram.setText("Employee");
 
         jLabelTime1.setFont(new java.awt.Font("Angsana New", 1, 24)); // NOI18N
         jLabelTime1.setForeground(new java.awt.Color(255, 255, 255));
@@ -119,14 +120,14 @@ public class Employee_History extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
+                        .addContainerGap(1734, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jfirstname_lastname)
+                            .addComponent(jButtonlogout, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
                         .addComponent(jLabelProgram)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jfirstname_lastname, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButtonlogout, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabelTime1)
                         .addGap(30, 30, 30)
                         .addComponent(jLabelDate)))
@@ -135,19 +136,20 @@ public class Employee_History extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(76, 76, 76)
-                .addComponent(jLabelProgram, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(67, 67, 67))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelTime1)
-                    .addComponent(jLabelDate))
-                .addGap(12, 12, 12)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelTime1)
+                            .addComponent(jLabelDate)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabelProgram, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jfirstname_lastname)
-                .addGap(18, 18, 18)
+                .addGap(12, 12, 12)
                 .addComponent(jButtonlogout, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -166,7 +168,7 @@ public class Employee_History extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(320, 320, 320)
                 .addComponent(jLabelTime)
-                .addGap(0, 510, Short.MAX_VALUE))
+                .addGap(0, 550, Short.MAX_VALUE))
         );
 
         pack();
@@ -220,20 +222,21 @@ public class Employee_History extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Employee_History.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(employee_history_ui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Employee_History.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(employee_history_ui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Employee_History.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(employee_history_ui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Employee_History.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(employee_history_ui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Employee_History(new All_Data()).setVisible(true);
+                new employee_history_ui(new All_Data()).setVisible(true);
             }
         });
     }

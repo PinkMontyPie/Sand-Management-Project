@@ -4,7 +4,6 @@
  */
 package sand_management;
 
-import config_DB.ConfigDB;
 import java.sql.Connection;
 import java.sql.*;
 import javax.swing.*;
@@ -21,16 +20,14 @@ public class login_ui extends javax.swing.JFrame {
     String date;
     
     public login_ui() {
+        this.setTitle("Sand Management Program");
         initComponents();
         Date();
         
     }
     
     //Start code here!!!!
-    
-    
-    //Hello world
-    
+
     public void Date(){
         dateFormat = new SimpleDateFormat("EEEE dd MMMMM yyyy");
         date = dateFormat.format(Calendar.getInstance().getTime());
@@ -77,7 +74,7 @@ public class login_ui extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(53, 53, 53)
+                .addGap(46, 46, 46)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelDate)
@@ -113,8 +110,10 @@ public class login_ui extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
         jLabel6.setText("Password");
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setForeground(new java.awt.Color(0, 204, 51));
         jButton1.setText("Login");
+        jButton1.setPreferredSize(new java.awt.Dimension(80, 30));
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
@@ -151,9 +150,6 @@ public class login_ui extends javax.swing.JFrame {
                         .addGap(340, 340, 340)
                         .addComponent(jLabel4))
                     .addGroup(jMainPanelLayout.createSequentialGroup()
-                        .addGap(336, 336, 336)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jMainPanelLayout.createSequentialGroup()
                         .addGap(262, 262, 262)
                         .addGroup(jMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jCheckBox1)
@@ -161,16 +157,19 @@ public class login_ui extends javax.swing.JFrame {
                                 .addComponent(jLabel5)
                                 .addComponent(jUser, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                                 .addComponent(jLabel6)
-                                .addComponent(jPasswordField1)))))
+                                .addComponent(jPasswordField1))))
+                    .addGroup(jMainPanelLayout.createSequentialGroup()
+                        .addGap(335, 335, 335)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(268, Short.MAX_VALUE))
         );
         jMainPanelLayout.setVerticalGroup(
             jMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jMainPanelLayout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addGap(47, 47, 47)
                 .addComponent(jLabel4)
-                .addGap(23, 23, 23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jUser, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -180,9 +179,9 @@ public class login_ui extends javax.swing.JFrame {
                 .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
                 .addComponent(jCheckBox1)
-                .addGap(18, 18, 18)
+                .addGap(26, 26, 26)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52))
+                .addGap(44, 44, 44))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

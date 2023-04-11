@@ -24,6 +24,7 @@ public class main_ui extends javax.swing.JFrame {
     
     public main_ui(All_Data a1) {
         initComponents();
+        this.setTitle("Sand Management Program | Menu");
         this.user = a1;
         permission();
         Start();
@@ -102,11 +103,11 @@ public class main_ui extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabelProgram = new javax.swing.JLabel();
-        jLabelDate = new javax.swing.JLabel();
         jLabelTime = new javax.swing.JLabel();
+        jLabelDate = new javax.swing.JLabel();
         jButtonlogout = new javax.swing.JButton();
         jfirstname_lastname = new javax.swing.JLabel();
+        jLabelProgram = new javax.swing.JLabel();
         Button_Employee = new javax.swing.JButton();
         Button_Delivery = new javax.swing.JButton();
         Button_Storage = new javax.swing.JButton();
@@ -120,19 +121,15 @@ public class main_ui extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setPreferredSize(new java.awt.Dimension(1920, 190));
 
-        jLabelProgram.setBackground(new java.awt.Color(255, 255, 255));
-        jLabelProgram.setFont(new java.awt.Font("Helvetica Neue", 1, 36)); // NOI18N
-        jLabelProgram.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelProgram.setText("SAND Management Progarm");
+        jLabelTime.setFont(new java.awt.Font("Angsana New", 1, 24)); // NOI18N
+        jLabelTime.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelTime.setText("Time");
 
         jLabelDate.setFont(new java.awt.Font("Angsana New", 1, 24)); // NOI18N
         jLabelDate.setForeground(new java.awt.Color(255, 255, 255));
         jLabelDate.setText("Date");
 
-        jLabelTime.setFont(new java.awt.Font("Angsana New", 1, 24)); // NOI18N
-        jLabelTime.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelTime.setText("Time");
-
+        jButtonlogout.setBackground(new java.awt.Color(255, 255, 255));
         jButtonlogout.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jButtonlogout.setForeground(new java.awt.Color(255, 51, 51));
         jButtonlogout.setText("Logout");
@@ -155,46 +152,49 @@ public class main_ui extends javax.swing.JFrame {
             }
         });
 
+        jLabelProgram.setBackground(new java.awt.Color(255, 255, 255));
+        jLabelProgram.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        jLabelProgram.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelProgram.setText("SAND Management Progarm");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addComponent(jLabelProgram)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jfirstname_lastname, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabelProgram)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonlogout, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabelTime)
-                                .addGap(29, 29, 29)
-                                .addComponent(jLabelDate))
-                            .addComponent(jfirstname_lastname, javax.swing.GroupLayout.Alignment.TRAILING))))
+                        .addComponent(jLabelTime)
+                        .addGap(29, 29, 29)
+                        .addComponent(jLabelDate))
+                    .addComponent(jButtonlogout, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelTime)
                     .addComponent(jLabelDate))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jfirstname_lastname)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonlogout, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelProgram, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addGap(12, 12, 12)
+                .addComponent(jButtonlogout, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
+            .addComponent(jLabelProgram, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        Button_Employee.setBackground(new java.awt.Color(255, 255, 255));
         Button_Employee.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
         Button_Employee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/group_1.png"))); // NOI18N
         Button_Employee.setText("ประวัติพนักงาน");
+        Button_Employee.setAlignmentY(0.1F);
+        Button_Employee.setIconTextGap(20);
         Button_Employee.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Button_EmployeeMouseClicked(evt);
@@ -206,45 +206,80 @@ public class main_ui extends javax.swing.JFrame {
             }
         });
 
+        Button_Delivery.setBackground(new java.awt.Color(255, 255, 255));
         Button_Delivery.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
         Button_Delivery.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/delivery_1.png"))); // NOI18N
         Button_Delivery.setText("การจัดส่งสินค้า");
+        Button_Delivery.setIconTextGap(20);
+        Button_Delivery.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Button_DeliveryMouseClicked(evt);
+            }
+        });
         Button_Delivery.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Button_DeliveryActionPerformed(evt);
             }
         });
 
+        Button_Storage.setBackground(new java.awt.Color(255, 255, 255));
         Button_Storage.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
         Button_Storage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/storage-box_1.png"))); // NOI18N
         Button_Storage.setText("คลังสินค้า");
+        Button_Storage.setIconTextGap(20);
+        Button_Storage.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Button_StorageMouseClicked(evt);
+            }
+        });
         Button_Storage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Button_StorageActionPerformed(evt);
             }
         });
 
+        Button_Purchase.setBackground(new java.awt.Color(255, 255, 255));
         Button_Purchase.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
         Button_Purchase.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/payment-method_1.png"))); // NOI18N
         Button_Purchase.setText("สั่งซื้อสินค้า");
+        Button_Purchase.setIconTextGap(20);
+        Button_Purchase.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Button_PurchaseMouseClicked(evt);
+            }
+        });
         Button_Purchase.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Button_PurchaseActionPerformed(evt);
             }
         });
 
+        Button_Report.setBackground(new java.awt.Color(255, 255, 255));
         Button_Report.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
         Button_Report.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/report_1.png"))); // NOI18N
         Button_Report.setText("รายงาน");
+        Button_Report.setIconTextGap(20);
+        Button_Report.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Button_ReportMouseClicked(evt);
+            }
+        });
         Button_Report.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Button_ReportActionPerformed(evt);
             }
         });
 
+        Button_Sell.setBackground(new java.awt.Color(255, 255, 255));
         Button_Sell.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
         Button_Sell.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/trade_1.png"))); // NOI18N
         Button_Sell.setText("ขายสินค้า");
+        Button_Sell.setIconTextGap(20);
+        Button_Sell.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Button_SellMouseClicked(evt);
+            }
+        });
         Button_Sell.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Button_SellActionPerformed(evt);
@@ -274,8 +309,8 @@ public class main_ui extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(117, 117, 117)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(146, 146, 146)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Button_Employee, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Button_Storage, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -285,7 +320,7 @@ public class main_ui extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Button_Delivery, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Button_Report, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 167, Short.MAX_VALUE))
+                .addGap(0, 178, Short.MAX_VALUE))
         );
 
         pack();
@@ -351,10 +386,60 @@ public class main_ui extends javax.swing.JFrame {
         String a1 = user.getUser();
         All_Data account = new All_Data();
         account.setUser(a1);
-        Employee_History employee = new Employee_History(account);
+        employee_history_ui employee = new employee_history_ui(account);
         employee.setVisible(true);
         dispose();
     }//GEN-LAST:event_Button_EmployeeMouseClicked
+
+    private void Button_PurchaseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Button_PurchaseMouseClicked
+        // TODO add your handling code here:
+        String a1 = user.getUser();
+        All_Data account = new All_Data();
+        account.setUser(a1);
+        purchase_ui buy = new purchase_ui(account);
+        buy.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_Button_PurchaseMouseClicked
+
+    private void Button_SellMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Button_SellMouseClicked
+        // TODO add your handling code here:
+        String a1 = user.getUser();
+        All_Data account = new All_Data();
+        account.setUser(a1);
+        sell_ui sell = new sell_ui(account);
+        sell.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_Button_SellMouseClicked
+
+    private void Button_StorageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Button_StorageMouseClicked
+        // TODO add your handling code here:
+        String a1 = user.getUser();
+        All_Data account = new All_Data();
+        account.setUser(a1);
+        storage_ui stock = new storage_ui(account);
+        stock.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_Button_StorageMouseClicked
+
+    private void Button_DeliveryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Button_DeliveryMouseClicked
+        // TODO add your handling code here:
+        String a1 = user.getUser();
+        All_Data account = new All_Data();
+        account.setUser(a1);
+        delivery_ui delivery = new delivery_ui(account);
+        delivery.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_Button_DeliveryMouseClicked
+
+    private void Button_ReportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Button_ReportMouseClicked
+        // TODO add your handling code here:
+        String a1 = user.getUser();
+        All_Data account = new All_Data();
+        account.setUser(a1);
+        report_ui report = new report_ui(account);
+        report.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_Button_ReportMouseClicked
 
     /**
      * @param args the command line arguments
