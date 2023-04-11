@@ -12,7 +12,6 @@ import java.text.*;
 import java.util.*;
 
 
-
 /**
  *
  * @author Pai
@@ -28,6 +27,9 @@ public class login_ui extends javax.swing.JFrame {
     }
     
     //Start code here!!!!
+    
+    
+    //Hello world
     
     public void Date(){
         dateFormat = new SimpleDateFormat("EEEE dd MMMMM yyyy");
