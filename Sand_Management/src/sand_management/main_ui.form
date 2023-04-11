@@ -29,25 +29,19 @@
           <Component id="jPanel1" pref="1909" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="188" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jButton1" min="-2" pref="337" max="-2" attributes="0"/>
-                  <Component id="jButton6" min="-2" pref="337" max="-2" attributes="0"/>
-              </Group>
+              <Component id="Button_Employee" min="-2" pref="337" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jButton8" min="-2" pref="337" max="-2" attributes="0"/>
-                  <Component id="jButton3" min="-2" pref="337" max="-2" attributes="0"/>
+                  <Component id="Button_Purchase" alignment="0" min="-2" pref="337" max="-2" attributes="0"/>
+                  <Component id="Button_Delivery" alignment="0" min="-2" pref="337" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jButton4" min="-2" pref="337" max="-2" attributes="0"/>
-                  <Component id="jButton2" min="-2" pref="337" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="Button_Report" min="-2" pref="337" max="-2" attributes="0"/>
+                  <Component id="Button_Sell" min="-2" pref="337" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jButton5" min="-2" pref="337" max="-2" attributes="0"/>
-                  <Component id="jButton7" min="-2" pref="337" max="-2" attributes="0"/>
-              </Group>
+              <Component id="Button_Storage" min="-2" pref="337" max="-2" attributes="0"/>
               <EmptySpace pref="174" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -58,17 +52,15 @@
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="141" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton1" alignment="3" min="-2" pref="236" max="-2" attributes="0"/>
-                  <Component id="jButton3" alignment="3" min="-2" pref="236" max="-2" attributes="0"/>
-                  <Component id="jButton4" alignment="3" min="-2" pref="236" max="-2" attributes="0"/>
-                  <Component id="jButton5" alignment="3" min="-2" pref="236" max="-2" attributes="0"/>
+                  <Component id="Button_Employee" alignment="3" min="-2" pref="236" max="-2" attributes="0"/>
+                  <Component id="Button_Storage" alignment="3" min="-2" pref="236" max="-2" attributes="0"/>
+                  <Component id="Button_Purchase" alignment="3" min="-2" pref="236" max="-2" attributes="0"/>
+                  <Component id="Button_Sell" alignment="3" min="-2" pref="236" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton6" alignment="3" min="-2" pref="236" max="-2" attributes="0"/>
-                  <Component id="jButton2" alignment="3" min="-2" pref="236" max="-2" attributes="0"/>
-                  <Component id="jButton7" alignment="3" min="-2" pref="236" max="-2" attributes="0"/>
-                  <Component id="jButton8" alignment="3" min="-2" pref="236" max="-2" attributes="0"/>
+                  <Component id="Button_Delivery" alignment="3" min="-2" pref="236" max="-2" attributes="0"/>
+                  <Component id="Button_Report" alignment="3" min="-2" pref="236" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="0" pref="141" max="32767" attributes="0"/>
           </Group>
@@ -199,7 +191,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="Button_Employee">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Leelawadee UI" size="24" style="0"/>
@@ -210,10 +202,10 @@
         <Property name="text" type="java.lang.String" value="&#xe1b;&#xe23;&#xe30;&#xe27;&#xe31;&#xe15;&#xe34;&#xe1e;&#xe19;&#xe31;&#xe01;&#xe07;&#xe32;&#xe19;"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Button_EmployeeActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="Button_Delivery">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Leelawadee UI" size="24" style="0"/>
@@ -224,38 +216,10 @@
         <Property name="text" type="java.lang.String" value="&#xe01;&#xe32;&#xe23;&#xe08;&#xe31;&#xe14;&#xe2a;&#xe48;&#xe07;&#xe2a;&#xe34;&#xe19;&#xe04;&#xe49;&#xe32;"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Button_DeliveryActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton3">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Leelawadee UI" size="24" style="0"/>
-        </Property>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/sand_management/picture/Dealer_1.png"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="&#xe15;&#xe31;&#xe27;&#xe41;&#xe17;&#xe19;&#xe08;&#xe33;&#xe2b;&#xe19;&#xe48;&#xe32;&#xe22;"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton4">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Leelawadee UI" size="24" style="0"/>
-        </Property>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/sand_management/picture/customer_1.png"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="&#xe25;&#xe39;&#xe01;&#xe04;&#xe49;&#xe32;"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton5">
+    <Component class="javax.swing.JButton" name="Button_Storage">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Leelawadee UI" size="24" style="0"/>
@@ -266,10 +230,10 @@
         <Property name="text" type="java.lang.String" value="&#xe04;&#xe25;&#xe31;&#xe07;&#xe2a;&#xe34;&#xe19;&#xe04;&#xe49;&#xe32;"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Button_StorageActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton6">
+    <Component class="javax.swing.JButton" name="Button_Purchase">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Leelawadee UI" size="24" style="0"/>
@@ -280,10 +244,10 @@
         <Property name="text" type="java.lang.String" value="&#xe2a;&#xe31;&#xe48;&#xe07;&#xe0b;&#xe37;&#xe49;&#xe2d;&#xe2a;&#xe34;&#xe19;&#xe04;&#xe49;&#xe32;"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Button_PurchaseActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton7">
+    <Component class="javax.swing.JButton" name="Button_Report">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Leelawadee UI" size="24" style="0"/>
@@ -294,10 +258,10 @@
         <Property name="text" type="java.lang.String" value="&#xe23;&#xe32;&#xe22;&#xe07;&#xe32;&#xe19;"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton7ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Button_ReportActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton8">
+    <Component class="javax.swing.JButton" name="Button_Sell">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Leelawadee UI" size="24" style="0"/>
@@ -308,7 +272,7 @@
         <Property name="text" type="java.lang.String" value="&#xe02;&#xe32;&#xe22;&#xe2a;&#xe34;&#xe19;&#xe04;&#xe49;&#xe32;"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton8ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Button_SellActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

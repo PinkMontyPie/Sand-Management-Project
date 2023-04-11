@@ -25,7 +25,52 @@ public class main_ui extends javax.swing.JFrame {
     public main_ui(All_Data a1) {
         initComponents();
         this.user = a1;
+        permission();
         Start();
+    }
+    
+    public void permission(){
+        Connection c = null;
+        Statement stmt = null;
+                try {
+                    Class.forName("org.sqlite.JDBC");
+                    c = DriverManager.getConnection("jdbc:sqlite:user.db");
+                    c.setAutoCommit(false);
+                    stmt = c.createStatement();
+                    String a1 = user.getUser();
+                    ResultSet rs = stmt.executeQuery( "SELECT * FROM user WHERE username = '"+a1+"'" );
+                    String position1 = rs.getString("position");
+                    System.out.println(position1);
+                    if (position1.equals("IT")){
+                    }
+                    else if(position1.equals("CEO")){
+                    }
+                    else if(position1.equals("Secretary")){
+                        Button_Employee.setVisible(false);
+                    }
+                    else if(position1.equals("Employee")){
+                        Button_Employee.setVisible(false);
+                        Button_Storage.setVisible(false);
+                        Button_Purchase.setVisible(false);
+                        Button_Sell.setVisible(false);
+                        Button_Report.setVisible(false);
+                    }
+                    else {
+                        Button_Employee.setVisible(false);
+                        Button_Storage.setVisible(false);
+                        Button_Purchase.setVisible(false);
+                        Button_Sell.setVisible(false);
+                        Button_Delivery.setVisible(false);
+                        Button_Report.setVisible(false);
+                    }
+                    rs.close();
+                    stmt.close();
+                    c.close();
+                } 
+                catch ( Exception b ) {
+                   System.err.println( b.getClass().getName() + ": " + b.getMessage() );
+                   System.exit(0);
+                }
     }
     
     public void Start(){
@@ -62,14 +107,12 @@ public class main_ui extends javax.swing.JFrame {
         jLabelTime = new javax.swing.JLabel();
         jButtonlogout = new javax.swing.JButton();
         jfirstname_lastname = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        Button_Employee = new javax.swing.JButton();
+        Button_Delivery = new javax.swing.JButton();
+        Button_Storage = new javax.swing.JButton();
+        Button_Purchase = new javax.swing.JButton();
+        Button_Report = new javax.swing.JButton();
+        Button_Sell = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -148,75 +191,57 @@ public class main_ui extends javax.swing.JFrame {
                 .addContainerGap(58, Short.MAX_VALUE))
         );
 
-        jButton1.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/group_1.png"))); // NOI18N
-        jButton1.setText("ประวัติพนักงาน");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Button_Employee.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
+        Button_Employee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/group_1.png"))); // NOI18N
+        Button_Employee.setText("ประวัติพนักงาน");
+        Button_Employee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                Button_EmployeeActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/delivery_1.png"))); // NOI18N
-        jButton2.setText("การจัดส่งสินค้า");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        Button_Delivery.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
+        Button_Delivery.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/delivery_1.png"))); // NOI18N
+        Button_Delivery.setText("การจัดส่งสินค้า");
+        Button_Delivery.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                Button_DeliveryActionPerformed(evt);
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/Dealer_1.png"))); // NOI18N
-        jButton3.setText("ตัวแทนจำหน่าย");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        Button_Storage.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
+        Button_Storage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/storage-box_1.png"))); // NOI18N
+        Button_Storage.setText("คลังสินค้า");
+        Button_Storage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                Button_StorageActionPerformed(evt);
             }
         });
 
-        jButton4.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/customer_1.png"))); // NOI18N
-        jButton4.setText("ลูกค้า");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        Button_Purchase.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
+        Button_Purchase.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/payment-method_1.png"))); // NOI18N
+        Button_Purchase.setText("สั่งซื้อสินค้า");
+        Button_Purchase.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                Button_PurchaseActionPerformed(evt);
             }
         });
 
-        jButton5.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/storage-box_1.png"))); // NOI18N
-        jButton5.setText("คลังสินค้า");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        Button_Report.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
+        Button_Report.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/report_1.png"))); // NOI18N
+        Button_Report.setText("รายงาน");
+        Button_Report.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                Button_ReportActionPerformed(evt);
             }
         });
 
-        jButton6.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/payment-method_1.png"))); // NOI18N
-        jButton6.setText("สั่งซื้อสินค้า");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        Button_Sell.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
+        Button_Sell.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/trade_1.png"))); // NOI18N
+        Button_Sell.setText("ขายสินค้า");
+        Button_Sell.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-
-        jButton7.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/report_1.png"))); // NOI18N
-        jButton7.setText("รายงาน");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
-
-        jButton8.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/trade_1.png"))); // NOI18N
-        jButton8.setText("ขายสินค้า");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                Button_SellActionPerformed(evt);
             }
         });
 
@@ -227,21 +252,17 @@ public class main_ui extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1909, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(188, 188, 188)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(Button_Employee, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(76, 76, 76)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Button_Purchase, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Button_Delivery, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(62, 62, 62)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Button_Report, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Button_Sell, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(61, 61, 61)
+                .addComponent(Button_Storage, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(174, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -250,16 +271,14 @@ public class main_ui extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(141, 141, 141)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Button_Employee, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Button_Storage, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Button_Purchase, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Button_Sell, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(72, 72, 72)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Button_Delivery, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Button_Report, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 141, Short.MAX_VALUE))
         );
 
@@ -297,37 +316,29 @@ public class main_ui extends javax.swing.JFrame {
                 }
     }//GEN-LAST:event_jfirstname_lastnameAncestorAdded
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void Button_EmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_EmployeeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_Button_EmployeeActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void Button_DeliveryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_DeliveryActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_Button_DeliveryActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void Button_StorageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_StorageActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_Button_StorageActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void Button_PurchaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_PurchaseActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_Button_PurchaseActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void Button_ReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_ReportActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_Button_ReportActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void Button_SellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_SellActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
-
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_Button_SellActionPerformed
 
     /**
      * @param args the command line arguments
@@ -366,14 +377,12 @@ public class main_ui extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
+    private javax.swing.JButton Button_Delivery;
+    private javax.swing.JButton Button_Employee;
+    private javax.swing.JButton Button_Purchase;
+    private javax.swing.JButton Button_Report;
+    private javax.swing.JButton Button_Sell;
+    private javax.swing.JButton Button_Storage;
     private javax.swing.JButton jButtonlogout;
     private javax.swing.JLabel jLabelDate;
     private javax.swing.JLabel jLabelProgram;
