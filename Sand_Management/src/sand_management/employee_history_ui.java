@@ -70,6 +70,9 @@ public class employee_history_ui extends javax.swing.JFrame {
         jLabelDate = new javax.swing.JLabel();
         jfirstname_lastname = new javax.swing.JLabel();
         jButtonlogout = new javax.swing.JButton();
+        jBack = new javax.swing.JLabel();
+        Button_New_Employee = new javax.swing.JButton();
+        Button_Search_Employee = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,7 +82,7 @@ public class employee_history_ui extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
 
         jLabelProgram.setBackground(new java.awt.Color(255, 255, 255));
-        jLabelProgram.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        jLabelProgram.setFont(new java.awt.Font("Helvetica Neue", 1, 36)); // NOI18N
         jLabelProgram.setForeground(new java.awt.Color(255, 255, 255));
         jLabelProgram.setText("Employee");
 
@@ -113,6 +116,15 @@ public class employee_history_ui extends javax.swing.JFrame {
             }
         });
 
+        jBack.setFont(new java.awt.Font("Leelawadee UI", 0, 36)); // NOI18N
+        jBack.setForeground(new java.awt.Color(255, 255, 255));
+        jBack.setText("Back");
+        jBack.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBackMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -120,55 +132,101 @@ public class employee_history_ui extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap(1734, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jfirstname_lastname)
-                            .addComponent(jButtonlogout, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(jLabelProgram)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabelTime1)
                         .addGap(30, 30, 30)
-                        .addComponent(jLabelDate)))
+                        .addComponent(jLabelDate))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addComponent(jBack)
+                        .addGap(717, 717, 717)
+                        .addComponent(jLabelProgram)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jfirstname_lastname, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButtonlogout, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(39, 39, 39))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelTime1)
+                    .addComponent(jLabelDate))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelTime1)
-                            .addComponent(jLabelDate)))
+                            .addComponent(jLabelProgram, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jBack, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jLabelProgram, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jfirstname_lastname)
-                .addGap(12, 12, 12)
-                .addComponent(jButtonlogout, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                        .addComponent(jfirstname_lastname)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonlogout, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 35, Short.MAX_VALUE))))
         );
+
+        Button_New_Employee.setFont(new java.awt.Font("Leelawadee UI", 0, 36)); // NOI18N
+        Button_New_Employee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/add-group_1.png"))); // NOI18N
+        Button_New_Employee.setText("New Employee");
+        Button_New_Employee.setAlignmentY(0.1F);
+        Button_New_Employee.setIconTextGap(20);
+        Button_New_Employee.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Button_New_EmployeeMouseClicked(evt);
+            }
+        });
+        Button_New_Employee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_New_EmployeeActionPerformed(evt);
+            }
+        });
+
+        Button_Search_Employee.setFont(new java.awt.Font("Leelawadee UI", 0, 36)); // NOI18N
+        Button_Search_Employee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/research_1.png"))); // NOI18N
+        Button_Search_Employee.setText("Search Employee");
+        Button_Search_Employee.setAlignmentY(0.1F);
+        Button_Search_Employee.setIconTextGap(20);
+        Button_Search_Employee.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Button_Search_EmployeeMouseClicked(evt);
+            }
+        });
+        Button_Search_Employee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_Search_EmployeeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 955, Short.MAX_VALUE)
-                .addComponent(jLabelTime)
-                .addGap(0, 955, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(79, 79, 79)
+                .addComponent(jLabelTime)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(502, Short.MAX_VALUE)
+                .addComponent(Button_New_Employee, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(Button_Search_Employee, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(515, 515, 515))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(320, 320, 320)
+                .addGap(94, 94, 94)
                 .addComponent(jLabelTime)
-                .addGap(0, 550, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 216, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Button_New_Employee, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Button_Search_Employee, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(306, 306, 306))
         );
 
         pack();
@@ -204,6 +262,38 @@ public class employee_history_ui extends javax.swing.JFrame {
         show.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButtonlogoutMouseClicked
+
+    private void jBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBackMouseClicked
+        // TODO add your handling code here:
+        String a1 = user.getUser();
+        All_Data account = new All_Data();
+        account.setUser(a1);
+        main_ui main = new main_ui(account);
+        main.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jBackMouseClicked
+
+    private void Button_New_EmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Button_New_EmployeeMouseClicked
+        // TODO add your handling code here:
+        employee_new new_employee = new employee_new();
+        new_employee.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_Button_New_EmployeeMouseClicked
+
+    private void Button_New_EmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_New_EmployeeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Button_New_EmployeeActionPerformed
+
+    private void Button_Search_EmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Button_Search_EmployeeMouseClicked
+        // TODO add your handling code here:
+        employee_search search_employee = new employee_search();
+        search_employee.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_Button_Search_EmployeeMouseClicked
+
+    private void Button_Search_EmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Search_EmployeeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Button_Search_EmployeeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -242,6 +332,9 @@ public class employee_history_ui extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Button_New_Employee;
+    private javax.swing.JButton Button_Search_Employee;
+    private javax.swing.JLabel jBack;
     private javax.swing.JButton jButtonlogout;
     private javax.swing.JLabel jLabelDate;
     private javax.swing.JLabel jLabelProgram;

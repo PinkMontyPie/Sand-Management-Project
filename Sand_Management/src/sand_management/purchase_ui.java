@@ -63,6 +63,7 @@ public class purchase_ui extends javax.swing.JFrame {
         jButtonlogout = new javax.swing.JButton();
         jfirstname_lastname = new javax.swing.JLabel();
         jLabelProgram = new javax.swing.JLabel();
+        jBack = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -78,7 +79,6 @@ public class purchase_ui extends javax.swing.JFrame {
         jLabelDate.setForeground(new java.awt.Color(255, 255, 255));
         jLabelDate.setText("Date");
 
-        jButtonlogout.setBackground(new java.awt.Color(255, 255, 255));
         jButtonlogout.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jButtonlogout.setForeground(new java.awt.Color(255, 51, 51));
         jButtonlogout.setText("Logout");
@@ -102,9 +102,18 @@ public class purchase_ui extends javax.swing.JFrame {
         });
 
         jLabelProgram.setBackground(new java.awt.Color(255, 255, 255));
-        jLabelProgram.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        jLabelProgram.setFont(new java.awt.Font("Helvetica Neue", 1, 36)); // NOI18N
         jLabelProgram.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelProgram.setText("Buy");
+        jLabelProgram.setText("Purchase");
+
+        jBack.setFont(new java.awt.Font("Leelawadee UI", 0, 36)); // NOI18N
+        jBack.setForeground(new java.awt.Color(255, 255, 255));
+        jBack.setText("Back");
+        jBack.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBackMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -113,17 +122,18 @@ public class purchase_ui extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonlogout, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(1779, Short.MAX_VALUE)
+                        .addComponent(jLabelTime)
+                        .addGap(29, 29, 29)
+                        .addComponent(jLabelDate))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
+                        .addGap(53, 53, 53)
+                        .addComponent(jBack)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabelProgram)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1706, Short.MAX_VALUE)
+                        .addGap(672, 672, 672)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabelTime)
-                                .addGap(29, 29, 29)
-                                .addComponent(jLabelDate))
+                            .addComponent(jButtonlogout, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jfirstname_lastname, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addGap(38, 38, 38))
         );
@@ -133,15 +143,18 @@ public class purchase_ui extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addComponent(jButtonlogout, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelTime)
                             .addComponent(jLabelDate))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jfirstname_lastname))
-                    .addComponent(jLabelProgram, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonlogout, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jfirstname_lastname)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jBack, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabelProgram, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -190,6 +203,16 @@ public class purchase_ui extends javax.swing.JFrame {
                    System.exit(0);
                 }
     }//GEN-LAST:event_jfirstname_lastnameAncestorAdded
+
+    private void jBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBackMouseClicked
+        // TODO add your handling code here:
+        String a1 = user.getUser();
+        All_Data account = new All_Data();
+        account.setUser(a1);
+        main_ui main = new main_ui(account);
+        main.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jBackMouseClicked
 
     /**
      * @param args the command line arguments
@@ -258,6 +281,7 @@ public class purchase_ui extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jBack;
     private javax.swing.JButton jButtonlogout;
     private javax.swing.JLabel jLabelDate;
     private javax.swing.JLabel jLabelProgram;

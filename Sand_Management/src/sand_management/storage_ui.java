@@ -63,7 +63,7 @@ public class storage_ui extends javax.swing.JFrame {
         jButtonlogout = new javax.swing.JButton();
         jfirstname_lastname = new javax.swing.JLabel();
         jLabelProgram = new javax.swing.JLabel();
-        jButtonlogout1 = new javax.swing.JButton();
+        jBack = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -79,7 +79,6 @@ public class storage_ui extends javax.swing.JFrame {
         jLabelDate.setForeground(new java.awt.Color(255, 255, 255));
         jLabelDate.setText("Date");
 
-        jButtonlogout.setBackground(new java.awt.Color(255, 255, 255));
         jButtonlogout.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jButtonlogout.setForeground(new java.awt.Color(255, 51, 51));
         jButtonlogout.setText("Logout");
@@ -103,17 +102,16 @@ public class storage_ui extends javax.swing.JFrame {
         });
 
         jLabelProgram.setBackground(new java.awt.Color(255, 255, 255));
-        jLabelProgram.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        jLabelProgram.setFont(new java.awt.Font("Helvetica Neue", 1, 36)); // NOI18N
         jLabelProgram.setForeground(new java.awt.Color(255, 255, 255));
         jLabelProgram.setText("Stock");
 
-        jButtonlogout1.setBackground(new java.awt.Color(255, 255, 255));
-        jButtonlogout1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        jButtonlogout1.setForeground(new java.awt.Color(102, 102, 102));
-        jButtonlogout1.setText("Menu");
-        jButtonlogout1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jBack.setFont(new java.awt.Font("Leelawadee UI", 0, 36)); // NOI18N
+        jBack.setForeground(new java.awt.Color(255, 255, 255));
+        jBack.setText("Back");
+        jBack.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonlogout1MouseClicked(evt);
+                jBackMouseClicked(evt);
             }
         });
 
@@ -122,38 +120,39 @@ public class storage_ui extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabelProgram)
-                        .addGap(55, 55, 55))
-                    .addComponent(jButtonlogout1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1605, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(1779, Short.MAX_VALUE)
                         .addComponent(jLabelTime)
                         .addGap(29, 29, 29)
                         .addComponent(jLabelDate))
-                    .addComponent(jfirstname_lastname)
-                    .addComponent(jButtonlogout, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(jBack)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabelProgram)
+                        .addGap(722, 722, 722)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jfirstname_lastname, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButtonlogout, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(38, 38, 38))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelTime)
-                            .addComponent(jLabelDate))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jfirstname_lastname))
-                    .addComponent(jLabelProgram, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonlogout, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonlogout1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelTime)
+                    .addComponent(jLabelDate))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jfirstname_lastname)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonlogout, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabelProgram, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jBack, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
@@ -204,10 +203,15 @@ public class storage_ui extends javax.swing.JFrame {
                 }
     }//GEN-LAST:event_jfirstname_lastnameAncestorAdded
 
-    private void jButtonlogout1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonlogout1MouseClicked
+    private void jBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBackMouseClicked
         // TODO add your handling code here:
-        //dispose();
-    }//GEN-LAST:event_jButtonlogout1MouseClicked
+        String a1 = user.getUser();
+        All_Data account = new All_Data();
+        account.setUser(a1);
+        main_ui main = new main_ui(account);
+        main.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jBackMouseClicked
 
     /**
      * @param args the command line arguments
@@ -252,8 +256,8 @@ public class storage_ui extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jBack;
     private javax.swing.JButton jButtonlogout;
-    private javax.swing.JButton jButtonlogout1;
     private javax.swing.JLabel jLabelDate;
     private javax.swing.JLabel jLabelProgram;
     private javax.swing.JLabel jLabelTime;
