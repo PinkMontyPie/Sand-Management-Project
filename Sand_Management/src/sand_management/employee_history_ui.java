@@ -275,7 +275,10 @@ public class employee_history_ui extends javax.swing.JFrame {
 
     private void Button_New_EmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Button_New_EmployeeMouseClicked
         // TODO add your handling code here:
-        employee_new new_employee = new employee_new();
+        String a1 = user.getUser();
+        All_Data account = new All_Data();
+        account.setUser(a1);
+        employee_new new_employee = new employee_new(account);
         new_employee.setVisible(true);
         dispose();
     }//GEN-LAST:event_Button_New_EmployeeMouseClicked
@@ -286,7 +289,10 @@ public class employee_history_ui extends javax.swing.JFrame {
 
     private void Button_Search_EmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Button_Search_EmployeeMouseClicked
         // TODO add your handling code here:
-        employee_search search_employee = new employee_search();
+        String a1 = user.getUser();
+        All_Data account = new All_Data();
+        account.setUser(a1);
+        employee_search search_employee = new employee_search(account);
         search_employee.setVisible(true);
         dispose();
     }//GEN-LAST:event_Button_Search_EmployeeMouseClicked
