@@ -319,10 +319,10 @@ public class employee_new extends javax.swing.JFrame {
         jLabel22.setText("อาชีพ");
 
         jLabel23.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
-        jLabel23.setText("สภานภาพครอบครัว");
+        jLabel23.setText("สถานภาพครอบครัว");
 
         jLabel24.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
-        jLabel24.setText("สามี/ภารรยา ชื่อ-นามสกุล");
+        jLabel24.setText("สามี/ภรรยา ชื่อ-นามสกุล");
 
         jLabel25.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         jLabel25.setText("อายุ");
