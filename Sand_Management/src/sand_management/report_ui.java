@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.*;
 import java.util.*;
+import java.io.FileOutputStream;
+
 
 /**
  *
@@ -215,6 +217,19 @@ public class report_ui extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jBackMouseClicked
 
+    //public static void main(String[] args) {
+        //try {
+            //Document document = new Document();
+            //PdfWriter.getInstance(document, new FileOutputStream("example.pdf"));
+            //document.open();
+            //Paragraph paragraph = new Paragraph("Hello, World!");
+            //document.add(paragraph);
+            //document.close();
+            //System.out.println("PDF generated successfully.");
+        //} catch (Exception e) {
+            //e.printStackTrace();
+        //}
+    //}
     /**
      * @param args the command line arguments
      */
