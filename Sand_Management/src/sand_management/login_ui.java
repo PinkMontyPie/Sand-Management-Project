@@ -227,8 +227,6 @@ public class login_ui extends javax.swing.JFrame {
                         main_display.setVisible(true);
                         dispose();
                     }else{
-                        System.out.println("Username :"+a1);
-                        System.out.println("Password :"+a2);
                         JOptionPane.showMessageDialog(null, "Invalid Username or Password Step 2.",
                         "ALERT", JOptionPane.WARNING_MESSAGE);
                     }
@@ -237,7 +235,7 @@ public class login_ui extends javax.swing.JFrame {
                     stmt.close();
                     c.close();
                 }catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Invalid Code",
+                    JOptionPane.showMessageDialog(null, "Invalid Username or Password Step 1.",
                         "ALERT", JOptionPane.WARNING_MESSAGE);
                 }
         
