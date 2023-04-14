@@ -22,6 +22,8 @@ public class report_ui extends javax.swing.JFrame {
     String date;
     private All_Data user; 
     
+    //Hello
+    
     public report_ui(All_Data a1) {
         initComponents();
         this.setTitle("Sand Management Program | Report");

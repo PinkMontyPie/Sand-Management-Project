@@ -88,7 +88,7 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                           <Component id="jBack" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="810" max="32767" attributes="0"/>
+                          <EmptySpace pref="818" max="32767" attributes="0"/>
                           <Component id="jLabelProgram" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="718" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
