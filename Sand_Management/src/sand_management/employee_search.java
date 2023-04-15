@@ -212,7 +212,7 @@ public class employee_search extends javax.swing.JFrame {
         label43.setVisible(true);
     }
     
-    public void edit_enable(){
+    public void edit_disable(){
         first_name.setEditable(false);
         last_name.setEditable(false);
         position.setEditable(false);
@@ -1214,7 +1214,7 @@ public class employee_search extends javax.swing.JFrame {
                     stop.setText(stop1);
                     reason_for_resignation.setText(reason_re);
                     reason_for_wanting_to_work_here.setText(reason_wan);
-                    edit_enable();
+                    edit_disable();
                     rs.close();
                     stmt.close();
                     c.close();
