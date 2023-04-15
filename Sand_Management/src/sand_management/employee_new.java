@@ -370,35 +370,113 @@ public class employee_new extends javax.swing.JFrame {
         jLabel43.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         jLabel43.setText("เหตุผลที่อยากมาทำงานที่นี่คืออะไร");
 
+        first_name.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        age.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        ethnicity.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        nationality.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        religion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        birthday.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        id_card.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        current_address.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        district_1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         district_1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 district_1ActionPerformed(evt);
             }
         });
 
+        district_2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        phone_number.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        province.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        father_name.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        mother_name.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        father_age.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         father_age.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 father_ageActionPerformed(evt);
             }
         });
 
+        mother_age.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        father_ethnicity.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        mother_ethnicity.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        father_nationality.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        mother_nationality.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        husband_or_wife_name.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        husband_or_wife_age.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        father_occupation.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        mother_occupation.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        husband_or_wife_ethnicity.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        husband_or_wife_phone.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        husband_or_wife_nationality.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        husband_or_wife_occupation.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         husband_or_wife_occupation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 husband_or_wife_occupationActionPerformed(evt);
             }
         });
 
+        husband_or_wife_workplace.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         husband_or_wife_workplace.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 husband_or_wife_workplaceActionPerformed(evt);
             }
         });
 
+        husband_or_wife_position.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        education_level.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        name_place_graduated.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        graduated_subject.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        work_history.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        office_name.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        old_position.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
         jLabel44.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         jLabel44.setText("เริ่มทำงานตั้งเเต่วันที่");
 
+        start.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        stop.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        reason_for_resignation.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        reason_for_wanting_to_work_here.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
         jLabel40.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         jLabel40.setText("ตำเเหน่งงานที่มาสมัคร");
+
+        position.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         button_register.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
         button_register.setForeground(new java.awt.Color(51, 255, 0));
@@ -416,6 +494,8 @@ public class employee_new extends javax.swing.JFrame {
 
         jLabel45.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         jLabel45.setText("นามสกุล");
+
+        last_name.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -556,8 +636,7 @@ public class employee_new extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel31)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(husband_or_wife_phone, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(321, 321, 321))
+                                .addComponent(husband_or_wife_phone, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(119, 119, 119)
                                 .addComponent(work_history, javax.swing.GroupLayout.PREFERRED_SIZE, 658, javax.swing.GroupLayout.PREFERRED_SIZE))
