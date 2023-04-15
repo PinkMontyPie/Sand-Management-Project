@@ -12,6 +12,7 @@ import java.text.*;
 import java.util.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.proteanit.sql.DbUtils;
 import static sand_management.employee_new.getRandomNumberString;
 
 /**
@@ -35,6 +36,7 @@ public class storage_ui extends javax.swing.JFrame {
     public void Start(){
         setDate();
         setTime();
+        fetchitemDetailsCS();
     }
     
     public void setDate() {
@@ -70,12 +72,12 @@ public class storage_ui extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtname_i = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
         jSpinner1 = new javax.swing.JSpinner();
         jLabel6 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txtqua = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jButtonadd = new javax.swing.JButton();
         jButtonadd1 = new javax.swing.JButton();
@@ -86,7 +88,7 @@ public class storage_ui extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTablestorage = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 153, 153));
@@ -234,7 +236,7 @@ public class storage_ui extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel4)
                             .addComponent(jLabel6)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
+                            .addComponent(txtname_i, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
                             .addComponent(jSpinner1))
                         .addGap(18, 18, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -251,7 +253,7 @@ public class storage_ui extends javax.swing.JFrame {
                                         .addComponent(jButtonadd1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.LEADING, 0, 340, Short.MAX_VALUE)
-                                        .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING)))
+                                        .addComponent(txtqua, javax.swing.GroupLayout.Alignment.LEADING)))
                                 .addGap(0, 0, Short.MAX_VALUE))))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -265,7 +267,7 @@ public class storage_ui extends javax.swing.JFrame {
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtname_i, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -274,7 +276,7 @@ public class storage_ui extends javax.swing.JFrame {
                 .addGap(9, 9, 9)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtqua, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonadd1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -284,11 +286,22 @@ public class storage_ui extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
 
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField1KeyReleased(evt);
+            }
+        });
+
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Name" }));
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 153, 255));
         jButton1.setText("Search");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -336,8 +349,8 @@ public class storage_ui extends javax.swing.JFrame {
                 .addGap(21, 21, 21))
         );
 
-        jTable1.setBackground(new java.awt.Color(204, 204, 204));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTablestorage.setBackground(new java.awt.Color(204, 204, 204));
+        jTablestorage.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -353,7 +366,8 @@ public class storage_ui extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jTablestorage.setMinimumSize(new java.awt.Dimension(150, 0));
+        jScrollPane1.setViewportView(jTablestorage);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -447,7 +461,7 @@ public class storage_ui extends javax.swing.JFrame {
             c = DriverManager.getConnection("jdbc:sqlite:data.db");
             c.setAutoCommit(false);
             stmt = c.createStatement();
-            String nameitem = txtnameit.getText();
+            String nameitem = txtname_i.getText();
             String type = String.valueOf(jComboBox2.getSelectedItem());
             String tonitem = jSpinner1.getValue().toString();
             String quantity = txtqua.getText();
@@ -464,25 +478,12 @@ public class storage_ui extends javax.swing.JFrame {
                     break;
                 }
             }
-            //be right back
-            String sql = "INSERT INTO storage(Name_i,Type_i,H_many_ton_i,Quantity_i,id_item) VALUES('" + nameitem + "','" + type + "','" + tonitem + "','" + quantity + "','" + iditem + "')";
+            String sql = "INSERT INTO storage(Name_i,Type_i,H_many_ton_i,Quantity_i,id_item,Date) VALUES('" + nameitem + "','" + type + "','" + tonitem + "',"
+                    + "'" + quantity + "','" + iditem + "','" + date + "')";
             stmt.executeUpdate(sql);
-            JOptionPane.showMessageDialog(null, "Add Stock Complete.", "ALERT", JOptionPane.INFORMATION_MESSAGE);
             String user1 = user.getUser();
             All_Data account = new All_Data();
             account.setUser(user1);
-            int row = jTable1.getSelectedRow();
-            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-            try {
-                txtnameit.setText(model.getValueAt(row, 2).toString());
-                jComboBox2.setSelectedItem(model.getValueAt(row, 1).toString());
-                txtqua.setText(model.getValueAt(row, 5).toString());
-                jSpinner1.setValue(model.getValueAt(row, 1).toString());
-                id_item.setText(model.getValueAt(row, 1).toString());
-                
-            } catch (Exception b) {
-                JOptionPane.showMessageDialog(null, b);
-            }
             stmt.close();
             c.commit();
         } catch (Exception b) {
@@ -506,9 +507,52 @@ public class storage_ui extends javax.swing.JFrame {
                 } catch (Exception ex) {
                 }
             }
-        }
+        }int a = JOptionPane.showConfirmDialog(null, "Please confirm your input:", "Alert", JOptionPane.INFORMATION_MESSAGE);
+           if (a == JOptionPane.YES_OPTION){
+                JOptionPane.showMessageDialog(null, "Add Stock Complete.", "ALERT", JOptionPane.INFORMATION_MESSAGE);
+                fetchitemDetailsCS();
+                }
     }//GEN-LAST:event_jButtonadd1ActionPerformed
 
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // Search
+        Connection c = null;
+        Statement stmt = null;
+        try{
+            int i = Integer.parseInt(jTextField1.getText()); 
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:data.db");
+            stmt = c.createStatement();
+            ResultSet rs1 = stmt.executeQuery("Select * from storage where Id_item like "+i+"");
+            jTablestorage.setModel(DbUtils.resultSetToTableModel(rs1));
+            System.out.println(i);
+        }catch(Exception b){
+        }
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
+        // TODO add your handling code here:
+        
+        System.out.print(jTextField1.getText());
+        if(jTextField1.getText() == null){
+            System.out.println(jTextField1.getText());
+            fetchitemDetailsCS();
+        }
+    }//GEN-LAST:event_jTextField1KeyReleased
+
+    public void fetchitemDetailsCS(){
+        Connection c = null;
+        Statement stmt = null;
+        try{
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:data.db");
+            stmt = c.createStatement();
+            ResultSet rs1 = stmt.executeQuery("SELECT * FROM storage");
+            jTablestorage.setModel(DbUtils.resultSetToTableModel(rs1)); 
+        }catch(Exception b){
+            JOptionPane.showMessageDialog(null, b);
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -574,10 +618,10 @@ public class storage_ui extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTablestorage;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JLabel jfirstname_lastname;
+    private javax.swing.JTextField txtname_i;
+    private javax.swing.JTextField txtqua;
     // End of variables declaration//GEN-END:variables
 }
