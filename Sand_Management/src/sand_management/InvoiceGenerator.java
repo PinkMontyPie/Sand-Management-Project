@@ -13,24 +13,22 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
-import java.io.File;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import javax.swing.JFileChooser;
 
 public class InvoiceGenerator {
     private static Font bFont = new Font(Font.FontFamily.HELVETICA, 20, Font.BOLD);
     private static Font sFont = new Font(Font.FontFamily.HELVETICA, 15, Font.NORMAL);
+    private static String files = "";
     
-    public static void main(String[] args) {
-        JFileChooser fileChooser = new JFileChooser();
-        int response = fileChooser.showSaveDialog(null);
-        File files = null;
-        if (response == JFileChooser.APPROVE_OPTION) {
-            files = new File(fileChooser.getSelectedFile().getAbsolutePath());
-            System.out.println(files);
-        }
+    public void setPath(String path) {
+        this.files = path;
+        pdf();
+    }
+    
+    public static void pdf() {
+        System.out.println(files);
         try {
             if (files != null) {
                 // Create a new Document object
@@ -74,5 +72,7 @@ public class InvoiceGenerator {
             paragraph.add(new Paragraph(" "));
         }
     }
+
+
     
 }

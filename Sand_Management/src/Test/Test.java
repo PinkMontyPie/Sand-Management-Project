@@ -45,7 +45,7 @@ public class Test {
         preface.add(new Paragraph("Invoice", catFont));
         addEmptyLine(preface, 1);
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
-        preface.add(new Paragraph("Invoice Date: " + dateFormat.format(new Date()), smallBold));
+        preface.add(new Paragraph("Invoice Date: " + dateFormat.format(new Date()),smallBold));
         addEmptyLine(preface, 1);
         preface.add(new Paragraph("Customer Information:", subFont));
         preface.add(new Paragraph("Name: John Doe"));

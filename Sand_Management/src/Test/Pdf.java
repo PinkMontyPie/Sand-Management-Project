@@ -11,7 +11,6 @@ package Test;
 
 import java.io.FileOutputStream;
 import java.util.Date;
-
 import com.itextpdf.text.Anchor;
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.BaseColor;
