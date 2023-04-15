@@ -10,6 +10,9 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.*;
 import java.util.*;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import static sand_management.employee_new.getRandomNumberString;
 
 /**
  *
@@ -436,6 +439,74 @@ public class storage_ui extends javax.swing.JFrame {
 
     private void jButtonadd1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonadd1ActionPerformed
         // TODO add your handling code here:
+         // add stock
+        Connection c = null;
+        Statement stmt = null;
+        try {
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:data.db");
+            c.setAutoCommit(false);
+            stmt = c.createStatement();
+            String nameitem = txtnameit.getText();
+            String type = String.valueOf(jComboBox2.getSelectedItem());
+            String tonitem = jSpinner1.getValue().toString();
+            String quantity = txtqua.getText();
+            String iditem = getRandomNumberString();
+            ResultSet rs1 = stmt.executeQuery("SELECT * FROM storage WHERE id_item = '" + iditem + "'");
+            String id_item = null;
+            while (rs1.next()) {
+                id_item = rs1.getString("id_item");
+            }
+            while (iditem.equals(id_item)) {
+                iditem = getRandomNumberString();
+                rs1 = stmt.executeQuery("SELECT * FROM storage WHERE id_item = '" + iditem + "'");
+                if (!rs1.next()) {
+                    break;
+                }
+            }
+            //be right back
+            String sql = "INSERT INTO storage(Name_i,Type_i,H_many_ton_i,Quantity_i,id_item) VALUES('" + nameitem + "','" + type + "','" + tonitem + "','" + quantity + "','" + iditem + "')";
+            stmt.executeUpdate(sql);
+            JOptionPane.showMessageDialog(null, "Add Stock Complete.", "ALERT", JOptionPane.INFORMATION_MESSAGE);
+            String user1 = user.getUser();
+            All_Data account = new All_Data();
+            account.setUser(user1);
+            int row = jTable1.getSelectedRow();
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            try {
+                txtnameit.setText(model.getValueAt(row, 2).toString());
+                jComboBox2.setSelectedItem(model.getValueAt(row, 1).toString());
+                txtqua.setText(model.getValueAt(row, 5).toString());
+                jSpinner1.setValue(model.getValueAt(row, 1).toString());
+                id_item.setText(model.getValueAt(row, 1).toString());
+                
+            } catch (Exception b) {
+                JOptionPane.showMessageDialog(null, b);
+            }
+            stmt.close();
+            c.commit();
+        } catch (Exception b) {
+            if (c != null) {
+                try {
+                    c.rollback();
+                } catch (Exception ex) {
+                }
+            }
+            System.err.println(b.getClass().getName() + ": " + b.getMessage());
+        } finally {
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (Exception ex) {
+                }
+            }
+            if (c != null) {
+                try {
+                    c.close();
+                } catch (Exception ex) {
+                }
+            }
+        }
     }//GEN-LAST:event_jButtonadd1ActionPerformed
 
     /**
