@@ -1015,10 +1015,7 @@ public class employee_new extends javax.swing.JFrame {
                         rs1.close();
                         stmt.close();
                         c.commit();
-                        
                     }
-                    
-                   
                 } 
                 catch ( Exception b ) {
                    if (c != null) {

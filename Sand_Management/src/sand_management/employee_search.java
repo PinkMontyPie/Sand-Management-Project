@@ -335,7 +335,7 @@ public class employee_search extends javax.swing.JFrame {
         jfirstname_lastname = new javax.swing.JLabel();
         jButtonlogout = new javax.swing.JButton();
         jBack = new javax.swing.JLabel();
-        Search_id_card = new javax.swing.JTextField();
+        Search_id_employee = new javax.swing.JTextField();
         button_search = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         label37 = new javax.swing.JLabel();
@@ -517,10 +517,10 @@ public class employee_search extends javax.swing.JFrame {
                         .addGap(0, 35, Short.MAX_VALUE))))
         );
 
-        Search_id_card.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        Search_id_card.addActionListener(new java.awt.event.ActionListener() {
+        Search_id_employee.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Search_id_employee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Search_id_cardActionPerformed(evt);
+                Search_id_employeeActionPerformed(evt);
             }
         });
 
@@ -997,7 +997,7 @@ public class employee_search extends javax.swing.JFrame {
                 .addGap(643, 643, 643)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Search_id_card, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Search_id_employee, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(button_search, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -1008,7 +1008,7 @@ public class employee_search extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Search_id_card, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Search_id_employee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(button_search, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1179,9 +1179,9 @@ public class employee_search extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jBackMouseClicked
 
-    private void Search_id_cardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Search_id_cardActionPerformed
+    private void Search_id_employeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Search_id_employeeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Search_id_cardActionPerformed
+    }//GEN-LAST:event_Search_id_employeeActionPerformed
 
     private void district_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_district_1ActionPerformed
         // TODO add your handling code here:
@@ -1210,7 +1210,7 @@ public class employee_search extends javax.swing.JFrame {
             c = DriverManager.getConnection("jdbc:sqlite:employee_data.db");
             c.setAutoCommit(false);
             stmt = c.createStatement();
-            String id_employ1 = Search_id_card.getText();
+            String id_employ1 = Search_id_employee.getText();
             ResultSet rs = stmt.executeQuery( "SELECT * FROM employee WHERE id_employee = '"+id_employ1+"'" );
             String  first = rs.getString("first_name");
             String  last = rs.getString("last_name");
@@ -1377,6 +1377,7 @@ public class employee_search extends javax.swing.JFrame {
                     String a40 = stop.getText();
                     String a41 = reason_for_resignation.getText();
                     String a42 = reason_for_wanting_to_work_here.getText();
+                    String a43 = Search_id_employee.getText();
                     ResultSet rs = stmt.executeQuery( "SELECT * FROM employee WHERE id_card = '"+a9+"'" );
                     String  first = rs.getString("first_name");
                     String  card = rs.getString("id_card");
@@ -1399,7 +1400,7 @@ public class employee_search extends javax.swing.JFrame {
                                 + "mother_ethnicity = '"+a22+"',mother_nationality = '"+a23+"',mother_occupation = '"+a24+"',husband_or_wife_name = '"+a25+"',husband_or_wife_age = '"+a26+"',"
                                 + "husband_or_wife_ethnicity = '"+a27+"',husband_or_wife_phone = '"+a28+"',husband_or_wife_nationality = '"+a29+"',husband_or_wife_occupation = '"+a30+"',husband_or_wife_workplace = '"+a31+"',"
                                 + "husband_or_wife_position = '"+a32+"',graduated_level = '"+a33+"',name_of_place_of_graduation = '"+a34+"',graduated_subject_or_field = '"+a35+"',work_history = '"+a36+"',office_name = '"+a37+"',"
-                                + "old_position = '"+a38+"',start = '"+a39+"',stop = '"+a40+"',reason_for_resignation = '"+a41+"',reasons_for_wanting_to_work_here = '"+a42+"'");
+                                + "old_position = '"+a38+"',start = '"+a39+"',stop = '"+a40+"',reason_for_resignation = '"+a41+"',reasons_for_wanting_to_work_here = '"+a42+"' WHERE id_employee = '"+a43+"'");
                         stmt.executeUpdate(sql);
                         JOptionPane.showMessageDialog(null, "Update Profile is Successfully",
                                 "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
@@ -1409,11 +1410,7 @@ public class employee_search extends javax.swing.JFrame {
                         rs.close();
                         stmt.close();
                         c.commit();
-                        c.close();
-                        
-                    }
-                    
-                   
+                    }           
                 } 
                 catch ( Exception b ) {
                    if (c != null) {
@@ -1475,7 +1472,7 @@ public class employee_search extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Button_edit_profile;
     private javax.swing.JButton Button_save_profile;
-    private javax.swing.JTextField Search_id_card;
+    private javax.swing.JTextField Search_id_employee;
     private javax.swing.JTextField age;
     private javax.swing.JTextField birthday;
     private javax.swing.JButton button_search;
