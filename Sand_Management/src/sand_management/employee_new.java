@@ -909,7 +909,6 @@ public class employee_new extends javax.swing.JFrame {
                     Class.forName("org.sqlite.JDBC");
                     c = DriverManager.getConnection("jdbc:sqlite:employee_data.db");
                     c.setAutoCommit(false);
-                   
                     stmt = c.createStatement();
                     String a1 = first_name.getText();
                     String a2 = last_name.getText();
