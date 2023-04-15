@@ -40,6 +40,13 @@ public class employee_new extends javax.swing.JFrame {
         date = dateFormat.format(Calendar.getInstance().getTime());
         jLabelDate.setText(date);
     }
+    
+    public static String getRandomNumberString() {
+        Random rnd = new Random();
+        int number = rnd.nextInt(999999);
+
+         return String.format("%06d", number);
+}
 
     public void setTime() {
         timeFormat = new SimpleDateFormat("hh:mm:ss a");
@@ -618,7 +625,7 @@ public class employee_new extends javax.swing.JFrame {
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(id_card, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 936, Short.MAX_VALUE))
+                        .addGap(0, 956, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -946,11 +953,21 @@ public class employee_new extends javax.swing.JFrame {
                     String a40 = stop.getText();
                     String a41 = reason_for_resignation.getText();
                     String a42 = reason_for_wanting_to_work_here.getText();
+                    String a43 = getRandomNumberString();
+                    System.out.println(a43);
                     ResultSet rs = stmt.executeQuery( "SELECT * FROM employee WHERE id_card = '"+a9+"'" );
                     String  first = rs.getString("first_name");
-                    String  last = rs.getString("last_name");
                     String  card = rs.getString("id_card");
-                    
+                    ResultSet rs1 = stmt.executeQuery( "SELECT * FROM employee WHERE id_employee = '"+a43+"'" );
+                    String  id_employ = rs1.getString("id_employee");
+                     
+                    while (a43.equals(id_employ)) {
+                        a43 = getRandomNumberString();
+                        if (!a43.equals(id_employ)) {
+                             break;
+                         }
+                    }
+
                     if (a1.equals(first) && a9.equals(card)){
                         JOptionPane.showMessageDialog(null, "This person has already been registered.",
                         "ALERT", JOptionPane.WARNING_MESSAGE);
@@ -966,6 +983,14 @@ public class employee_new extends javax.swing.JFrame {
                         "ALERT", JOptionPane.WARNING_MESSAGE);
                     }
                     
+                    else if (a1.equals(first) && a9.equals(card) && a1.equals("") && a2.equals("") && a3.equals("") && a4.equals("") && a5.equals("") && a6.equals("") && a7.equals("") && a8.equals("") && a9.equals("") && a10.equals("") && 
+                            a11.equals("") && a12.equals("") && a13.equals("") && a14.equals("") && a15.equals("") && a16.equals("") && a17.equals("") && a18.equals("") && a19.equals("") && a20.equals("") && 
+                            a21.equals("") && a22.equals("") && a23.equals("") && a24.equals("") && a25.equals("") && a26.equals("") && a27.equals("") && a28.equals("") && a29.equals("") && a30.equals("") && 
+                            a31.equals("") && a32.equals("") && a33.equals("") && a34.equals("") && a35.equals("") && a36.equals("") && a37.equals("") && a38.equals("") && a39.equals("") && a40.equals("") && 
+                            a41.equals("") && a42.equals("")){
+                        JOptionPane.showMessageDialog(null, "Please fill in all the blanks.",
+                        "ALERT", JOptionPane.WARNING_MESSAGE);
+                    }
                     else if (!a1.equals(first) && !a9.equals(card) && !a1.equals("") && !a2.equals("") && !a3.equals("") && !a4.equals("") && !a5.equals("") && !a6.equals("") && !a7.equals("") && !a8.equals("") && !a9.equals("") && !a10.equals("") && 
                             !a11.equals("") && !a12.equals("") && !a13.equals("") && !a14.equals("") && !a15.equals("") && !a16.equals("") && !a17.equals("") && !a18.equals("") && !a19.equals("") && !a20.equals("") && 
                             !a21.equals("") && !a22.equals("") && !a23.equals("") && !a24.equals("") && !a25.equals("") && !a26.equals("") && !a27.equals("") && !a28.equals("") && !a29.equals("") && !a30.equals("") && 
@@ -976,10 +1001,10 @@ public class employee_new extends javax.swing.JFrame {
                                 + "mother_ethnicity,mother_nationality,mother_occupation,husband_or_wife_name,husband_or_wife_age,"
                                 + "husband_or_wife_ethnicity,husband_or_wife_phone,husband_or_wife_nationality,husband_or_wife_occupation,husband_or_wife_workplace,"
                                 + "husband_or_wife_position,graduated_level,name_of_place_of_graduation,graduated_subject_or_field,work_history,office_name,"
-                                + "old_position,start,stop,reason_for_resignation,reasons_for_wanting_to_work_here) VALUES('"+a1+"','"+a2+"','"+a3+"','"+a4+"','"+a5+"','"+a6+"',"
+                                + "old_position,start,stop,reason_for_resignation,reasons_for_wanting_to_work_here,id_employee) VALUES('"+a1+"','"+a2+"','"+a3+"','"+a4+"','"+a5+"','"+a6+"',"
                                 + "'"+a7+"','"+a8+"','"+a9+"','"+a10+"','"+a11+"','"+a12+"','"+a13+"','"+a14+"','"+a15+"','"+a16+"','"+a17+"','"+a18+"','"+a19+"','"+a20+"',"
                                 + "'"+a21+"','"+a22+"','"+a23+"','"+a24+"','"+a25+"','"+a26+"','"+a27+"','"+a28+"','"+a29+"','"+a30+"','"+a31+"','"+a32+"','"+a33+"',"
-                                + "'"+a34+"','"+a35+"','"+a36+"','"+a37+"','"+a38+"','"+a39+"','"+a40+"','"+a41+"','"+a42+"')"); 
+                                + "'"+a34+"','"+a35+"','"+a36+"','"+a37+"','"+a38+"','"+a39+"','"+a40+"','"+a41+"','"+a42+"','"+a43+"')"); 
                         stmt.executeUpdate(sql);
                         JOptionPane.showMessageDialog(null, "Register Complete.",
                         "ALERT", JOptionPane.INFORMATION_MESSAGE);
@@ -990,15 +1015,12 @@ public class employee_new extends javax.swing.JFrame {
                         employee_history.setVisible(true);
                         dispose();
                         rs.close();
+                        rs1.close();
                         stmt.close();
                         c.commit();
                         c.close();
                     }
                     
-                    else{
-                        JOptionPane.showMessageDialog(null, "Please complete all fields.",
-                        "ALERT", JOptionPane.WARNING_MESSAGE);
-                    }
                    
                 } 
                 catch ( Exception b ) {
