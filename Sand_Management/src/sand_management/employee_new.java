@@ -44,8 +44,7 @@ public class employee_new extends javax.swing.JFrame {
     public static String getRandomNumberString() {
         Random rnd = new Random();
         int number = rnd.nextInt(999999);
-
-         return String.format("%06d", number);
+        return String.format("%06d", number);
 }
 
     public void setTime() {
