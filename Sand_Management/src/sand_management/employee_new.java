@@ -953,7 +953,6 @@ public class employee_new extends javax.swing.JFrame {
                     String a41 = reason_for_resignation.getText();
                     String a42 = reason_for_wanting_to_work_here.getText();
                     String a43 = getRandomNumberString();
-                    System.out.println(a43);
                     ResultSet rs = stmt.executeQuery( "SELECT * FROM employee WHERE id_card = '"+a9+"'" );
                     String  first = rs.getString("first_name");
                     String  card = rs.getString("id_card");
@@ -982,11 +981,11 @@ public class employee_new extends javax.swing.JFrame {
                         "ALERT", JOptionPane.WARNING_MESSAGE);
                     }
                     
-                    else if (a1.equals(first) && a9.equals(card) && a1.equals("") && a2.equals("") && a3.equals("") && a4.equals("") && a5.equals("") && a6.equals("") && a7.equals("") && a8.equals("") && a9.equals("") && a10.equals("") && 
-                            a11.equals("") && a12.equals("") && a13.equals("") && a14.equals("") && a15.equals("") && a16.equals("") && a17.equals("") && a18.equals("") && a19.equals("") && a20.equals("") && 
-                            a21.equals("") && a22.equals("") && a23.equals("") && a24.equals("") && a25.equals("") && a26.equals("") && a27.equals("") && a28.equals("") && a29.equals("") && a30.equals("") && 
-                            a31.equals("") && a32.equals("") && a33.equals("") && a34.equals("") && a35.equals("") && a36.equals("") && a37.equals("") && a38.equals("") && a39.equals("") && a40.equals("") && 
-                            a41.equals("") && a42.equals("")){
+                    else if (a1.equals(first) || a9.equals(card) || a1.equals("") || a2.equals("") || a3.equals("") || a4.equals("") || a5.equals("") || a6.equals("") || a7.equals("") || a8.equals("") || a9.equals("") || a10.equals("") || 
+                            a11.equals("") || a12.equals("") || a13.equals("") || a14.equals("") || a15.equals("") || a16.equals("") || a17.equals("") || a18.equals("") || a19.equals("") || a20.equals("") || 
+                            a21.equals("") || a22.equals("") || a23.equals("") || a24.equals("") || a25.equals("") || a26.equals("") || a27.equals("") || a28.equals("") || a29.equals("") || a30.equals("") || 
+                            a31.equals("") || a32.equals("") || a33.equals("") || a34.equals("") || a35.equals("") || a36.equals("") || a37.equals("") || a38.equals("") || a39.equals("") || a40.equals("") || 
+                            a41.equals("") || a42.equals("")){
                         JOptionPane.showMessageDialog(null, "Please fill in all the blanks.",
                         "ALERT", JOptionPane.WARNING_MESSAGE);
                     }
@@ -1017,13 +1016,27 @@ public class employee_new extends javax.swing.JFrame {
                         rs1.close();
                         stmt.close();
                         c.commit();
-                        c.close();
+                        
                     }
                     
                    
                 } 
                 catch ( Exception b ) {
+                   if (c != null) {
+                        try {
+                            c.rollback();
+                        } catch (Exception ex) {
+                         }
+                    }
                    System.err.println( b.getClass().getName() + ": " + b.getMessage() );
+                }
+                finally{
+                    if (c != null) {
+                        try {
+                            c.close();
+                        } catch (Exception ex) {
+                        }
+                }
                 }
     }//GEN-LAST:event_button_registerMouseClicked
 

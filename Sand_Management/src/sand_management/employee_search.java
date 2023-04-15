@@ -79,6 +79,8 @@ public class employee_search extends javax.swing.JFrame {
         stop.setVisible(false);
         reason_for_resignation.setVisible(false);
         reason_for_wanting_to_work_here.setVisible(false);
+        Button_edit_profile.setVisible(false);
+        Button_save_profile.setVisible(false);
         label1.setVisible(false);
         label2.setVisible(false);
         label3.setVisible(false);
@@ -167,6 +169,7 @@ public class employee_search extends javax.swing.JFrame {
         stop.setVisible(true);
         reason_for_resignation.setVisible(true);
         reason_for_wanting_to_work_here.setVisible(true);
+        Button_edit_profile.setVisible(true);
         label1.setVisible(true);
         label2.setVisible(true);
         label3.setVisible(true);
@@ -255,6 +258,48 @@ public class employee_search extends javax.swing.JFrame {
         stop.setEditable(false);
         reason_for_resignation.setEditable(false);
         reason_for_wanting_to_work_here.setEditable(false);
+    }
+    
+     public void edit_enable(){
+        position.setEditable(true);
+        age.setEditable(true);
+        ethnicity.setEditable(true);
+        nationality.setEditable(true);
+        religion.setEditable(true);
+        birthday.setEditable(true);
+        current_address.setEditable(true);
+        district_1.setEditable(true);
+        district_2.setEditable(true);
+        phone_number.setEditable(true);
+        province.setEditable(true);
+        father_name.setEditable(true);
+        father_age.setEditable(true);
+        father_ethnicity.setEditable(true);
+        father_nationality.setEditable(true);
+        father_occupation.setEditable(true);
+        mother_name.setEditable(true);
+        mother_age.setEditable(true);
+        mother_ethnicity.setEditable(true);
+        mother_nationality.setEditable(true);
+        mother_occupation.setEditable(true);
+        husband_or_wife_name.setEditable(true);
+        husband_or_wife_age.setEditable(true);
+        husband_or_wife_ethnicity.setEditable(true);
+        husband_or_wife_phone.setEditable(true);
+        husband_or_wife_nationality.setEditable(true);
+        husband_or_wife_occupation.setEditable(true);
+        husband_or_wife_workplace.setEditable(true);
+        husband_or_wife_position.setEditable(true);
+        education_level.setEditable(true);
+        name_place_graduated.setEditable(true);
+        graduated_subject.setEditable(true);
+        work_history.setEditable(true);
+        office_name.setEditable(true);
+        old_position.setEditable(true);
+        start.setEditable(true);
+        stop.setEditable(true);
+        reason_for_resignation.setEditable(true);
+        reason_for_wanting_to_work_here.setEditable(true);
     }
     public void setDate() {
         dateFormat = new SimpleDateFormat("EEEE dd MMMMM yyyy");
@@ -378,6 +423,8 @@ public class employee_search extends javax.swing.JFrame {
         label40 = new javax.swing.JLabel();
         label36 = new javax.swing.JLabel();
         start = new javax.swing.JTextField();
+        Button_save_profile = new javax.swing.JButton();
+        Button_edit_profile = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -482,6 +529,11 @@ public class employee_search extends javax.swing.JFrame {
         button_search.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 button_searchMouseClicked(evt);
+            }
+        });
+        button_search.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_searchActionPerformed(evt);
             }
         });
 
@@ -721,19 +773,32 @@ public class employee_search extends javax.swing.JFrame {
 
         start.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
+        Button_save_profile.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Button_save_profile.setText("Save Profile");
+        Button_save_profile.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Button_save_profileMouseClicked(evt);
+            }
+        });
+        Button_save_profile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_save_profileActionPerformed(evt);
+            }
+        });
+
+        Button_edit_profile.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Button_edit_profile.setText("Edit Profile");
+        Button_edit_profile.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Button_edit_profileMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(643, 643, 643)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Search_id_card, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(button_search, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(300, 300, 300)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -835,92 +900,107 @@ public class employee_search extends javax.swing.JFrame {
                                 .addComponent(mother_occupation, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(69, 69, 69))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(label10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(current_address, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(label8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(birthday, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(label9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(id_card, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(label25)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(husband_or_wife_name, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(label26)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(husband_or_wife_age, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(label27)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(husband_or_wife_ethnicity, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(label28)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(husband_or_wife_phone, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(119, 119, 119)
-                        .addComponent(work_history, javax.swing.GroupLayout.PREFERRED_SIZE, 658, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(label29)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(husband_or_wife_nationality, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(label30)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(husband_or_wife_occupation, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(label31)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(husband_or_wife_workplace, javax.swing.GroupLayout.PREFERRED_SIZE, 740, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(label34)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(education_level, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(label35)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(name_place_graduated, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(label36)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(graduated_subject, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(label32)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(husband_or_wife_position, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(label33)
-                    .addComponent(label37)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(label38)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(office_name, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(label39)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(old_position, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(label40)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(start, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(label41)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(stop, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(label42)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(reason_for_resignation))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(label43)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(reason_for_wanting_to_work_here, javax.swing.GroupLayout.PREFERRED_SIZE, 975, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap())
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(label10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(current_address, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(label8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(birthday, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(label9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(id_card, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(label25)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(husband_or_wife_name, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(label26)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(husband_or_wife_age, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(label27)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(husband_or_wife_ethnicity, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(label28)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(husband_or_wife_phone, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(119, 119, 119)
+                                .addComponent(work_history, javax.swing.GroupLayout.PREFERRED_SIZE, 658, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(label29)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(husband_or_wife_nationality, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(label30)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(husband_or_wife_occupation, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(label31)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(husband_or_wife_workplace, javax.swing.GroupLayout.PREFERRED_SIZE, 740, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(label34)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(education_level, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(label35)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(name_place_graduated, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(label36)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(graduated_subject, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(label32)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(husband_or_wife_position, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(label33)
+                            .addComponent(label37)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(label38)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(office_name, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(label39)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(old_position, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(label40)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(start, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(label41)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(stop, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(label42)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(reason_for_resignation))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(label43)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(reason_for_wanting_to_work_here, javax.swing.GroupLayout.PREFERRED_SIZE, 975, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(73, 73, 73)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(Button_save_profile, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Button_edit_profile, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(643, 643, 643)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Search_id_card, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(button_search, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1043,13 +1123,16 @@ public class employee_search extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(label42)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
+                        .addGap(9, 9, 9)
                         .addComponent(reason_for_resignation, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(label43)
-                    .addComponent(reason_for_wanting_to_work_here, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(43, Short.MAX_VALUE))
+                    .addComponent(reason_for_wanting_to_work_here, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(Button_edit_profile, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Button_save_profile, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         pack();
@@ -1120,6 +1203,8 @@ public class employee_search extends javax.swing.JFrame {
         // TODO add your handling code here:
         Connection c = null;
         Statement stmt = null;
+        Button_save_profile.setVisible(false);
+        Button_edit_profile.setVisible(true);
         try {
             Class.forName("org.sqlite.JDBC");
             c = DriverManager.getConnection("jdbc:sqlite:employee_data.db");
@@ -1230,6 +1315,128 @@ public class employee_search extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_button_searchMouseClicked
 
+    private void Button_save_profileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_save_profileActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Button_save_profileActionPerformed
+
+    private void Button_edit_profileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Button_edit_profileMouseClicked
+        // TODO add your handling code here:
+        Button_edit_profile.setVisible(false);
+        Button_save_profile.setVisible(true);
+        edit_enable();
+    }//GEN-LAST:event_Button_edit_profileMouseClicked
+
+    private void Button_save_profileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Button_save_profileMouseClicked
+        // TODO add your handling code here:
+        Connection c = null;
+        Statement stmt = null;
+                try {
+                    Class.forName("org.sqlite.JDBC");
+                    c = DriverManager.getConnection("jdbc:sqlite:employee_data.db");
+                    c.setAutoCommit(false);
+                    stmt = c.createStatement();
+                    String a1 = first_name.getText();
+                    String a2 = last_name.getText();
+                    String a3 = position.getText();
+                    String a4 = age.getText();
+                    String a5 = ethnicity.getText();
+                    String a6 = nationality.getText();
+                    String a7 = religion.getText();
+                    String a8 = birthday.getText();
+                    String a9 = id_card.getText();
+                    String a10 = current_address.getText();
+                    String a11 = district_1.getText();
+                    String a12 = district_2.getText();
+                    String a13 = phone_number.getText();
+                    String a14 = province.getText();
+                    String a15 = father_name.getText();
+                    String a16 = father_age.getText();
+                    String a17 = father_ethnicity.getText();
+                    String a18 = father_nationality.getText();
+                    String a19 = father_occupation.getText();
+                    String a20 = mother_name.getText();
+                    String a21 = mother_age.getText();
+                    String a22 = mother_ethnicity.getText();
+                    String a23 = mother_nationality.getText();
+                    String a24 = mother_occupation.getText();
+                    String a25 = husband_or_wife_name.getText();
+                    String a26 = husband_or_wife_age.getText();
+                    String a27 = husband_or_wife_ethnicity.getText();
+                    String a28 = husband_or_wife_phone.getText();
+                    String a29 = husband_or_wife_nationality.getText();
+                    String a30 = husband_or_wife_occupation.getText();
+                    String a31 = husband_or_wife_workplace.getText();
+                    String a32 = husband_or_wife_position.getText();
+                    String a33 = education_level.getText();
+                    String a34 = name_place_graduated.getText();
+                    String a35 = graduated_subject.getText();
+                    String a36 = work_history.getText();
+                    String a37 = office_name.getText();
+                    String a38 = old_position.getText();
+                    String a39 = start.getText();
+                    String a40 = stop.getText();
+                    String a41 = reason_for_resignation.getText();
+                    String a42 = reason_for_wanting_to_work_here.getText();
+                    ResultSet rs = stmt.executeQuery( "SELECT * FROM employee WHERE id_card = '"+a9+"'" );
+                    String  first = rs.getString("first_name");
+                    String  card = rs.getString("id_card");
+                    
+                    if (a1.equals(first) && a9.equals(card) && a1.equals("") && a2.equals("") && a3.equals("") && a4.equals("") && a5.equals("") && a6.equals("") && a7.equals("") && a8.equals("") && a9.equals("") && a10.equals("") && 
+                            a11.equals("") && a12.equals("") && a13.equals("") && a14.equals("") && a15.equals("") && a16.equals("") && a17.equals("") && a18.equals("") && a19.equals("") && a20.equals("") && 
+                            a21.equals("") && a22.equals("") && a23.equals("") && a24.equals("") && a25.equals("") && a26.equals("") && a27.equals("") && a28.equals("") && a29.equals("") && a30.equals("") && 
+                            a31.equals("") && a32.equals("") && a33.equals("") && a34.equals("") && a35.equals("") && a36.equals("") && a37.equals("") && a38.equals("") && a39.equals("") && a40.equals("") && 
+                            a41.equals("") && a42.equals("")){
+                        JOptionPane.showMessageDialog(null, "Please fill in all the blanks.",
+                        "ALERT", JOptionPane.WARNING_MESSAGE);
+                    }
+                    else if (!a1.equals("") && !a2.equals("") && !a3.equals("") && !a4.equals("") && !a5.equals("") && !a6.equals("") && !a7.equals("") && !a8.equals("") && !a9.equals("") && !a10.equals("") && 
+                            !a11.equals("") && !a12.equals("") && !a13.equals("") && !a14.equals("") && !a15.equals("") && !a16.equals("") && !a17.equals("") && !a18.equals("") && !a19.equals("") && !a20.equals("") && 
+                            !a21.equals("") && !a22.equals("") && !a23.equals("") && !a24.equals("") && !a25.equals("") && !a26.equals("") && !a27.equals("") && !a28.equals("") && !a29.equals("") && !a30.equals("") && 
+                            !a31.equals("") && !a32.equals("") && !a33.equals("") && !a34.equals("") && !a35.equals("") && !a36.equals("") && !a37.equals("") && !a38.equals("") && !a39.equals("") && !a40.equals("") && 
+                            !a41.equals("") && !a42.equals("")){
+                        String sql = ("UPDATE employee SET position = '"+a3+"',age = '"+a4+"',ethnicity = '"+a5+"',nationality = '"+a6+"',religion = '"+a7+"',birthday = '"+a8+"',current_address = '"+a10+"',district_1 = '"+a11+"',district_2 = '"+a12+"',"
+                                + "phone_number = '"+a13+"',province = '"+a14+"',father_name = '"+a15+"',father_age = '"+a16+"',father_ethnicity = '"+a17+"',father_nationality = '"+a18+"',father_occupation = '"+a19+"',mother_name = '"+a20+"',mother_age = '"+a21+"',"
+                                + "mother_ethnicity = '"+a22+"',mother_nationality = '"+a23+"',mother_occupation = '"+a24+"',husband_or_wife_name = '"+a25+"',husband_or_wife_age = '"+a26+"',"
+                                + "husband_or_wife_ethnicity = '"+a27+"',husband_or_wife_phone = '"+a28+"',husband_or_wife_nationality = '"+a29+"',husband_or_wife_occupation = '"+a30+"',husband_or_wife_workplace = '"+a31+"',"
+                                + "husband_or_wife_position = '"+a32+"',graduated_level = '"+a33+"',name_of_place_of_graduation = '"+a34+"',graduated_subject_or_field = '"+a35+"',work_history = '"+a36+"',office_name = '"+a37+"',"
+                                + "old_position = '"+a38+"',start = '"+a39+"',stop = '"+a40+"',reason_for_resignation = '"+a41+"',reasons_for_wanting_to_work_here = '"+a42+"'");
+                        stmt.executeUpdate(sql);
+                        JOptionPane.showMessageDialog(null, "Update Profile is Successfully",
+                                "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
+                        Button_save_profile.setVisible(false);
+                        Button_edit_profile.setVisible(true);
+                        edit_disable();
+                        rs.close();
+                        stmt.close();
+                        c.commit();
+                        c.close();
+                        
+                    }
+                    
+                   
+                } 
+                catch ( Exception b ) {
+                   if (c != null) {
+                        try {
+                            c.rollback();
+                        } catch (Exception ex) {
+                         }
+                    }
+                }
+                finally{
+                    if (c != null) {
+                        try {
+                            c.close();
+                        } catch (Exception ex) {
+                        }
+                    }
+                }    
+    }//GEN-LAST:event_Button_save_profileMouseClicked
+
+    private void button_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_searchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_button_searchActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1266,6 +1473,8 @@ public class employee_search extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Button_edit_profile;
+    private javax.swing.JButton Button_save_profile;
     private javax.swing.JTextField Search_id_card;
     private javax.swing.JTextField age;
     private javax.swing.JTextField birthday;
