@@ -10,30 +10,55 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.*;
 import java.util.*;
+import javax.swing.JOptionPane;
+import net.proteanit.sql.*;
 
 /**
  *
  * @author Pai
  */
 public class purchase_ui extends javax.swing.JFrame {
+
     SimpleDateFormat timeFormat;
     SimpleDateFormat dateFormat;
     String time;
     String date;
-    private All_Data user; 
-    
+    private All_Data user;
+
     public purchase_ui(All_Data a1) {
         initComponents();
         this.setTitle("Sand Management Program | Sell");
         this.user = a1;
         Start();
     }
-    
-    public void Start(){
+
+    public static String getRandomNumberString() {
+        Random rnd = new Random();
+        int number = rnd.nextInt(999999);
+        return String.format("%06d", number);
+    }
+
+    public void Start() {
+        fetchitemDetailsCS();
         setDate();
         setTime();
+
     }
-    
+
+    public void fetchitemDetailsCS() {
+        Connection c = null;
+        Statement stmt = null;
+        try {
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:purchdata.db");
+            stmt = c.createStatement();
+            ResultSet rs1 = stmt.executeQuery("SELECT * FROM purchase");
+            purchaseTable1.setModel(DbUtils.resultSetToTableModel(rs1));
+        } catch (Exception b) {
+            JOptionPane.showMessageDialog(null, b);
+        }
+    }
+
     public void setDate() {
         dateFormat = new SimpleDateFormat("EEEE dd MMMMM yyyy");
         date = dateFormat.format(Calendar.getInstance().getTime());
@@ -67,15 +92,15 @@ public class purchase_ui extends javax.swing.JFrame {
         BgPanelLeft = new javax.swing.JPanel();
         TitleLeftLabel1 = new javax.swing.JLabel();
         TitleTxtLeftLabel1 = new javax.swing.JLabel();
-        TextField1 = new javax.swing.JTextField();
+        DateTextField1 = new javax.swing.JTextField();
         TitleTxtRightLabel1 = new javax.swing.JLabel();
-        TextField2 = new javax.swing.JTextField();
+        CompanyTextField2 = new javax.swing.JTextField();
         TitleTxtLeftLabel2 = new javax.swing.JLabel();
-        TextField3 = new javax.swing.JTextField();
+        ContactTextField3 = new javax.swing.JTextField();
         TitleTxtRightLabel2 = new javax.swing.JLabel();
-        TextField4 = new javax.swing.JTextField();
+        ContactNumTextField4 = new javax.swing.JTextField();
         TitleTxtLabel1 = new javax.swing.JLabel();
-        TextField5 = new javax.swing.JTextField();
+        AdressTextField5 = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         TxtPtotalLabel1 = new javax.swing.JLabel();
@@ -93,7 +118,7 @@ public class purchase_ui extends javax.swing.JFrame {
         TitleSearch = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        purchaseTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -194,45 +219,45 @@ public class purchase_ui extends javax.swing.JFrame {
         TitleTxtLeftLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         TitleTxtLeftLabel1.setText("วันที่สั่งซื้อ");
 
-        TextField1.addActionListener(new java.awt.event.ActionListener() {
+        DateTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextField1ActionPerformed(evt);
+                DateTextField1ActionPerformed(evt);
             }
         });
 
         TitleTxtRightLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         TitleTxtRightLabel1.setText("บริษัท/ร้านตัวแทนจำหน่าย");
 
-        TextField2.addActionListener(new java.awt.event.ActionListener() {
+        CompanyTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextField2ActionPerformed(evt);
+                CompanyTextField2ActionPerformed(evt);
             }
         });
 
         TitleTxtLeftLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         TitleTxtLeftLabel2.setText("ชื่อผู้ติดต่อ");
 
-        TextField3.addActionListener(new java.awt.event.ActionListener() {
+        ContactTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextField3ActionPerformed(evt);
+                ContactTextField3ActionPerformed(evt);
             }
         });
 
         TitleTxtRightLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         TitleTxtRightLabel2.setText("เบอร์ติดต่อ");
 
-        TextField4.addActionListener(new java.awt.event.ActionListener() {
+        ContactNumTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextField4ActionPerformed(evt);
+                ContactNumTextField4ActionPerformed(evt);
             }
         });
 
         TitleTxtLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         TitleTxtLabel1.setText("ที่อยู่จัดส่งสินค้า");
 
-        TextField5.addActionListener(new java.awt.event.ActionListener() {
+        AdressTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextField5ActionPerformed(evt);
+                AdressTextField5ActionPerformed(evt);
             }
         });
 
@@ -314,23 +339,23 @@ public class purchase_ui extends javax.swing.JFrame {
                     .addGroup(BgPanelLeftLayout.createSequentialGroup()
                         .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(TitleTxtLeftLabel1)
-                            .addComponent(TextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DateTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(BgPanelLeftLayout.createSequentialGroup()
                                 .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(TitleTxtLeftLabel2)
-                                    .addComponent(TextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(ContactTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(87, 87, 87)
                                 .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(TextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ContactNumTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(TitleTxtRightLabel2)
                                     .addComponent(TitleTxtRightLabel1)
-                                    .addComponent(TextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(CompanyTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(TitleLeftLabel1))
                         .addContainerGap(45, Short.MAX_VALUE))
                     .addGroup(BgPanelLeftLayout.createSequentialGroup()
                         .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(TitleTxtLabel1)
-                            .addComponent(TextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 787, Short.MAX_VALUE)
+                            .addComponent(AdressTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 787, Short.MAX_VALUE)
                             .addGroup(BgPanelLeftLayout.createSequentialGroup()
                                 .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(TxtPtotalLabel1)
@@ -362,24 +387,24 @@ public class purchase_ui extends javax.swing.JFrame {
                     .addGroup(BgPanelLeftLayout.createSequentialGroup()
                         .addComponent(TitleTxtRightLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(CompanyTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(BgPanelLeftLayout.createSequentialGroup()
                         .addComponent(TitleTxtLeftLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(DateTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(TextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ContactNumTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(BgPanelLeftLayout.createSequentialGroup()
                         .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(TitleTxtLeftLabel2)
                             .addComponent(TitleTxtRightLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(ContactTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(TitleTxtLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(AdressTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
@@ -451,8 +476,8 @@ public class purchase_ui extends javax.swing.JFrame {
                 .addGap(29, 29, 29))
         );
 
-        jTable1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        purchaseTable1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        purchaseTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -463,7 +488,7 @@ public class purchase_ui extends javax.swing.JFrame {
                 "Product ID", "Date", "Contact Name", "Contact Adress", "Contact Number"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(purchaseTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -507,24 +532,23 @@ public class purchase_ui extends javax.swing.JFrame {
         // TODO add your handling code here:
         Connection c = null;
         Statement stmt = null;
-                try {
-                    Class.forName("org.sqlite.JDBC");
-                    c = DriverManager.getConnection("jdbc:sqlite:user.db");
-                    c.setAutoCommit(false);
-                    stmt = c.createStatement();
-                    String a1 = user.getUser();
-                    ResultSet rs = stmt.executeQuery( "SELECT * FROM user WHERE username = '"+a1+"'" );
-                    String  first = rs.getString("first_name");
-                    String  last = rs.getString("last_name");
-                    jfirstname_lastname.setText(first + " " + last);
-                    rs.close();
-                    stmt.close();
-                    c.close();
-                } 
-                catch ( Exception b ) {
-                   System.err.println( b.getClass().getName() + ": " + b.getMessage() );
-                   System.exit(0);
-                }
+        try {
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:user.db");
+            c.setAutoCommit(false);
+            stmt = c.createStatement();
+            String a1 = user.getUser();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM user WHERE username = '" + a1 + "'");
+            String first = rs.getString("first_name");
+            String last = rs.getString("last_name");
+            jfirstname_lastname.setText(first + " " + last);
+            rs.close();
+            stmt.close();
+            c.close();
+        } catch (Exception b) {
+            System.err.println(b.getClass().getName() + ": " + b.getMessage());
+            System.exit(0);
+        }
     }//GEN-LAST:event_jfirstname_lastnameAncestorAdded
 
     private void jBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBackMouseClicked
@@ -539,25 +563,25 @@ public class purchase_ui extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jBackMouseClicked
 
-    private void TextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField1ActionPerformed
+    private void DateTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DateTextField1ActionPerformed
         //วันที่รับค่าตัวเลข
-    }//GEN-LAST:event_TextField1ActionPerformed
+    }//GEN-LAST:event_DateTextField1ActionPerformed
 
-    private void TextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField2ActionPerformed
+    private void CompanyTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CompanyTextField2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextField2ActionPerformed
+    }//GEN-LAST:event_CompanyTextField2ActionPerformed
 
-    private void TextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField3ActionPerformed
+    private void ContactTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContactTextField3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextField3ActionPerformed
+    }//GEN-LAST:event_ContactTextField3ActionPerformed
 
-    private void TextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField4ActionPerformed
+    private void ContactNumTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContactNumTextField4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextField4ActionPerformed
+    }//GEN-LAST:event_ContactNumTextField4ActionPerformed
 
-    private void TextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField5ActionPerformed
+    private void AdressTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdressTextField5ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextField5ActionPerformed
+    }//GEN-LAST:event_AdressTextField5ActionPerformed
 
     private void TextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField6ActionPerformed
         // TODO add your handling code here:
@@ -576,7 +600,56 @@ public class purchase_ui extends javax.swing.JFrame {
     }//GEN-LAST:event_DelButton1ActionPerformed
 
     private void AddButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButton2ActionPerformed
-        // TODO add your handling code here:
+// TODO add your handling code here:
+        Connection conn = null;
+        Statement stmt = null;
+        try {
+            Class.forName("org.sqlite.JDBC");
+            conn = DriverManager.getConnection("jdbc:sqlite:purchdata.db");
+            conn.setAutoCommit(false);
+            stmt = conn.createStatement();
+            String p1 = DateTextField1.getText();
+            String p2 = CompanyTextField2.getText();
+            String p3 = ContactTextField3.getText();
+            String p4 = ContactNumTextField4.getText();
+            String p5 = AdressTextField5.getText();
+            String p6 = getRandomNumberString();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM sqlite_master WHERE type='table' AND name='purchase'");
+            if (!rs.next()) {
+                System.out.println("Table does not exist");
+                return;
+            }
+            rs.close();
+
+            rs = stmt.executeQuery("SELECT * FROM purchase WHERE ID = '" + p6 + "'");
+            while (rs.next()) {
+                p6 = getRandomNumberString();
+                rs = stmt.executeQuery("SELECT * FROM purchase WHERE ID = '" + p6 + "'");
+            }
+            rs.close();
+
+            String sql = "INSERT INTO purchase(ID,Date,Company,ContactName,ContactAdress,PhoneNumber) VALUES('" + p6 + "','" + p1 + "','" + p2 + "',"
+                    + "'" + p3 + "','" + p4 + "','" + p5 + "')";
+            stmt.executeUpdate(sql);
+            stmt.close();
+            conn.commit();
+
+        } catch (Exception b) {
+            if (conn != null) {
+                try {
+                    conn.rollback();
+                } catch (Exception ex) {
+                }
+            }
+            System.err.println(b.getClass().getName() + ": " + b.getMessage());
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception ex) {
+                }
+            }
+        }
     }//GEN-LAST:event_AddButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -651,14 +724,14 @@ public class purchase_ui extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddButton2;
+    private javax.swing.JTextField AdressTextField5;
     private javax.swing.JPanel BgPanelLeft;
     private javax.swing.JPanel BgPanelRightop;
+    private javax.swing.JTextField CompanyTextField2;
+    private javax.swing.JTextField ContactNumTextField4;
+    private javax.swing.JTextField ContactTextField3;
+    private javax.swing.JTextField DateTextField1;
     private javax.swing.JButton DelButton1;
-    private javax.swing.JTextField TextField1;
-    private javax.swing.JTextField TextField2;
-    private javax.swing.JTextField TextField3;
-    private javax.swing.JTextField TextField4;
-    private javax.swing.JTextField TextField5;
     private javax.swing.JTextField TextField6;
     private javax.swing.JTextField TextField7;
     private javax.swing.JTextField TextField8;
@@ -684,8 +757,8 @@ public class purchase_ui extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JLabel jfirstname_lastname;
+    private javax.swing.JTable purchaseTable1;
     // End of variables declaration//GEN-END:variables
 }
