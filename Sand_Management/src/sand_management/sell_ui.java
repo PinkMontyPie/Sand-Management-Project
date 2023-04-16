@@ -88,10 +88,12 @@ public class sell_ui extends javax.swing.JFrame {
         AddButton2 = new javax.swing.JButton();
         BgPanelRightop = new javax.swing.JPanel();
         Titledropdown = new javax.swing.JLabel();
-        dropdownlist01 = new javax.swing.JComboBox<>();
         TextSearchField1 = new javax.swing.JTextField();
         TitleSearch = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        TextSearchField2 = new javax.swing.JTextField();
+        TextSearchField3 = new javax.swing.JTextField();
+        Titledropdown1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
@@ -189,10 +191,10 @@ public class sell_ui extends javax.swing.JFrame {
         BgPanelLeft.setBackground(new java.awt.Color(204, 204, 204));
 
         TitleLeftLabel1.setFont(new java.awt.Font("Tahoma", 1, 28)); // NOI18N
-        TitleLeftLabel1.setText("รายละเอียดสั่งซื้อสินค้า");
+        TitleLeftLabel1.setText("รายละเอียดการขายสินค้า");
 
         TitleTxtLeftLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        TitleTxtLeftLabel1.setText("วันที่สั่งซื้อ");
+        TitleTxtLeftLabel1.setText("วันที่ขายสินค้า");
 
         TextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -201,7 +203,7 @@ public class sell_ui extends javax.swing.JFrame {
         });
 
         TitleTxtRightLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        TitleTxtRightLabel1.setText("บริษัท/ร้านตัวแทนจำหน่าย");
+        TitleTxtRightLabel1.setText("ชื่อพนักงานขาย");
 
         TextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -210,7 +212,7 @@ public class sell_ui extends javax.swing.JFrame {
         });
 
         TitleTxtLeftLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        TitleTxtLeftLabel2.setText("ชื่อผู้ติดต่อ");
+        TitleTxtLeftLabel2.setText("ชื่อลูกค้า");
 
         TextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -219,7 +221,7 @@ public class sell_ui extends javax.swing.JFrame {
         });
 
         TitleTxtRightLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        TitleTxtRightLabel2.setText("เบอร์ติดต่อ");
+        TitleTxtRightLabel2.setText("เบอร์โทรศัพท์ลูกค้า");
 
         TextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -405,12 +407,10 @@ public class sell_ui extends javax.swing.JFrame {
         BgPanelRightop.setBackground(new java.awt.Color(204, 204, 204));
 
         Titledropdown.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        Titledropdown.setText("หมวดหมู่");
-
-        dropdownlist01.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Titledropdown.setText("รหัสสินค้า");
 
         TitleSearch.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        TitleSearch.setText("ค้นหา");
+        TitleSearch.setText("ชื่อลูกค้า");
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setText("ค้นหา");
@@ -420,6 +420,9 @@ public class sell_ui extends javax.swing.JFrame {
             }
         });
 
+        Titledropdown1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        Titledropdown1.setText("วันที่ขายสินค้า");
+
         javax.swing.GroupLayout BgPanelRightopLayout = new javax.swing.GroupLayout(BgPanelRightop);
         BgPanelRightop.setLayout(BgPanelRightopLayout);
         BgPanelRightopLayout.setHorizontalGroup(
@@ -427,12 +430,16 @@ public class sell_ui extends javax.swing.JFrame {
             .addGroup(BgPanelRightopLayout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addGroup(BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dropdownlist01, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TextSearchField1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Titledropdown))
-                .addGap(56, 56, 56)
+                .addGap(36, 36, 36)
+                .addGroup(BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TextSearchField2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Titledropdown1))
+                .addGap(41, 41, 41)
                 .addGroup(BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(TitleSearch)
-                    .addComponent(TextSearchField1, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TextSearchField3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(79, 79, 79))
@@ -440,32 +447,45 @@ public class sell_ui extends javax.swing.JFrame {
         BgPanelRightopLayout.setVerticalGroup(
             BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BgPanelRightopLayout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
-                .addGroup(BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BgPanelRightopLayout.createSequentialGroup()
+                .addContainerGap(30, Short.MAX_VALUE)
+                .addGroup(BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(BgPanelRightopLayout.createSequentialGroup()
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29))
+                    .addGroup(BgPanelRightopLayout.createSequentialGroup()
                         .addGroup(BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Titledropdown)
-                            .addComponent(TitleSearch))
+                            .addComponent(TitleSearch)
+                            .addComponent(Titledropdown1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(dropdownlist01, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TextSearchField1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29))
+                            .addComponent(TextSearchField1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TextSearchField3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TextSearchField2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(23, 23, 23))))
         );
 
         jTable1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Product ID", "Date", "Contact Name", "Contact Adress", "Contact Number"
+                "Product ID", "Date", "Sale Employee", "Contact Name", "Contact Number", "Contact Adress", "Product List"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -533,10 +553,8 @@ public class sell_ui extends javax.swing.JFrame {
     private void jBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBackMouseClicked
         // TODO add your handling code here:
         String a1 = user.getUser();
-        String a2 = user.getFirst();
         All_Data account = new All_Data();
         account.setUser(a1);
-        account.setFirst(a2);
         main_ui main = new main_ui(account);
         main.setVisible(true);
         dispose();
@@ -642,6 +660,8 @@ public class sell_ui extends javax.swing.JFrame {
     private javax.swing.JTextField TextField7;
     private javax.swing.JTextField TextField8;
     private javax.swing.JTextField TextSearchField1;
+    private javax.swing.JTextField TextSearchField2;
+    private javax.swing.JTextField TextSearchField3;
     private javax.swing.JLabel TitleLeftLabel1;
     private javax.swing.JLabel TitleSearch;
     private javax.swing.JLabel TitleTxtLabel1;
@@ -650,10 +670,10 @@ public class sell_ui extends javax.swing.JFrame {
     private javax.swing.JLabel TitleTxtRightLabel1;
     private javax.swing.JLabel TitleTxtRightLabel2;
     private javax.swing.JLabel Titledropdown;
+    private javax.swing.JLabel Titledropdown1;
     private javax.swing.JLabel TxtPtotalLabel1;
     private javax.swing.JLabel TxtTotalLabel1;
     private javax.swing.JLabel TxtVATLabel2;
-    private javax.swing.JComboBox<String> dropdownlist01;
     private javax.swing.JLabel jBack;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonlogout;
