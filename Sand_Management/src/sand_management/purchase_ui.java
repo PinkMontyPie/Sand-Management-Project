@@ -92,7 +92,10 @@ public class purchase_ui extends javax.swing.JFrame {
         BgPanelLeft = new javax.swing.JPanel();
         TitleLeftLabel1 = new javax.swing.JLabel();
         TitleTxtLeftLabel1 = new javax.swing.JLabel();
+<<<<<<< Updated upstream
         DateTextField1 = new javax.swing.JTextField();
+=======
+>>>>>>> Stashed changes
         TitleTxtRightLabel1 = new javax.swing.JLabel();
         CompanyTextField2 = new javax.swing.JTextField();
         TitleTxtLeftLabel2 = new javax.swing.JLabel();
@@ -111,6 +114,7 @@ public class purchase_ui extends javax.swing.JFrame {
         TotalpriceTextField8 = new javax.swing.JTextField();
         DelButton1 = new javax.swing.JButton();
         AddButton2 = new javax.swing.JButton();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         BgPanelRightop = new javax.swing.JPanel();
         Titledropdown = new javax.swing.JLabel();
         dropdownlist01 = new javax.swing.JComboBox<>();
@@ -219,6 +223,7 @@ public class purchase_ui extends javax.swing.JFrame {
         TitleTxtLeftLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         TitleTxtLeftLabel1.setText("วันที่สั่งซื้อ");
 
+<<<<<<< Updated upstream
         DateTextField1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         DateTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -226,6 +231,8 @@ public class purchase_ui extends javax.swing.JFrame {
             }
         });
 
+=======
+>>>>>>> Stashed changes
         TitleTxtRightLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         TitleTxtRightLabel1.setText("บริษัท/ร้านตัวแทนจำหน่าย");
 
@@ -352,12 +359,21 @@ public class purchase_ui extends javax.swing.JFrame {
                     .addGroup(BgPanelLeftLayout.createSequentialGroup()
                         .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(TitleTxtLeftLabel1)
+<<<<<<< Updated upstream
                             .addComponent(DateTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+=======
+>>>>>>> Stashed changes
                             .addGroup(BgPanelLeftLayout.createSequentialGroup()
-                                .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(TitleTxtLeftLabel2)
+<<<<<<< Updated upstream
                                     .addComponent(ContactTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(87, 87, 87)
+=======
+                                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                                    .addComponent(TextField3))
+                                .addGap(57, 57, 57)
+>>>>>>> Stashed changes
                                 .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(ContactNumTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(TitleTxtRightLabel2)
@@ -388,7 +404,7 @@ public class purchase_ui extends javax.swing.JFrame {
                                 .addGap(49, 49, 49)
                                 .addComponent(AddButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane2))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 45, Short.MAX_VALUE))))
         );
         BgPanelLeftLayout.setVerticalGroup(
             BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -404,7 +420,11 @@ public class purchase_ui extends javax.swing.JFrame {
                     .addGroup(BgPanelLeftLayout.createSequentialGroup()
                         .addComponent(TitleTxtLeftLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+<<<<<<< Updated upstream
                         .addComponent(DateTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+=======
+                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+>>>>>>> Stashed changes
                 .addGap(18, 18, 18)
                 .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(ContactNumTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -473,7 +493,7 @@ public class purchase_ui extends javax.swing.JFrame {
                     .addComponent(TextSearchField1, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(79, 79, 79))
+                .addGap(33, 33, 33))
         );
         BgPanelRightopLayout.setVerticalGroup(
             BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -487,9 +507,11 @@ public class purchase_ui extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(dropdownlist01, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TextSearchField1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29))
+                            .addComponent(TextSearchField1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(29, 29, 29))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BgPanelRightopLayout.createSequentialGroup()
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30))))
         );
 
         purchaseTable1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -586,11 +608,15 @@ public class purchase_ui extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jBackMouseClicked
 
+<<<<<<< Updated upstream
     private void DateTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DateTextField1ActionPerformed
         //
     }//GEN-LAST:event_DateTextField1ActionPerformed
 
     private void CompanyTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CompanyTextField2ActionPerformed
+=======
+    private void TextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField2ActionPerformed
+>>>>>>> Stashed changes
         // TODO add your handling code here:
     }//GEN-LAST:event_CompanyTextField2ActionPerformed
 
@@ -759,6 +785,16 @@ public class purchase_ui extends javax.swing.JFrame {
     private javax.swing.JTextField ContactTextField3;
     private javax.swing.JTextField DateTextField1;
     private javax.swing.JButton DelButton1;
+<<<<<<< Updated upstream
+=======
+    private javax.swing.JTextField TextField2;
+    private javax.swing.JTextField TextField3;
+    private javax.swing.JTextField TextField4;
+    private javax.swing.JTextField TextField5;
+    private javax.swing.JTextField TextField6;
+    private javax.swing.JTextField TextField7;
+    private javax.swing.JTextField TextField8;
+>>>>>>> Stashed changes
     private javax.swing.JTextField TextSearchField1;
     private javax.swing.JLabel TitleLeftLabel1;
     private javax.swing.JLabel TitleSearch;
@@ -778,6 +814,7 @@ public class purchase_ui extends javax.swing.JFrame {
     private javax.swing.JLabel jBack;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonlogout;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabelDate;
     private javax.swing.JLabel jLabelProgram;
     private javax.swing.JLabel jLabelTime;

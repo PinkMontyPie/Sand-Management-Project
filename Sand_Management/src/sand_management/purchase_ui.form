@@ -217,13 +217,21 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="TitleTxtLeftLabel1" min="-2" max="-2" attributes="0"/>
+<<<<<<< Updated upstream
                               <Component id="DateTextField1" min="-2" pref="350" max="-2" attributes="0"/>
+=======
+>>>>>>> Stashed changes
                               <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="TitleTxtLeftLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+<<<<<<< Updated upstream
                                       <Component id="ContactTextField3" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
+=======
+                                      <Component id="jDateChooser1" pref="380" max="32767" attributes="0"/>
+                                      <Component id="TextField3" alignment="0" max="32767" attributes="0"/>
+>>>>>>> Stashed changes
                                   </Group>
-                                  <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="ContactNumTextField4" min="-2" pref="350" max="-2" attributes="0"/>
                                       <Component id="TitleTxtRightLabel2" min="-2" max="-2" attributes="0"/>
@@ -265,7 +273,7 @@
                               </Group>
                               <Component id="jScrollPane2" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="45" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -286,7 +294,11 @@
                       <Group type="102" attributes="0">
                           <Component id="TitleTxtLeftLabel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
+<<<<<<< Updated upstream
                           <Component id="DateTextField1" min="-2" pref="31" max="-2" attributes="0"/>
+=======
+                          <Component id="jDateChooser1" min="-2" pref="31" max="-2" attributes="0"/>
+>>>>>>> Stashed changes
                       </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -346,6 +358,7 @@
             <Property name="text" type="java.lang.String" value="&#xe27;&#xe31;&#xe19;&#xe17;&#xe35;&#xe48;&#xe2a;&#xe31;&#xe48;&#xe07;&#xe0b;&#xe37;&#xe49;&#xe2d;"/>
           </Properties>
         </Component>
+<<<<<<< Updated upstream
         <Component class="javax.swing.JTextField" name="DateTextField1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -356,6 +369,8 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DateTextField1ActionPerformed"/>
           </Events>
         </Component>
+=======
+>>>>>>> Stashed changes
         <Component class="javax.swing.JLabel" name="TitleTxtRightLabel1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -562,6 +577,8 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AddButton2ActionPerformed"/>
           </Events>
         </Component>
+        <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="BgPanelRightop">
@@ -587,7 +604,7 @@
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="jButton1" min="-2" pref="128" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -606,10 +623,13 @@
                               <Component id="dropdownlist01" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                               <Component id="TextSearchField1" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jButton1" alignment="1" min="-2" pref="48" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="jButton1" min="-2" pref="48" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

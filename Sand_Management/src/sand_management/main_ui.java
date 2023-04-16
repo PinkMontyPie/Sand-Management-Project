@@ -191,6 +191,7 @@ public class main_ui extends javax.swing.JFrame {
 
         Button_Employee.setBackground(new java.awt.Color(255, 255, 255));
         Button_Employee.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
+        Button_Employee.setForeground(new java.awt.Color(51, 51, 51));
         Button_Employee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/group_1.png"))); // NOI18N
         Button_Employee.setText("ประวัติพนักงาน");
         Button_Employee.setAlignmentY(0.1F);
@@ -208,6 +209,7 @@ public class main_ui extends javax.swing.JFrame {
 
         Button_Delivery.setBackground(new java.awt.Color(255, 255, 255));
         Button_Delivery.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
+        Button_Delivery.setForeground(new java.awt.Color(51, 51, 51));
         Button_Delivery.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/delivery_1.png"))); // NOI18N
         Button_Delivery.setText("การจัดส่งสินค้า");
         Button_Delivery.setIconTextGap(20);
@@ -224,6 +226,7 @@ public class main_ui extends javax.swing.JFrame {
 
         Button_Storage.setBackground(new java.awt.Color(255, 255, 255));
         Button_Storage.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
+        Button_Storage.setForeground(new java.awt.Color(51, 51, 51));
         Button_Storage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/storage-box_1.png"))); // NOI18N
         Button_Storage.setText("คลังสินค้า");
         Button_Storage.setIconTextGap(20);
@@ -240,6 +243,7 @@ public class main_ui extends javax.swing.JFrame {
 
         Button_Purchase.setBackground(new java.awt.Color(255, 255, 255));
         Button_Purchase.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
+        Button_Purchase.setForeground(new java.awt.Color(51, 51, 51));
         Button_Purchase.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/payment-method_1.png"))); // NOI18N
         Button_Purchase.setText("สั่งซื้อสินค้า");
         Button_Purchase.setIconTextGap(20);
@@ -256,6 +260,7 @@ public class main_ui extends javax.swing.JFrame {
 
         Button_Report.setBackground(new java.awt.Color(255, 255, 255));
         Button_Report.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
+        Button_Report.setForeground(new java.awt.Color(51, 51, 51));
         Button_Report.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/report_1.png"))); // NOI18N
         Button_Report.setText("รายงาน");
         Button_Report.setIconTextGap(20);
@@ -272,6 +277,7 @@ public class main_ui extends javax.swing.JFrame {
 
         Button_Sell.setBackground(new java.awt.Color(255, 255, 255));
         Button_Sell.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
+        Button_Sell.setForeground(new java.awt.Color(51, 51, 51));
         Button_Sell.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/trade_1.png"))); // NOI18N
         Button_Sell.setText("ขายสินค้า");
         Button_Sell.setIconTextGap(20);

@@ -72,7 +72,4 @@ public class InvoiceGenerator {
             paragraph.add(new Paragraph(" "));
         }
     }
-
-
-    
 }
