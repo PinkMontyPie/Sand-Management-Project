@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.PreparedStatement;
 import java.text.*;
 import java.util.*;
 import javax.swing.JOptionPane;
@@ -213,6 +214,11 @@ public class storage_ui extends javax.swing.JFrame {
         jButtonadd.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButtonadd.setForeground(new java.awt.Color(255, 51, 0));
         jButtonadd.setText("Delete");
+        jButtonadd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonaddMouseClicked(evt);
+            }
+        });
         jButtonadd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonaddActionPerformed(evt);
@@ -534,23 +540,24 @@ public class storage_ui extends javax.swing.JFrame {
         // Search
         Connection c = null;
         Statement stmt = null;
-
+        String type = jComboBox1.getSelectedItem().toString();
+        String search = jTextField1.getText();
         try {
-            int i = Integer.parseInt(jTextField1.getText());
             Class.forName("org.sqlite.JDBC");
             c = DriverManager.getConnection("jdbc:sqlite:data.db");
             stmt = c.createStatement();
-            ResultSet rs1 = stmt.executeQuery("Select * from storage where Id_item like " + i + "");
-            jTablestorage.setModel(DbUtils.resultSetToTableModel(rs1));
-            System.out.println(i);
-            String type = jComboBox1.getSelectedItem().toString();
-            System.out.println(type);
-            if (type.equals("Name")){
-               String nameitem = jTextField1.getText();
-               ResultSet rs2 = stmt.executeQuery("SELECT * FROM storage WHERE Name_i " + nameitem + "");
-               jTablestorage.setModel(DbUtils.resultSetToTableModel(rs2));
-               System.out.println(nameitem);
-           }
+            if (type.equals("ID")){
+                ResultSet rs = stmt.executeQuery("SELECT * FROM storage WHERE id_item = '" +search+ "'");
+                jTablestorage.setModel(DbUtils.resultSetToTableModel(rs));
+                rs.close();
+            }
+            if (type.equals("Name")) {
+                ResultSet rs = stmt.executeQuery("SELECT * FROM storage WHERE Name_i = '" +search+ "'");
+                jTablestorage.setModel(DbUtils.resultSetToTableModel(rs));
+                rs.close();
+            } 
+            stmt.close();
+            c.close();
            
         } catch (Exception e) {
             e.printStackTrace();
@@ -572,6 +579,31 @@ public class storage_ui extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jButtonaddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonaddMouseClicked
+        // TODO add your handling code here:
+        Connection con = null;
+        PreparedStatement pat = null;
+        int row =jTablestorage.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel)jTablestorage.getModel();
+        
+        try{
+            Class.forName("org.sqlite.JDBC");
+            con = DriverManager.getConnection("jdbc:sqlite:data.db");
+            String delete = "DELETE FROM storage WHERE Id_item = ?";
+            pat = con.prepareStatement(delete);
+            pat.setString(1,model.getValueAt(row, 0).toString());
+            pat.execute();
+            
+            int a = JOptionPane.showConfirmDialog(null, "Are you sure to delete this item? : "+model.getValueAt(row, 2).toString(), "Alert", JOptionPane.INFORMATION_MESSAGE);
+            if (a == JOptionPane.YES_OPTION){
+                JOptionPane.showMessageDialog(null, "This item has been deleted");
+                fetchitemDetailsCS();
+            }
+        }catch(Exception b){
+            JOptionPane.showMessageDialog(null, b);
+        }    
+    }//GEN-LAST:event_jButtonaddMouseClicked
 
     public void fetchitemDetailsCS(){
         Connection c = null;
