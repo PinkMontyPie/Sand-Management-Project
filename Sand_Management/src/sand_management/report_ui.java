@@ -4,6 +4,8 @@
  */
 package sand_management;
 
+import java.lang.Object;
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -101,6 +103,7 @@ public class report_ui extends javax.swing.JFrame {
         BgPanelLeft_purchase = new javax.swing.JPanel();
         TitleLeftLabel5 = new javax.swing.JLabel();
         TitleTxtLeftLabel12 = new javax.swing.JLabel();
+        TextField12 = new javax.swing.JTextField();
         TitleTxtRightLabel9 = new javax.swing.JLabel();
         TextField13 = new javax.swing.JTextField();
         TitleTxtLeftLabel13 = new javax.swing.JLabel();
@@ -109,10 +112,12 @@ public class report_ui extends javax.swing.JFrame {
         TextField21 = new javax.swing.JTextField();
         TextField29 = new javax.swing.JTextField();
         TitleTxtLeftLabel14 = new javax.swing.JLabel();
+        TitleTxtLeftLabel15 = new javax.swing.JLabel();
+        TextField30 = new javax.swing.JTextField();
+        TitleTxtLeftLabel16 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
         jButton_pdf_purchase = new javax.swing.JButton();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         BgPanelLeft_sell = new javax.swing.JPanel();
         TitleLeftLabel6 = new javax.swing.JLabel();
         TitleTxtLeftLabel17 = new javax.swing.JLabel();
@@ -145,6 +150,7 @@ public class report_ui extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(1920, 1080));
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setPreferredSize(new java.awt.Dimension(1920, 190));
@@ -392,10 +398,16 @@ public class report_ui extends javax.swing.JFrame {
         TitleLeftLabel5.setText("รายละเอียดจัดสั่งชื้อสินค้า");
 
         TitleTxtLeftLabel12.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        TitleTxtLeftLabel12.setText("วันที่");
+        TitleTxtLeftLabel12.setText("ชื่อพนักงานขับรถ");
+
+        TextField12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextField12ActionPerformed(evt);
+            }
+        });
 
         TitleTxtRightLabel9.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        TitleTxtRightLabel9.setText("บรัษัท|ร้านตัวเเทนจำหน่าย");
+        TitleTxtRightLabel9.setText("ชื่อลูกค้า");
 
         TextField13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -404,7 +416,7 @@ public class report_ui extends javax.swing.JFrame {
         });
 
         TitleTxtLeftLabel13.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        TitleTxtLeftLabel13.setText("ชื่อลูกค้า");
+        TitleTxtLeftLabel13.setText("วันที่การจัดส่งสินค้า");
 
         TextField14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -430,34 +442,28 @@ public class report_ui extends javax.swing.JFrame {
         TitleTxtLeftLabel14.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         TitleTxtLeftLabel14.setText("วันที่การจัดส่งสินค้า");
 
+        TitleTxtLeftLabel15.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtLeftLabel15.setText("สถานที่จัดส่ง");
+
+        TextField30.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextField30ActionPerformed(evt);
+            }
+        });
+
+        TitleTxtLeftLabel16.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtLeftLabel16.setText("รายงานปัญหา");
+
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jScrollPane3.setViewportView(jTextArea2);
+
         jButton_pdf_purchase.setText("Save PDF");
         jButton_pdf_purchase.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton_pdf_purchaseMouseClicked(evt);
             }
         });
-
-        jTable2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "No.", "Item", "Quantity", "Unit price", "Amount"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                true, true, true, true, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane5.setViewportView(jTable2);
 
         javax.swing.GroupLayout BgPanelLeft_purchaseLayout = new javax.swing.GroupLayout(BgPanelLeft_purchase);
         BgPanelLeft_purchase.setLayout(BgPanelLeft_purchaseLayout);
@@ -467,28 +473,32 @@ public class report_ui extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(BgPanelLeft_purchaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(BgPanelLeft_purchaseLayout.createSequentialGroup()
-                        .addComponent(TitleTxtLeftLabel14)
+                        .addGroup(BgPanelLeft_purchaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TitleTxtLeftLabel14)
+                            .addComponent(TitleTxtLeftLabel15)
+                            .addComponent(TitleTxtLeftLabel16))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BgPanelLeft_purchaseLayout.createSequentialGroup()
                         .addGroup(BgPanelLeft_purchaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(BgPanelLeft_purchaseLayout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jButton_pdf_purchase, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(TextField29)
                             .addGroup(BgPanelLeft_purchaseLayout.createSequentialGroup()
                                 .addGroup(BgPanelLeft_purchaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(TitleTxtLeftLabel13)
                                     .addComponent(TitleTxtLeftLabel12)
                                     .addComponent(TitleLeftLabel5)
-                                    .addComponent(TextField14, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
-                                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(TextField12, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                                    .addComponent(TextField14))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                                 .addGroup(BgPanelLeft_purchaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(TitleTxtRightLabel9)
                                     .addComponent(TitleTxtRightLabel10)
                                     .addComponent(TextField13, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
-                                    .addComponent(TextField21))))
+                                    .addComponent(TextField21)))
+                            .addComponent(TextField30, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(54, 54, 54))))
         );
         BgPanelLeft_purchaseLayout.setVerticalGroup(
@@ -505,7 +515,7 @@ public class report_ui extends javax.swing.JFrame {
                     .addGroup(BgPanelLeft_purchaseLayout.createSequentialGroup()
                         .addComponent(TitleTxtLeftLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(TextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(BgPanelLeft_purchaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(TextField21, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -519,9 +529,15 @@ public class report_ui extends javax.swing.JFrame {
                 .addComponent(TitleTxtLeftLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TextField29, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 182, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(TitleTxtLeftLabel15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TextField30, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(TitleTxtLeftLabel16)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 163, Short.MAX_VALUE)
                 .addComponent(jButton_pdf_purchase, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38))
         );
@@ -936,6 +952,10 @@ public class report_ui extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TextField10ActionPerformed
 
+    private void TextField12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField12ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextField12ActionPerformed
+
     private void TextField13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField13ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TextField13ActionPerformed
@@ -951,6 +971,10 @@ public class report_ui extends javax.swing.JFrame {
     private void TextField29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField29ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TextField29ActionPerformed
+
+    private void TextField30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField30ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextField30ActionPerformed
 
     private void TextField31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField31ActionPerformed
         // TODO add your handling code here:
@@ -1040,10 +1064,12 @@ public class report_ui extends javax.swing.JFrame {
     private javax.swing.JPanel BgPanelRightop;
     private javax.swing.JTextField TextField10;
     private javax.swing.JTextField TextField11;
+    private javax.swing.JTextField TextField12;
     private javax.swing.JTextField TextField13;
     private javax.swing.JTextField TextField14;
     private javax.swing.JTextField TextField21;
     private javax.swing.JTextField TextField29;
+    private javax.swing.JTextField TextField30;
     private javax.swing.JTextField TextField31;
     private javax.swing.JTextField TextField32;
     private javax.swing.JTextField TextField33;
@@ -1064,6 +1090,8 @@ public class report_ui extends javax.swing.JFrame {
     private javax.swing.JLabel TitleTxtLeftLabel12;
     private javax.swing.JLabel TitleTxtLeftLabel13;
     private javax.swing.JLabel TitleTxtLeftLabel14;
+    private javax.swing.JLabel TitleTxtLeftLabel15;
+    private javax.swing.JLabel TitleTxtLeftLabel16;
     private javax.swing.JLabel TitleTxtLeftLabel17;
     private javax.swing.JLabel TitleTxtLeftLabel18;
     private javax.swing.JLabel TitleTxtLeftLabel19;
@@ -1088,7 +1116,6 @@ public class report_ui extends javax.swing.JFrame {
     private javax.swing.JButton jButton_pdf_purchase;
     private javax.swing.JButton jButton_pdf_sell;
     private javax.swing.JButton jButtonlogout;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabelDate;
     private javax.swing.JLabel jLabelProgram;
     private javax.swing.JLabel jLabelTime;
@@ -1096,11 +1123,11 @@ public class report_ui extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JLabel jfirstname_lastname;
     // End of variables declaration//GEN-END:variables

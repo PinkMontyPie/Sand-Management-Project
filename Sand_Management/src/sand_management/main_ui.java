@@ -46,10 +46,10 @@ public class main_ui extends javax.swing.JFrame {
                     }
                     else if(position1.equals("CEO")){
                     }
-                    else if(position1.equals("Secretary")){
+                    else if(position1.equals("Secretary") || position1.equals("เลขานุการ")){
                         Button_Employee.setVisible(false);
                     }
-                    else if(position1.equals("Employee")){
+                    else if(position1.equals("Employee") || position1.equals("พนักงาน")|| position1.equals("พนักงานขนส่ง")){
                         Button_Employee.setVisible(false);
                         Button_Storage.setVisible(false);
                         Button_Purchase.setVisible(false);
@@ -114,6 +114,7 @@ public class main_ui extends javax.swing.JFrame {
         Button_Purchase = new javax.swing.JButton();
         Button_Report = new javax.swing.JButton();
         Button_Sell = new javax.swing.JButton();
+        label_id_employee = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -191,7 +192,6 @@ public class main_ui extends javax.swing.JFrame {
 
         Button_Employee.setBackground(new java.awt.Color(255, 255, 255));
         Button_Employee.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
-        Button_Employee.setForeground(new java.awt.Color(51, 51, 51));
         Button_Employee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/group_1.png"))); // NOI18N
         Button_Employee.setText("ประวัติพนักงาน");
         Button_Employee.setAlignmentY(0.1F);
@@ -209,7 +209,6 @@ public class main_ui extends javax.swing.JFrame {
 
         Button_Delivery.setBackground(new java.awt.Color(255, 255, 255));
         Button_Delivery.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
-        Button_Delivery.setForeground(new java.awt.Color(51, 51, 51));
         Button_Delivery.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/delivery_1.png"))); // NOI18N
         Button_Delivery.setText("การจัดส่งสินค้า");
         Button_Delivery.setIconTextGap(20);
@@ -226,7 +225,6 @@ public class main_ui extends javax.swing.JFrame {
 
         Button_Storage.setBackground(new java.awt.Color(255, 255, 255));
         Button_Storage.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
-        Button_Storage.setForeground(new java.awt.Color(51, 51, 51));
         Button_Storage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/storage-box_1.png"))); // NOI18N
         Button_Storage.setText("คลังสินค้า");
         Button_Storage.setIconTextGap(20);
@@ -243,7 +241,6 @@ public class main_ui extends javax.swing.JFrame {
 
         Button_Purchase.setBackground(new java.awt.Color(255, 255, 255));
         Button_Purchase.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
-        Button_Purchase.setForeground(new java.awt.Color(51, 51, 51));
         Button_Purchase.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/payment-method_1.png"))); // NOI18N
         Button_Purchase.setText("สั่งซื้อสินค้า");
         Button_Purchase.setIconTextGap(20);
@@ -260,7 +257,6 @@ public class main_ui extends javax.swing.JFrame {
 
         Button_Report.setBackground(new java.awt.Color(255, 255, 255));
         Button_Report.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
-        Button_Report.setForeground(new java.awt.Color(51, 51, 51));
         Button_Report.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/report_1.png"))); // NOI18N
         Button_Report.setText("รายงาน");
         Button_Report.setIconTextGap(20);
@@ -277,7 +273,6 @@ public class main_ui extends javax.swing.JFrame {
 
         Button_Sell.setBackground(new java.awt.Color(255, 255, 255));
         Button_Sell.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
-        Button_Sell.setForeground(new java.awt.Color(51, 51, 51));
         Button_Sell.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/trade_1.png"))); // NOI18N
         Button_Sell.setText("ขายสินค้า");
         Button_Sell.setIconTextGap(20);
@@ -291,6 +286,9 @@ public class main_ui extends javax.swing.JFrame {
                 Button_SellActionPerformed(evt);
             }
         });
+
+        label_id_employee.setFont(new java.awt.Font("Leelawadee UI", 0, 36)); // NOI18N
+        label_id_employee.setText("id_employee");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -311,6 +309,10 @@ public class main_ui extends javax.swing.JFrame {
                 .addGap(61, 61, 61)
                 .addComponent(Button_Storage, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(176, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(label_id_employee)
+                .addGap(62, 62, 62))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -326,7 +328,9 @@ public class main_ui extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Button_Delivery, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Button_Report, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 178, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                .addComponent(label_id_employee)
+                .addGap(23, 23, 23))
         );
 
         pack();
@@ -496,5 +500,6 @@ public class main_ui extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelTime;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel jfirstname_lastname;
+    private javax.swing.JLabel label_id_employee;
     // End of variables declaration//GEN-END:variables
 }
