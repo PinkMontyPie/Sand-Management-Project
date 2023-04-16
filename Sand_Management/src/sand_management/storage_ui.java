@@ -191,15 +191,21 @@ public class storage_ui extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
         jLabel4.setText("Name Item");
 
+        txtname_i.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
         jLabel5.setText("Type");
 
+        jComboBox2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sand1", "Sand2" }));
 
+        jSpinner1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jSpinner1.setName(""); // NOI18N
 
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
         jLabel6.setText("1Ton. = Price");
+
+        txtqua.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
         jLabel7.setText("Quantity");
@@ -286,12 +292,14 @@ public class storage_ui extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
 
+        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextField1KeyReleased(evt);
             }
         });
 
+        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Name" }));
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -350,6 +358,7 @@ public class storage_ui extends javax.swing.JFrame {
         );
 
         jTablestorage.setBackground(new java.awt.Color(204, 204, 204));
+        jTablestorage.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTablestorage.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -395,7 +404,7 @@ public class storage_ui extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 725, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 724, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
