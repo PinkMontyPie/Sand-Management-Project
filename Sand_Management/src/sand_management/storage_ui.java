@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.PreparedStatement;
 import java.text.*;
 import java.util.*;
 import javax.swing.JOptionPane;
@@ -594,13 +595,11 @@ public class storage_ui extends javax.swing.JFrame {
             pat = c.prepareStatement(delete);
             pat.setString(1,model.getValueAt(row, 0).toString());
             pat.execute();
-
-            int a = JOptionPane.showConfirmDialog(null, "Are you sure to delete this item? : "+model.getValueAt(row, 2).toString(), "Alert", JOptionPane.INFORMATION_MESSAGE);
-            if (a == JOptionPane.YES_OPTION){
-                JOptionPane.showMessageDialog(null, "This item has been deleted");
-                fetchitemDetailsCS();
-            }
-        }catch(Exception b){
+            con = DriverManager.getConnection("jdbc:sqlite:data.db");
+            String delete = "DELETE FROM storage WHERE Id_item = ?";
+            pat = con.prepareStatement(delete);
+            pat.setString(1,model.getValueAt(row, 0).toString());
+            pat.execute();
             JOptionPane.showMessageDialog(null, b);
         }    
     }//GEN-LAST:event_jButtonaddMouseClicked
