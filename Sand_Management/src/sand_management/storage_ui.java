@@ -301,6 +301,11 @@ public class storage_ui extends javax.swing.JFrame {
 
         jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Name" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 153, 255));
@@ -529,16 +534,29 @@ public class storage_ui extends javax.swing.JFrame {
         // Search
         Connection c = null;
         Statement stmt = null;
-        try{
-            int i = Integer.parseInt(jTextField1.getText()); 
+        String type = jComboBox1.getSelectedItem().toString();
+        String search = jTextField1.getText();
+        try {
             Class.forName("org.sqlite.JDBC");
             c = DriverManager.getConnection("jdbc:sqlite:data.db");
             stmt = c.createStatement();
-            ResultSet rs1 = stmt.executeQuery("Select * from storage where Id_item like "+i+"");
-            jTablestorage.setModel(DbUtils.resultSetToTableModel(rs1));
-            System.out.println(i);
-        }catch(Exception b){
+            if (type.equals("ID")){
+                ResultSet rs = stmt.executeQuery("SELECT * FROM storage WHERE id_item = '" +search+ "'");
+                jTablestorage.setModel(DbUtils.resultSetToTableModel(rs));
+                rs.close();
+            }
+            if (type.equals("Name")) {
+                ResultSet rs = stmt.executeQuery("SELECT * FROM storage WHERE Name_i = '" +search+ "'");
+                jTablestorage.setModel(DbUtils.resultSetToTableModel(rs));
+                rs.close();
+            } 
+            stmt.close();
+            c.close();
+           
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
@@ -550,6 +568,11 @@ public class storage_ui extends javax.swing.JFrame {
             fetchitemDetailsCS();
         }
     }//GEN-LAST:event_jTextField1KeyReleased
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     public void fetchitemDetailsCS(){
         Connection c = null;
