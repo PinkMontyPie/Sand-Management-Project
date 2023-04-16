@@ -315,6 +315,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="id_employee"/>
       </Properties>
+      <Events>
+        <EventHandler event="ancestorAdded" listener="javax.swing.event.AncestorListener" parameters="javax.swing.event.AncestorEvent" handler="label_id_employeeAncestorAdded"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

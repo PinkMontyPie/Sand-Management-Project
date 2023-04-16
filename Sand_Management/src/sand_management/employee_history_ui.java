@@ -266,8 +266,10 @@ public class employee_history_ui extends javax.swing.JFrame {
     private void jBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBackMouseClicked
         // TODO add your handling code here:
         String a1 = user.getUser();
+        String a2 = user.getFirst();
         All_Data account = new All_Data();
         account.setUser(a1);
+        account.setFirst(a2);
         main_ui main = new main_ui(account);
         main.setVisible(true);
         dispose();
@@ -276,8 +278,10 @@ public class employee_history_ui extends javax.swing.JFrame {
     private void Button_New_EmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Button_New_EmployeeMouseClicked
         // TODO add your handling code here:
         String a1 = user.getUser();
+        String a2 = user.getFirst();
         All_Data account = new All_Data();
         account.setUser(a1);
+        account.setFirst(a2);
         employee_new new_employee = new employee_new(account);
         new_employee.setVisible(true);
         dispose();
@@ -290,8 +294,10 @@ public class employee_history_ui extends javax.swing.JFrame {
     private void Button_Search_EmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Button_Search_EmployeeMouseClicked
         // TODO add your handling code here:
         String a1 = user.getUser();
+        String a2 = user.getFirst();
         All_Data account = new All_Data();
         account.setUser(a1);
+        account.setFirst(a2);
         employee_search search_employee = new employee_search(account);
         search_employee.setVisible(true);
         dispose();

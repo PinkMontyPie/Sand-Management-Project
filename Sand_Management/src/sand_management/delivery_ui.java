@@ -493,8 +493,10 @@ public class delivery_ui extends javax.swing.JFrame {
     private void jBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBackMouseClicked
         // TODO add your handling code here:
         String a1 = user.getUser();
+        String a2 = user.getFirst();
         All_Data account = new All_Data();
         account.setUser(a1);
+        account.setFirst(a2);
         main_ui main = new main_ui(account);
         main.setVisible(true);
         dispose();

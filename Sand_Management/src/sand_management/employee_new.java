@@ -929,8 +929,10 @@ public class employee_new extends javax.swing.JFrame {
     private void jBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBackMouseClicked
         // TODO add your handling code here:
         String a1 = user.getUser();
+        String a2 = user.getFirst();
         All_Data account = new All_Data();
         account.setUser(a1);
+        account.setFirst(a2);
         employee_history_ui employee_history = new employee_history_ui(account);
         employee_history.setVisible(true);
         dispose();
@@ -1060,8 +1062,10 @@ public class employee_new extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "Register Complete.",
                         "ALERT", JOptionPane.INFORMATION_MESSAGE);
                         String user1 = user.getUser();
+                        String first1 = user.getFirst();
                         All_Data account = new All_Data();
                         account.setUser(user1);
+                        account.setFirst(first1);
                         employee_history_ui employee_history = new employee_history_ui(account);
                         employee_history.setVisible(true);
                         dispose();

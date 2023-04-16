@@ -31,8 +31,6 @@ public class main_ui extends javax.swing.JFrame {
     }
     
     public void permission(){
-        String d = user.getFirst();
-        System.out.println(d);
         Connection c = null;
         Statement stmt = null;
                 try {
@@ -81,28 +79,6 @@ public class main_ui extends javax.swing.JFrame {
         setTime();
     }
     
-    public void set_id_employee(){
-        Connection c = null;
-        Statement stmt = null;
-        try {
-            Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:employee_data.db");
-            c.setAutoCommit(false);
-            stmt = c.createStatement();
-            String a1 = user.getFirst();
-            System.out.println(a1);
-            ResultSet rs = stmt.executeQuery( "SELECT * FROM employee WHERE first_name = '"+a1+"'" );
-            String  id = rs.getString("id_employee");
-            label_id_employee.setText("ID Employee : " + id);
-            rs.close();
-            stmt.close();
-            c.close();
-        }
-        catch ( Exception b ) {
-            System.err.println( b.getClass().getName() + ": " + b.getMessage() );
-            System.exit(0);
-        }
-    }
     
     public void setDate() {
         dateFormat = new SimpleDateFormat("EEEE dd MMMMM yyyy");
@@ -314,6 +290,15 @@ public class main_ui extends javax.swing.JFrame {
 
         label_id_employee.setFont(new java.awt.Font("Leelawadee UI", 0, 36)); // NOI18N
         label_id_employee.setText("id_employee");
+        label_id_employee.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                label_id_employeeAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -419,8 +404,10 @@ public class main_ui extends javax.swing.JFrame {
     private void Button_EmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Button_EmployeeMouseClicked
         // TODO add your handling code here:
         String a1 = user.getUser();
+        String a2 = user.getFirst();
         All_Data account = new All_Data();
         account.setUser(a1);
+        account.setFirst(a2);
         employee_history_ui employee = new employee_history_ui(account);
         employee.setVisible(true);
         dispose();
@@ -429,8 +416,10 @@ public class main_ui extends javax.swing.JFrame {
     private void Button_PurchaseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Button_PurchaseMouseClicked
         // TODO add your handling code here:
         String a1 = user.getUser();
+        String a2 = user.getFirst();
         All_Data account = new All_Data();
         account.setUser(a1);
+        account.setFirst(a2);
         purchase_ui buy = new purchase_ui(account);
         buy.setVisible(true);
         dispose();
@@ -439,8 +428,10 @@ public class main_ui extends javax.swing.JFrame {
     private void Button_SellMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Button_SellMouseClicked
         // TODO add your handling code here:
         String a1 = user.getUser();
+        String a2 = user.getFirst();
         All_Data account = new All_Data();
         account.setUser(a1);
+        account.setFirst(a2);
         sell_ui sell = new sell_ui(account);
         sell.setVisible(true);
         dispose();
@@ -449,8 +440,10 @@ public class main_ui extends javax.swing.JFrame {
     private void Button_StorageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Button_StorageMouseClicked
         // TODO add your handling code here:
         String a1 = user.getUser();
+        String a2 = user.getFirst();
         All_Data account = new All_Data();
         account.setUser(a1);
+        account.setFirst(a2);
         storage_ui stock = new storage_ui(account);
         stock.setVisible(true);
         dispose();
@@ -459,8 +452,10 @@ public class main_ui extends javax.swing.JFrame {
     private void Button_DeliveryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Button_DeliveryMouseClicked
         // TODO add your handling code here:
         String a1 = user.getUser();
+        String a2 = user.getFirst();
         All_Data account = new All_Data();
         account.setUser(a1);
+        account.setFirst(a2);
         delivery_ui delivery = new delivery_ui(account);
         delivery.setVisible(true);
         dispose();
@@ -469,12 +464,37 @@ public class main_ui extends javax.swing.JFrame {
     private void Button_ReportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Button_ReportMouseClicked
         // TODO add your handling code here:
         String a1 = user.getUser();
+        String a2 = user.getFirst();
         All_Data account = new All_Data();
         account.setUser(a1);
+        account.setFirst(a2);
         report_ui report = new report_ui(account);
         report.setVisible(true);
         dispose();
     }//GEN-LAST:event_Button_ReportMouseClicked
+
+    private void label_id_employeeAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_label_id_employeeAncestorAdded
+        // TODO add your handling code here:
+        Connection c = null;
+        Statement stmt = null;
+        try {
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:employee_data.db");
+            c.setAutoCommit(false);
+            stmt = c.createStatement();
+            String a1 = user.getFirst();
+            ResultSet rs = stmt.executeQuery( "SELECT * FROM employee WHERE first_name = '"+a1+"'" );
+            String  id = rs.getString("id_employee");
+            label_id_employee.setText("ID Employee : " + id);
+            rs.close();
+            stmt.close();
+            c.close();
+        }
+        catch ( Exception b ) {
+            System.err.println( b.getClass().getName() + ": " + b.getMessage() );
+            System.exit(0);
+        }
+    }//GEN-LAST:event_label_id_employeeAncestorAdded
 
     /**
      * @param args the command line arguments
