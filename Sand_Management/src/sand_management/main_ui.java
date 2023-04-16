@@ -31,6 +31,8 @@ public class main_ui extends javax.swing.JFrame {
     }
     
     public void permission(){
+        String d = user.getFirst();
+        System.out.println(d);
         Connection c = null;
         Statement stmt = null;
                 try {
@@ -77,6 +79,29 @@ public class main_ui extends javax.swing.JFrame {
     public void Start(){
         setDate();
         setTime();
+    }
+    
+    public void set_id_employee(){
+        Connection c = null;
+        Statement stmt = null;
+        try {
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:employee_data.db");
+            c.setAutoCommit(false);
+            stmt = c.createStatement();
+            String a1 = user.getFirst();
+            System.out.println(a1);
+            ResultSet rs = stmt.executeQuery( "SELECT * FROM employee WHERE first_name = '"+a1+"'" );
+            String  id = rs.getString("id_employee");
+            label_id_employee.setText("ID Employee : " + id);
+            rs.close();
+            stmt.close();
+            c.close();
+        }
+        catch ( Exception b ) {
+            System.err.println( b.getClass().getName() + ": " + b.getMessage() );
+            System.exit(0);
+        }
     }
     
     public void setDate() {
