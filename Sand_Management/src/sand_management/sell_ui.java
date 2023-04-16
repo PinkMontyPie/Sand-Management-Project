@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.*;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -67,11 +69,11 @@ public class sell_ui extends javax.swing.JFrame {
         BgPanelLeft = new javax.swing.JPanel();
         TitleLeftLabel1 = new javax.swing.JLabel();
         TitleTxtLeftLabel1 = new javax.swing.JLabel();
-        TextField1 = new javax.swing.JTextField();
+        DateTextField1 = new javax.swing.JTextField();
         TitleTxtRightLabel1 = new javax.swing.JLabel();
-        TextField2 = new javax.swing.JTextField();
+        ContactNTextField2 = new javax.swing.JTextField();
         TitleTxtLeftLabel2 = new javax.swing.JLabel();
-        TextField3 = new javax.swing.JTextField();
+        ContactNameTextField3 = new javax.swing.JTextField();
         TitleTxtRightLabel2 = new javax.swing.JLabel();
         TextField4 = new javax.swing.JTextField();
         TitleTxtLabel1 = new javax.swing.JLabel();
@@ -196,27 +198,27 @@ public class sell_ui extends javax.swing.JFrame {
         TitleTxtLeftLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         TitleTxtLeftLabel1.setText("วันที่ขายสินค้า");
 
-        TextField1.addActionListener(new java.awt.event.ActionListener() {
+        DateTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextField1ActionPerformed(evt);
+                DateTextField1ActionPerformed(evt);
             }
         });
 
         TitleTxtRightLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         TitleTxtRightLabel1.setText("พนักงานผู้ขาย");
 
-        TextField2.addActionListener(new java.awt.event.ActionListener() {
+        ContactNTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextField2ActionPerformed(evt);
+                ContactNTextField2ActionPerformed(evt);
             }
         });
 
         TitleTxtLeftLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         TitleTxtLeftLabel2.setText("ชื่อลูกค้า");
 
-        TextField3.addActionListener(new java.awt.event.ActionListener() {
+        ContactNameTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextField3ActionPerformed(evt);
+                ContactNameTextField3ActionPerformed(evt);
             }
         });
 
@@ -317,46 +319,44 @@ public class sell_ui extends javax.swing.JFrame {
                     .addGroup(BgPanelLeftLayout.createSequentialGroup()
                         .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(TitleTxtLeftLabel1)
-                            .addComponent(TextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DateTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(BgPanelLeftLayout.createSequentialGroup()
                                 .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(TitleTxtLeftLabel2)
-                                    .addComponent(TextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(ContactNameTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(87, 87, 87)
                                 .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(TextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(TitleTxtRightLabel2)
                                     .addComponent(TitleTxtRightLabel1)
-                                    .addComponent(TextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(ContactNTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(TitleLeftLabel1))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(45, Short.MAX_VALUE))
                     .addGroup(BgPanelLeftLayout.createSequentialGroup()
-                        .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(TitleTxtLabel1)
-                            .addComponent(TextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 787, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(BgPanelLeftLayout.createSequentialGroup()
-                                .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(TxtPtotalLabel1)
-                                    .addComponent(TextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(BgPanelLeftLayout.createSequentialGroup()
-                                        .addComponent(TxtVATLabel2)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(TextField7))
-                                .addGap(18, 18, 18)
-                                .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(TextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(TxtTotalLabel1)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BgPanelLeftLayout.createSequentialGroup()
-                                .addComponent(DelButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(49, 49, 49)
-                                .addComponent(AddButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 787, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(TitleTxtLabel1)
+                                .addComponent(TextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 787, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(BgPanelLeftLayout.createSequentialGroup()
+                                    .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(TxtPtotalLabel1)
+                                        .addComponent(TextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(BgPanelLeftLayout.createSequentialGroup()
+                                            .addComponent(TxtVATLabel2)
+                                            .addGap(0, 0, Short.MAX_VALUE))
+                                        .addComponent(TextField7))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(TextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(TxtTotalLabel1)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BgPanelLeftLayout.createSequentialGroup()
+                                    .addComponent(DelButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(49, 49, 49)
+                                    .addComponent(AddButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(BgPanelLeftLayout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 787, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 36, Short.MAX_VALUE))
         );
         BgPanelLeftLayout.setVerticalGroup(
             BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -368,11 +368,11 @@ public class sell_ui extends javax.swing.JFrame {
                     .addGroup(BgPanelLeftLayout.createSequentialGroup()
                         .addComponent(TitleTxtRightLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(ContactNTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(BgPanelLeftLayout.createSequentialGroup()
                         .addComponent(TitleTxtLeftLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(DateTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(TextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -381,7 +381,7 @@ public class sell_ui extends javax.swing.JFrame {
                             .addComponent(TitleTxtLeftLabel2)
                             .addComponent(TitleTxtRightLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(ContactNameTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(TitleTxtLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -572,17 +572,17 @@ public class sell_ui extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jBackMouseClicked
 
-    private void TextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField1ActionPerformed
+    private void DateTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DateTextField1ActionPerformed
         //วันที่รับค่าตัวเลข
-    }//GEN-LAST:event_TextField1ActionPerformed
+    }//GEN-LAST:event_DateTextField1ActionPerformed
 
-    private void TextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField2ActionPerformed
+    private void ContactNTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContactNTextField2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextField2ActionPerformed
+    }//GEN-LAST:event_ContactNTextField2ActionPerformed
 
-    private void TextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField3ActionPerformed
+    private void ContactNameTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContactNameTextField3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextField3ActionPerformed
+    }//GEN-LAST:event_ContactNameTextField3ActionPerformed
 
     private void TextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField4ActionPerformed
         // TODO add your handling code here:
@@ -670,10 +670,10 @@ public class sell_ui extends javax.swing.JFrame {
     private javax.swing.JButton AddButton2;
     private javax.swing.JPanel BgPanelLeft;
     private javax.swing.JPanel BgPanelRightop;
+    private javax.swing.JTextField ContactNTextField2;
+    private javax.swing.JTextField ContactNameTextField3;
+    private javax.swing.JTextField DateTextField1;
     private javax.swing.JButton DelButton1;
-    private javax.swing.JTextField TextField1;
-    private javax.swing.JTextField TextField2;
-    private javax.swing.JTextField TextField3;
     private javax.swing.JTextField TextField4;
     private javax.swing.JTextField TextField5;
     private javax.swing.JTextField TextField6;

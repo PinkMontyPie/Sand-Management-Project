@@ -217,61 +217,59 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="TitleTxtLeftLabel1" min="-2" max="-2" attributes="0"/>
-                              <Component id="TextField1" min="-2" pref="350" max="-2" attributes="0"/>
+                              <Component id="DateTextField1" min="-2" pref="350" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="TitleTxtLeftLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="TextField3" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
+                                      <Component id="ContactNameTextField3" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="TextField4" min="-2" pref="350" max="-2" attributes="0"/>
                                       <Component id="TitleTxtRightLabel2" min="-2" max="-2" attributes="0"/>
                                       <Component id="TitleTxtRightLabel1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="TextField2" min="-2" pref="350" max="-2" attributes="0"/>
+                                      <Component id="ContactNTextField2" min="-2" pref="350" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Component id="TitleLeftLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="45" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="TitleTxtLabel1" min="-2" max="-2" attributes="0"/>
-                              <Component id="TextField5" min="-2" pref="787" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="TxtPtotalLabel1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="TextField6" min="-2" pref="186" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="TxtVATLabel2" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jScrollPane2" min="-2" pref="787" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="TitleTxtLabel1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="TextField5" min="-2" pref="787" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="TxtPtotalLabel1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="TextField6" min="-2" pref="186" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="TextField7" max="32767" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="TxtVATLabel2" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Component id="TextField7" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="TextField8" min="-2" pref="350" max="-2" attributes="0"/>
+                                          <Component id="TxtTotalLabel1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="TextField8" min="-2" pref="350" max="-2" attributes="0"/>
-                                      <Component id="TxtTotalLabel1" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="DelButton1" min="-2" pref="145" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                                      <Component id="AddButton2" min="-2" pref="145" max="-2" attributes="0"/>
                                   </Group>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="DelButton1" min="-2" pref="145" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                                  <Component id="AddButton2" min="-2" pref="145" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                  <Component id="jScrollPane2" min="-2" pref="787" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="36" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -285,12 +283,12 @@
                       <Group type="102" attributes="0">
                           <Component id="TitleTxtRightLabel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="TextField2" min="-2" pref="31" max="-2" attributes="0"/>
+                          <Component id="ContactNTextField2" min="-2" pref="31" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="TitleTxtLeftLabel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="TextField1" min="-2" pref="31" max="-2" attributes="0"/>
+                          <Component id="DateTextField1" min="-2" pref="31" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -302,7 +300,7 @@
                               <Component id="TitleTxtRightLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="TextField3" min="-2" pref="31" max="-2" attributes="0"/>
+                          <Component id="ContactNameTextField3" min="-2" pref="31" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -350,9 +348,9 @@
             <Property name="text" type="java.lang.String" value="&#xe27;&#xe31;&#xe19;&#xe17;&#xe35;&#xe48;&#xe02;&#xe32;&#xe22;&#xe2a;&#xe34;&#xe19;&#xe04;&#xe49;&#xe32;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="TextField1">
+        <Component class="javax.swing.JTextField" name="DateTextField1">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextField1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DateTextField1ActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="TitleTxtRightLabel1">
@@ -363,9 +361,9 @@
             <Property name="text" type="java.lang.String" value="&#xe1e;&#xe19;&#xe31;&#xe01;&#xe07;&#xe32;&#xe19;&#xe1c;&#xe39;&#xe49;&#xe02;&#xe32;&#xe22;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="TextField2">
+        <Component class="javax.swing.JTextField" name="ContactNTextField2">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextField2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ContactNTextField2ActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="TitleTxtLeftLabel2">
@@ -376,9 +374,9 @@
             <Property name="text" type="java.lang.String" value="&#xe0a;&#xe37;&#xe48;&#xe2d;&#xe25;&#xe39;&#xe01;&#xe04;&#xe49;&#xe32;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="TextField3">
+        <Component class="javax.swing.JTextField" name="ContactNameTextField3">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextField3ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ContactNameTextField3ActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="TitleTxtRightLabel2">
