@@ -217,18 +217,18 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="TitleTxtLeftLabel1" min="-2" max="-2" attributes="0"/>
-                              <Component id="TextField1" min="-2" pref="350" max="-2" attributes="0"/>
+                              <Component id="DateTextField1" min="-2" pref="350" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="TitleTxtLeftLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="TextField3" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
+                                      <Component id="ContactTextField3" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="TextField4" min="-2" pref="350" max="-2" attributes="0"/>
+                                      <Component id="ContactNumTextField4" min="-2" pref="350" max="-2" attributes="0"/>
                                       <Component id="TitleTxtRightLabel2" min="-2" max="-2" attributes="0"/>
                                       <Component id="TitleTxtRightLabel1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="TextField2" min="-2" pref="350" max="-2" attributes="0"/>
+                                      <Component id="CompanyTextField2" min="-2" pref="350" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Component id="TitleLeftLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -238,11 +238,11 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="TitleTxtLabel1" min="-2" max="-2" attributes="0"/>
-                              <Component id="TextField5" pref="787" max="32767" attributes="0"/>
+                              <Component id="AdressTextField5" pref="787" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="TxtPtotalLabel1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="TextField6" min="-2" pref="186" max="-2" attributes="0"/>
+                                      <Component id="TotalTextField6" min="-2" pref="186" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -250,11 +250,11 @@
                                           <Component id="TxtVATLabel2" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
-                                      <Component id="TextField7" max="32767" attributes="0"/>
+                                      <Component id="VatTextField7" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="TextField8" min="-2" pref="350" max="-2" attributes="0"/>
+                                      <Component id="TotalpriceTextField8" min="-2" pref="350" max="-2" attributes="0"/>
                                       <Component id="TxtTotalLabel1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -281,30 +281,30 @@
                       <Group type="102" attributes="0">
                           <Component id="TitleTxtRightLabel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="TextField2" min="-2" pref="31" max="-2" attributes="0"/>
+                          <Component id="CompanyTextField2" min="-2" pref="31" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="TitleTxtLeftLabel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="TextField1" min="-2" pref="31" max="-2" attributes="0"/>
+                          <Component id="DateTextField1" min="-2" pref="31" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="TextField4" alignment="1" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="ContactNumTextField4" alignment="1" min="-2" pref="31" max="-2" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="TitleTxtLeftLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="TitleTxtRightLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="TextField3" min="-2" pref="31" max="-2" attributes="0"/>
+                          <Component id="ContactTextField3" min="-2" pref="31" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="TitleTxtLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="TextField5" min="-2" pref="31" max="-2" attributes="0"/>
+                  <Component id="AdressTextField5" min="-2" pref="31" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   <Component id="jScrollPane2" min="-2" pref="285" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
@@ -315,9 +315,9 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="TextField8" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                      <Component id="TextField7" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                      <Component id="TextField6" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="TotalpriceTextField8" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="VatTextField7" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="TotalTextField6" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="63" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -346,9 +346,14 @@
             <Property name="text" type="java.lang.String" value="&#xe27;&#xe31;&#xe19;&#xe17;&#xe35;&#xe48;&#xe2a;&#xe31;&#xe48;&#xe07;&#xe0b;&#xe37;&#xe49;&#xe2d;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="TextField1">
+        <Component class="javax.swing.JTextField" name="DateTextField1">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="12" style="1"/>
+            </Property>
+          </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextField1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DateTextField1ActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="TitleTxtRightLabel1">
@@ -359,9 +364,14 @@
             <Property name="text" type="java.lang.String" value="&#xe1a;&#xe23;&#xe34;&#xe29;&#xe31;&#xe17;/&#xe23;&#xe49;&#xe32;&#xe19;&#xe15;&#xe31;&#xe27;&#xe41;&#xe17;&#xe19;&#xe08;&#xe33;&#xe2b;&#xe19;&#xe48;&#xe32;&#xe22;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="TextField2">
+        <Component class="javax.swing.JTextField" name="CompanyTextField2">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="12" style="1"/>
+            </Property>
+          </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextField2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CompanyTextField2ActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="TitleTxtLeftLabel2">
@@ -372,9 +382,14 @@
             <Property name="text" type="java.lang.String" value="&#xe0a;&#xe37;&#xe48;&#xe2d;&#xe1c;&#xe39;&#xe49;&#xe15;&#xe34;&#xe14;&#xe15;&#xe48;&#xe2d;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="TextField3">
+        <Component class="javax.swing.JTextField" name="ContactTextField3">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="12" style="1"/>
+            </Property>
+          </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextField3ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ContactTextField3ActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="TitleTxtRightLabel2">
@@ -385,9 +400,14 @@
             <Property name="text" type="java.lang.String" value="&#xe40;&#xe1a;&#xe2d;&#xe23;&#xe4c;&#xe15;&#xe34;&#xe14;&#xe15;&#xe48;&#xe2d;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="TextField4">
+        <Component class="javax.swing.JTextField" name="ContactNumTextField4">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="12" style="1"/>
+            </Property>
+          </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextField4ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ContactNumTextField4ActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="TitleTxtLabel1">
@@ -398,9 +418,14 @@
             <Property name="text" type="java.lang.String" value="&#xe17;&#xe35;&#xe48;&#xe2d;&#xe22;&#xe39;&#xe48;&#xe08;&#xe31;&#xe14;&#xe2a;&#xe48;&#xe07;&#xe2a;&#xe34;&#xe19;&#xe04;&#xe49;&#xe32;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="TextField5">
+        <Component class="javax.swing.JTextField" name="AdressTextField5">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="12" style="1"/>
+            </Property>
+          </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextField5ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AdressTextField5ActionPerformed"/>
           </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane2">
@@ -468,9 +493,14 @@
             <Property name="text" type="java.lang.String" value="&#xe23;&#xe27;&#xe21;&#xe23;&#xe32;&#xe04;&#xe32;&#xe2a;&#xe34;&#xe19;&#xe04;&#xe49;&#xe32;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="TextField6">
+        <Component class="javax.swing.JTextField" name="TotalTextField6">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="12" style="1"/>
+            </Property>
+          </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextField6ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TotalTextField6ActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="TxtVATLabel2">
@@ -481,9 +511,14 @@
             <Property name="text" type="java.lang.String" value="&#xe20;&#xe32;&#xe29;&#xe35;&#xe21;&#xe39;&#xe25;&#xe04;&#xe48;&#xe32;&#xe40;&#xe1e;&#xe34;&#xe48;&#xe21; 7% VAT"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="TextField7">
+        <Component class="javax.swing.JTextField" name="VatTextField7">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="12" style="1"/>
+            </Property>
+          </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextField7ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="VatTextField7ActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="TxtTotalLabel1">
@@ -494,9 +529,14 @@
             <Property name="text" type="java.lang.String" value="&#xe23;&#xe27;&#xe21;&#xe40;&#xe07;&#xe34;&#xe19;&#xe17;&#xe31;&#xe49;&#xe07;&#xe2a;&#xe34;&#xe49;&#xe19; TOTAL"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="TextField8">
+        <Component class="javax.swing.JTextField" name="TotalpriceTextField8">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="12" style="1"/>
+            </Property>
+          </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextField8ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TotalpriceTextField8ActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="DelButton1">
@@ -518,6 +558,7 @@
             <Property name="text" type="java.lang.String" value="&#xe40;&#xe1e;&#xe34;&#xe48;&#xe21;&#xe02;&#xe49;&#xe2d;&#xe21;&#xe39;&#xe25;"/>
           </Properties>
           <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="AddButton2MouseClicked"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AddButton2ActionPerformed"/>
           </Events>
         </Component>
@@ -584,6 +625,9 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="dropdownlist01">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="12" style="1"/>
+            </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
                 <StringItem index="0" value="Item 1"/>
@@ -598,6 +642,11 @@
           </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="TextSearchField1">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="12" style="1"/>
+            </Property>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="TitleSearch">
           <Properties>
@@ -627,18 +676,18 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="jTable1">
+        <Component class="javax.swing.JTable" name="purchaseTable1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="12" style="0"/>
             </Property>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="5" rowCount="4">
-                <Column editable="true" title="Product ID" type="java.lang.Object"/>
-                <Column editable="true" title="Date" type="java.lang.Object"/>
-                <Column editable="true" title="Contact Name" type="java.lang.Object"/>
-                <Column editable="true" title="Contact Adress" type="java.lang.Object"/>
-                <Column editable="true" title="Contact Number" type="java.lang.Object"/>
+                <Column editable="true" title="Product ID" type="java.lang.String"/>
+                <Column editable="true" title="Date" type="java.lang.String"/>
+                <Column editable="true" title="Contact Name" type="java.lang.String"/>
+                <Column editable="true" title="Contact Adress" type="java.lang.String"/>
+                <Column editable="true" title="Contact Number" type="java.lang.String"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -670,6 +719,7 @@
                 </Column>
               </TableColumnModel>
             </Property>
+            <Property name="rowHeight" type="int" value="40"/>
             <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
             </Property>
