@@ -13,6 +13,8 @@ import java.sql.Statement;
 import java.text.*;
 import java.util.*;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -142,15 +144,19 @@ public class report_ui extends javax.swing.JFrame {
         TextSearchField1 = new javax.swing.JTextField();
         TitleSearch = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         Titledropdown1 = new javax.swing.JLabel();
         dropdownlist2 = new javax.swing.JComboBox<>();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable_Delivery = new javax.swing.JTable();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTable_Purchase = new javax.swing.JTable();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTable_Sell = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(1920, 1080));
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setPreferredSize(new java.awt.Dimension(1920, 190));
@@ -714,11 +720,16 @@ public class report_ui extends javax.swing.JFrame {
         BgPanelRightop.setBackground(new java.awt.Color(204, 204, 204));
 
         Titledropdown.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        Titledropdown.setForeground(new java.awt.Color(51, 51, 51));
         Titledropdown.setText("หมวดหมู่");
 
+        dropdownlist01.setBackground(new java.awt.Color(255, 255, 255));
         dropdownlist01.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Name", "Phone" }));
 
+        TextSearchField1.setBackground(new java.awt.Color(255, 255, 255));
+
         TitleSearch.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        TitleSearch.setForeground(new java.awt.Color(51, 51, 51));
         TitleSearch.setText("ค้นหา");
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -765,25 +776,13 @@ public class report_ui extends javax.swing.JFrame {
                         .addGap(31, 31, 31))))
         );
 
-        jTable1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Product ID", "Date", "Contact Name", "Contact Adress", "Contact Number"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
 
         Titledropdown1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        Titledropdown1.setForeground(new java.awt.Color(51, 51, 51));
         Titledropdown1.setText("ตาราง | Table");
 
+        dropdownlist2.setBackground(new java.awt.Color(255, 255, 255));
         dropdownlist2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Delivery", "Purchase", "Sell" }));
         dropdownlist2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -820,6 +819,66 @@ public class report_ui extends javax.swing.JFrame {
                 .addGap(15, 15, 15))
         );
 
+        jPanel3.setBackground(new java.awt.Color(204, 204, 204));
+
+        jTable_Delivery.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable_Delivery);
+
+        jTable_Purchase.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "2", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane5.setViewportView(jTable_Purchase);
+
+        jTable_Sell.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane6.setViewportView(jTable_Sell);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 1042, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 1042, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 732, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 732, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -830,9 +889,9 @@ public class report_ui extends javax.swing.JFrame {
                 .addComponent(BgPanelLeft, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
                     .addComponent(BgPanelRightop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -846,7 +905,7 @@ public class report_ui extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BgPanelRightop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(BgPanelLeft, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -933,16 +992,25 @@ public class report_ui extends javax.swing.JFrame {
             BgPanelLeft_delivery.setVisible(true);
             BgPanelLeft_purchase.setVisible(false);
             BgPanelLeft_sell.setVisible(false);
+            jScrollPane1.setVisible(true);
+            jScrollPane5.setVisible(false);
+            jScrollPane6.setVisible(false);
         }
         if(type == "Purchase"){
             BgPanelLeft_delivery.setVisible(false);
             BgPanelLeft_purchase.setVisible(true);
             BgPanelLeft_sell.setVisible(false);
+            jScrollPane1.setVisible(false);
+            jScrollPane5.setVisible(true);
+            jScrollPane6.setVisible(false);
         }
         if(type == "Sell"){
             BgPanelLeft_delivery.setVisible(false);
             BgPanelLeft_purchase.setVisible(false);
             BgPanelLeft_sell.setVisible(true);
+            jScrollPane1.setVisible(false);
+            jScrollPane5.setVisible(false);
+            jScrollPane6.setVisible(true);
         }
     }//GEN-LAST:event_dropdownlist2ActionPerformed
 
@@ -1019,7 +1087,49 @@ public class report_ui extends javax.swing.JFrame {
         InvoiceGenerator pdf = new InvoiceGenerator();
         pdf.setPath(Path());
     }//GEN-LAST:event_jButton_pdf_deliveryMouseClicked
-
+    
+    public void fetchitemDetailsDE(){
+        Connection c = null;
+        Statement stmt = null;
+        try{
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:data.db");
+            stmt = c.createStatement();
+            ResultSet rs1 = stmt.executeQuery("SELECT * FROM storage");
+            jTable_Delivery.setModel(DbUtils.resultSetToTableModel(rs1)); 
+        }catch(Exception b){
+            JOptionPane.showMessageDialog(null, b);
+        }
+    }
+    
+    public void fetchitemDetailsPU(){
+        Connection c = null;
+        Statement stmt = null;
+        try{
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:data.db");
+            stmt = c.createStatement();
+            ResultSet rs1 = stmt.executeQuery("SELECT * FROM storage");
+            jTable_Purchase.setModel(DbUtils.resultSetToTableModel(rs1)); 
+        }catch(Exception b){
+            JOptionPane.showMessageDialog(null, b);
+        }
+    }
+    
+    public void fetchitemDetailsSE(){
+        Connection c = null;
+        Statement stmt = null;
+        try{
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:data.db");
+            stmt = c.createStatement();
+            ResultSet rs1 = stmt.executeQuery("SELECT * FROM storage");
+            jTable_Sell.setModel(DbUtils.resultSetToTableModel(rs1)); 
+        }catch(Exception b){
+            JOptionPane.showMessageDialog(null, b);
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -1123,11 +1233,16 @@ public class report_ui extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelTime;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JTable jTable_Delivery;
+    private javax.swing.JTable jTable_Purchase;
+    private javax.swing.JTable jTable_Sell;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextArea3;
