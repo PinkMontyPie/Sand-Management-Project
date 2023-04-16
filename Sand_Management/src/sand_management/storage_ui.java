@@ -534,23 +534,24 @@ public class storage_ui extends javax.swing.JFrame {
         // Search
         Connection c = null;
         Statement stmt = null;
-
+        String type = jComboBox1.getSelectedItem().toString();
+        String search = jTextField1.getText();
         try {
-            int i = Integer.parseInt(jTextField1.getText());
             Class.forName("org.sqlite.JDBC");
             c = DriverManager.getConnection("jdbc:sqlite:data.db");
             stmt = c.createStatement();
-            ResultSet rs1 = stmt.executeQuery("Select * from storage where Id_item like " + i + "");
-            jTablestorage.setModel(DbUtils.resultSetToTableModel(rs1));
-            System.out.println(i);
-            String type = jComboBox1.getSelectedItem().toString();
-            System.out.println(type);
-            if (type.equals("Name")){
-               String nameitem = jTextField1.getText();
-               ResultSet rs2 = stmt.executeQuery("SELECT * FROM storage WHERE Name_i " + nameitem + "");
-               jTablestorage.setModel(DbUtils.resultSetToTableModel(rs2));
-               System.out.println(nameitem);
-           }
+            if (type.equals("ID")){
+                ResultSet rs = stmt.executeQuery("SELECT * FROM storage WHERE id_item = '" +search+ "'");
+                jTablestorage.setModel(DbUtils.resultSetToTableModel(rs));
+                rs.close();
+            }
+            if (type.equals("Name")) {
+                ResultSet rs = stmt.executeQuery("SELECT * FROM storage WHERE Name_i = '" +search+ "'");
+                jTablestorage.setModel(DbUtils.resultSetToTableModel(rs));
+                rs.close();
+            } 
+            stmt.close();
+            c.close();
            
         } catch (Exception e) {
             e.printStackTrace();
