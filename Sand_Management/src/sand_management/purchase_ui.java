@@ -450,6 +450,11 @@ public class purchase_ui extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 153, 255));
         jButton1.setText("ค้นหา");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -500,7 +505,15 @@ public class purchase_ui extends javax.swing.JFrame {
             new String [] {
                 "Product ID", "Date", "Contact Name", "Contact Adress", "Contact Number"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(purchaseTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -668,6 +681,35 @@ public class purchase_ui extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        // Search
+        Connection conn = null;
+        Statement stmt = null;
+        String type = dropdownlist01.getSelectedItem().toString();
+        String search = TextSearchField1.getText();
+        try {
+            Class.forName("org.sqlite.JDBC");
+            conn = DriverManager.getConnection("jdbc:sqlite:purchase_data.db");
+            stmt = conn.createStatement();
+            if (type.equals("Company")) {
+                ResultSet rs = stmt.executeQuery("SELECT * FROM purchase WHERE Company = '" + search + "'");
+                purchaseTable1.setModel(DbUtils.resultSetToTableModel(rs));
+                rs.close();
+            }
+            if (type.equals("Contact Name")) {
+                ResultSet rs = stmt.executeQuery("SELECT * FROM purchase WHERE ContactName = '" + search + "'");
+                purchaseTable1.setModel(DbUtils.resultSetToTableModel(rs));
+                rs.close();
+            }
+            stmt.close();
+            conn.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
