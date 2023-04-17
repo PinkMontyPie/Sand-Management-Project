@@ -224,6 +224,7 @@ public class employee_search extends javax.swing.JFrame {
         last_name.setEditable(false);
         nickname.setEditable(false);
         position.setEditable(false);
+        position.setEnabled(false);
         age.setEditable(false);
         ethnicity.setEditable(false);
         nationality.setEditable(false);
@@ -268,6 +269,7 @@ public class employee_search extends javax.swing.JFrame {
      public void edit_enable(){
         nickname.setEditable(true);
         position.setEditable(true);
+        position.setEnabled(true);
         age.setEditable(true);
         ethnicity.setEditable(true);
         nationality.setEditable(true);
