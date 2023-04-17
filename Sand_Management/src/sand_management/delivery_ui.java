@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.*;
 import java.util.*;
+import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -30,15 +32,43 @@ public class delivery_ui extends javax.swing.JFrame {
     }
     
     public void Start(){
+        fetchitemDetailsCS();
         setDate();
         setTime();
     }
+    
+    public void fetchitemDetailsCS() {
+        Connection c = null;
+        Statement stmt = null;
+        try {
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:database.db");
+            stmt = c.createStatement();
+            ResultSet rs1 = stmt.executeQuery("SELECT * FROM delivery_data");
+            jTable1.setModel(DbUtils.resultSetToTableModel(rs1));
+        } catch (Exception b) {
+            JOptionPane.showMessageDialog(null, b);
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     public void setDate() {
         dateFormat = new SimpleDateFormat("EEEE dd MMMMM yyyy");
         date = dateFormat.format(Calendar.getInstance().getTime());
         jLabelDate.setText(date);
     }
+    
+    
+    
+    
 
     public void setTime() {
         timeFormat = new SimpleDateFormat("hh:mm:ss a");
@@ -78,8 +108,6 @@ public class delivery_ui extends javax.swing.JFrame {
         TextField5 = new javax.swing.JTextField();
         DelButton1 = new javax.swing.JButton();
         AddButton2 = new javax.swing.JButton();
-        TextField9 = new javax.swing.JTextField();
-        TitleTxtLabel2 = new javax.swing.JLabel();
         TextField10 = new javax.swing.JTextField();
         TitleTxtLabel3 = new javax.swing.JLabel();
         TitleTxtLabel4 = new javax.swing.JLabel();
@@ -251,15 +279,6 @@ public class delivery_ui extends javax.swing.JFrame {
             }
         });
 
-        TextField9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextField9ActionPerformed(evt);
-            }
-        });
-
-        TitleTxtLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        TitleTxtLabel2.setText("สถานที่จัดส่ง");
-
         TextField10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextField10ActionPerformed(evt);
@@ -270,7 +289,7 @@ public class delivery_ui extends javax.swing.JFrame {
         TitleTxtLabel3.setText("สถานที่จัดส่ง");
 
         TitleTxtLabel4.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        TitleTxtLabel4.setText("สถานที่จัดส่ง");
+        TitleTxtLabel4.setText("รายงานปัญหา");
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -304,8 +323,6 @@ public class delivery_ui extends javax.swing.JFrame {
                             .addComponent(TitleTxtLabel4)
                             .addComponent(TitleTxtLabel3)
                             .addComponent(TextField10, javax.swing.GroupLayout.DEFAULT_SIZE, 787, Short.MAX_VALUE)
-                            .addComponent(TitleTxtLabel2)
-                            .addComponent(TextField9, javax.swing.GroupLayout.DEFAULT_SIZE, 787, Short.MAX_VALUE)
                             .addComponent(TitleTxtLabel1)
                             .addComponent(TextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 787, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BgPanelLeftLayout.createSequentialGroup()
@@ -344,18 +361,14 @@ public class delivery_ui extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(TitleTxtLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
                 .addComponent(TitleTxtLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(TextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addGap(18, 18, 18)
                 .addComponent(TitleTxtLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 182, Short.MAX_VALUE)
                 .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(AddButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(DelButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -367,13 +380,23 @@ public class delivery_ui extends javax.swing.JFrame {
         Titledropdown.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         Titledropdown.setText("หมวดหมู่");
 
-        dropdownlist01.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        dropdownlist01.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PRODUCT ID", "NAME DRIVER", "CONTACT NUMBER", " ", " ", " ", " " }));
+        dropdownlist01.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dropdownlist01ActionPerformed(evt);
+            }
+        });
 
         TitleSearch.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         TitleSearch.setText("ค้นหา");
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setText("ค้นหา");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -426,6 +449,15 @@ public class delivery_ui extends javax.swing.JFrame {
                 "Product ID", "Date", "Contact Name", "Contact Adress", "Contact Number"
             }
         ));
+        jTable1.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jTable1AncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -534,14 +566,55 @@ public class delivery_ui extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void TextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextField9ActionPerformed
-
     private void TextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField10ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TextField10ActionPerformed
 
+    private void jTable1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTable1AncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable1AncestorAdded
+
+    private void dropdownlist01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dropdownlist01ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dropdownlist01ActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        Connection c = null;
+        Statement stmt = null;
+        String type = dropdownlist01.getSelectedItem().toString();
+        String search = TextSearchField1.getText();
+        try {
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:database.db");
+            stmt = c.createStatement();
+            if (type.equals("PRODUCT ID ")) {
+                ResultSet rs = stmt.executeQuery("SELECT * FROM delivery_data WHERE PRODUCT_ID = '" + search + "'");
+                jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+                rs.close();
+            }
+            if (type.equals("NAME DRIVER")) {
+                ResultSet rs = stmt.executeQuery("SELECT * FROM delivery_data WHERE NAME_DRIVER = '" + search + "'");
+                jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+                rs.close();
+            }
+            if (type.equals("CONTACT NUMBER")) {
+                ResultSet rs = stmt.executeQuery("SELECT * FROM delivery_data WHERE CONTACT_NUMBER = '" + search + "'");
+                jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+                rs.close();
+            }
+            stmt.close();
+            c.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }   
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -715,12 +788,10 @@ public class delivery_ui extends javax.swing.JFrame {
     private javax.swing.JTextField TextField3;
     private javax.swing.JTextField TextField4;
     private javax.swing.JTextField TextField5;
-    private javax.swing.JTextField TextField9;
     private javax.swing.JTextField TextSearchField1;
     private javax.swing.JLabel TitleLeftLabel1;
     private javax.swing.JLabel TitleSearch;
     private javax.swing.JLabel TitleTxtLabel1;
-    private javax.swing.JLabel TitleTxtLabel2;
     private javax.swing.JLabel TitleTxtLabel3;
     private javax.swing.JLabel TitleTxtLabel4;
     private javax.swing.JLabel TitleTxtLeftLabel1;
