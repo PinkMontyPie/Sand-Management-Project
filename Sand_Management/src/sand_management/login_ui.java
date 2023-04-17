@@ -199,7 +199,7 @@ public class login_ui extends javax.swing.JFrame {
         // TODO add your handling code here: 
         Connection c = null;
         Statement stmt = null;
-        String a1 = jUser.getText();
+        String a1 = jUser.getText().toLowerCase();
         String a2 = String.valueOf(jPasswordField1.getPassword());
         try {
             Class.forName("org.sqlite.JDBC");
