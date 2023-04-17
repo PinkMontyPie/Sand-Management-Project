@@ -246,11 +246,16 @@ public class report_ui extends javax.swing.JFrame {
         BgPanelLeft_delivery.setBackground(new java.awt.Color(204, 204, 204));
 
         TitleLeftLabel2.setFont(new java.awt.Font("Tahoma", 1, 28)); // NOI18N
+        TitleLeftLabel2.setForeground(new java.awt.Color(51, 51, 51));
         TitleLeftLabel2.setText("รายละเอียดจัดส่งสินค้า");
 
         TitleTxtLeftLabel3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtLeftLabel3.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtLeftLabel3.setText("ชื่อพนักงานขับรถ");
 
+        TextField6.setEditable(false);
+        TextField6.setBackground(new java.awt.Color(255, 255, 255));
+        TextField6.setForeground(new java.awt.Color(51, 51, 51));
         TextField6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextField6ActionPerformed(evt);
@@ -258,8 +263,12 @@ public class report_ui extends javax.swing.JFrame {
         });
 
         TitleTxtRightLabel3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtRightLabel3.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtRightLabel3.setText("ชื่อลูกค้า");
 
+        TextField7.setEditable(false);
+        TextField7.setBackground(new java.awt.Color(255, 255, 255));
+        TextField7.setForeground(new java.awt.Color(51, 51, 51));
         TextField7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextField7ActionPerformed(evt);
@@ -267,8 +276,12 @@ public class report_ui extends javax.swing.JFrame {
         });
 
         TitleTxtLeftLabel4.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtLeftLabel4.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtLeftLabel4.setText("วันที่การจัดส่งสินค้า");
 
+        TextField8.setEditable(false);
+        TextField8.setBackground(new java.awt.Color(255, 255, 255));
+        TextField8.setForeground(new java.awt.Color(51, 51, 51));
         TextField8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextField8ActionPerformed(evt);
@@ -276,14 +289,21 @@ public class report_ui extends javax.swing.JFrame {
         });
 
         TitleTxtRightLabel4.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtRightLabel4.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtRightLabel4.setText("เบอร์ติดต่อ");
 
+        TextField11.setEditable(false);
+        TextField11.setBackground(new java.awt.Color(255, 255, 255));
+        TextField11.setForeground(new java.awt.Color(51, 51, 51));
         TextField11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextField11ActionPerformed(evt);
             }
         });
 
+        TextField9.setEditable(false);
+        TextField9.setBackground(new java.awt.Color(255, 255, 255));
+        TextField9.setForeground(new java.awt.Color(51, 51, 51));
         TextField9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextField9ActionPerformed(evt);
@@ -291,11 +311,16 @@ public class report_ui extends javax.swing.JFrame {
         });
 
         TitleTxtLeftLabel9.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtLeftLabel9.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtLeftLabel9.setText("วันที่การจัดส่งสินค้า");
 
         TitleTxtLeftLabel10.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtLeftLabel10.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtLeftLabel10.setText("สถานที่จัดส่ง");
 
+        TextField10.setEditable(false);
+        TextField10.setBackground(new java.awt.Color(255, 255, 255));
+        TextField10.setForeground(new java.awt.Color(51, 51, 51));
         TextField10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextField10ActionPerformed(evt);
@@ -303,9 +328,13 @@ public class report_ui extends javax.swing.JFrame {
         });
 
         TitleTxtLeftLabel11.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtLeftLabel11.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtLeftLabel11.setText("รายงานปัญหา");
 
+        jTextArea1.setEditable(false);
+        jTextArea1.setBackground(new java.awt.Color(255, 255, 255));
         jTextArea1.setColumns(20);
+        jTextArea1.setForeground(new java.awt.Color(51, 51, 51));
         jTextArea1.setRows(5);
         jScrollPane2.setViewportView(jTextArea1);
 
@@ -394,6 +423,7 @@ public class report_ui extends javax.swing.JFrame {
         );
 
         BgPanelLeft_purchase.setBackground(new java.awt.Color(204, 204, 204));
+        BgPanelLeft_purchase.setForeground(new java.awt.Color(51, 51, 51));
 
         TitleLeftLabel5.setFont(new java.awt.Font("Tahoma", 1, 28)); // NOI18N
         TitleLeftLabel5.setForeground(new java.awt.Color(51, 51, 51));
@@ -403,6 +433,9 @@ public class report_ui extends javax.swing.JFrame {
         TitleTxtLeftLabel12.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtLeftLabel12.setText("ชื่อพนักงานขับรถ");
 
+        TextField12.setEditable(false);
+        TextField12.setBackground(new java.awt.Color(255, 255, 255));
+        TextField12.setForeground(new java.awt.Color(51, 51, 51));
         TextField12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextField12ActionPerformed(evt);
@@ -413,6 +446,9 @@ public class report_ui extends javax.swing.JFrame {
         TitleTxtRightLabel9.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtRightLabel9.setText("ชื่อลูกค้า");
 
+        TextField13.setEditable(false);
+        TextField13.setBackground(new java.awt.Color(255, 255, 255));
+        TextField13.setForeground(new java.awt.Color(51, 51, 51));
         TextField13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextField13ActionPerformed(evt);
@@ -423,6 +459,9 @@ public class report_ui extends javax.swing.JFrame {
         TitleTxtLeftLabel13.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtLeftLabel13.setText("วันที่การจัดส่งสินค้า");
 
+        TextField14.setEditable(false);
+        TextField14.setBackground(new java.awt.Color(255, 255, 255));
+        TextField14.setForeground(new java.awt.Color(51, 51, 51));
         TextField14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextField14ActionPerformed(evt);
@@ -433,12 +472,18 @@ public class report_ui extends javax.swing.JFrame {
         TitleTxtRightLabel10.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtRightLabel10.setText("เบอร์ติดต่อ");
 
+        TextField21.setEditable(false);
+        TextField21.setBackground(new java.awt.Color(255, 255, 255));
+        TextField21.setForeground(new java.awt.Color(51, 51, 51));
         TextField21.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextField21ActionPerformed(evt);
             }
         });
 
+        TextField29.setEditable(false);
+        TextField29.setBackground(new java.awt.Color(255, 255, 255));
+        TextField29.setForeground(new java.awt.Color(51, 51, 51));
         TextField29.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextField29ActionPerformed(evt);
@@ -453,6 +498,9 @@ public class report_ui extends javax.swing.JFrame {
         TitleTxtLeftLabel15.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtLeftLabel15.setText("สถานที่จัดส่ง");
 
+        TextField30.setEditable(false);
+        TextField30.setBackground(new java.awt.Color(255, 255, 255));
+        TextField30.setForeground(new java.awt.Color(51, 51, 51));
         TextField30.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextField30ActionPerformed(evt);
@@ -463,7 +511,10 @@ public class report_ui extends javax.swing.JFrame {
         TitleTxtLeftLabel16.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtLeftLabel16.setText("รายงานปัญหา");
 
+        jTextArea2.setEditable(false);
+        jTextArea2.setBackground(new java.awt.Color(255, 255, 255));
         jTextArea2.setColumns(20);
+        jTextArea2.setForeground(new java.awt.Color(51, 51, 51));
         jTextArea2.setRows(5);
         jScrollPane3.setViewportView(jTextArea2);
 
@@ -553,11 +604,16 @@ public class report_ui extends javax.swing.JFrame {
         BgPanelLeft_sell.setBackground(new java.awt.Color(204, 204, 204));
 
         TitleLeftLabel6.setFont(new java.awt.Font("Tahoma", 1, 28)); // NOI18N
+        TitleLeftLabel6.setForeground(new java.awt.Color(51, 51, 51));
         TitleLeftLabel6.setText("รายละเอียดขายสินค้า");
 
         TitleTxtLeftLabel17.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtLeftLabel17.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtLeftLabel17.setText("ชื่อพนักงานขับรถ");
 
+        TextField31.setEditable(false);
+        TextField31.setBackground(new java.awt.Color(255, 255, 255));
+        TextField31.setForeground(new java.awt.Color(51, 51, 51));
         TextField31.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextField31ActionPerformed(evt);
@@ -565,8 +621,12 @@ public class report_ui extends javax.swing.JFrame {
         });
 
         TitleTxtRightLabel11.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtRightLabel11.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtRightLabel11.setText("ชื่อลูกค้า");
 
+        TextField32.setEditable(false);
+        TextField32.setBackground(new java.awt.Color(255, 255, 255));
+        TextField32.setForeground(new java.awt.Color(51, 51, 51));
         TextField32.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextField32ActionPerformed(evt);
@@ -574,8 +634,12 @@ public class report_ui extends javax.swing.JFrame {
         });
 
         TitleTxtLeftLabel18.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtLeftLabel18.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtLeftLabel18.setText("วันที่การจัดส่งสินค้า");
 
+        TextField33.setEditable(false);
+        TextField33.setBackground(new java.awt.Color(255, 255, 255));
+        TextField33.setForeground(new java.awt.Color(51, 51, 51));
         TextField33.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextField33ActionPerformed(evt);
@@ -583,14 +647,21 @@ public class report_ui extends javax.swing.JFrame {
         });
 
         TitleTxtRightLabel12.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtRightLabel12.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtRightLabel12.setText("เบอร์ติดต่อ");
 
+        TextField34.setEditable(false);
+        TextField34.setBackground(new java.awt.Color(255, 255, 255));
+        TextField34.setForeground(new java.awt.Color(51, 51, 51));
         TextField34.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextField34ActionPerformed(evt);
             }
         });
 
+        TextField35.setEditable(false);
+        TextField35.setBackground(new java.awt.Color(255, 255, 255));
+        TextField35.setForeground(new java.awt.Color(51, 51, 51));
         TextField35.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextField35ActionPerformed(evt);
@@ -598,11 +669,16 @@ public class report_ui extends javax.swing.JFrame {
         });
 
         TitleTxtLeftLabel19.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtLeftLabel19.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtLeftLabel19.setText("วันที่การจัดส่งสินค้า");
 
         TitleTxtLeftLabel20.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtLeftLabel20.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtLeftLabel20.setText("สถานที่จัดส่ง");
 
+        TextField36.setEditable(false);
+        TextField36.setBackground(new java.awt.Color(255, 255, 255));
+        TextField36.setForeground(new java.awt.Color(51, 51, 51));
         TextField36.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextField36ActionPerformed(evt);
@@ -610,9 +686,13 @@ public class report_ui extends javax.swing.JFrame {
         });
 
         TitleTxtLeftLabel21.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtLeftLabel21.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtLeftLabel21.setText("รายงานปัญหา");
 
+        jTextArea3.setEditable(false);
+        jTextArea3.setBackground(new java.awt.Color(255, 255, 255));
         jTextArea3.setColumns(20);
+        jTextArea3.setForeground(new java.awt.Color(51, 51, 51));
         jTextArea3.setRows(5);
         jScrollPane4.setViewportView(jTextArea3);
 
@@ -722,6 +802,7 @@ public class report_ui extends javax.swing.JFrame {
         BgPanelRightop.setBackground(new java.awt.Color(204, 204, 204));
 
         TextSearchField1.setBackground(new java.awt.Color(255, 255, 255));
+        TextSearchField1.setForeground(new java.awt.Color(51, 51, 51));
 
         TitleSearch.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         TitleSearch.setForeground(new java.awt.Color(51, 51, 51));
@@ -738,6 +819,7 @@ public class report_ui extends javax.swing.JFrame {
         });
 
         dropdownlist2.setBackground(new java.awt.Color(255, 255, 255));
+        dropdownlist2.setForeground(new java.awt.Color(51, 51, 51));
         dropdownlist2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Delivery", "Purchase", "Sell" }));
         dropdownlist2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -795,6 +877,7 @@ public class report_ui extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
 
+        jTable_Delivery.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTable_Delivery.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -1049,19 +1132,19 @@ public class report_ui extends javax.swing.JFrame {
     private void jButton_pdf_sellMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_pdf_sellMouseClicked
         // TODO add your handling code here:
         InvoiceGenerator pdf = new InvoiceGenerator();
-        pdf.setPath(Path());
+        pdf.genpdf(Path(),"delivery_data","1");
     }//GEN-LAST:event_jButton_pdf_sellMouseClicked
 
     private void jButton_pdf_purchaseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_pdf_purchaseMouseClicked
         // TODO add your handling code here:
         InvoiceGenerator pdf = new InvoiceGenerator();
-        pdf.setPath(Path());
+        pdf.genpdf(Path(),"","");
     }//GEN-LAST:event_jButton_pdf_purchaseMouseClicked
 
     private void jButton_pdf_deliveryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_pdf_deliveryMouseClicked
         // TODO add your handling code here:
         InvoiceGenerator pdf = new InvoiceGenerator();
-        pdf.setPath(Path());
+        pdf.genpdf(Path(),"delivery_data","2");
     }//GEN-LAST:event_jButton_pdf_deliveryMouseClicked
 
     public void fetchitemDetails(String s) {
