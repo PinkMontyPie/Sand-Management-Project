@@ -716,7 +716,8 @@ public class sell_ui extends javax.swing.JFrame {
             c = DriverManager.getConnection("jdbc:sqlite:database.db");
             c.setAutoCommit(false);
             stmt = c.createStatement();
-            String saledete = sale_date.getText();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            String saledete = sdf.format(jDateChooser1.getDate());
             String nameemp = name_emp.getText();
             String namecon = name_con.getText();
             String phonecon = phone_con.getText();
