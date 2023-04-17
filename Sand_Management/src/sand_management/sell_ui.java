@@ -83,7 +83,6 @@ public class sell_ui extends javax.swing.JFrame {
         BgPanelLeft = new javax.swing.JPanel();
         TitleLeftLabel1 = new javax.swing.JLabel();
         TitleTxtLeftLabel1 = new javax.swing.JLabel();
-        sale_date = new javax.swing.JTextField();
         TitleTxtRightLabel1 = new javax.swing.JLabel();
         name_emp = new javax.swing.JTextField();
         TitleTxtLeftLabel2 = new javax.swing.JLabel();
@@ -102,6 +101,7 @@ public class sell_ui extends javax.swing.JFrame {
         TextField8 = new javax.swing.JTextField();
         DelButton = new javax.swing.JButton();
         AddButton = new javax.swing.JButton();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         BgPanelRightop = new javax.swing.JPanel();
         Search_Button = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -205,20 +205,18 @@ public class sell_ui extends javax.swing.JFrame {
         BgPanelLeft.setBackground(new java.awt.Color(204, 204, 204));
 
         TitleLeftLabel1.setFont(new java.awt.Font("Tahoma", 1, 28)); // NOI18N
+        TitleLeftLabel1.setForeground(new java.awt.Color(51, 51, 51));
         TitleLeftLabel1.setText("รายละเอียดการขายสินค้า");
 
         TitleTxtLeftLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtLeftLabel1.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtLeftLabel1.setText("วันที่ขายสินค้า");
 
-        sale_date.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sale_dateActionPerformed(evt);
-            }
-        });
-
         TitleTxtRightLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtRightLabel1.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtRightLabel1.setText("ชื่อพนักงานขาย");
 
+        name_emp.setBackground(new java.awt.Color(255, 255, 255));
         name_emp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 name_empActionPerformed(evt);
@@ -226,8 +224,10 @@ public class sell_ui extends javax.swing.JFrame {
         });
 
         TitleTxtLeftLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtLeftLabel2.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtLeftLabel2.setText("ชื่อลูกค้า");
 
+        name_con.setBackground(new java.awt.Color(255, 255, 255));
         name_con.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 name_conActionPerformed(evt);
@@ -235,8 +235,10 @@ public class sell_ui extends javax.swing.JFrame {
         });
 
         TitleTxtRightLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtRightLabel2.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtRightLabel2.setText("เบอร์โทรศัพท์ลูกค้า");
 
+        phone_con.setBackground(new java.awt.Color(255, 255, 255));
         phone_con.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 phone_conActionPerformed(evt);
@@ -244,14 +246,17 @@ public class sell_ui extends javax.swing.JFrame {
         });
 
         TitleTxtLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtLabel1.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtLabel1.setText("ที่อยู่จัดส่งสินค้า");
 
+        address_con.setBackground(new java.awt.Color(255, 255, 255));
         address_con.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 address_conActionPerformed(evt);
             }
         });
 
+        left_table.setBackground(new java.awt.Color(255, 255, 255));
         left_table.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         left_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -278,8 +283,10 @@ public class sell_ui extends javax.swing.JFrame {
         }
 
         TxtPtotalLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TxtPtotalLabel1.setForeground(new java.awt.Color(51, 51, 51));
         TxtPtotalLabel1.setText("รวมราคาสินค้า");
 
+        TextField6.setBackground(new java.awt.Color(255, 255, 255));
         TextField6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextField6ActionPerformed(evt);
@@ -287,8 +294,10 @@ public class sell_ui extends javax.swing.JFrame {
         });
 
         TxtVATLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TxtVATLabel2.setForeground(new java.awt.Color(51, 51, 51));
         TxtVATLabel2.setText("ภาษีมูลค่าเพิ่ม 7% VAT");
 
+        TextField7.setBackground(new java.awt.Color(255, 255, 255));
         TextField7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextField7ActionPerformed(evt);
@@ -296,15 +305,19 @@ public class sell_ui extends javax.swing.JFrame {
         });
 
         TxtTotalLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TxtTotalLabel1.setForeground(new java.awt.Color(51, 51, 51));
         TxtTotalLabel1.setText("รวมเงินทั้งสิ้น TOTAL");
 
+        TextField8.setBackground(new java.awt.Color(255, 255, 255));
         TextField8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextField8ActionPerformed(evt);
             }
         });
 
+        DelButton.setBackground(new java.awt.Color(255, 255, 255));
         DelButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        DelButton.setForeground(new java.awt.Color(51, 51, 51));
         DelButton.setText("ลบข้อมูล");
         DelButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -317,13 +330,17 @@ public class sell_ui extends javax.swing.JFrame {
             }
         });
 
+        AddButton.setBackground(new java.awt.Color(255, 255, 255));
         AddButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        AddButton.setForeground(new java.awt.Color(51, 51, 51));
         AddButton.setText("เพิ่มข้อมูล");
         AddButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AddButtonActionPerformed(evt);
             }
         });
+
+        jDateChooser1.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout BgPanelLeftLayout = new javax.swing.GroupLayout(BgPanelLeft);
         BgPanelLeft.setLayout(BgPanelLeftLayout);
@@ -335,11 +352,13 @@ public class sell_ui extends javax.swing.JFrame {
                     .addGroup(BgPanelLeftLayout.createSequentialGroup()
                         .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(TitleTxtLeftLabel1)
-                            .addComponent(sale_date, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(BgPanelLeftLayout.createSequentialGroup()
-                                .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(TitleTxtLeftLabel2)
-                                    .addComponent(name_con, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(name_con, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(BgPanelLeftLayout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                 .addGap(87, 87, 87)
                                 .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(phone_con, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -347,11 +366,11 @@ public class sell_ui extends javax.swing.JFrame {
                                     .addComponent(TitleTxtRightLabel1)
                                     .addComponent(name_emp, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(TitleLeftLabel1))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(45, Short.MAX_VALUE))
                     .addGroup(BgPanelLeftLayout.createSequentialGroup()
                         .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(TitleTxtLabel1)
-                            .addComponent(address_con, javax.swing.GroupLayout.PREFERRED_SIZE, 787, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(address_con, javax.swing.GroupLayout.DEFAULT_SIZE, 787, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BgPanelLeftLayout.createSequentialGroup()
                                 .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(TxtPtotalLabel1)
@@ -369,45 +388,39 @@ public class sell_ui extends javax.swing.JFrame {
                                         .addComponent(TxtTotalLabel1))
                                     .addGroup(BgPanelLeftLayout.createSequentialGroup()
                                         .addComponent(DelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(49, 49, 49)
-                                        .addComponent(AddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addGap(33, 33, 33)
+                                        .addComponent(AddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jScrollPane2))
                         .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(BgPanelLeftLayout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 787, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 36, Short.MAX_VALUE))
         );
         BgPanelLeftLayout.setVerticalGroup(
             BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BgPanelLeftLayout.createSequentialGroup()
-                .addGap(49, 49, 49)
+                .addGap(36, 36, 36)
                 .addComponent(TitleLeftLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(31, 31, 31)
+                .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TitleTxtRightLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(TitleTxtLeftLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(BgPanelLeftLayout.createSequentialGroup()
-                        .addComponent(TitleTxtRightLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(name_emp, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(BgPanelLeftLayout.createSequentialGroup()
-                        .addComponent(TitleTxtLeftLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(sale_date, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(name_emp, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(phone_con, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(BgPanelLeftLayout.createSequentialGroup()
-                        .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(TitleTxtLeftLabel2)
-                            .addComponent(TitleTxtRightLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(name_con, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TitleTxtLeftLabel2)
+                    .addComponent(TitleTxtRightLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(name_con, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(phone_con, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(TitleTxtLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(address_con, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addGap(44, 44, 44)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addGap(18, 18, 18)
                 .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TxtVATLabel2)
                     .addComponent(TxtPtotalLabel1)
@@ -426,7 +439,9 @@ public class sell_ui extends javax.swing.JFrame {
 
         BgPanelRightop.setBackground(new java.awt.Color(204, 204, 204));
 
+        Search_Button.setBackground(new java.awt.Color(255, 255, 255));
         Search_Button.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Search_Button.setForeground(new java.awt.Color(0, 153, 255));
         Search_Button.setText("ค้นหา");
         Search_Button.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -442,7 +457,9 @@ public class sell_ui extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("Category");
 
+        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
         jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jComboBox1.setForeground(new java.awt.Color(51, 51, 51));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Product ID", "Sale date", "Name contact" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -450,7 +467,9 @@ public class sell_ui extends javax.swing.JFrame {
             }
         });
 
+        searchbox.setBackground(new java.awt.Color(255, 255, 255));
         searchbox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        searchbox.setForeground(new java.awt.Color(51, 51, 51));
         searchbox.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 searchboxKeyReleased(evt);
@@ -465,7 +484,7 @@ public class sell_ui extends javax.swing.JFrame {
         BgPanelRightopLayout.setHorizontalGroup(
             BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BgPanelRightopLayout.createSequentialGroup()
-                .addGap(68, 68, 68)
+                .addGap(33, 33, 33)
                 .addGroup(BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -475,23 +494,25 @@ public class sell_ui extends javax.swing.JFrame {
                     .addComponent(searchbox, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Search_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(79, 79, 79))
+                .addGap(36, 36, 36))
         );
         BgPanelRightopLayout.setVerticalGroup(
             BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BgPanelRightopLayout.createSequentialGroup()
+            .addGroup(BgPanelRightopLayout.createSequentialGroup()
                 .addContainerGap(23, Short.MAX_VALUE)
-                .addGroup(BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(BgPanelRightopLayout.createSequentialGroup()
+                .addGroup(BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BgPanelRightopLayout.createSequentialGroup()
                         .addGroup(BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(searchbox, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(Search_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29))
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(29, 29, 29))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BgPanelRightopLayout.createSequentialGroup()
+                        .addComponent(Search_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31))))
         );
 
         right_table.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -525,13 +546,10 @@ public class sell_ui extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BgPanelLeft, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(BgPanelRightop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(jScrollPane1)))
+                    .addComponent(jScrollPane1)
+                    .addComponent(BgPanelRightop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -542,7 +560,7 @@ public class sell_ui extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(BgPanelRightop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1))
                     .addComponent(BgPanelLeft, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -593,10 +611,6 @@ public class sell_ui extends javax.swing.JFrame {
         main.setVisible(true);
         dispose();
     }//GEN-LAST:event_jBackMouseClicked
-
-    private void sale_dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sale_dateActionPerformed
-        //วันที่รับค่าตัวเลข
-    }//GEN-LAST:event_sale_dateActionPerformed
 
     private void name_empActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_name_empActionPerformed
         // TODO add your handling code here:
@@ -823,6 +837,7 @@ public class sell_ui extends javax.swing.JFrame {
     private javax.swing.JLabel jBack;
     private javax.swing.JButton jButtonlogout;
     private javax.swing.JComboBox<String> jComboBox1;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelDate;
@@ -837,7 +852,6 @@ public class sell_ui extends javax.swing.JFrame {
     private javax.swing.JTextField name_emp;
     private javax.swing.JTextField phone_con;
     private javax.swing.JTable right_table;
-    private javax.swing.JTextField sale_date;
     private javax.swing.JTextField searchbox;
     // End of variables declaration//GEN-END:variables
 }
