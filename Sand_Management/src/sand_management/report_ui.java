@@ -21,27 +21,26 @@ import net.proteanit.sql.DbUtils;
  * @author Pai
  */
 public class report_ui extends javax.swing.JFrame {
+
     SimpleDateFormat timeFormat;
     SimpleDateFormat dateFormat;
     String time;
     String date;
-    private All_Data user; 
-    
+    private All_Data user;
+
     public report_ui(All_Data a1) {
         initComponents();
         this.setTitle("Sand Management Program | Report");
         this.user = a1;
-        Start();
-    }
-    
-    public void Start(){
+        fetchitemDetails("delivery_data");
         setDate();
         setTime();
         BgPanelLeft_delivery.setVisible(true);
         BgPanelLeft_purchase.setVisible(false);
         BgPanelLeft_sell.setVisible(false);
+        
     }
-    
+
     public void setDate() {
         dateFormat = new SimpleDateFormat("EEEE dd MMMMM yyyy");
         date = dateFormat.format(Calendar.getInstance().getTime());
@@ -60,8 +59,8 @@ public class report_ui extends javax.swing.JFrame {
         };
         timer.scheduleAtFixedRate(task, 0, 1000);
     }
-    
-    public String Path(){
+
+    public String Path() {
         JFileChooser fileChooser = new JFileChooser();
         int response = fileChooser.showSaveDialog(null);
         String files = null;
@@ -139,14 +138,11 @@ public class report_ui extends javax.swing.JFrame {
         jTextArea3 = new javax.swing.JTextArea();
         jButton_pdf_sell = new javax.swing.JButton();
         BgPanelRightop = new javax.swing.JPanel();
-        Titledropdown = new javax.swing.JLabel();
-        dropdownlist01 = new javax.swing.JComboBox<>();
         TextSearchField1 = new javax.swing.JTextField();
         TitleSearch = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        Titledropdown1 = new javax.swing.JLabel();
         dropdownlist2 = new javax.swing.JComboBox<>();
+        Titledropdown1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_Delivery = new javax.swing.JTable();
@@ -401,9 +397,11 @@ public class report_ui extends javax.swing.JFrame {
         BgPanelLeft_purchase.setBackground(new java.awt.Color(204, 204, 204));
 
         TitleLeftLabel5.setFont(new java.awt.Font("Tahoma", 1, 28)); // NOI18N
+        TitleLeftLabel5.setForeground(new java.awt.Color(51, 51, 51));
         TitleLeftLabel5.setText("รายละเอียดจัดสั่งชื้อสินค้า");
 
         TitleTxtLeftLabel12.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtLeftLabel12.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtLeftLabel12.setText("ชื่อพนักงานขับรถ");
 
         TextField12.addActionListener(new java.awt.event.ActionListener() {
@@ -413,6 +411,7 @@ public class report_ui extends javax.swing.JFrame {
         });
 
         TitleTxtRightLabel9.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtRightLabel9.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtRightLabel9.setText("ชื่อลูกค้า");
 
         TextField13.addActionListener(new java.awt.event.ActionListener() {
@@ -422,6 +421,7 @@ public class report_ui extends javax.swing.JFrame {
         });
 
         TitleTxtLeftLabel13.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtLeftLabel13.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtLeftLabel13.setText("วันที่การจัดส่งสินค้า");
 
         TextField14.addActionListener(new java.awt.event.ActionListener() {
@@ -431,6 +431,7 @@ public class report_ui extends javax.swing.JFrame {
         });
 
         TitleTxtRightLabel10.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtRightLabel10.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtRightLabel10.setText("เบอร์ติดต่อ");
 
         TextField21.addActionListener(new java.awt.event.ActionListener() {
@@ -446,9 +447,11 @@ public class report_ui extends javax.swing.JFrame {
         });
 
         TitleTxtLeftLabel14.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtLeftLabel14.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtLeftLabel14.setText("วันที่การจัดส่งสินค้า");
 
         TitleTxtLeftLabel15.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtLeftLabel15.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtLeftLabel15.setText("สถานที่จัดส่ง");
 
         TextField30.addActionListener(new java.awt.event.ActionListener() {
@@ -458,6 +461,7 @@ public class report_ui extends javax.swing.JFrame {
         });
 
         TitleTxtLeftLabel16.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtLeftLabel16.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtLeftLabel16.setText("รายงานปัญหา");
 
         jTextArea2.setColumns(20);
@@ -523,14 +527,13 @@ public class report_ui extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(TextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(BgPanelLeft_purchaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(TextField21, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(BgPanelLeft_purchaseLayout.createSequentialGroup()
-                        .addGroup(BgPanelLeft_purchaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(TitleTxtLeftLabel13)
-                            .addComponent(TitleTxtRightLabel10))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(BgPanelLeft_purchaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TitleTxtLeftLabel13)
+                    .addComponent(TitleTxtRightLabel10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(BgPanelLeft_purchaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TextField21, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(TitleTxtLeftLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -719,68 +722,21 @@ public class report_ui extends javax.swing.JFrame {
 
         BgPanelRightop.setBackground(new java.awt.Color(204, 204, 204));
 
-        Titledropdown.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        Titledropdown.setForeground(new java.awt.Color(51, 51, 51));
-        Titledropdown.setText("หมวดหมู่");
-
-        dropdownlist01.setBackground(new java.awt.Color(255, 255, 255));
-        dropdownlist01.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Name", "Phone" }));
-
         TextSearchField1.setBackground(new java.awt.Color(255, 255, 255));
 
         TitleSearch.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         TitleSearch.setForeground(new java.awt.Color(51, 51, 51));
         TitleSearch.setText("ค้นหา");
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(51, 51, 51));
         jButton1.setText("ค้นหา");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout BgPanelRightopLayout = new javax.swing.GroupLayout(BgPanelRightop);
-        BgPanelRightop.setLayout(BgPanelRightopLayout);
-        BgPanelRightopLayout.setHorizontalGroup(
-            BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BgPanelRightopLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dropdownlist01, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Titledropdown))
-                .addGap(42, 42, 42)
-                .addGroup(BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(TextSearchField1, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TitleSearch))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 226, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33))
-        );
-        BgPanelRightopLayout.setVerticalGroup(
-            BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BgPanelRightopLayout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
-                .addGroup(BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BgPanelRightopLayout.createSequentialGroup()
-                        .addGroup(BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Titledropdown)
-                            .addComponent(TitleSearch))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(dropdownlist01, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TextSearchField1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(29, 29, 29))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BgPanelRightopLayout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31))))
-        );
-
-        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
-
-        Titledropdown1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        Titledropdown1.setForeground(new java.awt.Color(51, 51, 51));
-        Titledropdown1.setText("ตาราง | Table");
 
         dropdownlist2.setBackground(new java.awt.Color(255, 255, 255));
         dropdownlist2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Delivery", "Purchase", "Sell" }));
@@ -798,25 +754,44 @@ public class report_ui extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        Titledropdown1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        Titledropdown1.setForeground(new java.awt.Color(51, 51, 51));
+        Titledropdown1.setText("ตาราง");
+
+        javax.swing.GroupLayout BgPanelRightopLayout = new javax.swing.GroupLayout(BgPanelRightop);
+        BgPanelRightop.setLayout(BgPanelRightopLayout);
+        BgPanelRightopLayout.setHorizontalGroup(
+            BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BgPanelRightopLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(Titledropdown1)
-                .addGap(32, 32, 32)
-                .addComponent(dropdownlist2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 17, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dropdownlist2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dropdownlist2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Titledropdown1))
-                .addGap(15, 15, 15))
+                .addGap(43, 43, 43)
+                .addGroup(BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TextSearchField1, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TitleSearch))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 226, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33))
+        );
+        BgPanelRightopLayout.setVerticalGroup(
+            BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BgPanelRightopLayout.createSequentialGroup()
+                .addContainerGap(19, Short.MAX_VALUE)
+                .addGroup(BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BgPanelRightopLayout.createSequentialGroup()
+                        .addGroup(BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(TitleSearch)
+                            .addComponent(Titledropdown1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(TextSearchField1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dropdownlist2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(29, 29, 29))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BgPanelRightopLayout.createSequentialGroup()
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31))))
         );
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
@@ -874,9 +849,9 @@ public class report_ui extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1)
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 732, Short.MAX_VALUE))
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 804, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 732, Short.MAX_VALUE))
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 804, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -890,7 +865,6 @@ public class report_ui extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BgPanelRightop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -901,8 +875,6 @@ public class report_ui extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BgPanelRightop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -924,24 +896,23 @@ public class report_ui extends javax.swing.JFrame {
         // TODO add your handling code here:
         Connection c = null;
         Statement stmt = null;
-                try {
-                    Class.forName("org.sqlite.JDBC");
-                    c = DriverManager.getConnection("jdbc:sqlite:user.db");
-                    c.setAutoCommit(false);
-                    stmt = c.createStatement();
-                    String a1 = user.getUser();
-                    ResultSet rs = stmt.executeQuery( "SELECT * FROM user WHERE username = '"+a1+"'" );
-                    String  first = rs.getString("first_name");
-                    String  last = rs.getString("last_name");
-                    jfirstname_lastname.setText(first + " " + last);
-                    rs.close();
-                    stmt.close();
-                    c.close();
-                } 
-                catch ( Exception b ) {
-                   System.err.println( b.getClass().getName() + ": " + b.getMessage() );
-                   System.exit(0);
-                }
+        try {
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:database.db");
+            c.setAutoCommit(false);
+            stmt = c.createStatement();
+            String a1 = user.getUser();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM user_data WHERE username = '" + a1 + "'");
+            String first = rs.getString("first_name");
+            String last = rs.getString("last_name");
+            jfirstname_lastname.setText(first + " " + last);
+            rs.close();
+            stmt.close();
+            c.close();
+        } catch (Exception b) {
+            System.err.println(b.getClass().getName() + ": " + b.getMessage());
+            System.exit(0);
+        }
     }//GEN-LAST:event_jfirstname_lastnameAncestorAdded
 
     private void jBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBackMouseClicked
@@ -988,29 +959,35 @@ public class report_ui extends javax.swing.JFrame {
         // TODO add your handling code here:
         String type = dropdownlist2.getSelectedItem().toString();
         System.out.println(type);
-        if(type == "Delivery"){
+        String a = "delivery_data";
+        String b = "purchase_data";
+        String c = "sell_data";
+        if (type == "Delivery") {
             BgPanelLeft_delivery.setVisible(true);
             BgPanelLeft_purchase.setVisible(false);
             BgPanelLeft_sell.setVisible(false);
             jScrollPane1.setVisible(true);
             jScrollPane5.setVisible(false);
             jScrollPane6.setVisible(false);
+            fetchitemDetails(a);
         }
-        if(type == "Purchase"){
+        if (type == "Purchase") {
             BgPanelLeft_delivery.setVisible(false);
             BgPanelLeft_purchase.setVisible(true);
             BgPanelLeft_sell.setVisible(false);
             jScrollPane1.setVisible(false);
             jScrollPane5.setVisible(true);
             jScrollPane6.setVisible(false);
+            fetchitemDetails(b);
         }
-        if(type == "Sell"){
+        if (type == "Sell") {
             BgPanelLeft_delivery.setVisible(false);
             BgPanelLeft_purchase.setVisible(false);
             BgPanelLeft_sell.setVisible(true);
             jScrollPane1.setVisible(false);
             jScrollPane5.setVisible(false);
             jScrollPane6.setVisible(true);
+            fetchitemDetails(c);
         }
     }//GEN-LAST:event_dropdownlist2ActionPerformed
 
@@ -1087,49 +1064,31 @@ public class report_ui extends javax.swing.JFrame {
         InvoiceGenerator pdf = new InvoiceGenerator();
         pdf.setPath(Path());
     }//GEN-LAST:event_jButton_pdf_deliveryMouseClicked
-    
-    public void fetchitemDetailsDE(){
+
+    public void fetchitemDetails(String s) {
+        System.out.println();
         Connection c = null;
         Statement stmt = null;
-        try{
+        try {
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:data.db");
+            c = DriverManager.getConnection("jdbc:sqlite:database.db");
             stmt = c.createStatement();
-            ResultSet rs1 = stmt.executeQuery("SELECT * FROM storage");
-            jTable_Delivery.setModel(DbUtils.resultSetToTableModel(rs1)); 
-        }catch(Exception b){
+            ResultSet rs1 = stmt.executeQuery("SELECT * FROM "+s+"");
+            if(s =="delivery_data"){
+                jTable_Delivery.setModel(DbUtils.resultSetToTableModel(rs1));
+            }
+            if(s =="purchase_data"){
+                jTable_Purchase.setModel(DbUtils.resultSetToTableModel(rs1));
+            }
+            if(s =="sell_data"){
+                jTable_Sell.setModel(DbUtils.resultSetToTableModel(rs1));
+            }
+        } catch (Exception b) {
             JOptionPane.showMessageDialog(null, b);
         }
     }
-    
-    public void fetchitemDetailsPU(){
-        Connection c = null;
-        Statement stmt = null;
-        try{
-            Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:data.db");
-            stmt = c.createStatement();
-            ResultSet rs1 = stmt.executeQuery("SELECT * FROM storage");
-            jTable_Purchase.setModel(DbUtils.resultSetToTableModel(rs1)); 
-        }catch(Exception b){
-            JOptionPane.showMessageDialog(null, b);
-        }
-    }
-    
-    public void fetchitemDetailsSE(){
-        Connection c = null;
-        Statement stmt = null;
-        try{
-            Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:data.db");
-            stmt = c.createStatement();
-            ResultSet rs1 = stmt.executeQuery("SELECT * FROM storage");
-            jTable_Sell.setModel(DbUtils.resultSetToTableModel(rs1)); 
-        }catch(Exception b){
-            JOptionPane.showMessageDialog(null, b);
-        }
-    }
-    
+
+
     /**
      * @param args the command line arguments
      */
@@ -1155,7 +1114,7 @@ public class report_ui extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(report_ui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-       
+
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -1164,9 +1123,7 @@ public class report_ui extends javax.swing.JFrame {
             }
         });
     }
-    
-    
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BgPanelLeft;
@@ -1218,9 +1175,7 @@ public class report_ui extends javax.swing.JFrame {
     private javax.swing.JLabel TitleTxtRightLabel3;
     private javax.swing.JLabel TitleTxtRightLabel4;
     private javax.swing.JLabel TitleTxtRightLabel9;
-    private javax.swing.JLabel Titledropdown;
     private javax.swing.JLabel Titledropdown1;
-    private javax.swing.JComboBox<String> dropdownlist01;
     private javax.swing.JComboBox<String> dropdownlist2;
     private javax.swing.JLabel jBack;
     private javax.swing.JButton jButton1;
@@ -1232,7 +1187,6 @@ public class report_ui extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelProgram;
     private javax.swing.JLabel jLabelTime;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

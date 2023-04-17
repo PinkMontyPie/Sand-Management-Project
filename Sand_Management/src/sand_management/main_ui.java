@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package sand_management;
 
 import java.sql.Connection;
@@ -16,70 +12,63 @@ import java.util.*;
  * @author Pai
  */
 public class main_ui extends javax.swing.JFrame {
+
     SimpleDateFormat timeFormat;
     SimpleDateFormat dateFormat;
     String time;
     String date;
-    private All_Data user; 
-    
+    private All_Data user;
+
     public main_ui(All_Data a1) {
         initComponents();
         this.setTitle("Sand Management Program | Menu");
         this.user = a1;
         permission();
-        Start();
-    }
-    
-    public void permission(){
-        Connection c = null;
-        Statement stmt = null;
-                try {
-                    Class.forName("org.sqlite.JDBC");
-                    c = DriverManager.getConnection("jdbc:sqlite:user.db");
-                    c.setAutoCommit(false);
-                    stmt = c.createStatement();
-                    String a1 = user.getUser();
-                    ResultSet rs = stmt.executeQuery( "SELECT * FROM user WHERE username = '"+a1+"'" );
-                    String position1 = rs.getString("position");
-                    System.out.println(position1);
-                    if (position1.equals("IT")){
-                    }
-                    else if(position1.equals("CEO")){
-                    }
-                    else if(position1.equals("Secretary") || position1.equals("เลขานุการ")){
-                        Button_Employee.setVisible(false);
-                    }
-                    else if(position1.equals("Employee") || position1.equals("พนักงาน")|| position1.equals("พนักงานขนส่ง")){
-                        Button_Employee.setVisible(false);
-                        Button_Storage.setVisible(false);
-                        Button_Purchase.setVisible(false);
-                        Button_Sell.setVisible(false);
-                        Button_Report.setVisible(false);
-                    }
-                    else {
-                        Button_Employee.setVisible(false);
-                        Button_Storage.setVisible(false);
-                        Button_Purchase.setVisible(false);
-                        Button_Sell.setVisible(false);
-                        Button_Delivery.setVisible(false);
-                        Button_Report.setVisible(false);
-                    }
-                    rs.close();
-                    stmt.close();
-                    c.close();
-                } 
-                catch ( Exception b ) {
-                   System.err.println( b.getClass().getName() + ": " + b.getMessage() );
-                   System.exit(0);
-                }
-    }
-    
-    public void Start(){
         setDate();
         setTime();
     }
-    
-    
+
+    public void permission() {
+        Connection c = null;
+        Statement stmt = null;
+        try {
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:database.db");
+            c.setAutoCommit(false);
+            stmt = c.createStatement();
+            String a1 = user.getUser();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM user_data WHERE username = '" + a1 + "'");
+            String position1 = rs.getString("position");
+            System.out.println(position1);
+            if (position1.equals("IT")) {
+            } else if (position1.equals("CEO")) {
+            } else if (position1.equals("Secretary") || position1.equals("เลขานุการ")) {
+                Button_Employee.setVisible(false);
+            } else if (position1.equals("Employee") || position1.equals("พนักงาน") || position1.equals("พนักงานขนส่ง")) {
+                Button_Employee.setVisible(false);
+                Button_Storage.setVisible(false);
+                Button_Purchase.setVisible(false);
+                Button_Sell.setVisible(false);
+                Button_Report.setVisible(false);
+            } else {
+                Button_Employee.setVisible(false);
+                Button_Storage.setVisible(false);
+                Button_Purchase.setVisible(false);
+                Button_Sell.setVisible(false);
+                Button_Delivery.setVisible(false);
+                Button_Report.setVisible(false);
+            }
+
+            rs.close();
+            stmt.close();
+            c.close();
+
+        } catch (Exception b) {
+            System.err.println(b.getClass().getName() + ": " + b.getMessage());
+            System.exit(0);
+        }
+    }
+
     public void setDate() {
         dateFormat = new SimpleDateFormat("EEEE dd MMMMM yyyy");
         date = dateFormat.format(Calendar.getInstance().getTime());
@@ -357,24 +346,23 @@ public class main_ui extends javax.swing.JFrame {
         // TODO add your handling code here:
         Connection c = null;
         Statement stmt = null;
-                try {
-                    Class.forName("org.sqlite.JDBC");
-                    c = DriverManager.getConnection("jdbc:sqlite:user.db");
-                    c.setAutoCommit(false);
-                    stmt = c.createStatement();
-                    String a1 = user.getUser();
-                    ResultSet rs = stmt.executeQuery( "SELECT * FROM user WHERE username = '"+a1+"'" );
-                    String  first = rs.getString("first_name");
-                    String  last = rs.getString("last_name");
-                    jfirstname_lastname.setText(first + " " + last);
-                    rs.close();
-                    stmt.close();
-                    c.close();
-                } 
-                catch ( Exception b ) {
-                   System.err.println( b.getClass().getName() + ": " + b.getMessage() );
-                   System.exit(0);
-                }
+        try {
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:database.db");
+            c.setAutoCommit(false);
+            stmt = c.createStatement();
+            String a1 = user.getUser();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM user_data WHERE username = '" + a1 + "'");
+            String first = rs.getString("first_name");
+            String last = rs.getString("last_name");
+            jfirstname_lastname.setText(first + " " + last);
+            rs.close();
+            stmt.close();
+            c.close();
+        } catch (Exception b) {
+            System.err.println(b.getClass().getName() + ": " + b.getMessage());
+            System.exit(0);
+        }
     }//GEN-LAST:event_jfirstname_lastnameAncestorAdded
 
     private void Button_EmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_EmployeeActionPerformed
@@ -479,19 +467,18 @@ public class main_ui extends javax.swing.JFrame {
         Statement stmt = null;
         try {
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:employee_data.db");
+            c = DriverManager.getConnection("jdbc:sqlite:database.db");
             c.setAutoCommit(false);
             stmt = c.createStatement();
             String a1 = user.getFirst();
-            ResultSet rs = stmt.executeQuery( "SELECT * FROM employee WHERE first_name = '"+a1+"'" );
-            String  id = rs.getString("id_employee");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM employee_data WHERE first_name = '" + a1 + "'");
+            String id = rs.getString("id_employee");
             label_id_employee.setText("ID Employee : " + id);
             rs.close();
             stmt.close();
             c.close();
-        }
-        catch ( Exception b ) {
-            System.err.println( b.getClass().getName() + ": " + b.getMessage() );
+        } catch (Exception b) {
+            System.err.println(b.getClass().getName() + ": " + b.getMessage());
             System.exit(0);
         }
     }//GEN-LAST:event_label_id_employeeAncestorAdded

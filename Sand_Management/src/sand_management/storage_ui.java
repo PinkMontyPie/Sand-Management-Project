@@ -1,12 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package sand_management;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
@@ -22,25 +17,26 @@ import static sand_management.employee_new.getRandomNumberString;
  * @author Pai
  */
 public class storage_ui extends javax.swing.JFrame {
+
     SimpleDateFormat timeFormat;
     SimpleDateFormat dateFormat;
     String time;
     String date;
-    private All_Data user; 
-    
+    private All_Data user;
+
     public storage_ui(All_Data a1) {
         initComponents();
         this.setTitle("Sand Management Program | Stock");
         this.user = a1;
         Start();
     }
-    
-    public void Start(){
+
+    public void Start() {
         setDate();
         setTime();
         fetchitemDetailsCS();
     }
-    
+
     public void setDate() {
         dateFormat = new SimpleDateFormat("EEEE dd MMMMM yyyy");
         date = dateFormat.format(Calendar.getInstance().getTime());
@@ -434,24 +430,23 @@ public class storage_ui extends javax.swing.JFrame {
         // TODO add your handling code here:
         Connection c = null;
         Statement stmt = null;
-                try {
-                    Class.forName("org.sqlite.JDBC");
-                    c = DriverManager.getConnection("jdbc:sqlite:user.db");
-                    c.setAutoCommit(false);
-                    stmt = c.createStatement();
-                    String a1 = user.getUser();
-                    ResultSet rs = stmt.executeQuery( "SELECT * FROM user WHERE username = '"+a1+"'" );
-                    String  first = rs.getString("first_name");
-                    String  last = rs.getString("last_name");
-                    jfirstname_lastname.setText(first + " " + last);
-                    rs.close();
-                    stmt.close();
-                    c.close();
-                } 
-                catch ( Exception b ) {
-                   System.err.println( b.getClass().getName() + ": " + b.getMessage() );
-                   System.exit(0);
-                }
+        try {
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:database.db");
+            c.setAutoCommit(false);
+            stmt = c.createStatement();
+            String a1 = user.getUser();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM user_data WHERE username = '" + a1 + "'");
+            String first = rs.getString("first_name");
+            String last = rs.getString("last_name");
+            jfirstname_lastname.setText(first + " " + last);
+            rs.close();
+            stmt.close();
+            c.close();
+        } catch (Exception b) {
+            System.err.println(b.getClass().getName() + ": " + b.getMessage());
+            System.exit(0);
+        }
     }//GEN-LAST:event_jfirstname_lastnameAncestorAdded
 
     private void jBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBackMouseClicked
@@ -476,12 +471,12 @@ public class storage_ui extends javax.swing.JFrame {
 
     private void jButtonadd1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonadd1ActionPerformed
         // TODO add your handling code here:
-         // add stock
+        // add stock
         Connection c = null;
         Statement stmt = null;
         try {
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:data.db");
+            c = DriverManager.getConnection("jdbc:sqlite:database.db");
             c.setAutoCommit(false);
             stmt = c.createStatement();
             String nameitem = txtname_i.getText();
@@ -489,19 +484,19 @@ public class storage_ui extends javax.swing.JFrame {
             String tonitem = jSpinner1.getValue().toString();
             String quantity = txtqua.getText();
             String iditem = getRandomNumberString();
-            ResultSet rs1 = stmt.executeQuery("SELECT * FROM storage WHERE id_item = '" + iditem + "'");
+            ResultSet rs1 = stmt.executeQuery("SELECT * FROM storage_data WHERE id_item = '" + iditem + "'");
             String id_item = null;
             while (rs1.next()) {
                 id_item = rs1.getString("id_item");
             }
             while (iditem.equals(id_item)) {
                 iditem = getRandomNumberString();
-                rs1 = stmt.executeQuery("SELECT * FROM storage WHERE id_item = '" + iditem + "'");
+                rs1 = stmt.executeQuery("SELECT * FROM storage_data WHERE id_item = '" + iditem + "'");
                 if (!rs1.next()) {
                     break;
                 }
             }
-            String sql = "INSERT INTO storage(Name_i,Type_i,H_many_ton_i,Quantity_i,id_item,Date) VALUES('" + nameitem + "','" + type + "','" + tonitem + "',"
+            String sql = "INSERT INTO storage_data(Name_i,Type_i,H_many_ton_i,Quantity_i,id_item,Date) VALUES('" + nameitem + "','" + type + "','" + tonitem + "',"
                     + "'" + quantity + "','" + iditem + "','" + date + "')";
             stmt.executeUpdate(sql);
             String user1 = user.getUser();
@@ -530,11 +525,12 @@ public class storage_ui extends javax.swing.JFrame {
                 } catch (Exception ex) {
                 }
             }
-        }int a = JOptionPane.showConfirmDialog(null, "Please confirm your input:", "Alert", JOptionPane.INFORMATION_MESSAGE);
-           if (a == JOptionPane.YES_OPTION){
-                JOptionPane.showMessageDialog(null, "Add Stock Complete.", "ALERT", JOptionPane.INFORMATION_MESSAGE);
-                fetchitemDetailsCS();
-                }
+        }
+        int a = JOptionPane.showConfirmDialog(null, "Please confirm your input:", "Alert", JOptionPane.INFORMATION_MESSAGE);
+        if (a == JOptionPane.YES_OPTION) {
+            JOptionPane.showMessageDialog(null, "Add Stock Complete.", "ALERT", JOptionPane.INFORMATION_MESSAGE);
+            fetchitemDetailsCS();
+        }
     }//GEN-LAST:event_jButtonadd1ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
@@ -545,21 +541,21 @@ public class storage_ui extends javax.swing.JFrame {
         String search = jTextField1.getText();
         try {
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:data.db");
+            c = DriverManager.getConnection("jdbc:sqlite:database.db");
             stmt = c.createStatement();
-            if (type.equals("ID")){
-                ResultSet rs = stmt.executeQuery("SELECT * FROM storage WHERE id_item = '" +search+ "'");
+            if (type.equals("ID")) {
+                ResultSet rs = stmt.executeQuery("SELECT * FROM storage_data WHERE id_item = '" + search + "'");
                 jTablestorage.setModel(DbUtils.resultSetToTableModel(rs));
                 rs.close();
             }
             if (type.equals("Name")) {
-                ResultSet rs = stmt.executeQuery("SELECT * FROM storage WHERE Name_i = '" +search+ "'");
+                ResultSet rs = stmt.executeQuery("SELECT * FROM storage_data WHERE Name_i = '" + search + "'");
                 jTablestorage.setModel(DbUtils.resultSetToTableModel(rs));
                 rs.close();
-            } 
+            }
             stmt.close();
             c.close();
-           
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -568,9 +564,9 @@ public class storage_ui extends javax.swing.JFrame {
 
     private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
         // TODO add your handling code here:
-        
+
         System.out.print(jTextField1.getText());
-        if(jTextField1.getText() == null){
+        if (jTextField1.getText() == null) {
             System.out.println(jTextField1.getText());
             fetchitemDetailsCS();
         }
@@ -578,7 +574,7 @@ public class storage_ui extends javax.swing.JFrame {
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButtonaddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonaddMouseClicked
@@ -586,37 +582,41 @@ public class storage_ui extends javax.swing.JFrame {
         Connection c = null;
         PreparedStatement pat = null;
         int row = jTablestorage.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel)jTablestorage.getModel();
-        
-        try{
+        DefaultTableModel model = (DefaultTableModel) jTablestorage.getModel();
+
+        try {
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:data.db");
-            String delete = "DELETE FROM storage WHERE Id_item = ?";
+            c = DriverManager.getConnection("jdbc:sqlite:database.db");
+            String delete = "DELETE FROM storage_data WHERE Id_item = ?";
             pat = c.prepareStatement(delete);
-            pat.setString(1,model.getValueAt(row, 0).toString());
+            pat.setString(1, model.getValueAt(row, 0).toString());
+
             pat.execute();
-            con = DriverManager.getConnection("jdbc:sqlite:data.db");
-            String delete = "DELETE FROM storage WHERE Id_item = ?";
-            pat = con.prepareStatement(delete);
-            pat.setString(1,model.getValueAt(row, 0).toString());
-            pat.execute();
+
+            int a = JOptionPane.showConfirmDialog(null, "Are you sure to delete this item? : " + model.getValueAt(row, 2).toString(), "Alert", JOptionPane.INFORMATION_MESSAGE);
+            if (a == JOptionPane.YES_OPTION) {
+                JOptionPane.showMessageDialog(null, "This item has been deleted");
+                fetchitemDetailsCS();
+            }
+        } catch (Exception b) {
             JOptionPane.showMessageDialog(null, b);
-        }    
+        }
     }//GEN-LAST:event_jButtonaddMouseClicked
 
-    public void fetchitemDetailsCS(){
+    public void fetchitemDetailsCS() {
         Connection c = null;
         Statement stmt = null;
-        try{
+        try {
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:data.db");
+            c = DriverManager.getConnection("jdbc:sqlite:database.db");
             stmt = c.createStatement();
-            ResultSet rs1 = stmt.executeQuery("SELECT * FROM storage");
-            jTablestorage.setModel(DbUtils.resultSetToTableModel(rs1)); 
-        }catch(Exception b){
+            ResultSet rs1 = stmt.executeQuery("SELECT * FROM storage_data");
+            jTablestorage.setModel(DbUtils.resultSetToTableModel(rs1));
+        } catch (Exception b) {
             JOptionPane.showMessageDialog(null, b);
         }
     }
+
     /**
      * @param args the command line arguments
      */
