@@ -815,6 +815,7 @@ public class purchase_ui extends javax.swing.JFrame {
         if (selectedRow != -1) {
             DefaultTableModel model = (DefaultTableModel) PriceTable2.getModel();
             model.removeRow(selectedRow);
+            ////
         }
     }//GEN-LAST:event_removeRowBtn1ActionPerformed
 
