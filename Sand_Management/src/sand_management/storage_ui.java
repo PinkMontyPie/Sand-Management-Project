@@ -32,6 +32,7 @@ public class storage_ui extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Sand Management Program | Stock");
         this.user = a1;
+        jTablestorage.setEnabled(false);
         Start();
     }
     
@@ -436,7 +437,7 @@ public class storage_ui extends javax.swing.JFrame {
         Statement stmt = null;
                 try {
                     Class.forName("org.sqlite.JDBC");
-                    c = DriverManager.getConnection("jdbc:sqlite:user.db");
+                    c = DriverManager.getConnection("jdbc:sqlite:user_data.db");
                     c.setAutoCommit(false);
                     stmt = c.createStatement();
                     String a1 = user.getUser();
@@ -481,7 +482,7 @@ public class storage_ui extends javax.swing.JFrame {
         Statement stmt = null;
         try {
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:data.db");
+            c = DriverManager.getConnection("jdbc:sqlite:storage_data.db");
             c.setAutoCommit(false);
             stmt = c.createStatement();
             String nameitem = txtname_i.getText();
@@ -545,7 +546,7 @@ public class storage_ui extends javax.swing.JFrame {
         String search = jTextField1.getText();
         try {
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:data.db");
+            c = DriverManager.getConnection("jdbc:sqlite:storage_data.db");
             stmt = c.createStatement();
             if (type.equals("ID")){
                 ResultSet rs = stmt.executeQuery("SELECT * FROM storage WHERE id_item = '" +search+ "'");
@@ -588,20 +589,16 @@ public class storage_ui extends javax.swing.JFrame {
         int row = jTablestorage.getSelectedRow();
         DefaultTableModel model = (DefaultTableModel)jTablestorage.getModel();
         
-        try{
+        try {
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:data.db");
+            c = DriverManager.getConnection("jdbc:sqlite:storage_data.db");
             String delete = "DELETE FROM storage WHERE Id_item = ?";
             pat = c.prepareStatement(delete);
-            pat.setString(1,model.getValueAt(row, 0).toString());
+            pat.setString(1, model.getValueAt(row, 0).toString());
             pat.execute();
-            con = DriverManager.getConnection("jdbc:sqlite:data.db");
-            String delete = "DELETE FROM storage WHERE Id_item = ?";
-            pat = con.prepareStatement(delete);
-            pat.setString(1,model.getValueAt(row, 0).toString());
-            pat.execute();
+        }catch(Exception b){
             JOptionPane.showMessageDialog(null, b);
-        }    
+        }
     }//GEN-LAST:event_jButtonaddMouseClicked
 
     public void fetchitemDetailsCS(){
@@ -609,7 +606,7 @@ public class storage_ui extends javax.swing.JFrame {
         Statement stmt = null;
         try{
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:data.db");
+            c = DriverManager.getConnection("jdbc:sqlite:storage_data.db");
             stmt = c.createStatement();
             ResultSet rs1 = stmt.executeQuery("SELECT * FROM storage");
             jTablestorage.setModel(DbUtils.resultSetToTableModel(rs1)); 

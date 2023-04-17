@@ -509,7 +509,7 @@ public class purchase_ui extends javax.swing.JFrame {
         Statement stmt = null;
                 try {
                     Class.forName("org.sqlite.JDBC");
-                    c = DriverManager.getConnection("jdbc:sqlite:user.db");
+                    c = DriverManager.getConnection("jdbc:sqlite:user_data.db");
                     c.setAutoCommit(false);
                     stmt = c.createStatement();
                     String a1 = user.getUser();
