@@ -1439,7 +1439,8 @@ public class employee_search extends javax.swing.JFrame {
                                 + "husband_or_wife_position = '"+a32+"',graduated_level = '"+a33+"',name_of_place_of_graduation = '"+a34+"',graduated_subject_or_field = '"+a35+"',work_history = '"+a36+"',office_name = '"+a37+"',"
                                 + "old_position = '"+a38+"',start = '"+a39+"',stop = '"+a40+"',reason_for_resignation = '"+a41+"',reasons_for_wanting_to_work_here = '"+a42+"',nick_name = '"+a44+"' WHERE id_employee = '"+a43+"'");
                         stmt.executeUpdate(sql);
-                        String sql1 = ("UPDATE user_data SET username = '"+a44+"',position = '"+a3+"'  WHERE first_name = '"+a1+"'");
+                        String a45 = nickname.getText().toLowerCase();
+                        String sql1 = ("UPDATE user_data SET username = '"+a45+"',position = '"+a3+"'  WHERE first_name = '"+a1+"'");
                         stmt.executeUpdate(sql1);
                         JOptionPane.showMessageDialog(null, "Update Profile is Successfully",
                                 "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
