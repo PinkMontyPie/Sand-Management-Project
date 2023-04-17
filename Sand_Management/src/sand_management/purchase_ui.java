@@ -804,9 +804,9 @@ public class purchase_ui extends javax.swing.JFrame {
 
     private void addRowBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRowBtn1ActionPerformed
         // TODO add your handling code here:
-        //DefaultTableModel model = (DefaultTableModel) PriceTable2.getModel();
-        //model.addRow(new Object[] {"", "", "", "",""});
-        //
+        DefaultTableModel model = (DefaultTableModel) PriceTable2.getModel();
+        model.addRow(new Object[] {"", "", "", "",""});
+        //Hello boss
     }//GEN-LAST:event_addRowBtn1ActionPerformed
 
     private void removeRowBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeRowBtn1ActionPerformed
