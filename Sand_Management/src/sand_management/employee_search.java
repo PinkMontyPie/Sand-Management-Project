@@ -1477,9 +1477,9 @@ public class employee_search extends javax.swing.JFrame {
                         Button_save_profile.setVisible(false);
                         Button_edit_profile.setVisible(true);
                         edit_disable();
-                        rs.close();
-                        stmt.close();
                         c.commit();
+                        stmt.close();
+                        rs.close();
                     }           
                 } 
                 catch ( Exception b ) {
