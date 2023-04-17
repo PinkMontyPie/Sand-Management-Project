@@ -279,15 +279,23 @@ public class purchase_ui extends javax.swing.JFrame {
                 "No.", "Item", "Quantity", "Unit price", "Amount"
             }
         ) {
+<<<<<<< HEAD
             Class[] types = new Class [] {
                 java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+=======
+            boolean[] canEdit = new boolean [] {
+                true, true, true, true, false
+>>>>>>> parent of 68eb54b (purchase 80%)
             };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jScrollPane2.setViewportView(jTable2);
+        if (jTable2.getColumnModel().getColumnCount() > 0) {
+            jTable2.getColumnModel().getColumn(4).setResizable(false);
+        }
 
         TxtPtotalLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         TxtPtotalLabel1.setForeground(new java.awt.Color(51, 51, 51));
@@ -669,6 +677,42 @@ public class purchase_ui extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+<<<<<<< HEAD
+=======
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+                // Search
+        Connection conn = null;
+        Statement stmt = null;
+        String type = dropdownlist01.getSelectedItem().toString();
+        String search = TextSearchField1.getText();
+        try {
+            Class.forName("org.sqlite.JDBC");
+            conn = DriverManager.getConnection("jdbc:sqlite:purchase_data.db");
+            stmt = conn.createStatement();
+            if (type.equals("Company")){
+                ResultSet rs = stmt.executeQuery("SELECT * FROM purchase WHERE Company = '" +search+ "'");
+                purchaseTable1.setModel(DbUtils.resultSetToTableModel(rs));
+                rs.close();
+            }
+            if (type.equals("Contact Name")) {
+                ResultSet rs = stmt.executeQuery("SELECT * FROM purchase WHERE ContactName = '" +search+ "'");
+                purchaseTable1.setModel(DbUtils.resultSetToTableModel(rs));
+                rs.close();
+            } 
+            stmt.close();
+            conn.close();
+           
+        } catch (Exception e) {
+            e.printStackTrace();
+        }      
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void dropdownlist01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dropdownlist01ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dropdownlist01ActionPerformed
+
+>>>>>>> parent of 68eb54b (purchase 80%)
     /**
      * @param args the command line arguments
      */
