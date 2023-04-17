@@ -108,8 +108,6 @@ public class delivery_ui extends javax.swing.JFrame {
         TextField5 = new javax.swing.JTextField();
         DelButton1 = new javax.swing.JButton();
         AddButton2 = new javax.swing.JButton();
-        TextField9 = new javax.swing.JTextField();
-        TitleTxtLabel2 = new javax.swing.JLabel();
         TextField10 = new javax.swing.JTextField();
         TitleTxtLabel3 = new javax.swing.JLabel();
         TitleTxtLabel4 = new javax.swing.JLabel();
@@ -281,15 +279,6 @@ public class delivery_ui extends javax.swing.JFrame {
             }
         });
 
-        TextField9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextField9ActionPerformed(evt);
-            }
-        });
-
-        TitleTxtLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        TitleTxtLabel2.setText("สถานที่จัดส่ง");
-
         TextField10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextField10ActionPerformed(evt);
@@ -300,7 +289,7 @@ public class delivery_ui extends javax.swing.JFrame {
         TitleTxtLabel3.setText("สถานที่จัดส่ง");
 
         TitleTxtLabel4.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        TitleTxtLabel4.setText("สถานที่จัดส่ง");
+        TitleTxtLabel4.setText("รายงานปัญหา");
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -334,8 +323,6 @@ public class delivery_ui extends javax.swing.JFrame {
                             .addComponent(TitleTxtLabel4)
                             .addComponent(TitleTxtLabel3)
                             .addComponent(TextField10, javax.swing.GroupLayout.DEFAULT_SIZE, 787, Short.MAX_VALUE)
-                            .addComponent(TitleTxtLabel2)
-                            .addComponent(TextField9, javax.swing.GroupLayout.DEFAULT_SIZE, 787, Short.MAX_VALUE)
                             .addComponent(TitleTxtLabel1)
                             .addComponent(TextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 787, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BgPanelLeftLayout.createSequentialGroup()
@@ -374,18 +361,14 @@ public class delivery_ui extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(TitleTxtLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
                 .addComponent(TitleTxtLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(TextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addGap(18, 18, 18)
                 .addComponent(TitleTxtLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 182, Short.MAX_VALUE)
                 .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(AddButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(DelButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -582,10 +565,6 @@ public class delivery_ui extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void TextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextField9ActionPerformed
 
     private void TextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField10ActionPerformed
         // TODO add your handling code here:
@@ -809,12 +788,10 @@ public class delivery_ui extends javax.swing.JFrame {
     private javax.swing.JTextField TextField3;
     private javax.swing.JTextField TextField4;
     private javax.swing.JTextField TextField5;
-    private javax.swing.JTextField TextField9;
     private javax.swing.JTextField TextSearchField1;
     private javax.swing.JLabel TitleLeftLabel1;
     private javax.swing.JLabel TitleSearch;
     private javax.swing.JLabel TitleTxtLabel1;
-    private javax.swing.JLabel TitleTxtLabel2;
     private javax.swing.JLabel TitleTxtLabel3;
     private javax.swing.JLabel TitleTxtLabel4;
     private javax.swing.JLabel TitleTxtLeftLabel1;
