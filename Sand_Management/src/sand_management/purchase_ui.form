@@ -371,6 +371,11 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="DateTextField1">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
+            </Property>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DateTextField1ActionPerformed"/>
           </Events>
@@ -387,6 +392,11 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="CompanyTextField2">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
+            </Property>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CompanyTextField2ActionPerformed"/>
           </Events>
@@ -403,6 +413,11 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="ContactTextField3">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
+            </Property>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ContactTextField3ActionPerformed"/>
           </Events>
@@ -419,6 +434,11 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="ContactNumTextField4">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
+            </Property>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ContactNumTextField4ActionPerformed"/>
           </Events>
@@ -435,6 +455,11 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="AdressTextField5">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
+            </Property>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AdressTextField5ActionPerformed"/>
           </Events>
@@ -455,21 +480,15 @@
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="5" rowCount="0">
+                  <Table columnCount="4" rowCount="0">
                     <Column editable="true" title="No." type="java.lang.String"/>
                     <Column editable="true" title="Item" type="java.lang.String"/>
-                    <Column editable="true" title="Quantity" type="java.lang.Integer"/>
-                    <Column editable="true" title="Unit price" type="java.lang.Double"/>
-                    <Column editable="true" title="Amount" type="java.lang.String"/>
+                    <Column editable="true" title="Quantity" type="java.lang.String"/>
+                    <Column editable="true" title="Unit price" type="java.lang.String"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>
@@ -521,6 +540,11 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="TextField6">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
+            </Property>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextField6ActionPerformed"/>
           </Events>
@@ -537,6 +561,11 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="TextField7">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
+            </Property>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextField7ActionPerformed"/>
           </Events>
@@ -553,6 +582,11 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="TextField8">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
+            </Property>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextField8ActionPerformed"/>
           </Events>

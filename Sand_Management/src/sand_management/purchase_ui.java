@@ -12,6 +12,9 @@ import java.sql.Statement;
 import java.text.*;
 import java.util.*;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.*;
 
@@ -228,6 +231,7 @@ public class purchase_ui extends javax.swing.JFrame {
         TitleTxtLeftLabel1.setForeground(new java.awt.Color(0, 0, 0));
         TitleTxtLeftLabel1.setText("วันที่สั่งซื้อ");
 
+        DateTextField1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         DateTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DateTextField1ActionPerformed(evt);
@@ -238,6 +242,7 @@ public class purchase_ui extends javax.swing.JFrame {
         TitleTxtRightLabel1.setForeground(new java.awt.Color(0, 0, 0));
         TitleTxtRightLabel1.setText("บริษัท/ร้านตัวแทนจำหน่าย");
 
+        CompanyTextField2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         CompanyTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CompanyTextField2ActionPerformed(evt);
@@ -248,6 +253,7 @@ public class purchase_ui extends javax.swing.JFrame {
         TitleTxtLeftLabel2.setForeground(new java.awt.Color(0, 0, 0));
         TitleTxtLeftLabel2.setText("ชื่อผู้ติดต่อ");
 
+        ContactTextField3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         ContactTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ContactTextField3ActionPerformed(evt);
@@ -258,6 +264,7 @@ public class purchase_ui extends javax.swing.JFrame {
         TitleTxtRightLabel2.setForeground(new java.awt.Color(0, 0, 0));
         TitleTxtRightLabel2.setText("เบอร์ติดต่อ");
 
+        ContactNumTextField4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         ContactNumTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ContactNumTextField4ActionPerformed(evt);
@@ -268,6 +275,7 @@ public class purchase_ui extends javax.swing.JFrame {
         TitleTxtLabel1.setForeground(new java.awt.Color(0, 0, 0));
         TitleTxtLabel1.setText("ที่อยู่จัดส่งสินค้า");
 
+        AdressTextField5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         AdressTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AdressTextField5ActionPerformed(evt);
@@ -281,11 +289,11 @@ public class purchase_ui extends javax.swing.JFrame {
 
             },
             new String [] {
-                "No.", "Item", "Quantity", "Unit price", "Amount"
+                "No.", "Item", "Quantity", "Unit price"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -302,6 +310,7 @@ public class purchase_ui extends javax.swing.JFrame {
         TxtPtotalLabel1.setForeground(new java.awt.Color(0, 0, 0));
         TxtPtotalLabel1.setText("รวมราคาสินค้า");
 
+        TextField6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         TextField6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextField6ActionPerformed(evt);
@@ -312,6 +321,7 @@ public class purchase_ui extends javax.swing.JFrame {
         TxtVATLabel2.setForeground(new java.awt.Color(0, 0, 0));
         TxtVATLabel2.setText("ภาษีมูลค่าเพิ่ม 7% VAT");
 
+        TextField7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         TextField7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextField7ActionPerformed(evt);
@@ -322,6 +332,7 @@ public class purchase_ui extends javax.swing.JFrame {
         TxtTotalLabel1.setForeground(new java.awt.Color(0, 0, 0));
         TxtTotalLabel1.setText("รวมเงินทั้งสิ้น TOTAL");
 
+        TextField8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         TextField8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextField8ActionPerformed(evt);
@@ -704,6 +715,7 @@ public class purchase_ui extends javax.swing.JFrame {
             String p4 = ContactNumTextField4.getText();
             String p5 = AdressTextField5.getText();
             String p6 = getRandomNumberString();
+            String p7 = TextField8.getText();
             ResultSet rs = stmt.executeQuery("SELECT * FROM sqlite_master WHERE type='table' AND name='purchase_data'");   
             if (!rs.next()) {
                 System.out.println("Table does not exist");
@@ -718,8 +730,8 @@ public class purchase_ui extends javax.swing.JFrame {
             }
             rs.close();
 
-            String sql = "INSERT INTO purchase_data(ID,Date,Company,ContactName,ContactAdress,PhoneNumber) VALUES('" + p6 + "','" + p1 + "','" + p2 + "',"
-                    + "'" + p3 + "','" + p4 + "','" + p5 + "')";
+            String sql = "INSERT INTO purchase_data(ID,Date,Company,ContactName,ContactAdress,PhoneNumber,TotalBuy) VALUES('" + p6 + "','" + p1 + "','" + p2 + "',"
+                    + "'" + p3 + "','" + p5 + "','" + p4 + "','" + p7 + "')";
             stmt.executeUpdate(sql);
             stmt.close();
             conn.commit();
@@ -801,12 +813,15 @@ public class purchase_ui extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, b);
         }
     }//GEN-LAST:event_DelButton1MouseClicked
-
+ 
+    private int count = 0;
+    
     private void addRowBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRowBtn1ActionPerformed
         // TODO add your handling code here:
+        count++;
         DefaultTableModel model = (DefaultTableModel) PriceTable2.getModel();
-        model.addRow(new Object[] {"", "", "", "",""});
-        //Hello boss
+        String countStr = DecimalFormat.getInstance().format(count); 
+        model.addRow(new Object[]{countStr, "", "", ""});
     }//GEN-LAST:event_addRowBtn1ActionPerformed
 
     private void removeRowBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeRowBtn1ActionPerformed
@@ -815,19 +830,63 @@ public class purchase_ui extends javax.swing.JFrame {
         if (selectedRow != -1) {
             DefaultTableModel model = (DefaultTableModel) PriceTable2.getModel();
             model.removeRow(selectedRow);
-            ////
         }
     }//GEN-LAST:event_removeRowBtn1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) PriceTable2.getModel();
+        List<Double> sumList2 = new ArrayList<>();
+        List<Double> sumList1 = new ArrayList<>();
+        int count = 0;
         double sum = 0.0;
-        for (int i = 0; i < PriceTable2.getRowCount(); i++) {
-            double price = Double.parseDouble(PriceTable2.getValueAt(i, 2).toString());
-            double quantity = Double.parseDouble(PriceTable2.getValueAt(i, 3).toString());
-            sum += price * quantity;
+        double vatRate = 0.07;
+
+        for (int i = 0; i < model.getRowCount(); i++) {
+            Object value = model.getValueAt(i, 2); // คอลัมน์ที่ต้องการคำนวณ
+            double sum2 = 0.0;
+            if (value instanceof String) {
+                try {
+                    value = Integer.parseInt((String) value); // แปลง String เป็น Integer
+                } catch (NumberFormatException ex2) {
+                    value = 0; // ไม่สามารถแปลงได้ ให้กำหนดค่าเป็น 0
+                }
+            }
+            if (value instanceof Integer) {
+                sum2 += (Integer) value;
+            }
+            sumList2.add(sum2);
         }
-        System.out.println("Sum: " + sum);
+
+        for (int i = 0; i < model.getRowCount(); i++) {
+            Object value = model.getValueAt(i, 3); // คอลัมน์ที่ต้องการคำนวณ
+            double sum1 = 0.0;
+            if (value instanceof String) {
+                try {
+                    value = Integer.parseInt((String) value); // แปลง String เป็น Integer
+                } catch (NumberFormatException ex) {
+                    try {
+                        value = Double.parseDouble((String) value); // แปลง String เป็น Double
+                    } catch (NumberFormatException ex2) {
+                        value = 0; // ไม่สามารถแปลงได้ ให้กำหนดค่าเป็น 0
+                    }
+                }
+            }
+            if (value instanceof Integer) {
+                sum1 += (Integer) value;
+            } else if (value instanceof Double) {
+                sum1 += (Double) value;
+            }
+            sumList1.add(sum1);
+        }
+
+        for (int i = 0; i < model.getRowCount(); i++) {
+            sum += sumList2.get(i) * sumList1.get(i);
+        }
+        TextField6.setText(Double.toString(sum));
+        double vat = sum * vatRate;
+        TextField7.setText(Double.toString(vat));
+        double total = sum + vat;
+        TextField8.setText(Double.toString(total));
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
