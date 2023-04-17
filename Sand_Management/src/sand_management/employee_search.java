@@ -387,7 +387,6 @@ public class employee_search extends javax.swing.JFrame {
         label43 = new javax.swing.JLabel();
         reason_for_wanting_to_work_here = new javax.swing.JTextField();
         label3 = new javax.swing.JLabel();
-        position = new javax.swing.JTextField();
         first_name = new javax.swing.JTextField();
         label2 = new javax.swing.JLabel();
         age = new javax.swing.JTextField();
@@ -466,6 +465,7 @@ public class employee_search extends javax.swing.JFrame {
         Button_edit_profile = new javax.swing.JButton();
         label44 = new javax.swing.JLabel();
         nickname = new javax.swing.JTextField();
+        position = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -607,8 +607,6 @@ public class employee_search extends javax.swing.JFrame {
 
         label3.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         label3.setText("ตำเเหน่งงานที่มาสมัคร");
-
-        position.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         first_name.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
@@ -838,6 +836,13 @@ public class employee_search extends javax.swing.JFrame {
         label44.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         label44.setText("ชื่อเล่นภาษาอังกฤษ");
 
+        position.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "IT", "CEO", "เลขานุการ", "พนักงาน", "พนักงานขนส่ง" }));
+        position.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                positionActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -935,7 +940,6 @@ public class employee_search extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(nickname, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 0, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(father_nationality, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1069,9 +1073,9 @@ public class employee_search extends javax.swing.JFrame {
                             .addComponent(label1)
                             .addComponent(first_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label3)
-                            .addComponent(position, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label2)
-                            .addComponent(last_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(last_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(position, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1321,7 +1325,7 @@ public class employee_search extends javax.swing.JFrame {
                     first_name.setText(first);
                     last_name.setText(last);
                     nickname.setText(nick);
-                    position.setText(posi);
+                    position.setSelectedItem(posi);
                     age.setText(age1);
                     ethnicity.setText(eth);
                     nationality.setText(nation);
@@ -1399,7 +1403,7 @@ public class employee_search extends javax.swing.JFrame {
                     stmt = c.createStatement();
                     String a1 = first_name.getText();
                     String a2 = last_name.getText();
-                    String a3 = position.getText();
+                    String a3 = position.getSelectedItem().toString();
                     String a4 = age.getText();
                     String a5 = ethnicity.getText();
                     String a6 = nationality.getText();
@@ -1497,6 +1501,10 @@ public class employee_search extends javax.swing.JFrame {
     private void button_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_searchActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_button_searchActionPerformed
+
+    private void positionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_positionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_positionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1625,7 +1633,7 @@ public class employee_search extends javax.swing.JFrame {
     private javax.swing.JTextField office_name;
     private javax.swing.JTextField old_position;
     private javax.swing.JTextField phone_number;
-    private javax.swing.JTextField position;
+    private javax.swing.JComboBox<String> position;
     private javax.swing.JTextField province;
     private javax.swing.JTextField reason_for_resignation;
     private javax.swing.JTextField reason_for_wanting_to_work_here;

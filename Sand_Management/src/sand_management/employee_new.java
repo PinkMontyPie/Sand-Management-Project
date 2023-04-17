@@ -57,7 +57,7 @@ public class employee_new extends javax.swing.JFrame {
                     stmt = c.createStatement();
                     String a1 = first_name.getText();
                     String a2 = last_name.getText();
-                    String a3 = position.getText();
+                    String a3 = position.getSelectedItem().toString();
                     String a13 = phone_number.getText();
                     String a43 = getRandomNumberString();
                     String a44 = nickname.getText();
@@ -198,12 +198,12 @@ public class employee_new extends javax.swing.JFrame {
         reason_for_resignation = new javax.swing.JTextField();
         reason_for_wanting_to_work_here = new javax.swing.JTextField();
         jLabel40 = new javax.swing.JLabel();
-        position = new javax.swing.JTextField();
         button_register = new javax.swing.JButton();
         jLabel45 = new javax.swing.JLabel();
         last_name = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
         nickname = new javax.swing.JTextField();
+        position = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -522,8 +522,6 @@ public class employee_new extends javax.swing.JFrame {
         jLabel40.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         jLabel40.setText("ตำเเหน่งงานที่มาสมัคร");
 
-        position.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
         button_register.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
         button_register.setForeground(new java.awt.Color(51, 255, 0));
         button_register.setText("Register");
@@ -545,6 +543,13 @@ public class employee_new extends javax.swing.JFrame {
 
         jLabel23.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         jLabel23.setText("ชื่อเล่นภาษาอังกฤษ");
+
+        position.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Position", "IT", "CEO", "เลขานุการ", "พนักงาน", "พนักงานขนส่ง" }));
+        position.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                positionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -700,18 +705,6 @@ public class employee_new extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(first_name, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel45)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(last_name, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel40)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(position, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(jLabel9)
@@ -746,7 +739,19 @@ public class employee_new extends javax.swing.JFrame {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jLabel11)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(province, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                                .addComponent(province, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(first_name, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel45)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(last_name, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel40)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(position, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel23)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -770,9 +775,9 @@ public class employee_new extends javax.swing.JFrame {
                                     .addComponent(jLabel1)
                                     .addComponent(first_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel40)
-                                    .addComponent(position, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel45)
-                                    .addComponent(last_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(last_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(position, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel2)
@@ -965,7 +970,7 @@ public class employee_new extends javax.swing.JFrame {
                     stmt = c.createStatement();
                     String a1 = first_name.getText();
                     String a2 = last_name.getText();
-                    String a3 = position.getText();
+                    String a3 = position.getSelectedItem().toString();
                     String a4 = age.getText();
                     String a5 = ethnicity.getText();
                     String a6 = nationality.getText();
@@ -1035,6 +1040,11 @@ public class employee_new extends javax.swing.JFrame {
                         "ALERT", JOptionPane.WARNING_MESSAGE);
                     }
                     
+                    else if (a3.equals("Select Position")){
+                        JOptionPane.showMessageDialog(null, "Please select position.",
+                        "ALERT", JOptionPane.WARNING_MESSAGE);
+                    }
+                    
                     else if (a1.equals(first) || a9.equals(card) || a1.equals("") || a2.equals("") || a3.equals("") || a4.equals("") || a5.equals("") || a6.equals("") || a7.equals("") || a8.equals("") || a9.equals("") || a10.equals("") || 
                             a11.equals("") || a12.equals("") || a13.equals("") || a14.equals("") || a15.equals("") || a16.equals("") || a17.equals("") || a18.equals("") || a19.equals("") || a20.equals("") || 
                             a21.equals("") || a22.equals("") || a23.equals("") || a24.equals("") || a25.equals("") || a26.equals("") || a27.equals("") || a28.equals("") || a29.equals("") || a30.equals("") || 
@@ -1097,6 +1107,10 @@ public class employee_new extends javax.swing.JFrame {
     private void button_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_registerActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_button_registerActionPerformed
+
+    private void positionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_positionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_positionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1224,7 +1238,7 @@ public class employee_new extends javax.swing.JFrame {
     private javax.swing.JTextField office_name;
     private javax.swing.JTextField old_position;
     private javax.swing.JTextField phone_number;
-    private javax.swing.JTextField position;
+    private javax.swing.JComboBox<String> position;
     private javax.swing.JTextField province;
     private javax.swing.JTextField reason_for_resignation;
     private javax.swing.JTextField reason_for_wanting_to_work_here;
