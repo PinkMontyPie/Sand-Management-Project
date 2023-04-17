@@ -111,32 +111,39 @@ public class report_ui extends javax.swing.JFrame {
         TextField14 = new javax.swing.JTextField();
         TitleTxtRightLabel10 = new javax.swing.JLabel();
         TextField21 = new javax.swing.JTextField();
-        TextField29 = new javax.swing.JTextField();
         TitleTxtLeftLabel14 = new javax.swing.JLabel();
         TitleTxtLeftLabel15 = new javax.swing.JLabel();
         TextField30 = new javax.swing.JTextField();
-        TitleTxtLeftLabel16 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
         jButton_pdf_purchase = new javax.swing.JButton();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        PriceTable2 = new javax.swing.JTable();
+        TxtPtotalLabel1 = new javax.swing.JLabel();
+        TxtVATLabel2 = new javax.swing.JLabel();
+        TxtTotalLabel1 = new javax.swing.JLabel();
+        TextField15 = new javax.swing.JTextField();
+        TextField16 = new javax.swing.JTextField();
+        TextField17 = new javax.swing.JTextField();
         BgPanelLeft_sell = new javax.swing.JPanel();
         TitleLeftLabel6 = new javax.swing.JLabel();
         TitleTxtLeftLabel17 = new javax.swing.JLabel();
-        TextField31 = new javax.swing.JTextField();
+        TextField_sell_1 = new javax.swing.JTextField();
         TitleTxtRightLabel11 = new javax.swing.JLabel();
-        TextField32 = new javax.swing.JTextField();
+        TextField_sell_2 = new javax.swing.JTextField();
         TitleTxtLeftLabel18 = new javax.swing.JLabel();
-        TextField33 = new javax.swing.JTextField();
+        TextField_sell_3 = new javax.swing.JTextField();
         TitleTxtRightLabel12 = new javax.swing.JLabel();
-        TextField34 = new javax.swing.JTextField();
-        TextField35 = new javax.swing.JTextField();
+        TextField_sell_4 = new javax.swing.JTextField();
+        TextField_sell_5 = new javax.swing.JTextField();
         TitleTxtLeftLabel19 = new javax.swing.JLabel();
-        TitleTxtLeftLabel20 = new javax.swing.JLabel();
-        TextField36 = new javax.swing.JTextField();
-        TitleTxtLeftLabel21 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
         jButton_pdf_sell = new javax.swing.JButton();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        PriceTable3 = new javax.swing.JTable();
+        TxtPtotalLabel2 = new javax.swing.JLabel();
+        TextField_sell_6 = new javax.swing.JTextField();
+        TextField_sell_7 = new javax.swing.JTextField();
+        TxtVATLabel3 = new javax.swing.JLabel();
+        TextField_sell_8 = new javax.swing.JTextField();
+        TxtTotalLabel2 = new javax.swing.JLabel();
         BgPanelRightop = new javax.swing.JPanel();
         TextSearchField1 = new javax.swing.JTextField();
         TitleSearch = new javax.swing.JLabel();
@@ -339,6 +346,9 @@ public class report_ui extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane2.setViewportView(jTextArea1);
 
+        jButton_pdf_delivery.setBackground(new java.awt.Color(255, 255, 255));
+        jButton_pdf_delivery.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_pdf_delivery.setForeground(new java.awt.Color(51, 51, 51));
         jButton_pdf_delivery.setText("Save PDF");
         jButton_pdf_delivery.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -482,18 +492,8 @@ public class report_ui extends javax.swing.JFrame {
             }
         });
 
-        TextField29.setEditable(false);
-        TextField29.setBackground(new java.awt.Color(255, 255, 255));
-        TextField29.setForeground(new java.awt.Color(51, 51, 51));
-        TextField29.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextField29ActionPerformed(evt);
-            }
-        });
-
         TitleTxtLeftLabel14.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         TitleTxtLeftLabel14.setForeground(new java.awt.Color(51, 51, 51));
-        TitleTxtLeftLabel14.setText("วันที่การจัดส่งสินค้า");
 
         TitleTxtLeftLabel15.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         TitleTxtLeftLabel15.setForeground(new java.awt.Color(51, 51, 51));
@@ -508,21 +508,77 @@ public class report_ui extends javax.swing.JFrame {
             }
         });
 
-        TitleTxtLeftLabel16.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        TitleTxtLeftLabel16.setForeground(new java.awt.Color(51, 51, 51));
-        TitleTxtLeftLabel16.setText("รายงานปัญหา");
-
-        jTextArea2.setEditable(false);
-        jTextArea2.setBackground(new java.awt.Color(255, 255, 255));
-        jTextArea2.setColumns(20);
-        jTextArea2.setForeground(new java.awt.Color(51, 51, 51));
-        jTextArea2.setRows(5);
-        jScrollPane3.setViewportView(jTextArea2);
-
+        jButton_pdf_purchase.setBackground(new java.awt.Color(255, 255, 255));
+        jButton_pdf_purchase.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_pdf_purchase.setForeground(new java.awt.Color(51, 51, 51));
         jButton_pdf_purchase.setText("Save PDF");
         jButton_pdf_purchase.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton_pdf_purchaseMouseClicked(evt);
+            }
+        });
+
+        PriceTable2.setBackground(new java.awt.Color(255, 255, 255));
+        PriceTable2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        PriceTable2.setForeground(new java.awt.Color(51, 51, 51));
+        PriceTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "No.", "Item", "Quantity", "Unit price"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        PriceTable2.setGridColor(new java.awt.Color(0, 0, 0));
+        PriceTable2.setRowHeight(30);
+        PriceTable2.setSelectionBackground(new java.awt.Color(255, 255, 255));
+        PriceTable2.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        jScrollPane7.setViewportView(PriceTable2);
+
+        TxtPtotalLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TxtPtotalLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        TxtPtotalLabel1.setText("รวมราคาสินค้า");
+
+        TxtVATLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TxtVATLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        TxtVATLabel2.setText("ภาษีมูลค่าเพิ่ม 7% VAT");
+
+        TxtTotalLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TxtTotalLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        TxtTotalLabel1.setText("รวมเงินทั้งสิ้น TOTAL");
+
+        TextField15.setBackground(new java.awt.Color(255, 153, 0));
+        TextField15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        TextField15.setForeground(new java.awt.Color(51, 51, 51));
+        TextField15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextField15ActionPerformed(evt);
+            }
+        });
+
+        TextField16.setBackground(new java.awt.Color(255, 255, 255));
+        TextField16.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        TextField16.setForeground(new java.awt.Color(51, 51, 51));
+        TextField16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextField16ActionPerformed(evt);
+            }
+        });
+
+        TextField17.setBackground(new java.awt.Color(255, 255, 255));
+        TextField17.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        TextField17.setForeground(new java.awt.Color(51, 51, 51));
+        TextField17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextField17ActionPerformed(evt);
             }
         });
 
@@ -534,18 +590,28 @@ public class report_ui extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(BgPanelLeft_purchaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(BgPanelLeft_purchaseLayout.createSequentialGroup()
-                        .addGroup(BgPanelLeft_purchaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TitleTxtLeftLabel14)
-                            .addComponent(TitleTxtLeftLabel15)
-                            .addComponent(TitleTxtLeftLabel16))
+                        .addComponent(TitleTxtLeftLabel15)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(BgPanelLeft_purchaseLayout.createSequentialGroup()
+                        .addComponent(TitleTxtLeftLabel14)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BgPanelLeft_purchaseLayout.createSequentialGroup()
                         .addGroup(BgPanelLeft_purchaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(TextField30, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(BgPanelLeft_purchaseLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButton_pdf_purchase, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TextField29)
+                                .addGroup(BgPanelLeft_purchaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(TxtPtotalLabel1)
+                                    .addComponent(TextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(BgPanelLeft_purchaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(TxtVATLabel2)
+                                    .addComponent(TextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(BgPanelLeft_purchaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(BgPanelLeft_purchaseLayout.createSequentialGroup()
+                                        .addComponent(TxtTotalLabel1)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(TextField15)))
                             .addGroup(BgPanelLeft_purchaseLayout.createSequentialGroup()
                                 .addGroup(BgPanelLeft_purchaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(TitleTxtLeftLabel13)
@@ -559,7 +625,10 @@ public class report_ui extends javax.swing.JFrame {
                                     .addComponent(TitleTxtRightLabel10)
                                     .addComponent(TextField13, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
                                     .addComponent(TextField21)))
-                            .addComponent(TextField30, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addGroup(BgPanelLeft_purchaseLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jButton_pdf_purchase, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(54, 54, 54))))
         );
         BgPanelLeft_purchaseLayout.setVerticalGroup(
@@ -586,18 +655,24 @@ public class report_ui extends javax.swing.JFrame {
                     .addComponent(TextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TextField21, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(TitleTxtLeftLabel14)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TextField29, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addComponent(TitleTxtLeftLabel15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TitleTxtLeftLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TextField30, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(TitleTxtLeftLabel16)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(BgPanelLeft_purchaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TxtVATLabel2)
+                    .addComponent(TxtPtotalLabel1)
+                    .addComponent(TxtTotalLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 163, Short.MAX_VALUE)
+                .addGroup(BgPanelLeft_purchaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
                 .addComponent(jButton_pdf_purchase, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38))
         );
@@ -612,12 +687,12 @@ public class report_ui extends javax.swing.JFrame {
         TitleTxtLeftLabel17.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtLeftLabel17.setText("ชื่อพนักงานขับรถ");
 
-        TextField31.setEditable(false);
-        TextField31.setBackground(new java.awt.Color(255, 255, 255));
-        TextField31.setForeground(new java.awt.Color(51, 51, 51));
-        TextField31.addActionListener(new java.awt.event.ActionListener() {
+        TextField_sell_1.setEditable(false);
+        TextField_sell_1.setBackground(new java.awt.Color(255, 255, 255));
+        TextField_sell_1.setForeground(new java.awt.Color(51, 51, 51));
+        TextField_sell_1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextField31ActionPerformed(evt);
+                TextField_sell_1ActionPerformed(evt);
             }
         });
 
@@ -625,12 +700,12 @@ public class report_ui extends javax.swing.JFrame {
         TitleTxtRightLabel11.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtRightLabel11.setText("ชื่อลูกค้า");
 
-        TextField32.setEditable(false);
-        TextField32.setBackground(new java.awt.Color(255, 255, 255));
-        TextField32.setForeground(new java.awt.Color(51, 51, 51));
-        TextField32.addActionListener(new java.awt.event.ActionListener() {
+        TextField_sell_2.setEditable(false);
+        TextField_sell_2.setBackground(new java.awt.Color(255, 255, 255));
+        TextField_sell_2.setForeground(new java.awt.Color(51, 51, 51));
+        TextField_sell_2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextField32ActionPerformed(evt);
+                TextField_sell_2ActionPerformed(evt);
             }
         });
 
@@ -638,71 +713,114 @@ public class report_ui extends javax.swing.JFrame {
         TitleTxtLeftLabel18.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtLeftLabel18.setText("วันที่การจัดส่งสินค้า");
 
-        TextField33.setEditable(false);
-        TextField33.setBackground(new java.awt.Color(255, 255, 255));
-        TextField33.setForeground(new java.awt.Color(51, 51, 51));
-        TextField33.addActionListener(new java.awt.event.ActionListener() {
+        TextField_sell_3.setEditable(false);
+        TextField_sell_3.setBackground(new java.awt.Color(255, 255, 255));
+        TextField_sell_3.setForeground(new java.awt.Color(51, 51, 51));
+        TextField_sell_3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextField33ActionPerformed(evt);
+                TextField_sell_3ActionPerformed(evt);
             }
         });
 
         TitleTxtRightLabel12.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         TitleTxtRightLabel12.setForeground(new java.awt.Color(51, 51, 51));
-        TitleTxtRightLabel12.setText("เบอร์ติดต่อ");
+        TitleTxtRightLabel12.setText("เบอร์โทรศัพท์ลูกค้า");
 
-        TextField34.setEditable(false);
-        TextField34.setBackground(new java.awt.Color(255, 255, 255));
-        TextField34.setForeground(new java.awt.Color(51, 51, 51));
-        TextField34.addActionListener(new java.awt.event.ActionListener() {
+        TextField_sell_4.setEditable(false);
+        TextField_sell_4.setBackground(new java.awt.Color(255, 255, 255));
+        TextField_sell_4.setForeground(new java.awt.Color(51, 51, 51));
+        TextField_sell_4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextField34ActionPerformed(evt);
+                TextField_sell_4ActionPerformed(evt);
             }
         });
 
-        TextField35.setEditable(false);
-        TextField35.setBackground(new java.awt.Color(255, 255, 255));
-        TextField35.setForeground(new java.awt.Color(51, 51, 51));
-        TextField35.addActionListener(new java.awt.event.ActionListener() {
+        TextField_sell_5.setEditable(false);
+        TextField_sell_5.setBackground(new java.awt.Color(255, 255, 255));
+        TextField_sell_5.setForeground(new java.awt.Color(51, 51, 51));
+        TextField_sell_5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextField35ActionPerformed(evt);
+                TextField_sell_5ActionPerformed(evt);
             }
         });
 
         TitleTxtLeftLabel19.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         TitleTxtLeftLabel19.setForeground(new java.awt.Color(51, 51, 51));
-        TitleTxtLeftLabel19.setText("วันที่การจัดส่งสินค้า");
+        TitleTxtLeftLabel19.setText("ที่อยู่จัดส่งสินค้า");
 
-        TitleTxtLeftLabel20.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        TitleTxtLeftLabel20.setForeground(new java.awt.Color(51, 51, 51));
-        TitleTxtLeftLabel20.setText("สถานที่จัดส่ง");
-
-        TextField36.setEditable(false);
-        TextField36.setBackground(new java.awt.Color(255, 255, 255));
-        TextField36.setForeground(new java.awt.Color(51, 51, 51));
-        TextField36.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextField36ActionPerformed(evt);
-            }
-        });
-
-        TitleTxtLeftLabel21.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        TitleTxtLeftLabel21.setForeground(new java.awt.Color(51, 51, 51));
-        TitleTxtLeftLabel21.setText("รายงานปัญหา");
-
-        jTextArea3.setEditable(false);
-        jTextArea3.setBackground(new java.awt.Color(255, 255, 255));
-        jTextArea3.setColumns(20);
-        jTextArea3.setForeground(new java.awt.Color(51, 51, 51));
-        jTextArea3.setRows(5);
-        jScrollPane4.setViewportView(jTextArea3);
-
+        jButton_pdf_sell.setBackground(new java.awt.Color(255, 255, 255));
+        jButton_pdf_sell.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_pdf_sell.setForeground(new java.awt.Color(51, 51, 51));
         jButton_pdf_sell.setText("Save PDF");
         jButton_pdf_sell.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton_pdf_sellMouseClicked(evt);
             }
         });
+
+        PriceTable3.setBackground(new java.awt.Color(255, 255, 255));
+        PriceTable3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        PriceTable3.setForeground(new java.awt.Color(51, 51, 51));
+        PriceTable3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "No.", "Item", "Quantity", "Unit price"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        PriceTable3.setGridColor(new java.awt.Color(0, 0, 0));
+        PriceTable3.setRowHeight(30);
+        PriceTable3.setSelectionBackground(new java.awt.Color(255, 255, 255));
+        PriceTable3.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        jScrollPane8.setViewportView(PriceTable3);
+
+        TxtPtotalLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TxtPtotalLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        TxtPtotalLabel2.setText("รวมราคาสินค้า");
+
+        TextField_sell_6.setBackground(new java.awt.Color(255, 255, 255));
+        TextField_sell_6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        TextField_sell_6.setForeground(new java.awt.Color(51, 51, 51));
+        TextField_sell_6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextField_sell_6ActionPerformed(evt);
+            }
+        });
+
+        TextField_sell_7.setBackground(new java.awt.Color(255, 255, 255));
+        TextField_sell_7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        TextField_sell_7.setForeground(new java.awt.Color(51, 51, 51));
+        TextField_sell_7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextField_sell_7ActionPerformed(evt);
+            }
+        });
+
+        TxtVATLabel3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TxtVATLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        TxtVATLabel3.setText("ภาษีมูลค่าเพิ่ม 7% VAT");
+
+        TextField_sell_8.setBackground(new java.awt.Color(73, 189, 128));
+        TextField_sell_8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        TextField_sell_8.setForeground(new java.awt.Color(51, 51, 51));
+        TextField_sell_8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextField_sell_8ActionPerformed(evt);
+            }
+        });
+
+        TxtTotalLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TxtTotalLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        TxtTotalLabel2.setText("รวมเงินทั้งสิ้น TOTAL");
 
         javax.swing.GroupLayout BgPanelLeft_sellLayout = new javax.swing.GroupLayout(BgPanelLeft_sell);
         BgPanelLeft_sell.setLayout(BgPanelLeft_sellLayout);
@@ -712,32 +830,42 @@ public class report_ui extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(BgPanelLeft_sellLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(BgPanelLeft_sellLayout.createSequentialGroup()
-                        .addGroup(BgPanelLeft_sellLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TitleTxtLeftLabel19)
-                            .addComponent(TitleTxtLeftLabel20)
-                            .addComponent(TitleTxtLeftLabel21))
+                        .addComponent(TitleTxtLeftLabel19)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BgPanelLeft_sellLayout.createSequentialGroup()
                         .addGroup(BgPanelLeft_sellLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(TextField35)
+                            .addComponent(TextField_sell_5)
                             .addGroup(BgPanelLeft_sellLayout.createSequentialGroup()
                                 .addGroup(BgPanelLeft_sellLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(TitleTxtLeftLabel18)
                                     .addComponent(TitleTxtLeftLabel17)
                                     .addComponent(TitleLeftLabel6)
-                                    .addComponent(TextField31, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
-                                    .addComponent(TextField33))
+                                    .addComponent(TextField_sell_1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                                    .addComponent(TextField_sell_3))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                                 .addGroup(BgPanelLeft_sellLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(TitleTxtRightLabel11)
                                     .addComponent(TitleTxtRightLabel12)
-                                    .addComponent(TextField32, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
-                                    .addComponent(TextField34)))
-                            .addComponent(TextField36, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(TextField_sell_2, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                                    .addComponent(TextField_sell_4)))
                             .addGroup(BgPanelLeft_sellLayout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButton_pdf_sell, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jButton_pdf_sell, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(BgPanelLeft_sellLayout.createSequentialGroup()
+                                .addGroup(BgPanelLeft_sellLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(TxtPtotalLabel2)
+                                    .addComponent(TextField_sell_6, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(BgPanelLeft_sellLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(TxtVATLabel3)
+                                    .addComponent(TextField_sell_7, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(BgPanelLeft_sellLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(BgPanelLeft_sellLayout.createSequentialGroup()
+                                        .addComponent(TxtTotalLabel2)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(TextField_sell_8)))
+                            .addComponent(jScrollPane8, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(54, 54, 54))))
         );
         BgPanelLeft_sellLayout.setVerticalGroup(
@@ -750,33 +878,37 @@ public class report_ui extends javax.swing.JFrame {
                     .addGroup(BgPanelLeft_sellLayout.createSequentialGroup()
                         .addComponent(TitleTxtRightLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TextField32, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(TextField_sell_2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(BgPanelLeft_sellLayout.createSequentialGroup()
                         .addComponent(TitleTxtLeftLabel17)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TextField31, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(TextField_sell_1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(BgPanelLeft_sellLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(TextField34, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TextField_sell_4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(BgPanelLeft_sellLayout.createSequentialGroup()
                         .addGroup(BgPanelLeft_sellLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(TitleTxtLeftLabel18)
                             .addComponent(TitleTxtRightLabel12))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TextField33, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(TextField_sell_3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(TitleTxtLeftLabel19)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TextField35, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TextField_sell_5, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(TitleTxtLeftLabel20)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TextField36, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(TitleTxtLeftLabel21)
+                .addGroup(BgPanelLeft_sellLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TxtVATLabel3)
+                    .addComponent(TxtPtotalLabel2)
+                    .addComponent(TxtTotalLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 163, Short.MAX_VALUE)
+                .addGroup(BgPanelLeft_sellLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TextField_sell_8, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TextField_sell_7, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TextField_sell_6, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
                 .addComponent(jButton_pdf_sell, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38))
         );
@@ -807,11 +939,11 @@ public class report_ui extends javax.swing.JFrame {
 
         TitleSearch.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         TitleSearch.setForeground(new java.awt.Color(51, 51, 51));
-        TitleSearch.setText("ค้นหา");
+        TitleSearch.setText("ค้นหา ID");
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(51, 51, 51));
+        jButton1.setForeground(new java.awt.Color(0, 153, 255));
         jButton1.setText("ค้นหา");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -849,11 +981,11 @@ public class report_ui extends javax.swing.JFrame {
                 .addGroup(BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(dropdownlist2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Titledropdown1))
-                .addGap(43, 43, 43)
+                .addGap(27, 27, 27)
                 .addGroup(BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(TextSearchField1, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TitleSearch))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 226, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 242, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33))
         );
@@ -890,6 +1022,11 @@ public class report_ui extends javax.swing.JFrame {
                 "1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable_Delivery.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable_DeliveryMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable_Delivery);
 
         jTable_Purchase.setModel(new javax.swing.table.DefaultTableModel(
@@ -916,6 +1053,11 @@ public class report_ui extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable_Sell.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable_SellMouseClicked(evt);
+            }
+        });
         jScrollPane6.setViewportView(jTable_Sell);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -1098,37 +1240,29 @@ public class report_ui extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TextField21ActionPerformed
 
-    private void TextField29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField29ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextField29ActionPerformed
-
     private void TextField30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField30ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TextField30ActionPerformed
 
-    private void TextField31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField31ActionPerformed
+    private void TextField_sell_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_sell_1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextField31ActionPerformed
+    }//GEN-LAST:event_TextField_sell_1ActionPerformed
 
-    private void TextField32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField32ActionPerformed
+    private void TextField_sell_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_sell_2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextField32ActionPerformed
+    }//GEN-LAST:event_TextField_sell_2ActionPerformed
 
-    private void TextField33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField33ActionPerformed
+    private void TextField_sell_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_sell_3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextField33ActionPerformed
+    }//GEN-LAST:event_TextField_sell_3ActionPerformed
 
-    private void TextField34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField34ActionPerformed
+    private void TextField_sell_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_sell_4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextField34ActionPerformed
+    }//GEN-LAST:event_TextField_sell_4ActionPerformed
 
-    private void TextField35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField35ActionPerformed
+    private void TextField_sell_5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_sell_5ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextField35ActionPerformed
-
-    private void TextField36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField36ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextField36ActionPerformed
+    }//GEN-LAST:event_TextField_sell_5ActionPerformed
 
     private void jButton_pdf_sellMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_pdf_sellMouseClicked
         // TODO add your handling code here:
@@ -1153,6 +1287,60 @@ public class report_ui extends javax.swing.JFrame {
         InvoiceGenerator pdf = new InvoiceGenerator();
         pdf.genpdf(Path(),"sell_data","10001");
     }//GEN-LAST:event_jButton_pdf_deliveryMouseClicked
+
+    private void TextField15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField15ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextField15ActionPerformed
+
+    private void TextField16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField16ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextField16ActionPerformed
+
+    private void TextField17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField17ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextField17ActionPerformed
+
+    private void TextField_sell_6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_sell_6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextField_sell_6ActionPerformed
+
+    private void TextField_sell_7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_sell_7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextField_sell_7ActionPerformed
+
+    private void TextField_sell_8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_sell_8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextField_sell_8ActionPerformed
+
+    private void jTable_DeliveryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_DeliveryMouseClicked
+        // TODO add your handling code here:
+        //int row = jTable_Sell.getSelectedRow();
+        //DefaultTableModel model = (DefaultTableModel) jTable_Sell.getModel();
+        //try {
+            //TextField_sell_1.setText(model.getValueAt(row, 1).toString());
+            //TextField_sell_2.setText(model.getValueAt(row, 2).toString());
+            //TextField_sell_3.setText(model.getValueAt(row, 3).toString());
+            //TextField_sell_4.setText(model.getValueAt(row, 4).toString());
+            //TextField_sell_5.setText(model.getValueAt(row, 5).toString());
+        //} catch (Exception b) {
+           // JOptionPane.showMessageDialog(null, b);
+        //}
+    }//GEN-LAST:event_jTable_DeliveryMouseClicked
+
+    private void jTable_SellMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_SellMouseClicked
+        // TODO add your handling code here:
+        int row = jTable_Sell.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) jTable_Sell.getModel();
+        try {
+            TextField_sell_1.setText(model.getValueAt(row, 1).toString());
+            TextField_sell_2.setText(model.getValueAt(row, 2).toString());
+            TextField_sell_3.setText(model.getValueAt(row, 3).toString());
+            TextField_sell_4.setText(model.getValueAt(row, 4).toString());
+            TextField_sell_5.setText(model.getValueAt(row, 5).toString());
+        } catch (Exception b) {
+            JOptionPane.showMessageDialog(null, b);
+        }
+    }//GEN-LAST:event_jTable_SellMouseClicked
 
     public void fetchitemDetails(String s) {
         System.out.println();
@@ -1220,24 +1408,30 @@ public class report_ui extends javax.swing.JFrame {
     private javax.swing.JPanel BgPanelLeft_purchase;
     private javax.swing.JPanel BgPanelLeft_sell;
     private javax.swing.JPanel BgPanelRightop;
+    private javax.swing.JTable PriceTable2;
+    private javax.swing.JTable PriceTable3;
     private javax.swing.JTextField TextField10;
     private javax.swing.JTextField TextField11;
     private javax.swing.JTextField TextField12;
     private javax.swing.JTextField TextField13;
     private javax.swing.JTextField TextField14;
+    private javax.swing.JTextField TextField15;
+    private javax.swing.JTextField TextField16;
+    private javax.swing.JTextField TextField17;
     private javax.swing.JTextField TextField21;
-    private javax.swing.JTextField TextField29;
     private javax.swing.JTextField TextField30;
-    private javax.swing.JTextField TextField31;
-    private javax.swing.JTextField TextField32;
-    private javax.swing.JTextField TextField33;
-    private javax.swing.JTextField TextField34;
-    private javax.swing.JTextField TextField35;
-    private javax.swing.JTextField TextField36;
     private javax.swing.JTextField TextField6;
     private javax.swing.JTextField TextField7;
     private javax.swing.JTextField TextField8;
     private javax.swing.JTextField TextField9;
+    private javax.swing.JTextField TextField_sell_1;
+    private javax.swing.JTextField TextField_sell_2;
+    private javax.swing.JTextField TextField_sell_3;
+    private javax.swing.JTextField TextField_sell_4;
+    private javax.swing.JTextField TextField_sell_5;
+    private javax.swing.JTextField TextField_sell_6;
+    private javax.swing.JTextField TextField_sell_7;
+    private javax.swing.JTextField TextField_sell_8;
     private javax.swing.JTextField TextSearchField1;
     private javax.swing.JLabel TitleLeftLabel2;
     private javax.swing.JLabel TitleLeftLabel5;
@@ -1249,12 +1443,9 @@ public class report_ui extends javax.swing.JFrame {
     private javax.swing.JLabel TitleTxtLeftLabel13;
     private javax.swing.JLabel TitleTxtLeftLabel14;
     private javax.swing.JLabel TitleTxtLeftLabel15;
-    private javax.swing.JLabel TitleTxtLeftLabel16;
     private javax.swing.JLabel TitleTxtLeftLabel17;
     private javax.swing.JLabel TitleTxtLeftLabel18;
     private javax.swing.JLabel TitleTxtLeftLabel19;
-    private javax.swing.JLabel TitleTxtLeftLabel20;
-    private javax.swing.JLabel TitleTxtLeftLabel21;
     private javax.swing.JLabel TitleTxtLeftLabel3;
     private javax.swing.JLabel TitleTxtLeftLabel4;
     private javax.swing.JLabel TitleTxtLeftLabel9;
@@ -1265,6 +1456,12 @@ public class report_ui extends javax.swing.JFrame {
     private javax.swing.JLabel TitleTxtRightLabel4;
     private javax.swing.JLabel TitleTxtRightLabel9;
     private javax.swing.JLabel Titledropdown1;
+    private javax.swing.JLabel TxtPtotalLabel1;
+    private javax.swing.JLabel TxtPtotalLabel2;
+    private javax.swing.JLabel TxtTotalLabel1;
+    private javax.swing.JLabel TxtTotalLabel2;
+    private javax.swing.JLabel TxtVATLabel2;
+    private javax.swing.JLabel TxtVATLabel3;
     private javax.swing.JComboBox<String> dropdownlist2;
     private javax.swing.JLabel jBack;
     private javax.swing.JButton jButton1;
@@ -1279,16 +1476,14 @@ public class report_ui extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTable jTable_Delivery;
     private javax.swing.JTable jTable_Purchase;
     private javax.swing.JTable jTable_Sell;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea3;
     private javax.swing.JLabel jfirstname_lastname;
     // End of variables declaration//GEN-END:variables
 
