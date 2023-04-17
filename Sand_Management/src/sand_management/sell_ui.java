@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.*;
 import java.util.*;
+import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -25,9 +27,24 @@ public class sell_ui extends javax.swing.JFrame {
         Start();
     }
     
-    public void Start(){
+    public void Start() {
+        fetchitemDetailsCS();
         setDate();
         setTime();
+    }
+
+    public void fetchitemDetailsCS() {
+        Connection c = null;
+        Statement stmt = null;
+        try {
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:database.db");
+            stmt = c.createStatement();
+            ResultSet rs1 = stmt.executeQuery("SELECT * FROM sell_data");
+            right_table.setModel(DbUtils.resultSetToTableModel(rs1));
+        } catch (Exception b) {
+            JOptionPane.showMessageDialog(null, b);
+        }
     }
     
     public void setDate() {
@@ -73,7 +90,7 @@ public class sell_ui extends javax.swing.JFrame {
         TitleTxtLabel1 = new javax.swing.JLabel();
         TextField5 = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        left_table = new javax.swing.JTable();
         TxtPtotalLabel1 = new javax.swing.JLabel();
         TextField6 = new javax.swing.JTextField();
         TxtVATLabel2 = new javax.swing.JLabel();
@@ -83,15 +100,13 @@ public class sell_ui extends javax.swing.JFrame {
         DelButton1 = new javax.swing.JButton();
         AddButton2 = new javax.swing.JButton();
         BgPanelRightop = new javax.swing.JPanel();
-        Titledropdown = new javax.swing.JLabel();
-        TextSearchField1 = new javax.swing.JTextField();
-        TitleSearch = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        TextSearchField2 = new javax.swing.JTextField();
-        TextSearchField3 = new javax.swing.JTextField();
-        Titledropdown1 = new javax.swing.JLabel();
+        Search_Button = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        searchbox = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        right_table = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -234,8 +249,8 @@ public class sell_ui extends javax.swing.JFrame {
             }
         });
 
-        jTable2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        left_table.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        left_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -254,9 +269,9 @@ public class sell_ui extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable2);
-        if (jTable2.getColumnModel().getColumnCount() > 0) {
-            jTable2.getColumnModel().getColumn(4).setResizable(false);
+        jScrollPane2.setViewportView(left_table);
+        if (left_table.getColumnModel().getColumnCount() > 0) {
+            left_table.getColumnModel().getColumn(4).setResizable(false);
         }
 
         TxtPtotalLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
@@ -402,67 +417,76 @@ public class sell_ui extends javax.swing.JFrame {
 
         BgPanelRightop.setBackground(new java.awt.Color(204, 204, 204));
 
-        Titledropdown.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        Titledropdown.setText("รหัสสินค้า");
-
-        TitleSearch.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        TitleSearch.setText("ชื่อลูกค้า");
-
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton1.setText("ค้นหา");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Search_Button.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Search_Button.setText("ค้นหา");
+        Search_Button.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Search_ButtonMouseClicked(evt);
+            }
+        });
+        Search_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                Search_ButtonActionPerformed(evt);
             }
         });
 
-        Titledropdown1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        Titledropdown1.setText("วันที่ขายสินค้า");
+        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel1.setText("Category");
+
+        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Product ID", "Sale date", "Name contact" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        searchbox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        searchbox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                searchboxKeyReleased(evt);
+            }
+        });
+
+        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel2.setText("Search");
 
         javax.swing.GroupLayout BgPanelRightopLayout = new javax.swing.GroupLayout(BgPanelRightop);
         BgPanelRightop.setLayout(BgPanelRightopLayout);
         BgPanelRightopLayout.setHorizontalGroup(
             BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BgPanelRightopLayout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addGap(68, 68, 68)
                 .addGroup(BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(TextSearchField1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Titledropdown))
-                .addGap(36, 36, 36)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(18, 18, 18)
                 .addGroup(BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(TextSearchField2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Titledropdown1))
-                .addGap(41, 41, 41)
-                .addGroup(BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(TitleSearch)
-                    .addComponent(TextSearchField3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2)
+                    .addComponent(searchbox, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Search_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(79, 79, 79))
         );
         BgPanelRightopLayout.setVerticalGroup(
             BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BgPanelRightopLayout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BgPanelRightopLayout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
                 .addGroup(BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(BgPanelRightopLayout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29))
-                    .addGroup(BgPanelRightopLayout.createSequentialGroup()
                         .addGroup(BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Titledropdown)
-                            .addComponent(TitleSearch)
-                            .addComponent(Titledropdown1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(TextSearchField1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TextSearchField3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TextSearchField2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(23, 23, 23))))
+                            .addComponent(searchbox, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(Search_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29))
         );
 
-        jTable1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        right_table.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        right_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -482,7 +506,7 @@ public class sell_ui extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(right_table);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -492,10 +516,13 @@ public class sell_ui extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BgPanelLeft, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addComponent(BgPanelRightop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(BgPanelRightop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(jScrollPane1)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -598,9 +625,56 @@ public class sell_ui extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_AddButton2ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void Search_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Search_ButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_Search_ButtonActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void searchboxKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchboxKeyReleased
+        // TODO add your handling code here:
+
+        System.out.print(searchbox.getText());
+        if (searchbox.getText() == null) {
+            System.out.println(searchbox.getText());
+            fetchitemDetailsCS();
+        }
+    }//GEN-LAST:event_searchboxKeyReleased
+
+    private void Search_ButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Search_ButtonMouseClicked
+        // TODO add your handling code here:
+        Connection c = null;
+        Statement stmt = null;
+        String type = jComboBox1.getSelectedItem().toString();
+        String search = searchbox.getText();
+        try {
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:database.db");
+            stmt = c.createStatement();
+            if (type.equals("Product ID")) {
+                ResultSet rs = stmt.executeQuery("SELECT * FROM sell_data WHERE Product_id = '" + search + "'");
+                right_table.setModel(DbUtils.resultSetToTableModel(rs));
+                rs.close();
+            }
+            if (type.equals("Sale date")) {
+                ResultSet rs = stmt.executeQuery("SELECT * FROM sell_data WHERE Sale_date = '" + search + "'");
+                right_table.setModel(DbUtils.resultSetToTableModel(rs));
+                rs.close();
+            }
+            if (type.equals("Name contact")) {
+                ResultSet rs = stmt.executeQuery("SELECT * FROM sell_data WHERE Cotact_name = '" + search + "'");
+                right_table.setModel(DbUtils.resultSetToTableModel(rs));
+                rs.close();
+            }
+            stmt.close();
+            c.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }   
+    }//GEN-LAST:event_Search_ButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -649,6 +723,7 @@ public class sell_ui extends javax.swing.JFrame {
     private javax.swing.JPanel BgPanelLeft;
     private javax.swing.JPanel BgPanelRightop;
     private javax.swing.JButton DelButton1;
+    private javax.swing.JButton Search_Button;
     private javax.swing.JTextField TextField1;
     private javax.swing.JTextField TextField2;
     private javax.swing.JTextField TextField3;
@@ -657,32 +732,29 @@ public class sell_ui extends javax.swing.JFrame {
     private javax.swing.JTextField TextField6;
     private javax.swing.JTextField TextField7;
     private javax.swing.JTextField TextField8;
-    private javax.swing.JTextField TextSearchField1;
-    private javax.swing.JTextField TextSearchField2;
-    private javax.swing.JTextField TextSearchField3;
     private javax.swing.JLabel TitleLeftLabel1;
-    private javax.swing.JLabel TitleSearch;
     private javax.swing.JLabel TitleTxtLabel1;
     private javax.swing.JLabel TitleTxtLeftLabel1;
     private javax.swing.JLabel TitleTxtLeftLabel2;
     private javax.swing.JLabel TitleTxtRightLabel1;
     private javax.swing.JLabel TitleTxtRightLabel2;
-    private javax.swing.JLabel Titledropdown;
-    private javax.swing.JLabel Titledropdown1;
     private javax.swing.JLabel TxtPtotalLabel1;
     private javax.swing.JLabel TxtTotalLabel1;
     private javax.swing.JLabel TxtVATLabel2;
     private javax.swing.JLabel jBack;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonlogout;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelDate;
     private javax.swing.JLabel jLabelProgram;
     private javax.swing.JLabel jLabelTime;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JLabel jfirstname_lastname;
+    private javax.swing.JTable left_table;
+    private javax.swing.JTable right_table;
+    private javax.swing.JTextField searchbox;
     // End of variables declaration//GEN-END:variables
 }
