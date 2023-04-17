@@ -310,38 +310,6 @@ public class employee_search extends javax.swing.JFrame {
         reason_for_wanting_to_work_here.setEditable(true);
     }
      
-     public void update_user_database(){
-        Connection c = null;
-        Statement stmt = null;
-                try {
-                    Class.forName("org.sqlite.JDBC");
-                    c = DriverManager.getConnection("jdbc:sqlite:database.db");
-                    c.setAutoCommit(false);
-                    stmt = c.createStatement();
-                    String a1 = nickname.getText();
-                    String a2 = first_name.getText();
-                    String sql = ("UPDATE user_data SET username = '"+a1+"'  WHERE first_name = '"+a2+"'"); 
-                    stmt.executeUpdate(sql);
-                    stmt.close();
-                    c.commit();
-                }catch ( Exception b ) {
-                   if (c != null) {
-                        try {
-                            c.rollback();
-                        } catch (Exception ex) {
-                         }
-                    }
-                   System.err.println( b.getClass().getName() + ": " + b.getMessage() );
-                }
-                finally{
-                    if (c != null) {
-                        try {
-                            c.close();
-                        } catch (Exception ex) {
-                        }
-                }
-                }
-        }
     public void setDate() {
         dateFormat = new SimpleDateFormat("EEEE dd MMMMM yyyy");
         date = dateFormat.format(Calendar.getInstance().getTime());
@@ -1471,7 +1439,8 @@ public class employee_search extends javax.swing.JFrame {
                                 + "husband_or_wife_position = '"+a32+"',graduated_level = '"+a33+"',name_of_place_of_graduation = '"+a34+"',graduated_subject_or_field = '"+a35+"',work_history = '"+a36+"',office_name = '"+a37+"',"
                                 + "old_position = '"+a38+"',start = '"+a39+"',stop = '"+a40+"',reason_for_resignation = '"+a41+"',reasons_for_wanting_to_work_here = '"+a42+"',nick_name = '"+a44+"' WHERE id_employee = '"+a43+"'");
                         stmt.executeUpdate(sql);
-                        update_user_database();
+                        String sql1 = ("UPDATE user_data SET username = '"+a44+"',position = '"+a3+"'  WHERE first_name = '"+a1+"'");
+                        stmt.executeUpdate(sql1);
                         JOptionPane.showMessageDialog(null, "Update Profile is Successfully",
                                 "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
                         Button_save_profile.setVisible(false);

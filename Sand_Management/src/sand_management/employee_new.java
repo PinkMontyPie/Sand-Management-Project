@@ -46,43 +46,6 @@ public class employee_new extends javax.swing.JFrame {
         int number = rnd.nextInt(999999);
         return String.format("%06d", number);
     }
-
-    public void add_user_database(){
-        Connection c = null;
-        Statement stmt = null;
-                try {
-                    Class.forName("org.sqlite.JDBC");
-                    c = DriverManager.getConnection("jdbc:sqlite:user_data.db");
-                    c.setAutoCommit(false);
-                    stmt = c.createStatement();
-                    String a1 = first_name.getText();
-                    String a2 = last_name.getText();
-                    String a3 = position.getSelectedItem().toString();
-                    String a13 = phone_number.getText();
-                    String a43 = getRandomNumberString();
-                    String a44 = nickname.getText();
-                    String sql = ("INSERT INTO user(username,password,first_name,last_name,position,phone_number) VALUES('"+a44+"','"+a43+"','"+a1+"','"+a2+"','"+a3+"','"+a13+"')");
-                    stmt.executeUpdate(sql);
-                    stmt.close();
-                    c.commit();
-                }catch ( Exception b ) {
-                   if (c != null) {
-                        try {
-                            c.rollback();
-                        } catch (Exception ex) {
-                         }
-                    }
-                   System.err.println( b.getClass().getName() + ": " + b.getMessage() );
-                }
-                finally{
-                    if (c != null) {
-                        try {
-                            c.close();
-                        } catch (Exception ex) {
-                        }
-                }
-                }
-        }
     
         public void setTime() {
             timeFormat = new SimpleDateFormat("hh:mm:ss a");
@@ -1011,7 +974,7 @@ public class employee_new extends javax.swing.JFrame {
                     String a41 = reason_for_resignation.getText();
                     String a42 = reason_for_wanting_to_work_here.getText();
                     String a43 = getRandomNumberString();
-                    String a44 = nickname.getText();
+                    String a44 = nickname.getText().toLowerCase();
                     ResultSet rs = stmt.executeQuery( "SELECT * FROM employee_data WHERE id_card = '"+a9+"'" );
                     String  first = rs.getString("first_name");
                     String  card = rs.getString("id_card");
@@ -1068,7 +1031,8 @@ public class employee_new extends javax.swing.JFrame {
                                 + "'"+a21+"','"+a22+"','"+a23+"','"+a24+"','"+a25+"','"+a26+"','"+a27+"','"+a28+"','"+a29+"','"+a30+"','"+a31+"','"+a32+"','"+a33+"',"
                                 + "'"+a34+"','"+a35+"','"+a36+"','"+a37+"','"+a38+"','"+a39+"','"+a40+"','"+a41+"','"+a42+"','"+a43+"','"+a44+"')"); 
                         stmt.executeUpdate(sql);
-                        add_user_database();
+                        String sql1 = ("INSERT INTO user_data(username,password,first_name,last_name,position) VALUES('"+a44+"','"+a43+"','"+a1+"','"+a2+"','"+a3+"')");
+                        stmt.executeUpdate(sql1);
                         JOptionPane.showMessageDialog(null, "Register Complete.",
                         "ALERT", JOptionPane.INFORMATION_MESSAGE);
                         String user1 = user.getUser();
