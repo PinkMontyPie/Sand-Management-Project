@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package sand_management;
 
 import java.sql.Connection;
@@ -10,32 +6,28 @@ import javax.swing.*;
 import java.text.*;
 import java.util.*;
 
-
 /**
  *
  * @author Pai
  */
 public class login_ui extends javax.swing.JFrame {
+
     SimpleDateFormat dateFormat;
     String date;
-    
+
     public login_ui() {
         this.setTitle("Sand Management Program");
         initComponents();
         Date();
-        
     }
-    
-    //Start code here!!!!
 
-    public void Date(){
+    public void Date() {
         dateFormat = new SimpleDateFormat("EEEE dd MMMMM yyyy");
         date = dateFormat.format(Calendar.getInstance().getTime());
         jLabelDate.setText(date);
         System.out.println(date);
     }
-    
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -200,45 +192,45 @@ public class login_ui extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-                Connection c = null;
-                Statement stmt = null;
-                String a1 = jUser.getText();
-                String a2 = String.valueOf(jPasswordField1.getPassword());
-                try {
-                    Class.forName("org.sqlite.JDBC");
-                    c = DriverManager.getConnection("jdbc:sqlite:user_data.db");
-                    c.setAutoCommit(false);
-                    stmt = c.createStatement();
-                    ResultSet rs = stmt.executeQuery( "SELECT * FROM user WHERE username = '"+a1+"'" );
-                    String  user = rs.getString("username");
-                    String  pass = rs.getString("password");
-                    String  first = rs.getString("first_name");
-                    if (user.equals(a1) && pass.equals(a2)){
-                        JOptionPane.showMessageDialog(null, "Login Success",
+        // TODO add your handling code here: 
+        Connection c = null;
+        Statement stmt = null;
+        String a1 = jUser.getText();
+        String a2 = String.valueOf(jPasswordField1.getPassword());
+        try {
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:database.db");
+            c.setAutoCommit(false);
+            stmt = c.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM user_data WHERE username = '" + a1 + "'");
+            String user = rs.getString("username");
+            String pass = rs.getString("password");
+            String first = rs.getString("first_name");
+            if (user.equals(a1) && pass.equals(a2)) {
+                JOptionPane.showMessageDialog(null, "Login Success",
                         "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
-                        All_Data account = new All_Data();
-                        account.setUser(a1);
-                        account.setFirst(first);
-                        main_ui main_display = new main_ui(account);
-                        main_display.setVisible(true);
-                        dispose();
-                    }else{
-                        JOptionPane.showMessageDialog(null, "Invalid Username or Password Step 2.",
+                All_Data account = new All_Data();
+                account.setUser(a1);
+                account.setFirst(first);
+                main_ui main_display = new main_ui(account);
+                main_display.setVisible(true);
+                dispose();
+                rs.close();
+                stmt.close();
+                c.close();
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid Username or Password Step 2.",
                         "ALERT", JOptionPane.WARNING_MESSAGE);
-                    }
-                   
-                    rs.close();
-                    stmt.close();
-                    c.close();
-                }catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Invalid Username or Password Step 1.",
-                        "ALERT", JOptionPane.WARNING_MESSAGE);
-                }
-        
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Invalid Username or Password Step 1.",
+                    "ALERT", JOptionPane.WARNING_MESSAGE);
+        }
+
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jUserActionPerformed
@@ -255,10 +247,9 @@ public class login_ui extends javax.swing.JFrame {
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         // TODO add your handling code here:
-        if (jCheckBox1.isSelected()){
-            jPasswordField1.setEchoChar((char)0);
-        }
-        else{
+        if (jCheckBox1.isSelected()) {
+            jPasswordField1.setEchoChar((char) 0);
+        } else {
             jPasswordField1.setEchoChar('*');
         }
     }//GEN-LAST:event_jCheckBox1ActionPerformed
@@ -267,7 +258,7 @@ public class login_ui extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -299,7 +290,7 @@ public class login_ui extends javax.swing.JFrame {
             public void run() {
                 new login_ui().setVisible(true);
             }
-        });  
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

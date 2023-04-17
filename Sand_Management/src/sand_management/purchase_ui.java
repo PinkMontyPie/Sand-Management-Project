@@ -50,9 +50,9 @@ public class purchase_ui extends javax.swing.JFrame {
         Statement stmt = null;
         try {
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:purchase_data.db");
+            c = DriverManager.getConnection("jdbc:sqlite:database.db");
             stmt = c.createStatement();
-            ResultSet rs1 = stmt.executeQuery("SELECT * FROM purchase");
+            ResultSet rs1 = stmt.executeQuery("SELECT * FROM purchase_data");
             purchaseTable1.setModel(DbUtils.resultSetToTableModel(rs1));
         } catch (Exception b) {
             JOptionPane.showMessageDialog(null, b);
@@ -214,9 +214,11 @@ public class purchase_ui extends javax.swing.JFrame {
         BgPanelLeft.setBackground(new java.awt.Color(204, 204, 204));
 
         TitleLeftLabel1.setFont(new java.awt.Font("Tahoma", 1, 28)); // NOI18N
+        TitleLeftLabel1.setForeground(new java.awt.Color(51, 51, 51));
         TitleLeftLabel1.setText("รายละเอียดสั่งซื้อสินค้า");
 
         TitleTxtLeftLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtLeftLabel1.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtLeftLabel1.setText("วันที่สั่งซื้อ");
 
         DateTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -226,6 +228,7 @@ public class purchase_ui extends javax.swing.JFrame {
         });
 
         TitleTxtRightLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtRightLabel1.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtRightLabel1.setText("บริษัท/ร้านตัวแทนจำหน่าย");
 
         CompanyTextField2.addActionListener(new java.awt.event.ActionListener() {
@@ -235,6 +238,7 @@ public class purchase_ui extends javax.swing.JFrame {
         });
 
         TitleTxtLeftLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtLeftLabel2.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtLeftLabel2.setText("ชื่อผู้ติดต่อ");
 
         ContactTextField3.addActionListener(new java.awt.event.ActionListener() {
@@ -244,6 +248,7 @@ public class purchase_ui extends javax.swing.JFrame {
         });
 
         TitleTxtRightLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtRightLabel2.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtRightLabel2.setText("เบอร์ติดต่อ");
 
         ContactNumTextField4.addActionListener(new java.awt.event.ActionListener() {
@@ -253,6 +258,7 @@ public class purchase_ui extends javax.swing.JFrame {
         });
 
         TitleTxtLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtLabel1.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtLabel1.setText("ที่อยู่จัดส่งสินค้า");
 
         AdressTextField5.addActionListener(new java.awt.event.ActionListener() {
@@ -273,20 +279,18 @@ public class purchase_ui extends javax.swing.JFrame {
                 "No.", "Item", "Quantity", "Unit price", "Amount"
             }
         ) {
-            boolean[] canEdit = new boolean [] {
-                true, true, true, true, false
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
             }
         });
         jScrollPane2.setViewportView(jTable2);
-        if (jTable2.getColumnModel().getColumnCount() > 0) {
-            jTable2.getColumnModel().getColumn(4).setResizable(false);
-        }
 
         TxtPtotalLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TxtPtotalLabel1.setForeground(new java.awt.Color(51, 51, 51));
         TxtPtotalLabel1.setText("รวมราคาสินค้า");
 
         TextField6.addActionListener(new java.awt.event.ActionListener() {
@@ -296,6 +300,7 @@ public class purchase_ui extends javax.swing.JFrame {
         });
 
         TxtVATLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TxtVATLabel2.setForeground(new java.awt.Color(51, 51, 51));
         TxtVATLabel2.setText("ภาษีมูลค่าเพิ่ม 7% VAT");
 
         TextField7.addActionListener(new java.awt.event.ActionListener() {
@@ -305,6 +310,7 @@ public class purchase_ui extends javax.swing.JFrame {
         });
 
         TxtTotalLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TxtTotalLabel1.setForeground(new java.awt.Color(51, 51, 51));
         TxtTotalLabel1.setText("รวมเงินทั้งสิ้น TOTAL");
 
         TextField8.addActionListener(new java.awt.event.ActionListener() {
@@ -427,14 +433,22 @@ public class purchase_ui extends javax.swing.JFrame {
         BgPanelRightop.setBackground(new java.awt.Color(204, 204, 204));
 
         Titledropdown.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        Titledropdown.setForeground(new java.awt.Color(51, 51, 51));
         Titledropdown.setText("หมวดหมู่");
 
-        dropdownlist01.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        dropdownlist01.setBackground(new java.awt.Color(255, 255, 255));
+        dropdownlist01.setForeground(new java.awt.Color(51, 51, 51));
+        dropdownlist01.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Name" }));
+
+        TextSearchField1.setBackground(new java.awt.Color(255, 255, 255));
 
         TitleSearch.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        TitleSearch.setForeground(new java.awt.Color(51, 51, 51));
         TitleSearch.setText("ค้นหา");
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 153, 255));
         jButton1.setText("ค้นหา");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -457,7 +471,7 @@ public class purchase_ui extends javax.swing.JFrame {
                     .addComponent(TextSearchField1, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(79, 79, 79))
+                .addGap(33, 33, 33))
         );
         BgPanelRightopLayout.setVerticalGroup(
             BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -471,18 +485,17 @@ public class purchase_ui extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(dropdownlist01, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TextSearchField1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29))
+                            .addComponent(TextSearchField1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(29, 29, 29))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BgPanelRightopLayout.createSequentialGroup()
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30))))
         );
 
         purchaseTable1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         purchaseTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Product ID", "Date", "Contact Name", "Contact Adress", "Contact Number"
@@ -534,11 +547,11 @@ public class purchase_ui extends javax.swing.JFrame {
         Statement stmt = null;
         try {
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:user_data.db");
+            c = DriverManager.getConnection("jdbc:sqlite:database.db");
             c.setAutoCommit(false);
             stmt = c.createStatement();
             String a1 = user.getUser();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM user WHERE username = '" + a1 + "'");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM user_data WHERE username = '" + a1 + "'");
             String first = rs.getString("first_name");
             String last = rs.getString("last_name");
             jfirstname_lastname.setText(first + " " + last);
@@ -605,7 +618,7 @@ public class purchase_ui extends javax.swing.JFrame {
         Statement stmt = null;
         try {
             Class.forName("org.sqlite.JDBC");
-            conn = DriverManager.getConnection("jdbc:sqlite:purchase_data.db");
+            conn = DriverManager.getConnection("jdbc:sqlite:database.db");
             conn.setAutoCommit(false);
             stmt = conn.createStatement();
             String p1 = DateTextField1.getText();
@@ -621,14 +634,14 @@ public class purchase_ui extends javax.swing.JFrame {
             }
             rs.close();
 
-            rs = stmt.executeQuery("SELECT * FROM purchase WHERE ID = '" + p6 + "'");
+            rs = stmt.executeQuery("SELECT * FROM purchase_data WHERE ID = '" + p6 + "'");
             while (rs.next()) {
                 p6 = getRandomNumberString();
-                rs = stmt.executeQuery("SELECT * FROM purchase WHERE ID = '" + p6 + "'");
+                rs = stmt.executeQuery("SELECT * FROM purchase_data WHERE ID = '" + p6 + "'");
             }
             rs.close();
 
-            String sql = "INSERT INTO purchase(ID,Date,Company,ContactName,ContactAdress,PhoneNumber) VALUES('" + p6 + "','" + p1 + "','" + p2 + "',"
+            String sql = "INSERT INTO purchase_data(ID,Date,Company,ContactName,ContactAdress,PhoneNumber) VALUES('" + p6 + "','" + p1 + "','" + p2 + "',"
                     + "'" + p3 + "','" + p4 + "','" + p5 + "')";
             stmt.executeUpdate(sql);
             stmt.close();

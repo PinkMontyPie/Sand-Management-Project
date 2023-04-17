@@ -906,11 +906,11 @@ public class employee_new extends javax.swing.JFrame {
         Statement stmt = null;
         try {
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:user_data.db");
+            c = DriverManager.getConnection("jdbc:sqlite:database.db");
             c.setAutoCommit(false);
             stmt = c.createStatement();
             String a1 = user.getUser();
-            ResultSet rs = stmt.executeQuery( "SELECT * FROM user WHERE username = '"+a1+"'" );
+            ResultSet rs = stmt.executeQuery( "SELECT * FROM user_data WHERE username = '"+a1+"'" );
             String  first = rs.getString("first_name");
             String  last = rs.getString("last_name");
             jfirstname_lastname.setText(first + " " + last);
@@ -965,7 +965,7 @@ public class employee_new extends javax.swing.JFrame {
         Statement stmt = null;
                 try {
                     Class.forName("org.sqlite.JDBC");
-                    c = DriverManager.getConnection("jdbc:sqlite:employee_data.db");
+                    c = DriverManager.getConnection("jdbc:sqlite:database.db");
                     c.setAutoCommit(false);
                     stmt = c.createStatement();
                     String a1 = first_name.getText();
@@ -1012,10 +1012,10 @@ public class employee_new extends javax.swing.JFrame {
                     String a42 = reason_for_wanting_to_work_here.getText();
                     String a43 = getRandomNumberString();
                     String a44 = nickname.getText();
-                    ResultSet rs = stmt.executeQuery( "SELECT * FROM employee WHERE id_card = '"+a9+"'" );
+                    ResultSet rs = stmt.executeQuery( "SELECT * FROM employee_data WHERE id_card = '"+a9+"'" );
                     String  first = rs.getString("first_name");
                     String  card = rs.getString("id_card");
-                    ResultSet rs1 = stmt.executeQuery( "SELECT * FROM employee WHERE id_employee = '"+a43+"'" );
+                    ResultSet rs1 = stmt.executeQuery( "SELECT * FROM employee_data WHERE id_employee = '"+a43+"'" );
                     String  id_employ = rs1.getString("id_employee");
                      
                     while (a43.equals(id_employ)) {
@@ -1058,7 +1058,7 @@ public class employee_new extends javax.swing.JFrame {
                             !a21.equals("") && !a22.equals("") && !a23.equals("") && !a24.equals("") && !a25.equals("") && !a26.equals("") && !a27.equals("") && !a28.equals("") && !a29.equals("") && !a30.equals("") && 
                             !a31.equals("") && !a32.equals("") && !a33.equals("") && !a34.equals("") && !a35.equals("") && !a36.equals("") && !a37.equals("") && !a38.equals("") && !a39.equals("") && !a40.equals("") && 
                             !a41.equals("") && !a42.equals("")){
-                        String sql = ("INSERT INTO employee(first_name,last_name,position,age,ethnicity,nationality,religion,birthday,id_card,current_address,district_1,district_2,"
+                        String sql = ("INSERT INTO employee_data(first_name,last_name,position,age,ethnicity,nationality,religion,birthday,id_card,current_address,district_1,district_2,"
                                 + "phone_number,province,father_name,father_age,father_ethnicity,father_nationality,father_occupation,mother_name,mother_age,"
                                 + "mother_ethnicity,mother_nationality,mother_occupation,husband_or_wife_name,husband_or_wife_age,"
                                 + "husband_or_wife_ethnicity,husband_or_wife_phone,husband_or_wife_nationality,husband_or_wife_occupation,husband_or_wife_workplace,"
