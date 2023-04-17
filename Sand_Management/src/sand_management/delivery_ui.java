@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.*;
 import java.util.*;
+import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -30,15 +32,43 @@ public class delivery_ui extends javax.swing.JFrame {
     }
     
     public void Start(){
+        fetchitemDetailsCS();
         setDate();
         setTime();
     }
+    
+    public void fetchitemDetailsCS() {
+        Connection c = null;
+        Statement stmt = null;
+        try {
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:database.db");
+            stmt = c.createStatement();
+            ResultSet rs1 = stmt.executeQuery("SELECT * FROM delivery_data");
+            jTable1.setModel(DbUtils.resultSetToTableModel(rs1));
+        } catch (Exception b) {
+            JOptionPane.showMessageDialog(null, b);
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     public void setDate() {
         dateFormat = new SimpleDateFormat("EEEE dd MMMMM yyyy");
         date = dateFormat.format(Calendar.getInstance().getTime());
         jLabelDate.setText(date);
     }
+    
+    
+    
+    
 
     public void setTime() {
         timeFormat = new SimpleDateFormat("hh:mm:ss a");
@@ -367,13 +397,23 @@ public class delivery_ui extends javax.swing.JFrame {
         Titledropdown.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         Titledropdown.setText("หมวดหมู่");
 
-        dropdownlist01.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        dropdownlist01.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PRODUCT ID", "NAME DRIVER", "CONTACT NUMBER", " ", " ", " ", " " }));
+        dropdownlist01.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dropdownlist01ActionPerformed(evt);
+            }
+        });
 
         TitleSearch.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         TitleSearch.setText("ค้นหา");
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setText("ค้นหา");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -426,6 +466,15 @@ public class delivery_ui extends javax.swing.JFrame {
                 "Product ID", "Date", "Contact Name", "Contact Adress", "Contact Number"
             }
         ));
+        jTable1.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jTable1AncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -542,6 +591,51 @@ public class delivery_ui extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TextField10ActionPerformed
 
+    private void jTable1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTable1AncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable1AncestorAdded
+
+    private void dropdownlist01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dropdownlist01ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dropdownlist01ActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        Connection c = null;
+        Statement stmt = null;
+        String type = dropdownlist01.getSelectedItem().toString();
+        String search = TextSearchField1.getText();
+        try {
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:database.db");
+            stmt = c.createStatement();
+            if (type.equals("PRODUCT ID ")) {
+                ResultSet rs = stmt.executeQuery("SELECT * FROM delivery_data WHERE PRODUCT_ID = '" + search + "'");
+                jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+                rs.close();
+            }
+            if (type.equals("NAME DRIVER")) {
+                ResultSet rs = stmt.executeQuery("SELECT * FROM delivery_data WHERE NAME_DRIVER = '" + search + "'");
+                jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+                rs.close();
+            }
+            if (type.equals("CONTACT NUMBER")) {
+                ResultSet rs = stmt.executeQuery("SELECT * FROM delivery_data WHERE CONTACT_NUMBER = '" + search + "'");
+                jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+                rs.close();
+            }
+            stmt.close();
+            c.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }   
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */
