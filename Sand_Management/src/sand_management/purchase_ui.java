@@ -50,9 +50,9 @@ public class purchase_ui extends javax.swing.JFrame {
         Statement stmt = null;
         try {
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:purchase_data.db");
+            c = DriverManager.getConnection("jdbc:sqlite:database.db");
             stmt = c.createStatement();
-            ResultSet rs1 = stmt.executeQuery("SELECT * FROM purchase");
+            ResultSet rs1 = stmt.executeQuery("SELECT * FROM purchase_data");
             purchaseTable1.setModel(DbUtils.resultSetToTableModel(rs1));
         } catch (Exception b) {
             JOptionPane.showMessageDialog(null, b);
@@ -547,11 +547,11 @@ public class purchase_ui extends javax.swing.JFrame {
         Statement stmt = null;
         try {
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:user_data.db");
+            c = DriverManager.getConnection("jdbc:sqlite:database.db");
             c.setAutoCommit(false);
             stmt = c.createStatement();
             String a1 = user.getUser();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM user WHERE username = '" + a1 + "'");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM user_data WHERE username = '" + a1 + "'");
             String first = rs.getString("first_name");
             String last = rs.getString("last_name");
             jfirstname_lastname.setText(first + " " + last);
@@ -618,7 +618,7 @@ public class purchase_ui extends javax.swing.JFrame {
         Statement stmt = null;
         try {
             Class.forName("org.sqlite.JDBC");
-            conn = DriverManager.getConnection("jdbc:sqlite:purchase_data.db");
+            conn = DriverManager.getConnection("jdbc:sqlite:database.db");
             conn.setAutoCommit(false);
             stmt = conn.createStatement();
             String p1 = DateTextField1.getText();
@@ -634,14 +634,14 @@ public class purchase_ui extends javax.swing.JFrame {
             }
             rs.close();
 
-            rs = stmt.executeQuery("SELECT * FROM purchase WHERE ID = '" + p6 + "'");
+            rs = stmt.executeQuery("SELECT * FROM purchase_data WHERE ID = '" + p6 + "'");
             while (rs.next()) {
                 p6 = getRandomNumberString();
-                rs = stmt.executeQuery("SELECT * FROM purchase WHERE ID = '" + p6 + "'");
+                rs = stmt.executeQuery("SELECT * FROM purchase_data WHERE ID = '" + p6 + "'");
             }
             rs.close();
 
-            String sql = "INSERT INTO purchase(ID,Date,Company,ContactName,ContactAdress,PhoneNumber) VALUES('" + p6 + "','" + p1 + "','" + p2 + "',"
+            String sql = "INSERT INTO purchase_data(ID,Date,Company,ContactName,ContactAdress,PhoneNumber) VALUES('" + p6 + "','" + p1 + "','" + p2 + "',"
                     + "'" + p3 + "','" + p4 + "','" + p5 + "')";
             stmt.executeUpdate(sql);
             stmt.close();
