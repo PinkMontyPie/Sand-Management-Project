@@ -12,6 +12,8 @@ import java.text.*;
 import java.util.*;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.*;
+import java.sql.PreparedStatement;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -273,18 +275,15 @@ public class purchase_ui extends javax.swing.JFrame {
                 "No.", "Item", "Quantity", "Unit price", "Amount"
             }
         ) {
-            boolean[] canEdit = new boolean [] {
-                true, true, true, true, false
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Integer.class
             };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
             }
         });
         jScrollPane2.setViewportView(jTable2);
-        if (jTable2.getColumnModel().getColumnCount() > 0) {
-            jTable2.getColumnModel().getColumn(4).setResizable(false);
-        }
 
         TxtPtotalLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         TxtPtotalLabel1.setText("รวมราคาสินค้า");
@@ -315,6 +314,11 @@ public class purchase_ui extends javax.swing.JFrame {
 
         DelButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         DelButton1.setText("ลบข้อมูล");
+        DelButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DelButton1MouseClicked(evt);
+            }
+        });
         DelButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DelButton1ActionPerformed(evt);
@@ -668,7 +672,7 @@ public class purchase_ui extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-                // Search
+        // Search
         Connection conn = null;
         Statement stmt = null;
         String type = dropdownlist01.getSelectedItem().toString();
@@ -677,27 +681,46 @@ public class purchase_ui extends javax.swing.JFrame {
             Class.forName("org.sqlite.JDBC");
             conn = DriverManager.getConnection("jdbc:sqlite:purchase_data.db");
             stmt = conn.createStatement();
-            if (type.equals("Company")){
-                ResultSet rs = stmt.executeQuery("SELECT * FROM purchase WHERE Company = '" +search+ "'");
+            if (type.equals("Company")) {
+                ResultSet rs = stmt.executeQuery("SELECT * FROM purchase WHERE Company = '" + search + "'");
                 purchaseTable1.setModel(DbUtils.resultSetToTableModel(rs));
                 rs.close();
             }
             if (type.equals("Contact Name")) {
-                ResultSet rs = stmt.executeQuery("SELECT * FROM purchase WHERE ContactName = '" +search+ "'");
+                ResultSet rs = stmt.executeQuery("SELECT * FROM purchase WHERE ContactName = '" + search + "'");
                 purchaseTable1.setModel(DbUtils.resultSetToTableModel(rs));
                 rs.close();
-            } 
+            }
             stmt.close();
             conn.close();
-           
+
         } catch (Exception e) {
             e.printStackTrace();
-        }      
+        }
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void dropdownlist01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dropdownlist01ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_dropdownlist01ActionPerformed
+
+    private void DelButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DelButton1MouseClicked
+        // TODO add your handling code here:
+        Connection conn = null;
+        PreparedStatement pat = null;
+        int row = purchaseTable1.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) purchaseTable1.getModel();
+
+        try {
+            Class.forName("org.sqlite.JDBC");
+            conn = DriverManager.getConnection("jdbc:sqlite:purchase_data.db");
+            String delete = "DELETE FROM purchase WHERE ID = ?";
+            pat = conn.prepareStatement(delete);
+            pat.setString(1, model.getValueAt(row, 0).toString());
+            pat.execute();
+        } catch (Exception b) {
+            JOptionPane.showMessageDialog(null, b);
+        }
+    }//GEN-LAST:event_DelButton1MouseClicked
 
     /**
      * @param args the command line arguments
