@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package sand_management;
 
 import java.sql.Connection;
@@ -279,13 +275,11 @@ public class purchase_ui extends javax.swing.JFrame {
                 "No.", "Item", "Quantity", "Unit price", "Amount"
             }
         ) {
-<<<<<<< HEAD
             Class[] types = new Class [] {
                 java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-=======
+            };
             boolean[] canEdit = new boolean [] {
                 true, true, true, true, false
->>>>>>> parent of 68eb54b (purchase 80%)
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -677,11 +671,10 @@ public class purchase_ui extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-<<<<<<< HEAD
-=======
+
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-                // Search
+        // Search
         Connection conn = null;
         Statement stmt = null;
         String type = dropdownlist01.getSelectedItem().toString();
@@ -690,29 +683,28 @@ public class purchase_ui extends javax.swing.JFrame {
             Class.forName("org.sqlite.JDBC");
             conn = DriverManager.getConnection("jdbc:sqlite:purchase_data.db");
             stmt = conn.createStatement();
-            if (type.equals("Company")){
-                ResultSet rs = stmt.executeQuery("SELECT * FROM purchase WHERE Company = '" +search+ "'");
+            if (type.equals("Company")) {
+                ResultSet rs = stmt.executeQuery("SELECT * FROM purchase WHERE Company = '" + search + "'");
                 purchaseTable1.setModel(DbUtils.resultSetToTableModel(rs));
                 rs.close();
             }
             if (type.equals("Contact Name")) {
-                ResultSet rs = stmt.executeQuery("SELECT * FROM purchase WHERE ContactName = '" +search+ "'");
+                ResultSet rs = stmt.executeQuery("SELECT * FROM purchase WHERE ContactName = '" + search + "'");
                 purchaseTable1.setModel(DbUtils.resultSetToTableModel(rs));
                 rs.close();
-            } 
+            }
             stmt.close();
             conn.close();
-           
+
         } catch (Exception e) {
             e.printStackTrace();
-        }      
+        }
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void dropdownlist01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dropdownlist01ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_dropdownlist01ActionPerformed
 
->>>>>>> parent of 68eb54b (purchase 80%)
     /**
      * @param args the command line arguments
      */
