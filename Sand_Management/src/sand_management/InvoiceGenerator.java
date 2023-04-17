@@ -41,7 +41,7 @@ public class InvoiceGenerator {
             Class.forName("org.sqlite.JDBC");
             c = DriverManager.getConnection("jdbc:sqlite:database.db");
             stmt = c.createStatement();
-            String string = "SELECT * FROM " + t + " WHERE ID = '" + i + "'";
+            String string = "SELECT * FROM " + t + " WHERE PRODUCT_ID = '" + i + "'";
             System.out.println(string);
             rs = stmt.executeQuery(string);
             OutputStream file = new FileOutputStream(new File(path+ ".pdf"));
@@ -54,8 +54,10 @@ public class InvoiceGenerator {
             PdfPTable irdTable = new PdfPTable(2);
             irdTable.addCell(getIRDCell("Invoice No"));
             irdTable.addCell(getIRDCell("Invoice Date"));
-            irdTable.addCell(getIRDCell("XE1234")); // pass invoice number
-            irdTable.addCell(getIRDCell("13-Mar-2016")); // pass invoice date				
+            String no =  rs.getString("TAX_NUM");
+            irdTable.addCell(getIRDCell(no)); // pass invoice number
+            String date = rs.getString("SALE_DATE");
+            irdTable.addCell(getIRDCell(date)); // pass invoice date				
 
             PdfPTable irhTable = new PdfPTable(3);
             irhTable.setWidthPercentage(100);
@@ -74,11 +76,13 @@ public class InvoiceGenerator {
             fs.addFont(font);
             Phrase bill = fs.process("Bill To"); // customer information
             String names = "Name : " + rs.getString("CONTACT_NAME") + "";
-            Paragraph name = new Paragraph("Mr.Venkateswara Rao");
+            Paragraph name = new Paragraph(names);
             name.setIndentationLeft(20);
-            Paragraph contact = new Paragraph("9652886877");
+            String phone = "Phone :"+rs.getString("CONTACT_PHONE"+"");
+            Paragraph contact = new Paragraph(phone);
             contact.setIndentationLeft(20);
-            Paragraph address = new Paragraph("Kuchipudi,Movva");
+            String add = "Address :"+rs.getString("CONTACT_ADDRESS"+"");
+            Paragraph address = new Paragraph(add);
             address.setIndentationLeft(20);
 
             PdfPTable billTable = new PdfPTable(6); //one page contains 15 records 
@@ -93,25 +97,25 @@ public class InvoiceGenerator {
             billTable.addCell(getBillHeaderCell("Amount"));
 
             billTable.addCell(getBillRowCell("1"));
-            billTable.addCell(getBillRowCell("Mobile"));
-            billTable.addCell(getBillRowCell("Nokia Lumia 610 \n IMI:WQ361989213 "));
+            billTable.addCell(getBillRowCell("Sand"));
+            billTable.addCell(getBillRowCell("RED Sand"));
             billTable.addCell(getBillRowCell("12000.0"));
             billTable.addCell(getBillRowCell("1"));
             billTable.addCell(getBillRowCell("12000.0"));
 
-            billTable.addCell(getBillRowCell("2"));
-            billTable.addCell(getBillRowCell("Accessories"));
-            billTable.addCell(getBillRowCell("Nokia Lumia 610 Panel \n Serial:TIN3720 "));
-            billTable.addCell(getBillRowCell("200.0"));
-            billTable.addCell(getBillRowCell("1"));
-            billTable.addCell(getBillRowCell("200.0"));
+            billTable.addCell(getBillRowCell(""));
+            billTable.addCell(getBillRowCell(""));
+            billTable.addCell(getBillRowCell(""));
+            billTable.addCell(getBillRowCell(""));
+            billTable.addCell(getBillRowCell(""));
+            billTable.addCell(getBillRowCell(""));
 
-            billTable.addCell(getBillRowCell("3"));
-            billTable.addCell(getBillRowCell("Other"));
-            billTable.addCell(getBillRowCell("16Gb Memorycard \n Serial:UR8531 "));
-            billTable.addCell(getBillRowCell("420.0"));
-            billTable.addCell(getBillRowCell("1"));
-            billTable.addCell(getBillRowCell("420.0"));
+            billTable.addCell(getBillRowCell(""));
+            billTable.addCell(getBillRowCell(""));
+            billTable.addCell(getBillRowCell(""));
+            billTable.addCell(getBillRowCell(""));
+            billTable.addCell(getBillRowCell(""));
+            billTable.addCell(getBillRowCell(""));
 
             billTable.addCell(getBillRowCell(" "));
             billTable.addCell(getBillRowCell(""));
