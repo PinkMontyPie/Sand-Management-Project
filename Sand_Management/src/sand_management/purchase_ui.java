@@ -534,7 +534,7 @@ public class purchase_ui extends javax.swing.JFrame {
         Statement stmt = null;
         try {
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:user.db");
+            c = DriverManager.getConnection("jdbc:sqlite:user_data.db");
             c.setAutoCommit(false);
             stmt = c.createStatement();
             String a1 = user.getUser();
@@ -549,24 +549,6 @@ public class purchase_ui extends javax.swing.JFrame {
             System.err.println(b.getClass().getName() + ": " + b.getMessage());
             System.exit(0);
         }
-                try {
-                    Class.forName("org.sqlite.JDBC");
-                    c = DriverManager.getConnection("jdbc:sqlite:user_data.db");
-                    c.setAutoCommit(false);
-                    stmt = c.createStatement();
-                    String a1 = user.getUser();
-                    ResultSet rs = stmt.executeQuery( "SELECT * FROM user WHERE username = '"+a1+"'" );
-                    String  first = rs.getString("first_name");
-                    String  last = rs.getString("last_name");
-                    jfirstname_lastname.setText(first + " " + last);
-                    rs.close();
-                    stmt.close();
-                    c.close();
-                } 
-                catch ( Exception b ) {
-                   System.err.println( b.getClass().getName() + ": " + b.getMessage() );
-                   System.exit(0);
-                }
     }//GEN-LAST:event_jfirstname_lastnameAncestorAdded
 
     private void jBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBackMouseClicked
