@@ -28,7 +28,6 @@ public class storage_ui extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Sand Management Program | Stock");
         this.user = a1;
-        jTablestorage.setEnabled(false);
         Start();
     }
 
@@ -56,6 +55,8 @@ public class storage_ui extends javax.swing.JFrame {
         };
         timer.scheduleAtFixedRate(task, 0, 1000);
     }
+   
+
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -226,6 +227,11 @@ public class storage_ui extends javax.swing.JFrame {
         jButtonadd1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButtonadd1.setForeground(new java.awt.Color(51, 204, 0));
         jButtonadd1.setText("Add Stock");
+        jButtonadd1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonadd1MouseClicked(evt);
+            }
+        });
         jButtonadd1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonadd1ActionPerformed(evt);
@@ -473,65 +479,6 @@ public class storage_ui extends javax.swing.JFrame {
     private void jButtonadd1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonadd1ActionPerformed
         // TODO add your handling code here:
         // add stock
-        Connection c = null;
-        Statement stmt = null;
-        try {
-            Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:database.db");
-            c.setAutoCommit(false);
-            stmt = c.createStatement();
-            String nameitem = txtname_i.getText();
-            String type = String.valueOf(jComboBox2.getSelectedItem());
-            String tonitem = jSpinner1.getValue().toString();
-            String quantity = txtqua.getText();
-            String iditem = getRandomNumberString();
-            ResultSet rs1 = stmt.executeQuery("SELECT * FROM storage_data WHERE id_item = '" + iditem + "'");
-            String id_item = null;
-            while (rs1.next()) {
-                id_item = rs1.getString("id_item");
-            }
-            while (iditem.equals(id_item)) {
-                iditem = getRandomNumberString();
-                rs1 = stmt.executeQuery("SELECT * FROM storage_data WHERE id_item = '" + iditem + "'");
-                if (!rs1.next()) {
-                    break;
-                }
-            }
-            String sql = "INSERT INTO storage_data(Name_i,Type_i,H_many_ton_i,Quantity_i,id_item,Date) VALUES('" + nameitem + "','" + type + "','" + tonitem + "',"
-                    + "'" + quantity + "','" + iditem + "','" + date + "')";
-            stmt.executeUpdate(sql);
-            String user1 = user.getUser();
-            All_Data account = new All_Data();
-            account.setUser(user1);
-            stmt.close();
-            c.commit();
-        } catch (Exception b) {
-            if (c != null) {
-                try {
-                    c.rollback();
-                } catch (Exception ex) {
-                }
-            }
-            System.err.println(b.getClass().getName() + ": " + b.getMessage());
-        } finally {
-            if (stmt != null) {
-                try {
-                    stmt.close();
-                } catch (Exception ex) {
-                }
-            }
-            if (c != null) {
-                try {
-                    c.close();
-                } catch (Exception ex) {
-                }
-            }
-        }
-        int a = JOptionPane.showConfirmDialog(null, "Please confirm your input:", "Alert", JOptionPane.INFORMATION_MESSAGE);
-        if (a == JOptionPane.YES_OPTION) {
-            JOptionPane.showMessageDialog(null, "Add Stock Complete.", "ALERT", JOptionPane.INFORMATION_MESSAGE);
-            fetchitemDetailsCS();
-        }
     }//GEN-LAST:event_jButtonadd1ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
@@ -591,7 +538,6 @@ public class storage_ui extends javax.swing.JFrame {
             String delete = "DELETE FROM storage_data WHERE Id_item = ?";
             pat = c.prepareStatement(delete);
             pat.setString(1, model.getValueAt(row, 0).toString());
-
             pat.execute();
 
             int a = JOptionPane.showConfirmDialog(null, "Are you sure to delete this item? : " + model.getValueAt(row, 2).toString(), "Alert", JOptionPane.INFORMATION_MESSAGE);
@@ -603,6 +549,95 @@ public class storage_ui extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, b);
         }
     }//GEN-LAST:event_jButtonaddMouseClicked
+
+    private void jButtonadd1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonadd1MouseClicked
+        // TODO add your handling code here:
+        Connection c = null;
+        Statement stmt = null;
+        try {
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:database.db");
+            c.setAutoCommit(false);
+            stmt = c.createStatement();
+            String nameitem = txtname_i.getText();
+            String type = String.valueOf(jComboBox2.getSelectedItem());
+            String tonitem = jSpinner1.getValue().toString();
+            String quantity = txtqua.getText();
+            String iditem = getRandomNumberString();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM storage_data WHERE Name_i = '" + nameitem + "'");
+            String name = rs.getString("Name_i");
+            String Quan = rs.getString("Quantity_i");
+            String spin = jSpinner1.getValue().toString();
+            String quan1 = txtqua.getText();
+            int inquan = Integer.parseInt(Quan);
+            int inquan1 = Integer.parseInt(quan1);
+            int total2 = inquan + inquan1;
+            String quan_total = Integer.toString(total2);
+            if (!nameitem.equals(name)){
+                ResultSet rs1 = stmt.executeQuery("SELECT * FROM storage_data WHERE id_item = '" + iditem + "'");
+                String id_item = null;
+                while (rs1.next()) {
+                    id_item = rs1.getString("id_item");
+                }
+                while (iditem.equals(id_item)) {
+                    iditem = getRandomNumberString();
+                    rs1 = stmt.executeQuery("SELECT * FROM storage_data WHERE id_item = '" + iditem + "'");
+                    if (!rs1.next()) {
+                        break;
+                    }
+                }
+                String sql = "INSERT INTO storage_data(Name_i,Type_i,H_many_ton_i,Quantity_i,id_item,Date) VALUES('" + nameitem + "','" + type + "','" + tonitem + "',"
+                        + "'" + quantity + "','" + iditem + "','" + date + "')";
+                stmt.executeUpdate(sql);
+                String user1 = user.getUser();
+                String first = user.getFirst();
+                All_Data account = new All_Data();
+                account.setUser(user1);
+                account.setFirst(first);
+                stmt.close();
+                c.commit();
+            }
+            else if (nameitem.equals(name)) {
+                String sql = ("UPDATE storage_data SET H_many_ton_i = '" + spin + "',Quantity_i = '" + quan_total + "',Date = '" + date + "',Type_i = '" + type + "' WHERE Name_i = '" + nameitem + "'");
+                stmt.executeUpdate(sql);
+                String user1 = user.getUser();
+                String first = user.getFirst();
+                All_Data account = new All_Data();
+                account.setUser(user1);
+                account.setFirst(first);
+                stmt.close();
+                c.commit();
+                System.out.println("commit complete");
+            }
+        } catch (Exception b) {
+            if (c != null) {
+                try {
+                    c.rollback();
+                } catch (Exception ex) {
+                }
+            }
+            System.err.println(b.getClass().getName() + ": " + b.getMessage());
+        } finally {
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (Exception ex) {
+                }
+            }
+            if (c != null) {
+                try {
+                    c.close();
+                } catch (Exception ex) {
+                }
+            }
+        }
+        int a = JOptionPane.showConfirmDialog(null, "Please confirm your input:", "Alert", JOptionPane.INFORMATION_MESSAGE);
+        if (a == JOptionPane.YES_OPTION) {
+            JOptionPane.showMessageDialog(null, "Add Stock Complete.", "ALERT", JOptionPane.INFORMATION_MESSAGE);
+            fetchitemDetailsCS();
+        }
+        
+    }//GEN-LAST:event_jButtonadd1MouseClicked
 
     public void fetchitemDetailsCS() {
         Connection c = null;
