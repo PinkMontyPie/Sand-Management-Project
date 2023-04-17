@@ -224,6 +224,7 @@ public class employee_search extends javax.swing.JFrame {
         last_name.setEditable(false);
         nickname.setEditable(false);
         position.setEditable(false);
+        position.setEnabled(false);
         age.setEditable(false);
         ethnicity.setEditable(false);
         nationality.setEditable(false);
@@ -268,6 +269,7 @@ public class employee_search extends javax.swing.JFrame {
      public void edit_enable(){
         nickname.setEditable(true);
         position.setEditable(true);
+        position.setEnabled(true);
         age.setEditable(true);
         ethnicity.setEditable(true);
         nationality.setEditable(true);
@@ -313,12 +315,12 @@ public class employee_search extends javax.swing.JFrame {
         Statement stmt = null;
                 try {
                     Class.forName("org.sqlite.JDBC");
-                    c = DriverManager.getConnection("jdbc:sqlite:user_data.db");
+                    c = DriverManager.getConnection("jdbc:sqlite:database.db");
                     c.setAutoCommit(false);
                     stmt = c.createStatement();
                     String a1 = nickname.getText();
                     String a2 = first_name.getText();
-                    String sql = ("UPDATE user SET username = '"+a1+"'  WHERE first_name = '"+a2+"'"); 
+                    String sql = ("UPDATE user_data SET username = '"+a1+"'  WHERE first_name = '"+a2+"'"); 
                     stmt.executeUpdate(sql);
                     stmt.close();
                     c.commit();
@@ -1206,11 +1208,11 @@ public class employee_search extends javax.swing.JFrame {
         Statement stmt = null;
         try {
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:user_data.db");
+            c = DriverManager.getConnection("jdbc:sqlite:database.db");
             c.setAutoCommit(false);
             stmt = c.createStatement();
             String a1 = user.getUser();
-            ResultSet rs = stmt.executeQuery( "SELECT * FROM user WHERE username = '"+a1+"'" );
+            ResultSet rs = stmt.executeQuery( "SELECT * FROM user_data WHERE username = '"+a1+"'" );
             String  first = rs.getString("first_name");
             String  last = rs.getString("last_name");
             jfirstname_lastname.setText(first + " " + last);
@@ -1271,11 +1273,11 @@ public class employee_search extends javax.swing.JFrame {
         Button_edit_profile.setVisible(true);
         try {
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:employee_data.db");
+            c = DriverManager.getConnection("jdbc:sqlite:database.db");
             c.setAutoCommit(false);
             stmt = c.createStatement();
             String id_employ1 = Search_id_employee.getText();
-            ResultSet rs = stmt.executeQuery( "SELECT * FROM employee WHERE id_employee = '"+id_employ1+"'" );
+            ResultSet rs = stmt.executeQuery( "SELECT * FROM employee_data WHERE id_employee = '"+id_employ1+"'" );
             String  first = rs.getString("first_name");
             String  last = rs.getString("last_name");
             String nick = rs.getString("nick_name");
@@ -1398,7 +1400,7 @@ public class employee_search extends javax.swing.JFrame {
         Statement stmt = null;
                 try {
                     Class.forName("org.sqlite.JDBC");
-                    c = DriverManager.getConnection("jdbc:sqlite:employee_data.db");
+                    c = DriverManager.getConnection("jdbc:sqlite:database.db");
                     c.setAutoCommit(false);
                     stmt = c.createStatement();
                     String a1 = first_name.getText();
@@ -1445,7 +1447,7 @@ public class employee_search extends javax.swing.JFrame {
                     String a42 = reason_for_wanting_to_work_here.getText();
                     String a43 = Search_id_employee.getText();
                     String a44 = nickname.getText();
-                    ResultSet rs = stmt.executeQuery( "SELECT * FROM employee WHERE id_card = '"+a9+"'" );
+                    ResultSet rs = stmt.executeQuery( "SELECT * FROM employee_data WHERE id_card = '"+a9+"'" );
                     String  first = rs.getString("first_name");
                     String  card = rs.getString("id_card");
                     
@@ -1462,7 +1464,7 @@ public class employee_search extends javax.swing.JFrame {
                             !a21.equals("") && !a22.equals("") && !a23.equals("") && !a24.equals("") && !a25.equals("") && !a26.equals("") && !a27.equals("") && !a28.equals("") && !a29.equals("") && !a30.equals("") && 
                             !a31.equals("") && !a32.equals("") && !a33.equals("") && !a34.equals("") && !a35.equals("") && !a36.equals("") && !a37.equals("") && !a38.equals("") && !a39.equals("") && !a40.equals("") && 
                             !a41.equals("") && !a42.equals("")){
-                        String sql = ("UPDATE employee SET position = '"+a3+"',age = '"+a4+"',ethnicity = '"+a5+"',nationality = '"+a6+"',religion = '"+a7+"',birthday = '"+a8+"',current_address = '"+a10+"',district_1 = '"+a11+"',district_2 = '"+a12+"',"
+                        String sql = ("UPDATE employee_data SET position = '"+a3+"',age = '"+a4+"',ethnicity = '"+a5+"',nationality = '"+a6+"',religion = '"+a7+"',birthday = '"+a8+"',current_address = '"+a10+"',district_1 = '"+a11+"',district_2 = '"+a12+"',"
                                 + "phone_number = '"+a13+"',province = '"+a14+"',father_name = '"+a15+"',father_age = '"+a16+"',father_ethnicity = '"+a17+"',father_nationality = '"+a18+"',father_occupation = '"+a19+"',mother_name = '"+a20+"',mother_age = '"+a21+"',"
                                 + "mother_ethnicity = '"+a22+"',mother_nationality = '"+a23+"',mother_occupation = '"+a24+"',husband_or_wife_name = '"+a25+"',husband_or_wife_age = '"+a26+"',"
                                 + "husband_or_wife_ethnicity = '"+a27+"',husband_or_wife_phone = '"+a28+"',husband_or_wife_nationality = '"+a29+"',husband_or_wife_occupation = '"+a30+"',husband_or_wife_workplace = '"+a31+"',"
