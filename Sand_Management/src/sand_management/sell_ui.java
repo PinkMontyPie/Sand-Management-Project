@@ -528,7 +528,7 @@ public class sell_ui extends javax.swing.JFrame {
         Statement stmt = null;
                 try {
                     Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:database.db");
+                     c = DriverManager.getConnection("jdbc:sqlite:database.db");
                     c.setAutoCommit(false);
                     stmt = c.createStatement();
                     String a1 = user.getUser();

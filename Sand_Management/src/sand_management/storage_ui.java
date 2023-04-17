@@ -28,6 +28,7 @@ public class storage_ui extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Sand Management Program | Stock");
         this.user = a1;
+        jTablestorage.setEnabled(false);
         Start();
     }
 
