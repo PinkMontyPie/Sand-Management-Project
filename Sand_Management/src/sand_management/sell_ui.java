@@ -319,6 +319,11 @@ public class sell_ui extends javax.swing.JFrame {
 
         AddButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         AddButton.setText("เพิ่มข้อมูล");
+        AddButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AddButtonMouseClicked(evt);
+            }
+        });
         AddButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AddButtonActionPerformed(evt);
@@ -515,6 +520,11 @@ public class sell_ui extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        right_table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                right_tableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(right_table);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -525,13 +535,10 @@ public class sell_ui extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BgPanelLeft, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(BgPanelRightop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(jScrollPane1)))
+                    .addComponent(jScrollPane1)
+                    .addComponent(BgPanelRightop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -758,6 +765,14 @@ public class sell_ui extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, b);
         }
     }//GEN-LAST:event_DelButtonMouseClicked
+
+    private void right_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_right_tableMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_right_tableMouseClicked
+
+    private void AddButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddButtonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AddButtonMouseClicked
 
     /**
      * @param args the command line arguments

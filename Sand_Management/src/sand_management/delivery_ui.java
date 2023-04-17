@@ -6,11 +6,13 @@ package sand_management;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.*;
 import java.util.*;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -221,6 +223,11 @@ public class delivery_ui extends javax.swing.JFrame {
         TitleTxtLeftLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         TitleTxtLeftLabel1.setText("ชื่อพนักงานขับรถ");
 
+        TextField1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TextField1MouseClicked(evt);
+            }
+        });
         TextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextField1ActionPerformed(evt);
@@ -255,7 +262,7 @@ public class delivery_ui extends javax.swing.JFrame {
         });
 
         TitleTxtLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        TitleTxtLabel1.setText("รายการสินค้า");
+        TitleTxtLabel1.setText("รหัสสินค้า");
 
         TextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -265,6 +272,11 @@ public class delivery_ui extends javax.swing.JFrame {
 
         DelButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         DelButton1.setText("ลบข้อมูล");
+        DelButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DelButton1MouseClicked(evt);
+            }
+        });
         DelButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DelButton1ActionPerformed(evt);
@@ -272,7 +284,12 @@ public class delivery_ui extends javax.swing.JFrame {
         });
 
         AddButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        AddButton2.setText("เพิ่มข้อมูล");
+        AddButton2.setText("บันทึกข้อมูล");
+        AddButton2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                AddButton2MouseDragged(evt);
+            }
+        });
         AddButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AddButton2ActionPerformed(evt);
@@ -366,13 +383,17 @@ public class delivery_ui extends javax.swing.JFrame {
                 .addComponent(TextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(TitleTxtLabel4)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 182, Short.MAX_VALUE)
-                .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AddButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(DelButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31))
+                .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(BgPanelLeftLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BgPanelLeftLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 318, Short.MAX_VALUE)
+                        .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(DelButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(AddButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(61, 61, 61))))
         );
 
         BgPanelRightop.setBackground(new java.awt.Color(204, 204, 204));
@@ -458,6 +479,11 @@ public class delivery_ui extends javax.swing.JFrame {
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -536,10 +562,12 @@ public class delivery_ui extends javax.swing.JFrame {
 
     private void TextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField1ActionPerformed
         //วันที่รับค่าตัวเลข
+        
     }//GEN-LAST:event_TextField1ActionPerformed
 
     private void TextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField2ActionPerformed
         // TODO add your handling code here:
+    
     }//GEN-LAST:event_TextField2ActionPerformed
 
     private void TextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField3ActionPerformed
@@ -611,6 +639,83 @@ public class delivery_ui extends javax.swing.JFrame {
         }   
     }//GEN-LAST:event_jButton1MouseClicked
 
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        int row = jTable1.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        try {
+            TextField1.setText(model.getValueAt(row, 2).toString());
+            TextField2.setText(model.getValueAt(row, 3).toString());
+            TextField3.setText(model.getValueAt(row, 4).toString());
+            TextField4.setText(model.getValueAt(row, 5).toString());
+            TextField5.setText(model.getValueAt(row, 1).toString());
+            TextField10.setText(model.getValueAt(row, 6).toString());
+        } catch (Exception b) {
+            JOptionPane.showMessageDialog(null, b);
+            
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
+    private void TextField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TextField1MouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_TextField1MouseClicked
+
+    private void DelButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DelButton1MouseClicked
+        Connection conn = null;
+        PreparedStatement pat = null;
+        int row = jTable1.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+
+        try {
+            Class.forName("org.sqlite.JDBC");
+            conn = DriverManager.getConnection("jdbc:sqlite:database.db");
+            String delete = "DELETE FROM delivery_data WHERE ID = ?";
+            pat = conn.prepareStatement(delete);
+            pat.setString(1, model.getValueAt(row, 0).toString());
+
+            pat.execute();
+
+            int a = JOptionPane.showConfirmDialog(null, "Are you sure to delete this item? : " + model.getValueAt(row, 2).toString(), "Alert", JOptionPane.INFORMATION_MESSAGE);
+            if (a == JOptionPane.YES_OPTION) {
+                JOptionPane.showMessageDialog(null, "This item has been deleted");
+                fetchitemDetailsCS();
+            }
+        } catch (Exception b) {
+            JOptionPane.showMessageDialog(null, b);
+        }
+     
+    }//GEN-LAST:event_DelButton1MouseClicked
+
+    private void AddButton2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddButton2MouseDragged
+        // TODO add your handling code here:
+        Connection con = null;
+        PreparedStatement pat = null;
+        int row =jTable1.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        try{
+            Class.forName("org.sqlite.JDBC");
+            con = DriverManager.getConnection("jdbc:sqlite:database.db");
+            String emp = TextField1.getText();
+            String user = TextField2.getText();
+            String datee = TextField3.getText();
+            String contactt = TextField4.getText();
+            String pdid = TextField5.getText();
+            
+            
+            String update = "UPDATE delivery_data SET NAME_DRIVER =  '"+emp+"' , CONTACT_NAME = '"+user+"' , DATE = '"+contactt+"', CONTACT_ADDRESS = '"+datee+"'" + "PRODUCT_ID ='"+pdid+"'";
+            
+            pat = con.prepareStatement(update);
+            
+            pat.execute();
+            
+            JOptionPane.showMessageDialog(null, "Item Updated Successfully");
+            fetchitemDetailsCS();
+            
+        }catch(Exception b){
+            JOptionPane.showMessageDialog(null, b);   
+        }
+    }//GEN-LAST:event_AddButton2MouseDragged
+
     
     
     
@@ -641,133 +746,7 @@ public class delivery_ui extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(delivery_ui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+       
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
