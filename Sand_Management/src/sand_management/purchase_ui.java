@@ -750,6 +750,7 @@ public class purchase_ui extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
         // Search
+        /yay
         Connection conn = null;
         Statement stmt = null;
         String type = dropdownlist01.getSelectedItem().toString();
