@@ -1031,7 +1031,8 @@ public class employee_new extends javax.swing.JFrame {
                                 + "'"+a21+"','"+a22+"','"+a23+"','"+a24+"','"+a25+"','"+a26+"','"+a27+"','"+a28+"','"+a29+"','"+a30+"','"+a31+"','"+a32+"','"+a33+"',"
                                 + "'"+a34+"','"+a35+"','"+a36+"','"+a37+"','"+a38+"','"+a39+"','"+a40+"','"+a41+"','"+a42+"','"+a43+"','"+a44+"')"); 
                         stmt.executeUpdate(sql);
-                        String sql1 = ("INSERT INTO user_data(username,password,first_name,last_name,position) VALUES('"+a44+"','"+a43+"','"+a1+"','"+a2+"','"+a3+"')");
+                        String randompassword = getRandomNumberString();
+                        String sql1 = ("INSERT INTO user_data(username,password,first_name,last_name,position) VALUES('"+a44+"','"+randompassword+"','"+a1+"','"+a2+"','"+a3+"')");
                         stmt.executeUpdate(sql1);
                         JOptionPane.showMessageDialog(null, "Register Complete.",
                         "ALERT", JOptionPane.INFORMATION_MESSAGE);
