@@ -210,7 +210,7 @@ public class login_ui extends javax.swing.JFrame {
                 String a2 = String.valueOf(jPasswordField1.getPassword());
                 try {
                     Class.forName("org.sqlite.JDBC");
-                    c = DriverManager.getConnection("jdbc:sqlite:user.db");
+                    c = DriverManager.getConnection("jdbc:sqlite:user_data.db");
                     c.setAutoCommit(false);
                     stmt = c.createStatement();
                     ResultSet rs = stmt.executeQuery( "SELECT * FROM user WHERE username = '"+a1+"'" );

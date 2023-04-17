@@ -6,8 +6,10 @@ package sand_management;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.PreparedStatement;
 import java.text.*;
 import java.util.*;
 import javax.swing.JOptionPane;
@@ -30,6 +32,7 @@ public class storage_ui extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Sand Management Program | Stock");
         this.user = a1;
+        jTablestorage.setEnabled(false);
         Start();
     }
     
@@ -213,6 +216,11 @@ public class storage_ui extends javax.swing.JFrame {
         jButtonadd.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButtonadd.setForeground(new java.awt.Color(255, 51, 0));
         jButtonadd.setText("Delete");
+        jButtonadd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonaddMouseClicked(evt);
+            }
+        });
         jButtonadd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonaddActionPerformed(evt);
@@ -301,6 +309,11 @@ public class storage_ui extends javax.swing.JFrame {
 
         jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Name" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 153, 255));
@@ -424,7 +437,7 @@ public class storage_ui extends javax.swing.JFrame {
         Statement stmt = null;
                 try {
                     Class.forName("org.sqlite.JDBC");
-                    c = DriverManager.getConnection("jdbc:sqlite:user.db");
+                    c = DriverManager.getConnection("jdbc:sqlite:user_data.db");
                     c.setAutoCommit(false);
                     stmt = c.createStatement();
                     String a1 = user.getUser();
@@ -469,7 +482,7 @@ public class storage_ui extends javax.swing.JFrame {
         Statement stmt = null;
         try {
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:data.db");
+            c = DriverManager.getConnection("jdbc:sqlite:storage_data.db");
             c.setAutoCommit(false);
             stmt = c.createStatement();
             String nameitem = txtname_i.getText();
@@ -529,16 +542,29 @@ public class storage_ui extends javax.swing.JFrame {
         // Search
         Connection c = null;
         Statement stmt = null;
-        try{
-            int i = Integer.parseInt(jTextField1.getText()); 
+        String type = jComboBox1.getSelectedItem().toString();
+        String search = jTextField1.getText();
+        try {
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:data.db");
+            c = DriverManager.getConnection("jdbc:sqlite:storage_data.db");
             stmt = c.createStatement();
-            ResultSet rs1 = stmt.executeQuery("Select * from storage where Id_item like "+i+"");
-            jTablestorage.setModel(DbUtils.resultSetToTableModel(rs1));
-            System.out.println(i);
-        }catch(Exception b){
+            if (type.equals("ID")){
+                ResultSet rs = stmt.executeQuery("SELECT * FROM storage WHERE id_item = '" +search+ "'");
+                jTablestorage.setModel(DbUtils.resultSetToTableModel(rs));
+                rs.close();
+            }
+            if (type.equals("Name")) {
+                ResultSet rs = stmt.executeQuery("SELECT * FROM storage WHERE Name_i = '" +search+ "'");
+                jTablestorage.setModel(DbUtils.resultSetToTableModel(rs));
+                rs.close();
+            } 
+            stmt.close();
+            c.close();
+           
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
@@ -551,12 +577,36 @@ public class storage_ui extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTextField1KeyReleased
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jButtonaddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonaddMouseClicked
+        // TODO add your handling code here:
+        Connection c = null;
+        PreparedStatement pat = null;
+        int row = jTablestorage.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel)jTablestorage.getModel();
+        
+        try {
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:storage_data.db");
+            String delete = "DELETE FROM storage WHERE Id_item = ?";
+            pat = c.prepareStatement(delete);
+            pat.setString(1, model.getValueAt(row, 0).toString());
+            pat.execute();
+        }catch(Exception b){
+            JOptionPane.showMessageDialog(null, b);
+        }
+    }//GEN-LAST:event_jButtonaddMouseClicked
+
     public void fetchitemDetailsCS(){
         Connection c = null;
         Statement stmt = null;
         try{
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:data.db");
+            c = DriverManager.getConnection("jdbc:sqlite:storage_data.db");
             stmt = c.createStatement();
             ResultSet rs1 = stmt.executeQuery("SELECT * FROM storage");
             jTablestorage.setModel(DbUtils.resultSetToTableModel(rs1)); 
