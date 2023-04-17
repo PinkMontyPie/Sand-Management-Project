@@ -13,6 +13,7 @@ import java.text.*;
 import java.util.*;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -1131,20 +1132,26 @@ public class report_ui extends javax.swing.JFrame {
 
     private void jButton_pdf_sellMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_pdf_sellMouseClicked
         // TODO add your handling code here:
+        int row =jTable_Sell.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel)jTable_Sell.getModel();
         InvoiceGenerator pdf = new InvoiceGenerator();
-        pdf.genpdf(Path(),"delivery_data","1");
+        pdf.genpdf(Path(),"sell_data",model.getValueAt(row, 0).toString());
     }//GEN-LAST:event_jButton_pdf_sellMouseClicked
 
     private void jButton_pdf_purchaseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_pdf_purchaseMouseClicked
         // TODO add your handling code here:
+        int row =jTable_Purchase.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel)jTable_Purchase.getModel();
         InvoiceGenerator pdf = new InvoiceGenerator();
         pdf.genpdf(Path(),"","");
     }//GEN-LAST:event_jButton_pdf_purchaseMouseClicked
 
     private void jButton_pdf_deliveryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_pdf_deliveryMouseClicked
         // TODO add your handling code here:
+        int row =jTable_Delivery.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel)jTable_Delivery.getModel();
         InvoiceGenerator pdf = new InvoiceGenerator();
-        pdf.genpdf(Path(),"delivery_data","2");
+        pdf.genpdf(Path(),"sell_data","10001");
     }//GEN-LAST:event_jButton_pdf_deliveryMouseClicked
 
     public void fetchitemDetails(String s) {
