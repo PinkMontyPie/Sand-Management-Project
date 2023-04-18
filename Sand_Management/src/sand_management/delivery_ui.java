@@ -54,14 +54,6 @@ public class delivery_ui extends javax.swing.JFrame {
     }
     
     
-    
-    
-    
-    
-    
-    
-    
-    
     public void setDate() {
         dateFormat = new SimpleDateFormat("EEEE dd MMMMM yyyy");
         date = dateFormat.format(Calendar.getInstance().getTime());
@@ -218,9 +210,11 @@ public class delivery_ui extends javax.swing.JFrame {
         BgPanelLeft.setBackground(new java.awt.Color(204, 204, 204));
 
         TitleLeftLabel1.setFont(new java.awt.Font("Tahoma", 1, 28)); // NOI18N
+        TitleLeftLabel1.setForeground(new java.awt.Color(51, 51, 51));
         TitleLeftLabel1.setText("รายละเอียดจัดส่งสินค้า");
 
         TitleTxtLeftLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtLeftLabel1.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtLeftLabel1.setText("ชื่อพนักงานขับรถ");
 
         TextField1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -235,6 +229,7 @@ public class delivery_ui extends javax.swing.JFrame {
         });
 
         TitleTxtRightLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtRightLabel1.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtRightLabel1.setText("ชื่อลูกค้า");
 
         TextField2.addActionListener(new java.awt.event.ActionListener() {
@@ -244,6 +239,7 @@ public class delivery_ui extends javax.swing.JFrame {
         });
 
         TitleTxtLeftLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtLeftLabel2.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtLeftLabel2.setText("วันที่การจัดส่งสินค้า");
 
         TextField3.addActionListener(new java.awt.event.ActionListener() {
@@ -253,6 +249,7 @@ public class delivery_ui extends javax.swing.JFrame {
         });
 
         TitleTxtRightLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtRightLabel2.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtRightLabel2.setText("เบอร์ติดต่อ");
 
         TextField4.addActionListener(new java.awt.event.ActionListener() {
@@ -262,6 +259,7 @@ public class delivery_ui extends javax.swing.JFrame {
         });
 
         TitleTxtLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtLabel1.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtLabel1.setText("รหัสสินค้า");
 
         TextField5.addActionListener(new java.awt.event.ActionListener() {
@@ -303,9 +301,11 @@ public class delivery_ui extends javax.swing.JFrame {
         });
 
         TitleTxtLabel3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtLabel3.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtLabel3.setText("สถานที่จัดส่ง");
 
         TitleTxtLabel4.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtLabel4.setForeground(new java.awt.Color(51, 51, 51));
         TitleTxtLabel4.setText("รายงานปัญหา");
 
         jTextArea1.setColumns(20);
@@ -383,17 +383,13 @@ public class delivery_ui extends javax.swing.JFrame {
                 .addComponent(TextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(TitleTxtLabel4)
-                .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(BgPanelLeftLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BgPanelLeftLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 318, Short.MAX_VALUE)
-                        .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(DelButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(AddButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(61, 61, 61))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DelButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(AddButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(61, 61, 61))
         );
 
         BgPanelRightop.setBackground(new java.awt.Color(204, 204, 204));
