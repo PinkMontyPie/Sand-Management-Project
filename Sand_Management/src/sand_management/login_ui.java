@@ -116,6 +116,11 @@ public class login_ui extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton1KeyPressed(evt);
+            }
+        });
 
         jPasswordField1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -230,7 +235,6 @@ public class login_ui extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Invalid Username or Password Step 1.",
                     "ALERT", JOptionPane.WARNING_MESSAGE);
         }
-
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jUserActionPerformed
@@ -253,6 +257,43 @@ public class login_ui extends javax.swing.JFrame {
             jPasswordField1.setEchoChar('*');
         }
     }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
+        // TODO add your handling code here:
+        Connection c = null;
+        Statement stmt = null;
+        String a1 = jUser.getText().toLowerCase();
+        String a2 = String.valueOf(jPasswordField1.getPassword());
+        try {
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:database.db");
+            c.setAutoCommit(false);
+            stmt = c.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM user_data WHERE username = '" + a1 + "'");
+            String user = rs.getString("username");
+            String pass = rs.getString("password");
+            String first = rs.getString("first_name");
+            if (user.equals(a1) && pass.equals(a2)) {
+                JOptionPane.showMessageDialog(null, "Login Success",
+                        "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
+                All_Data account = new All_Data();
+                account.setUser(a1);
+                account.setFirst(first);
+                main_ui main_display = new main_ui(account);
+                main_display.setVisible(true);
+                dispose();
+                rs.close();
+                stmt.close();
+                c.close();
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid Username or Password Step 2.",
+                        "ALERT", JOptionPane.WARNING_MESSAGE);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Invalid Username or Password Step 1.",
+                    "ALERT", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton1KeyPressed
 
     /**
      * @param args the command line arguments
