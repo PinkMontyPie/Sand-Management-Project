@@ -47,13 +47,13 @@ public class main_ui extends javax.swing.JFrame {
             } else if (position1.equals("Employee") || position1.equals("พนักงาน") || position1.equals("พนักงานขนส่ง")) {
                 Button_Employee.setVisible(false);
                 Button_Storage.setVisible(false);
-                Button_Purchase.setVisible(false);
+                Button_Customer.setVisible(false);
                 Button_Sell.setVisible(false);
                 Button_Report.setVisible(false);
             } else {
                 Button_Employee.setVisible(false);
                 Button_Storage.setVisible(false);
-                Button_Purchase.setVisible(false);
+                Button_Customer.setVisible(false);
                 Button_Sell.setVisible(false);
                 Button_Delivery.setVisible(false);
                 Button_Report.setVisible(false);
@@ -101,10 +101,12 @@ public class main_ui extends javax.swing.JFrame {
         Button_Employee = new javax.swing.JButton();
         Button_Delivery = new javax.swing.JButton();
         Button_Storage = new javax.swing.JButton();
-        Button_Purchase = new javax.swing.JButton();
+        Button_Customer = new javax.swing.JButton();
         Button_Report = new javax.swing.JButton();
         Button_Sell = new javax.swing.JButton();
         label_id_employee = new javax.swing.JLabel();
+        Button_Purchase1 = new javax.swing.JButton();
+        Button_Dealer = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -229,19 +231,19 @@ public class main_ui extends javax.swing.JFrame {
             }
         });
 
-        Button_Purchase.setBackground(new java.awt.Color(255, 255, 255));
-        Button_Purchase.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
-        Button_Purchase.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/payment-method_1.png"))); // NOI18N
-        Button_Purchase.setText("สั่งซื้อสินค้า");
-        Button_Purchase.setIconTextGap(20);
-        Button_Purchase.addMouseListener(new java.awt.event.MouseAdapter() {
+        Button_Customer.setBackground(new java.awt.Color(255, 255, 255));
+        Button_Customer.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
+        Button_Customer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/customer_1.png"))); // NOI18N
+        Button_Customer.setText("ลูกค้า");
+        Button_Customer.setIconTextGap(20);
+        Button_Customer.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Button_PurchaseMouseClicked(evt);
+                Button_CustomerMouseClicked(evt);
             }
         });
-        Button_Purchase.addActionListener(new java.awt.event.ActionListener() {
+        Button_Customer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button_PurchaseActionPerformed(evt);
+                Button_CustomerActionPerformed(evt);
             }
         });
 
@@ -289,6 +291,38 @@ public class main_ui extends javax.swing.JFrame {
             }
         });
 
+        Button_Purchase1.setBackground(new java.awt.Color(255, 255, 255));
+        Button_Purchase1.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
+        Button_Purchase1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/payment-method_1.png"))); // NOI18N
+        Button_Purchase1.setText("สั่งซื้อสินค้า");
+        Button_Purchase1.setIconTextGap(20);
+        Button_Purchase1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Button_Purchase1MouseClicked(evt);
+            }
+        });
+        Button_Purchase1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_Purchase1ActionPerformed(evt);
+            }
+        });
+
+        Button_Dealer.setBackground(new java.awt.Color(255, 255, 255));
+        Button_Dealer.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
+        Button_Dealer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/Dealer_1.png"))); // NOI18N
+        Button_Dealer.setText("ตัวแทนจำหน่าย");
+        Button_Dealer.setIconTextGap(20);
+        Button_Dealer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Button_DealerMouseClicked(evt);
+            }
+        });
+        Button_Dealer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_DealerActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -296,17 +330,21 @@ public class main_ui extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1911, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(188, 188, 188)
-                .addComponent(Button_Employee, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(76, 76, 76)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Button_Purchase, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Button_Delivery, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(62, 62, 62)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Button_Report, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Button_Employee, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Button_Sell, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(72, 72, 72)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Button_Purchase1, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Button_Dealer, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(66, 66, 66)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Button_Customer, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Button_Delivery, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(61, 61, 61)
-                .addComponent(Button_Storage, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Button_Report, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Button_Storage, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(176, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -320,14 +358,16 @@ public class main_ui extends javax.swing.JFrame {
                 .addGap(146, 146, 146)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Button_Employee, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Button_Customer, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Button_Storage, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Button_Purchase, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Button_Sell, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(72, 72, 72)
+                    .addComponent(Button_Dealer, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Button_Report, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Button_Delivery, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Button_Report, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                    .addComponent(Button_Sell, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Button_Purchase1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
                 .addComponent(label_id_employee)
                 .addGap(23, 23, 23))
         );
@@ -377,9 +417,9 @@ public class main_ui extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Button_StorageActionPerformed
 
-    private void Button_PurchaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_PurchaseActionPerformed
+    private void Button_CustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_CustomerActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Button_PurchaseActionPerformed
+    }//GEN-LAST:event_Button_CustomerActionPerformed
 
     private void Button_ReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_ReportActionPerformed
         // TODO add your handling code here:
@@ -401,17 +441,17 @@ public class main_ui extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_Button_EmployeeMouseClicked
 
-    private void Button_PurchaseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Button_PurchaseMouseClicked
+    private void Button_CustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Button_CustomerMouseClicked
         // TODO add your handling code here:
         String a1 = user.getUser();
         String a2 = user.getFirst();
         All_Data account = new All_Data();
         account.setUser(a1);
         account.setFirst(a2);
-        purchase_ui buy = new purchase_ui(account);
-        buy.setVisible(true);
+        customer_ui customer = new customer_ui(account);
+        customer.setVisible(true);
         dispose();
-    }//GEN-LAST:event_Button_PurchaseMouseClicked
+    }//GEN-LAST:event_Button_CustomerMouseClicked
 
     private void Button_SellMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Button_SellMouseClicked
         // TODO add your handling code here:
@@ -483,6 +523,22 @@ public class main_ui extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_label_id_employeeAncestorAdded
 
+    private void Button_Purchase1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Button_Purchase1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Button_Purchase1MouseClicked
+
+    private void Button_Purchase1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Purchase1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Button_Purchase1ActionPerformed
+
+    private void Button_DealerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Button_DealerMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Button_DealerMouseClicked
+
+    private void Button_DealerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_DealerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Button_DealerActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -520,9 +576,11 @@ public class main_ui extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Button_Customer;
+    private javax.swing.JButton Button_Dealer;
     private javax.swing.JButton Button_Delivery;
     private javax.swing.JButton Button_Employee;
-    private javax.swing.JButton Button_Purchase;
+    private javax.swing.JButton Button_Purchase1;
     private javax.swing.JButton Button_Report;
     private javax.swing.JButton Button_Sell;
     private javax.swing.JButton Button_Storage;

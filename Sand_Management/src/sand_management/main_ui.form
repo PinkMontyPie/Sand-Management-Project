@@ -29,19 +29,25 @@
           <Component id="jPanel1" pref="1911" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="188" max="-2" attributes="0"/>
-              <Component id="Button_Employee" min="-2" pref="337" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="Button_Purchase" alignment="0" min="-2" pref="337" max="-2" attributes="0"/>
-                  <Component id="Button_Delivery" alignment="0" min="-2" pref="337" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="Button_Report" min="-2" pref="337" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="Button_Employee" min="-2" pref="337" max="-2" attributes="0"/>
                   <Component id="Button_Sell" min="-2" pref="337" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="Button_Purchase1" min="-2" pref="337" max="-2" attributes="0"/>
+                  <Component id="Button_Dealer" min="-2" pref="337" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="Button_Customer" alignment="1" min="-2" pref="337" max="-2" attributes="0"/>
+                  <Component id="Button_Delivery" alignment="1" min="-2" pref="337" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-              <Component id="Button_Storage" min="-2" pref="337" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="Button_Report" alignment="1" min="-2" pref="337" max="-2" attributes="0"/>
+                  <Component id="Button_Storage" alignment="1" min="-2" pref="337" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace pref="176" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
@@ -58,16 +64,18 @@
               <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="Button_Employee" alignment="3" min="-2" pref="236" max="-2" attributes="0"/>
+                  <Component id="Button_Customer" alignment="3" min="-2" pref="236" max="-2" attributes="0"/>
                   <Component id="Button_Storage" alignment="3" min="-2" pref="236" max="-2" attributes="0"/>
-                  <Component id="Button_Purchase" alignment="3" min="-2" pref="236" max="-2" attributes="0"/>
-                  <Component id="Button_Sell" alignment="3" min="-2" pref="236" max="-2" attributes="0"/>
+                  <Component id="Button_Dealer" alignment="3" min="-2" pref="236" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="Button_Delivery" alignment="3" min="-2" pref="236" max="-2" attributes="0"/>
                   <Component id="Button_Report" alignment="3" min="-2" pref="236" max="-2" attributes="0"/>
+                  <Component id="Button_Delivery" alignment="3" min="-2" pref="236" max="-2" attributes="0"/>
+                  <Component id="Button_Sell" alignment="3" min="-2" pref="236" max="-2" attributes="0"/>
+                  <Component id="Button_Purchase1" alignment="3" min="-2" pref="236" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="107" max="32767" attributes="0"/>
+              <EmptySpace pref="120" max="32767" attributes="0"/>
               <Component id="label_id_employee" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
           </Group>
@@ -251,7 +259,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Button_StorageActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="Button_Purchase">
+    <Component class="javax.swing.JButton" name="Button_Customer">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -260,14 +268,14 @@
           <Font name="Leelawadee UI" size="24" style="0"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/sand_management/picture/payment-method_1.png"/>
+          <Image iconType="3" name="/sand_management/picture/customer_1.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="&#xe2a;&#xe31;&#xe48;&#xe07;&#xe0b;&#xe37;&#xe49;&#xe2d;&#xe2a;&#xe34;&#xe19;&#xe04;&#xe49;&#xe32;"/>
+        <Property name="text" type="java.lang.String" value="&#xe25;&#xe39;&#xe01;&#xe04;&#xe49;&#xe32;"/>
         <Property name="iconTextGap" type="int" value="20"/>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Button_PurchaseMouseClicked"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Button_PurchaseActionPerformed"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Button_CustomerMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Button_CustomerActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="Button_Report">
@@ -317,6 +325,44 @@
       </Properties>
       <Events>
         <EventHandler event="ancestorAdded" listener="javax.swing.event.AncestorListener" parameters="javax.swing.event.AncestorEvent" handler="label_id_employeeAncestorAdded"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="Button_Purchase1">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Leelawadee UI" size="24" style="0"/>
+        </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/sand_management/picture/payment-method_1.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="&#xe2a;&#xe31;&#xe48;&#xe07;&#xe0b;&#xe37;&#xe49;&#xe2d;&#xe2a;&#xe34;&#xe19;&#xe04;&#xe49;&#xe32;"/>
+        <Property name="iconTextGap" type="int" value="20"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Button_Purchase1MouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Button_Purchase1ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="Button_Dealer">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Leelawadee UI" size="24" style="0"/>
+        </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/sand_management/picture/Dealer_1.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="&#xe15;&#xe31;&#xe27;&#xe41;&#xe17;&#xe19;&#xe08;&#xe33;&#xe2b;&#xe19;&#xe48;&#xe32;&#xe22;"/>
+        <Property name="iconTextGap" type="int" value="20"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Button_DealerMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Button_DealerActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
