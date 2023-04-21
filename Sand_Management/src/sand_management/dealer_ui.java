@@ -4,19 +4,84 @@
  */
 package sand_management;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.text.*;
+import java.util.*;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author theet
  */
 public class dealer_ui extends javax.swing.JFrame {
-
+    SimpleDateFormat timeFormat;
+    SimpleDateFormat dateFormat;
+    String time;
+    String date;
+    private All_Data user; 
     /**
      * Creates new form dealer_ui
      */
-    public dealer_ui() {
+    public dealer_ui(All_Data a1) {
         initComponents();
+        this.user = a1;
+        Start();
     }
 
+    public void Start(){
+        fetchitemDetailsCS();
+        setDate();
+        setTime();
+    }
+    
+    public void fetchitemDetailsCS() {
+        Connection c = null;
+        Statement stmt = null;
+        DefaultTableModel dtm = (DefaultTableModel) Dealer_table.getModel();
+        dtm.setRowCount(0);
+        try {
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:database.db");
+            stmt = c.createStatement();
+            ResultSet rs1 = stmt.executeQuery("SELECT * FROM purchase_data");
+            while (rs1.next()) {
+                String s1 = rs1.getString("Company");
+                String s2 = rs1.getString("ContactName");
+                String s3 = rs1.getString("PhoneNumber");
+                String s4 = rs1.getString("ContactAddress");
+                String s5 = rs1.getString("Fax_num");
+                String s6 = rs1.getString("Email");
+                String table_data[] = {s1, s2, s3, s4, s5, s6};
+                DefaultTableModel tblModel = (DefaultTableModel) Dealer_table.getModel();
+                tblModel.addRow(table_data);
+            }
+        } catch (Exception b) {
+            JOptionPane.showMessageDialog(null, b);
+        }
+    }
+
+    public void setDate() {
+        dateFormat = new SimpleDateFormat("EEEE dd MMMMM yyyy");
+        date = dateFormat.format(Calendar.getInstance().getTime());
+        jLabelDate.setText(date);
+    }
+
+    public void setTime() {
+        timeFormat = new SimpleDateFormat("hh:mm:ss a");
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() { // TimerTask is an abstract class .
+            @Override
+            public void run() {
+                time = timeFormat.format(Calendar.getInstance().getTime());
+                jLabelTime.setText(time);
+            }
+        };
+        timer.scheduleAtFixedRate(task, 0, 1000);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,21 +91,697 @@ public class dealer_ui extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        BgPanelLeft = new javax.swing.JPanel();
+        TitleLeftLabel1 = new javax.swing.JLabel();
+        TitleTxtRightLabel1 = new javax.swing.JLabel();
+        CompanyTextField2 = new javax.swing.JTextField();
+        TitleTxtLeftLabel2 = new javax.swing.JLabel();
+        ContactTextField3 = new javax.swing.JTextField();
+        TitleTxtRightLabel2 = new javax.swing.JLabel();
+        ContactPhone = new javax.swing.JTextField();
+        TitleTxtLabel1 = new javax.swing.JLabel();
+        Fax_number = new javax.swing.JTextField();
+        DelButton1 = new javax.swing.JButton();
+        AddButton2 = new javax.swing.JButton();
+        AddressTextField6 = new javax.swing.JTextField();
+        label_tax = new javax.swing.JLabel();
+        TitleTxtRightLabel3 = new javax.swing.JLabel();
+        label_tax1 = new javax.swing.JLabel();
+        jDate = new javax.swing.JTextField();
+        TitleTxtLabel2 = new javax.swing.JLabel();
+        EmailText = new javax.swing.JTextField();
+        item_sell_text = new javax.swing.JTextField();
+        label_tax2 = new javax.swing.JLabel();
+        BgPanelRightop = new javax.swing.JPanel();
+        Titledropdown = new javax.swing.JLabel();
+        dropdownlist01 = new javax.swing.JComboBox<>();
+        TextSearchField1 = new javax.swing.JTextField();
+        TitleSearch = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Dealer_table = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        jLabelTime = new javax.swing.JLabel();
+        jLabelDate = new javax.swing.JLabel();
+        jButtonlogout = new javax.swing.JButton();
+        jfirstname_lastname = new javax.swing.JLabel();
+        jLabelProgram = new javax.swing.JLabel();
+        jBack = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        BgPanelLeft.setBackground(new java.awt.Color(204, 204, 204));
+
+        TitleLeftLabel1.setFont(new java.awt.Font("Tahoma", 1, 28)); // NOI18N
+        TitleLeftLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        TitleLeftLabel1.setText("รายละเอียดตัวแทนจำหน่าย(บริษัทอื่น)");
+
+        TitleTxtRightLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtRightLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        TitleTxtRightLabel1.setText("ชื่อบริษัท/ร้านของตัวเเทนจำหน่าย");
+
+        CompanyTextField2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        CompanyTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CompanyTextField2ActionPerformed(evt);
+            }
+        });
+
+        TitleTxtLeftLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtLeftLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        TitleTxtLeftLabel2.setText("ชื่อผู้ติดต่อ");
+
+        ContactTextField3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ContactTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ContactTextField3ActionPerformed(evt);
+            }
+        });
+
+        TitleTxtRightLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtRightLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        TitleTxtRightLabel2.setText("เบอร์ติดต่อ");
+
+        ContactPhone.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ContactPhone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ContactPhoneActionPerformed(evt);
+            }
+        });
+
+        TitleTxtLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        TitleTxtLabel1.setText("ที่ตั้งบริษัทตัวแทนจำหน่าย");
+
+        Fax_number.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Fax_number.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Fax_numberActionPerformed(evt);
+            }
+        });
+
+        DelButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        DelButton1.setText("ลบข้อมูล");
+        DelButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DelButton1MouseClicked(evt);
+            }
+        });
+        DelButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DelButton1ActionPerformed(evt);
+            }
+        });
+
+        AddButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        AddButton2.setText("เพิ่มข้อมูล");
+        AddButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AddButton2MouseClicked(evt);
+            }
+        });
+        AddButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddButton2ActionPerformed(evt);
+            }
+        });
+
+        AddressTextField6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        AddressTextField6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddressTextField6ActionPerformed(evt);
+            }
+        });
+
+        label_tax.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        label_tax.setForeground(new java.awt.Color(0, 0, 0));
+        label_tax.setText("หมายเลข Fax. ของบริษัทตัวเเทนจำหน่าย");
+
+        TitleTxtRightLabel3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtRightLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        TitleTxtRightLabel3.setText("ข้อมูล ณ วันที่");
+
+        label_tax1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        label_tax1.setForeground(new java.awt.Color(0, 0, 0));
+
+        jDate.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jjDateActionPerformed(evt);
+            }
+        });
+
+        TitleTxtLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        TitleTxtLabel2.setText("อีเมล");
+
+        EmailText.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        EmailText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EmailTextActionPerformed(evt);
+            }
+        });
+
+        item_sell_text.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        item_sell_text.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                item_sell_textActionPerformed(evt);
+            }
+        });
+
+        label_tax2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        label_tax2.setForeground(new java.awt.Color(0, 0, 0));
+        label_tax2.setText("รายละเอียดของสินค้าที่ขาย");
+
+        javax.swing.GroupLayout BgPanelLeftLayout = new javax.swing.GroupLayout(BgPanelLeft);
+        BgPanelLeft.setLayout(BgPanelLeftLayout);
+        BgPanelLeftLayout.setHorizontalGroup(
+            BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BgPanelLeftLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(BgPanelLeftLayout.createSequentialGroup()
+                        .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TitleLeftLabel1)
+                            .addGroup(BgPanelLeftLayout.createSequentialGroup()
+                                .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ContactTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(TitleTxtLeftLabel2))
+                                .addGap(87, 87, 87)
+                                .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(TitleTxtRightLabel3)
+                                    .addComponent(ContactPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(TitleTxtRightLabel2)
+                                    .addComponent(jDate, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap(45, Short.MAX_VALUE))
+                    .addGroup(BgPanelLeftLayout.createSequentialGroup()
+                        .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(item_sell_text, javax.swing.GroupLayout.PREFERRED_SIZE, 787, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label_tax2)
+                            .addComponent(EmailText, javax.swing.GroupLayout.PREFERRED_SIZE, 787, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TitleTxtLabel2)
+                            .addComponent(label_tax1)
+                            .addComponent(Fax_number, javax.swing.GroupLayout.PREFERRED_SIZE, 787, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(AddressTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 787, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label_tax)
+                            .addComponent(TitleTxtRightLabel1)
+                            .addComponent(CompanyTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(TitleTxtLabel1)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BgPanelLeftLayout.createSequentialGroup()
+                                    .addGap(479, 479, 479)
+                                    .addComponent(DelButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(AddButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+        BgPanelLeftLayout.setVerticalGroup(
+            BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BgPanelLeftLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(TitleLeftLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TitleTxtRightLabel1)
+                    .addComponent(TitleTxtRightLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CompanyTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDate, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 13, 13)
+                .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TitleTxtRightLabel2)
+                    .addComponent(TitleTxtLeftLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ContactPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ContactTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(TitleTxtLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(EmailText, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(TitleTxtLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(AddressTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(label_tax)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Fax_number, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(label_tax1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(label_tax2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(item_sell_text, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DelButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(AddButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22))
+        );
+
+        BgPanelRightop.setBackground(new java.awt.Color(204, 204, 204));
+
+        Titledropdown.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        Titledropdown.setForeground(new java.awt.Color(51, 51, 51));
+        Titledropdown.setText("หมวดหมู่");
+
+        dropdownlist01.setBackground(new java.awt.Color(255, 255, 255));
+        dropdownlist01.setForeground(new java.awt.Color(51, 51, 51));
+        dropdownlist01.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Company", "Contact Name" }));
+
+        TextSearchField1.setBackground(new java.awt.Color(255, 255, 255));
+
+        TitleSearch.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        TitleSearch.setForeground(new java.awt.Color(51, 51, 51));
+        TitleSearch.setText("ค้นหา");
+
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 153, 255));
+        jButton1.setText("ค้นหา");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout BgPanelRightopLayout = new javax.swing.GroupLayout(BgPanelRightop);
+        BgPanelRightop.setLayout(BgPanelRightopLayout);
+        BgPanelRightopLayout.setHorizontalGroup(
+            BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BgPanelRightopLayout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addGroup(BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dropdownlist01, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Titledropdown))
+                .addGap(56, 56, 56)
+                .addGroup(BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TitleSearch)
+                    .addComponent(TextSearchField1, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33))
+        );
+        BgPanelRightopLayout.setVerticalGroup(
+            BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BgPanelRightopLayout.createSequentialGroup()
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addGroup(BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BgPanelRightopLayout.createSequentialGroup()
+                        .addGroup(BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Titledropdown)
+                            .addComponent(TitleSearch))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(BgPanelRightopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(dropdownlist01, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TextSearchField1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(29, 29, 29))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BgPanelRightopLayout.createSequentialGroup()
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30))))
+        );
+
+        Dealer_table.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        Dealer_table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Company", "Contact Name", "Contact Phone", "Contact Adress", "Fax Number", "Email"
+            }
+        ));
+        Dealer_table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Dealer_tableMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(Dealer_table);
+
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1920, 190));
+
+        jLabelTime.setFont(new java.awt.Font("Angsana New", 1, 24)); // NOI18N
+        jLabelTime.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelTime.setText("Time");
+
+        jLabelDate.setFont(new java.awt.Font("Angsana New", 1, 24)); // NOI18N
+        jLabelDate.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelDate.setText("Date");
+
+        jButtonlogout.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jButtonlogout.setForeground(new java.awt.Color(255, 51, 51));
+        jButtonlogout.setText("Logout");
+        jButtonlogout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonlogoutMouseClicked(evt);
+            }
+        });
+
+        jfirstname_lastname.setFont(new java.awt.Font("Angsana New", 1, 24)); // NOI18N
+        jfirstname_lastname.setForeground(new java.awt.Color(255, 255, 255));
+        jfirstname_lastname.setText("User");
+        jfirstname_lastname.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jfirstname_lastnameAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+
+        jLabelProgram.setBackground(new java.awt.Color(255, 255, 255));
+        jLabelProgram.setFont(new java.awt.Font("Helvetica Neue", 1, 36)); // NOI18N
+        jLabelProgram.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelProgram.setText("Dealer");
+
+        jBack.setFont(new java.awt.Font("Leelawadee UI", 0, 36)); // NOI18N
+        jBack.setForeground(new java.awt.Color(255, 255, 255));
+        jBack.setText("Back");
+        jBack.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBackMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabelTime)
+                        .addGap(29, 29, 29)
+                        .addComponent(jLabelDate))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(jBack)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 833, Short.MAX_VALUE)
+                        .addComponent(jLabelProgram)
+                        .addGap(689, 689, 689)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jfirstname_lastname, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButtonlogout, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(38, 38, 38))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelTime)
+                    .addComponent(jLabelDate))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jfirstname_lastname)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonlogout, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabelProgram, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jBack, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(29, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1910, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(BgPanelLeft, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addComponent(BgPanelRightop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(BgPanelRightop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 729, Short.MAX_VALUE))
+                    .addComponent(BgPanelLeft, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void CompanyTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CompanyTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CompanyTextField2ActionPerformed
+
+    private void ContactTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContactTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ContactTextField3ActionPerformed
+
+    private void ContactPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContactPhoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ContactPhoneActionPerformed
+
+    private void Fax_numberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Fax_numberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Fax_numberActionPerformed
+
+    private void DelButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DelButton1MouseClicked
+        // TODO add your handling code here:
+        Connection c = null;
+        PreparedStatement pat = null;
+        int row = Dealer_table.getSelectedRow();
+        String del = Dealer_table.getModel().getValueAt(row,0).toString();
+        DefaultTableModel model = (DefaultTableModel) Dealer_table.getModel();
+        try {
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:database.db");
+            String delete = "DELETE FROM purchase_data WHERE Company = '"+del+"'";
+            pat = c.prepareStatement(delete);
+            pat.execute();
+            int a = JOptionPane.showConfirmDialog(null, "Are you sure to delete this item? : " + model.getValueAt(row, 2).toString(), "Alert", JOptionPane.INFORMATION_MESSAGE);
+            if (a == JOptionPane.YES_OPTION) {
+                JOptionPane.showMessageDialog(null, "This item has been deleted");
+                fetchitemDetailsCS();
+            }
+        } catch (Exception b) {
+            JOptionPane.showMessageDialog(null, b);
+        }
+    }//GEN-LAST:event_DelButton1MouseClicked
+
+    private void DelButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DelButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DelButton1ActionPerformed
+
+    private void AddButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddButton2MouseClicked
+        // TODO add your handling code here:
+        Connection conn = null;
+        Statement stmt = null;
+
+        try {
+            Class.forName("org.sqlite.JDBC");
+            conn = DriverManager.getConnection("jdbc:sqlite:database.db");
+            conn.setAutoCommit(false);
+            stmt = conn.createStatement();
+            String p1 = jDate.getText();
+            String p2 = CompanyTextField2.getText();
+            String p3 = ContactTextField3.getText();
+            String p4 = AddressTextField6.getText();
+            String p5 = ContactPhone.getText();
+            String p6 = Fax_number.getText();
+            String p7 = EmailText.getText();
+            String p8 = item_sell_text.getText();
+            String sql = "INSERT INTO purchase_data(Date,Company,ContactName,ContactAddress,PhoneNumber,Fax_num,Email,Details) VALUES('" + p1 + "','" + p2 + "','" + p3 + "','" + p4 + "','" + p5 + "','" + p6 + "','" + p7 + "','" + p8 + "')";
+            stmt.executeUpdate(sql);
+            stmt.close();
+            conn.commit();
+
+        } catch (Exception b) {
+            if (conn != null) {
+                try {
+                    conn.rollback();
+                } catch (Exception ex) {
+                }
+            }
+            System.err.println(b.getClass().getName() + ": " + b.getMessage());
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (Exception ex) {
+                }
+            }
+        }
+        int a = JOptionPane.showConfirmDialog(null, "Please confirm your input:", "Alert", JOptionPane.INFORMATION_MESSAGE);
+        if (a == JOptionPane.YES_OPTION) {
+            JOptionPane.showMessageDialog(null, "Add Sell Complete.", "ALERT", JOptionPane.INFORMATION_MESSAGE);
+            fetchitemDetailsCS();
+        }
+        fetchitemDetailsCS();
+    }//GEN-LAST:event_AddButton2MouseClicked
+
+    private void AddButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AddButton2ActionPerformed
+
+    private void AddressTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddressTextField6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AddressTextField6ActionPerformed
+
+    private void jjDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjDateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jjDateActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        // Search
+        Connection conn = null;
+        Statement stmt = null;
+        String type = dropdownlist01.getSelectedItem().toString();
+        String search = TextSearchField1.getText();
+        DefaultTableModel dtm = (DefaultTableModel) Dealer_table.getModel();
+        dtm.setRowCount(0);
+        try {
+            Class.forName("org.sqlite.JDBC");
+            conn = DriverManager.getConnection("jdbc:sqlite:database.db");
+            stmt = conn.createStatement();
+            if (type.equals("Company")) {
+                ResultSet rs = stmt.executeQuery("SELECT * FROM purchase_data WHERE Company = '" + search + "'");
+                while (rs.next()) {
+                    String s1 = rs.getString("Company");
+                    String s2 = rs.getString("ContactName");
+                    String s3 = rs.getString("PhoneNumber");
+                    String s4 = rs.getString("ContactAddress");
+                    String s5 = rs.getString("Fax_num");
+                    String s6 = rs.getString("Email");
+                    String table_data[] = {s1, s2, s3, s4, s5, s6};
+                    DefaultTableModel tblModel = (DefaultTableModel) Dealer_table.getModel();
+                    tblModel.addRow(table_data);
+                    Dealer_table.repaint();
+                }
+                rs.close();
+            }
+            if (type.equals("Contact Name")) {
+                ResultSet rs = stmt.executeQuery("SELECT * FROM purchase_data WHERE ContactName = '" + search + "'");
+                while (rs.next()) {
+                    String s1 = rs.getString("Company");
+                    String s2 = rs.getString("ContactName");
+                    String s3 = rs.getString("PhoneNumber");
+                    String s4 = rs.getString("ContactAddress");
+                    String s5 = rs.getString("Fax_num");
+                    String s6 = rs.getString("Email");
+                    String table_data[] = {s1, s2, s3, s4, s5, s6};
+                    DefaultTableModel tblModel = (DefaultTableModel) Dealer_table.getModel();
+                    tblModel.addRow(table_data);
+                    Dealer_table.repaint();
+                }
+                rs.close();
+            }
+            stmt.close();
+            conn.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void Dealer_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Dealer_tableMouseClicked
+        // TODO add your handling code here:
+        Connection conn = null;
+        Statement stmt = null;
+        int row = Dealer_table.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) Dealer_table.getModel();
+        CompanyTextField2.setText(model.getValueAt(row, 0).toString());
+        ContactTextField3.setText(model.getValueAt(row, 1).toString());
+        ContactPhone.setText(model.getValueAt(row, 2).toString());
+        AddressTextField6.setText(model.getValueAt(row, 3).toString());
+        Fax_number.setText(model.getValueAt(row, 4).toString());
+        EmailText.setText(model.getValueAt(row, 5).toString());
+        String contact = ContactTextField3.getText();
+        try {
+            Class.forName("org.sqlite.JDBC");
+            conn = DriverManager.getConnection("jdbc:sqlite:database.db");
+            conn.setAutoCommit(false);
+            stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery( "SELECT * FROM purchase_data WHERE ContactName = '"+contact+"'" );
+            String date_time = rs.getString("Date");
+            String detail = rs.getString("Details");
+            jDate.setText(date_time);
+            item_sell_text.setText(detail);
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (Exception b) {
+            JOptionPane.showMessageDialog(null, b);
+        }
+    }//GEN-LAST:event_Dealer_tableMouseClicked
+
+    private void jButtonlogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonlogoutMouseClicked
+        // TODO add your handling code here:
+        login_ui show = new login_ui();
+        show.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButtonlogoutMouseClicked
+
+    private void jfirstname_lastnameAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jfirstname_lastnameAncestorAdded
+        // TODO add your handling code here:
+        Connection c = null;
+        Statement stmt = null;
+        try {
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:database.db");
+            c.setAutoCommit(false);
+            stmt = c.createStatement();
+            String a1 = user.getUser();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM user_data WHERE username = '" + a1 + "'");
+            String first = rs.getString("first_name");
+            String last = rs.getString("last_name");
+            jfirstname_lastname.setText(first + " " + last);
+            rs.close();
+            stmt.close();
+            c.close();
+        } catch (Exception b) {
+            System.err.println(b.getClass().getName() + ": " + b.getMessage());
+            System.exit(0);
+        }
+    }//GEN-LAST:event_jfirstname_lastnameAncestorAdded
+
+    private void jBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBackMouseClicked
+        // TODO add your handling code here:
+        String a1 = user.getUser();
+        String a2 = user.getFirst();
+        All_Data account = new All_Data();
+        account.setUser(a1);
+        account.setFirst(a2);
+        main_ui main = new main_ui(account);
+        main.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jBackMouseClicked
+
+    private void EmailTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EmailTextActionPerformed
+
+    private void item_sell_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_sell_textActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_item_sell_textActionPerformed
 
     /**
      * @param args the command line arguments
@@ -72,11 +813,47 @@ public class dealer_ui extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new dealer_ui().setVisible(true);
+                new dealer_ui(new All_Data()).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AddButton2;
+    private javax.swing.JTextField AddressTextField6;
+    private javax.swing.JPanel BgPanelLeft;
+    private javax.swing.JPanel BgPanelRightop;
+    private javax.swing.JTextField CompanyTextField2;
+    private javax.swing.JTextField ContactPhone;
+    private javax.swing.JTextField ContactTextField3;
+    private javax.swing.JTable Dealer_table;
+    private javax.swing.JButton DelButton1;
+    private javax.swing.JTextField EmailText;
+    private javax.swing.JTextField Fax_number;
+    private javax.swing.JTextField TextSearchField1;
+    private javax.swing.JLabel TitleLeftLabel1;
+    private javax.swing.JLabel TitleSearch;
+    private javax.swing.JLabel TitleTxtLabel1;
+    private javax.swing.JLabel TitleTxtLabel2;
+    private javax.swing.JLabel TitleTxtLeftLabel2;
+    private javax.swing.JLabel TitleTxtRightLabel1;
+    private javax.swing.JLabel TitleTxtRightLabel2;
+    private javax.swing.JLabel TitleTxtRightLabel3;
+    private javax.swing.JLabel Titledropdown;
+    private javax.swing.JComboBox<String> dropdownlist01;
+    private javax.swing.JTextField item_sell_text;
+    private javax.swing.JLabel jBack;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonlogout;
+    private javax.swing.JTextField jDate;
+    private javax.swing.JLabel jLabelDate;
+    private javax.swing.JLabel jLabelProgram;
+    private javax.swing.JLabel jLabelTime;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jfirstname_lastname;
+    private javax.swing.JLabel label_tax;
+    private javax.swing.JLabel label_tax1;
+    private javax.swing.JLabel label_tax2;
     // End of variables declaration//GEN-END:variables
 }

@@ -45,12 +45,18 @@ public class main_ui extends javax.swing.JFrame {
             } else if (position1.equals("Secretary") || position1.equals("เลขานุการ")) {
                 Button_Employee.setVisible(false);
             } else if (position1.equals("Employee") || position1.equals("พนักงาน") || position1.equals("พนักงานขนส่ง")) {
+                Button_Purchase.setVisible(false);
+                Button_Customer.setVisible(false);
+                Button_Dealer.setVisible(false);
                 Button_Employee.setVisible(false);
                 Button_Storage.setVisible(false);
                 Button_Customer.setVisible(false);
                 Button_Sell.setVisible(false);
                 Button_Report.setVisible(false);
             } else {
+                Button_Purchase.setVisible(false);
+                Button_Customer.setVisible(false);
+                Button_Dealer.setVisible(false);
                 Button_Employee.setVisible(false);
                 Button_Storage.setVisible(false);
                 Button_Customer.setVisible(false);
@@ -541,6 +547,14 @@ public class main_ui extends javax.swing.JFrame {
 
     private void Button_DealerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Button_DealerMouseClicked
         // TODO add your handling code here:
+        String a1 = user.getUser();
+        String a2 = user.getFirst();
+        All_Data account = new All_Data();
+        account.setUser(a1);
+        account.setFirst(a2);
+        dealer_ui deal = new dealer_ui(account);
+        deal.setVisible(true);
+        dispose();
     }//GEN-LAST:event_Button_DealerMouseClicked
 
     private void Button_DealerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_DealerActionPerformed

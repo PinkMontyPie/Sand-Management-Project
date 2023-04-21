@@ -13,7 +13,6 @@ import java.text.*;
 import java.util.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -681,6 +680,9 @@ public class customer_ui extends javax.swing.JFrame {
             ResultSet rs = stmt.executeQuery( "SELECT * FROM sell_data WHERE CONTACT_NAME = '"+contact+"'" );
             String date_time = rs.getString("SALE_DATE");
             jDate.setText(date_time);
+            rs.close();
+            stmt.close();
+            conn.close();
         } catch (Exception b) {
             JOptionPane.showMessageDialog(null, b);
         }
@@ -702,12 +704,6 @@ public class customer_ui extends javax.swing.JFrame {
             String p4 = AdressTextField6.getText();
             String p5 = Tax_number.getText();
             String p6 = CompanyTextField2.getText();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM sqlite_master WHERE type='table' AND name='sell_data'");
-            if (!rs.next()) {
-                System.out.println("Table does not exist");
-                return;
-            }
-            rs.close();
             String sql = "INSERT INTO sell_data(SALE_DATE,CONTACT_NAME,CONTACT_PHONE,CONTACT_ADDRESS,TAX_NUM,COMPANY) VALUES('" + p1 + "','" + p2 + "','" + p3 + "','" + p4 + "','" + p5 + "','" + p6 + "')";
             stmt.executeUpdate(sql);
             stmt.close();

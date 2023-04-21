@@ -289,9 +289,8 @@ public class login_ui extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Invalid Username or Password Step 2.",
                         "ALERT", JOptionPane.WARNING_MESSAGE);
             }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Invalid Username or Password Step 1.",
-                    "ALERT", JOptionPane.WARNING_MESSAGE);
+        } catch (Exception b) {
+            JOptionPane.showMessageDialog(null, b);
         }
     }//GEN-LAST:event_jButton1KeyPressed
 
