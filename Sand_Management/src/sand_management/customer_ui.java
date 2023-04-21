@@ -663,6 +663,27 @@ public class customer_ui extends javax.swing.JFrame {
 
     private void Customer_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Customer_tableMouseClicked
         // TODO add your handling code here:
+        Connection conn = null;
+        Statement stmt = null;
+        int row = Customer_table.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) Customer_table.getModel();
+        CompanyTextField2.setText(model.getValueAt(row, 0).toString());
+        ContactTextField3.setText(model.getValueAt(row, 1).toString());
+        ContactPhone.setText(model.getValueAt(row, 2).toString());
+        AdressTextField6.setText(model.getValueAt(row, 3).toString());
+        Tax_number.setText(model.getValueAt(row, 4).toString());
+        String contact = ContactTextField3.getText();
+        try {
+            Class.forName("org.sqlite.JDBC");
+            conn = DriverManager.getConnection("jdbc:sqlite:database.db");
+            conn.setAutoCommit(false);
+            stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery( "SELECT * FROM sell_data WHERE CONTACT_NAME = '"+contact+"'" );
+            String date_time = rs.getString("SALE_DATE");
+            jDate.setText(date_time);
+        } catch (Exception b) {
+            JOptionPane.showMessageDialog(null, b);
+        }
     }//GEN-LAST:event_Customer_tableMouseClicked
 
     private void AddButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddButton2MouseClicked

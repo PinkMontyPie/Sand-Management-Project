@@ -35,7 +35,7 @@
               </Group>
               <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="Button_Purchase1" min="-2" pref="337" max="-2" attributes="0"/>
+                  <Component id="Button_Purchase" min="-2" pref="337" max="-2" attributes="0"/>
                   <Component id="Button_Dealer" min="-2" pref="337" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
@@ -73,7 +73,7 @@
                   <Component id="Button_Report" alignment="3" min="-2" pref="236" max="-2" attributes="0"/>
                   <Component id="Button_Delivery" alignment="3" min="-2" pref="236" max="-2" attributes="0"/>
                   <Component id="Button_Sell" alignment="3" min="-2" pref="236" max="-2" attributes="0"/>
-                  <Component id="Button_Purchase1" alignment="3" min="-2" pref="236" max="-2" attributes="0"/>
+                  <Component id="Button_Purchase" alignment="3" min="-2" pref="236" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="120" max="32767" attributes="0"/>
               <Component id="label_id_employee" min="-2" max="-2" attributes="0"/>
@@ -327,7 +327,7 @@
         <EventHandler event="ancestorAdded" listener="javax.swing.event.AncestorListener" parameters="javax.swing.event.AncestorEvent" handler="label_id_employeeAncestorAdded"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="Button_Purchase1">
+    <Component class="javax.swing.JButton" name="Button_Purchase">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -342,8 +342,8 @@
         <Property name="iconTextGap" type="int" value="20"/>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Button_Purchase1MouseClicked"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Button_Purchase1ActionPerformed"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Button_PurchaseMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Button_PurchaseActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="Button_Dealer">
