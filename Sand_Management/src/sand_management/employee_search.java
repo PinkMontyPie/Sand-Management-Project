@@ -27,8 +27,9 @@ public class employee_search extends javax.swing.JFrame {
     public employee_search(All_Data a1) {
         initComponents();
         this.user = a1;
+        search();
         Start();
-        Setvisible_False();
+        //Setvisible_False();
     }
     
     public void Start(){
@@ -36,7 +37,130 @@ public class employee_search extends javax.swing.JFrame {
         setTime();
     }
     
-    public void Setvisible_False(){
+    public void search(){
+        String a1 = user.getID();
+        Search_id_employee.setText(a1);
+        search_enable();
+    }
+    
+    public void search_enable(){
+        Connection c = null;
+        Statement stmt = null;
+        Button_save_profile.setVisible(false);
+        Button_edit_profile.setVisible(true);
+        try {
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:database.db");
+            c.setAutoCommit(false);
+            stmt = c.createStatement();
+            String id_employ1 = Search_id_employee.getText();
+            ResultSet rs = stmt.executeQuery( "SELECT * FROM employee_data WHERE id_employee = '"+id_employ1+"'" );
+            String  first = rs.getString("first_name");
+            String  last = rs.getString("last_name");
+            String nick = rs.getString("nick_name");
+            String  posi = rs.getString("position");
+            String  age1 = rs.getString("age");
+            String  eth = rs.getString("ethnicity");
+            String  nation = rs.getString("nationality");
+            String  reli = rs.getString("religion");
+            String  birthday1 = rs.getString("birthday");
+            String  card = rs.getString("id_card");
+            String  current = rs.getString("current_address");
+            String  dis_1 = rs.getString("district_1");
+            String  dis_2 = rs.getString("district_2");
+            String  phone = rs.getString("phone_number");
+            String  pro = rs.getString("province");
+            String  fname = rs.getString("father_name");
+            String  fage = rs.getString("father_age");
+            String  feth = rs.getString("father_ethnicity");
+            String  fnation = rs.getString("father_nationality");
+            String  foccu = rs.getString("father_occupation");
+            String  mname = rs.getString("mother_name");
+            String  mage = rs.getString("mother_age");
+            String  meth = rs.getString("mother_ethnicity");
+            String  mnation = rs.getString("mother_nationality");
+            String  moccu = rs.getString("mother_occupation");
+            String  howname = rs.getString("husband_or_wife_name");
+            String  howage = rs.getString("husband_or_wife_age");
+            String  howeth = rs.getString("husband_or_wife_ethnicity");
+            String  howphone = rs.getString("husband_or_wife_phone");
+            String  hownation = rs.getString("husband_or_wife_nationality");
+            String  howoccu = rs.getString("husband_or_wife_occupation");
+            String  howwork = rs.getString("husband_or_wife_workplace");
+            String  howposi = rs.getString("husband_or_wife_position");
+            String  glvl = rs.getString("graduated_level");
+            String  nopog = rs.getString("name_of_place_of_graduation");
+            String  gsof = rs.getString("graduated_subject_or_field");
+            String  workhis = rs.getString("work_history");
+            String  offname = rs.getString("office_name");
+            String  oldposi = rs.getString("old_position");
+            String  start1 = rs.getString("start");
+            String  stop1 = rs.getString("stop");
+            String  reason_re = rs.getString("reason_for_resignation");
+            String  reason_wan = rs.getString("reasons_for_wanting_to_work_here");
+            String  id_employ = rs.getString("id_employee");
+            if(id_employ1.equals(id_employ)){
+                    //Setvisible_True();
+                    first_name.setText(first);
+                    last_name.setText(last);
+                    nickname.setText(nick);
+                    position.setSelectedItem(posi);
+                    age.setText(age1);
+                    ethnicity.setText(eth);
+                    nationality.setText(nation);
+                    religion.setText(reli);
+                    birthday.setText(birthday1);
+                    id_card.setText(card);
+                    current_address.setText(current);
+                    district_1.setText(dis_1);
+                    district_2.setText(dis_2);
+                    phone_number.setText(phone);
+                    province.setText(pro);
+                    father_name.setText(fname);
+                    father_age.setText(fage);
+                    father_ethnicity.setText(feth);
+                    father_nationality.setText(fnation);
+                    father_occupation.setText(foccu);
+                    mother_name.setText(mname);
+                    mother_age.setText(mage);
+                    mother_ethnicity.setText(meth);
+                    mother_nationality.setText(mnation);
+                    mother_occupation.setText(moccu);
+                    husband_or_wife_name.setText(howname);
+                    husband_or_wife_age.setText(howage);
+                    husband_or_wife_ethnicity.setText(howeth);
+                    husband_or_wife_phone.setText(howphone);
+                    husband_or_wife_nationality.setText(hownation);
+                    husband_or_wife_occupation.setText(howoccu);
+                    husband_or_wife_workplace.setText(howwork);
+                    husband_or_wife_position.setText(howposi);
+                    education_level.setText(glvl);
+                    name_place_graduated.setText(nopog);
+                    graduated_subject.setText(gsof);
+                    work_history.setText(workhis);
+                    office_name.setText(offname);
+                    old_position.setText(oldposi);
+                    start.setText(start1);
+                    stop.setText(stop1);
+                    reason_for_resignation.setText(reason_re);
+                    reason_for_wanting_to_work_here.setText(reason_wan);
+                    edit_disable();
+                    rs.close();
+                    stmt.close();
+                    c.close();
+            }
+            else{
+                    JOptionPane.showMessageDialog(null, "This id_card has not been registered.",
+                        "ALERT", JOptionPane.WARNING_MESSAGE);
+            }
+        }
+        catch ( Exception b ) {
+            System.err.println( b.getClass().getName() + ": " + b.getMessage() );
+            System.exit(0);
+        }
+    }
+    
+    /*public void Setvisible_False(){
         first_name.setVisible(false);
         last_name.setVisible(false);
         nickname.setVisible(false);
@@ -126,9 +250,9 @@ public class employee_search extends javax.swing.JFrame {
         label42.setVisible(false);
         label43.setVisible(false);
         label44.setVisible(false);
-    }
+    }*/
     
-    public void Setvisible_True(){
+    /*public void Setvisible_True(){
         first_name.setVisible(true);
         last_name.setVisible(true);
         nickname.setVisible(true);
@@ -217,7 +341,7 @@ public class employee_search extends javax.swing.JFrame {
         label42.setVisible(true);
         label43.setVisible(true);
         label44.setVisible(true);
-    }
+    }*/
     
     public void edit_disable(){
         first_name.setEditable(false);
@@ -345,7 +469,6 @@ public class employee_search extends javax.swing.JFrame {
         jButtonlogout = new javax.swing.JButton();
         jBack = new javax.swing.JLabel();
         Search_id_employee = new javax.swing.JTextField();
-        button_search = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         label37 = new javax.swing.JLabel();
         stop = new javax.swing.JTextField();
@@ -532,19 +655,6 @@ public class employee_search extends javax.swing.JFrame {
         Search_id_employee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Search_id_employeeActionPerformed(evt);
-            }
-        });
-
-        button_search.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
-        button_search.setText("Search");
-        button_search.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                button_searchMouseClicked(evt);
-            }
-        });
-        button_search.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button_searchActionPerformed(evt);
             }
         });
 
@@ -1023,8 +1133,6 @@ public class employee_search extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Search_id_employee, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(button_search, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -1036,8 +1144,7 @@ public class employee_search extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Search_id_employee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)
-                            .addComponent(button_search, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
+                            .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(label1)
@@ -1164,7 +1271,7 @@ public class employee_search extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(Button_edit_profile, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(Button_save_profile, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         pack();
@@ -1215,6 +1322,7 @@ public class employee_search extends javax.swing.JFrame {
 
     private void Search_id_employeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Search_id_employeeActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_Search_id_employeeActionPerformed
 
     private void district_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_district_1ActionPerformed
@@ -1232,124 +1340,6 @@ public class employee_search extends javax.swing.JFrame {
     private void husband_or_wife_workplaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_husband_or_wife_workplaceActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_husband_or_wife_workplaceActionPerformed
-
-    private void button_searchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_searchMouseClicked
-        // TODO add your handling code here:
-        Connection c = null;
-        Statement stmt = null;
-        Button_save_profile.setVisible(false);
-        Button_edit_profile.setVisible(true);
-        try {
-            Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:database.db");
-            c.setAutoCommit(false);
-            stmt = c.createStatement();
-            String id_employ1 = Search_id_employee.getText();
-            ResultSet rs = stmt.executeQuery( "SELECT * FROM employee_data WHERE id_employee = '"+id_employ1+"'" );
-            String  first = rs.getString("first_name");
-            String  last = rs.getString("last_name");
-            String nick = rs.getString("nick_name");
-            String  posi = rs.getString("position");
-            String  age1 = rs.getString("age");
-            String  eth = rs.getString("ethnicity");
-            String  nation = rs.getString("nationality");
-            String  reli = rs.getString("religion");
-            String  birthday1 = rs.getString("birthday");
-            String  card = rs.getString("id_card");
-            String  current = rs.getString("current_address");
-            String  dis_1 = rs.getString("district_1");
-            String  dis_2 = rs.getString("district_2");
-            String  phone = rs.getString("phone_number");
-            String  pro = rs.getString("province");
-            String  fname = rs.getString("father_name");
-            String  fage = rs.getString("father_age");
-            String  feth = rs.getString("father_ethnicity");
-            String  fnation = rs.getString("father_nationality");
-            String  foccu = rs.getString("father_occupation");
-            String  mname = rs.getString("mother_name");
-            String  mage = rs.getString("mother_age");
-            String  meth = rs.getString("mother_ethnicity");
-            String  mnation = rs.getString("mother_nationality");
-            String  moccu = rs.getString("mother_occupation");
-            String  howname = rs.getString("husband_or_wife_name");
-            String  howage = rs.getString("husband_or_wife_age");
-            String  howeth = rs.getString("husband_or_wife_ethnicity");
-            String  howphone = rs.getString("husband_or_wife_phone");
-            String  hownation = rs.getString("husband_or_wife_nationality");
-            String  howoccu = rs.getString("husband_or_wife_occupation");
-            String  howwork = rs.getString("husband_or_wife_workplace");
-            String  howposi = rs.getString("husband_or_wife_position");
-            String  glvl = rs.getString("graduated_level");
-            String  nopog = rs.getString("name_of_place_of_graduation");
-            String  gsof = rs.getString("graduated_subject_or_field");
-            String  workhis = rs.getString("work_history");
-            String  offname = rs.getString("office_name");
-            String  oldposi = rs.getString("old_position");
-            String  start1 = rs.getString("start");
-            String  stop1 = rs.getString("stop");
-            String  reason_re = rs.getString("reason_for_resignation");
-            String  reason_wan = rs.getString("reasons_for_wanting_to_work_here");
-            String  id_employ = rs.getString("id_employee");
-            if(id_employ1.equals(id_employ)){
-                    Setvisible_True();
-                    first_name.setText(first);
-                    last_name.setText(last);
-                    nickname.setText(nick);
-                    position.setSelectedItem(posi);
-                    age.setText(age1);
-                    ethnicity.setText(eth);
-                    nationality.setText(nation);
-                    religion.setText(reli);
-                    birthday.setText(birthday1);
-                    id_card.setText(card);
-                    current_address.setText(current);
-                    district_1.setText(dis_1);
-                    district_2.setText(dis_2);
-                    phone_number.setText(phone);
-                    province.setText(pro);
-                    father_name.setText(fname);
-                    father_age.setText(fage);
-                    father_ethnicity.setText(feth);
-                    father_nationality.setText(fnation);
-                    father_occupation.setText(foccu);
-                    mother_name.setText(mname);
-                    mother_age.setText(mage);
-                    mother_ethnicity.setText(meth);
-                    mother_nationality.setText(mnation);
-                    mother_occupation.setText(moccu);
-                    husband_or_wife_name.setText(howname);
-                    husband_or_wife_age.setText(howage);
-                    husband_or_wife_ethnicity.setText(howeth);
-                    husband_or_wife_phone.setText(howphone);
-                    husband_or_wife_nationality.setText(hownation);
-                    husband_or_wife_occupation.setText(howoccu);
-                    husband_or_wife_workplace.setText(howwork);
-                    husband_or_wife_position.setText(howposi);
-                    education_level.setText(glvl);
-                    name_place_graduated.setText(nopog);
-                    graduated_subject.setText(gsof);
-                    work_history.setText(workhis);
-                    office_name.setText(offname);
-                    old_position.setText(oldposi);
-                    start.setText(start1);
-                    stop.setText(stop1);
-                    reason_for_resignation.setText(reason_re);
-                    reason_for_wanting_to_work_here.setText(reason_wan);
-                    edit_disable();
-                    rs.close();
-                    stmt.close();
-                    c.close();
-            }
-            else{
-                    JOptionPane.showMessageDialog(null, "This id_card has not been registered.",
-                        "ALERT", JOptionPane.WARNING_MESSAGE);
-            }
-        }
-        catch ( Exception b ) {
-            System.err.println( b.getClass().getName() + ": " + b.getMessage() );
-            System.exit(0);
-        }
-    }//GEN-LAST:event_button_searchMouseClicked
 
     private void Button_save_profileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_save_profileActionPerformed
         // TODO add your handling code here:
@@ -1470,10 +1460,6 @@ public class employee_search extends javax.swing.JFrame {
                 }    
     }//GEN-LAST:event_Button_save_profileMouseClicked
 
-    private void button_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_searchActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_button_searchActionPerformed
-
     private void positionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_positionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_positionActionPerformed
@@ -1519,7 +1505,6 @@ public class employee_search extends javax.swing.JFrame {
     private javax.swing.JTextField Search_id_employee;
     private javax.swing.JTextField age;
     private javax.swing.JTextField birthday;
-    private javax.swing.JButton button_search;
     private javax.swing.JTextField current_address;
     private javax.swing.JTextField district_1;
     private javax.swing.JTextField district_2;

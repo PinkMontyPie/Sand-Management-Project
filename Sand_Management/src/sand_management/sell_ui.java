@@ -9,9 +9,6 @@ import java.text.*;
 import java.util.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import net.proteanit.sql.DbUtils;
-import static sand_management.employee_new.getRandomNumberString;
-
 /**
  *
  * @author Pai
@@ -34,20 +31,80 @@ public class sell_ui extends javax.swing.JFrame {
         fetchitemDetailsCS();
         setDate();
         setTime();
+        vat.setText("7");
+        total_amount.setText("0");
+        calculate_vate();
+    }
+    
+    public void calculate_vate(){
+        String amount = total_amount.getText();
+        String vate1 = vat.getText();
+        int amount1 =Integer.parseInt(amount);  
+        int vate2 =Integer.parseInt(vate1);  
+        int convert = amount1 / 100;
+        int sum = convert * vate2;
+        int total = amount1 + sum;
+        String sum_string = Integer.toString(total);
+        String texttotal = sum_string;
+        totalText.setText(texttotal);
     }
 
     public void fetchitemDetailsCS() {
         Connection c = null;
         Statement stmt = null;
+        name_con.setEditable(true);
+        DefaultTableModel dtm = (DefaultTableModel) right_table.getModel();
+        dtm.setRowCount(0);
+        jDateChooser1.setText("");
+        name_emp.setText("");
+        name_con.setText("");
+        phone_con.setText("");
+        address_con.setText("");
+        item_sell.setText("");
+        total_amount.setText("");
+        vat.setText("");
+        totalText.setText("");
+        String d1 = "Do not fill out";
+        String d2 = "-";
+        String d3 = "0";
+        String table_data1[] = {d1, d2, d3, d3, d1};
+        String table_data2[] = {d1, d2, d3, d3, d1};
+        String table_data3[] = {d1, d2, d3, d3, d1};
+        String table_data4[] = {d1, d2, d3, d3, d1};
+        String table_data5[] = {d1, d2, d3, d3, d1};
+        DefaultTableModel tblModel = (DefaultTableModel) left_table.getModel();
+        tblModel.setRowCount(0);
+        tblModel.addRow(table_data1);
+        tblModel.addRow(table_data2);
+        tblModel.addRow(table_data3);
+        tblModel.addRow(table_data4);
+        tblModel.addRow(table_data5);
         try {
             Class.forName("org.sqlite.JDBC");
             c = DriverManager.getConnection("jdbc:sqlite:database.db");
             stmt = c.createStatement();
             ResultSet rs1 = stmt.executeQuery("SELECT * FROM sell_data");
-            right_table.setModel(DbUtils.resultSetToTableModel(rs1));
+            while(rs1.next()){
+                String s1 = rs1.getString("PRODUCT_ID");
+                String s2 = rs1.getString("SALE_DATE");
+                String s3 = rs1.getString("SALE_EMPLOYEE");
+                String s4 = rs1.getString("CONTACT_NAME");
+                String s5 = rs1.getString("CONTACT_PHONE");
+                String s6 = rs1.getString("CONTACT_ADDRESS");
+                String s7 = rs1.getString("PRODUCT_LIST");
+                String table_data[] = {s1, s2, s3, s4, s5, s6, s7};
+                DefaultTableModel tblModel1 = (DefaultTableModel) right_table.getModel();
+                tblModel1.addRow(table_data);
+            }
         } catch (Exception b) {
             JOptionPane.showMessageDialog(null, b);
         }
+    }
+    
+    public static String getRandomNumberString() {
+        Random rnd = new Random();
+        int number = rnd.nextInt(999999);
+        return String.format("%05d", number);
     }
     
     public void setDate() {
@@ -94,14 +151,19 @@ public class sell_ui extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         left_table = new javax.swing.JTable();
         TxtPtotalLabel1 = new javax.swing.JLabel();
-        TextField6 = new javax.swing.JTextField();
+        total_amount = new javax.swing.JTextField();
         TxtVATLabel2 = new javax.swing.JLabel();
-        TextField7 = new javax.swing.JTextField();
+        vat = new javax.swing.JTextField();
         TxtTotalLabel1 = new javax.swing.JLabel();
-        TextField8 = new javax.swing.JTextField();
+        totalText = new javax.swing.JTextField();
         DelButton = new javax.swing.JButton();
         AddButton = new javax.swing.JButton();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jDateChooser1 = new javax.swing.JTextField();
+        TitleTxtLabel2 = new javax.swing.JLabel();
+        item_sell = new javax.swing.JTextField();
+        Refresh = new javax.swing.JLabel();
+        DelButton1 = new javax.swing.JButton();
+        calculate_button = new javax.swing.JButton();
         BgPanelRightop = new javax.swing.JPanel();
         Search_Button = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -257,39 +319,30 @@ public class sell_ui extends javax.swing.JFrame {
         });
 
         left_table.setBackground(new java.awt.Color(255, 255, 255));
-        left_table.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        left_table.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         left_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "No.", "Item", "Quantity", "Unit price", "Amount"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                true, true, true, true, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+        ));
+        left_table.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                left_tableMouseMoved(evt);
             }
         });
         jScrollPane2.setViewportView(left_table);
-        if (left_table.getColumnModel().getColumnCount() > 0) {
-            left_table.getColumnModel().getColumn(4).setResizable(false);
-        }
 
         TxtPtotalLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         TxtPtotalLabel1.setForeground(new java.awt.Color(51, 51, 51));
         TxtPtotalLabel1.setText("รวมราคาสินค้า");
 
-        TextField6.setBackground(new java.awt.Color(255, 255, 255));
-        TextField6.addActionListener(new java.awt.event.ActionListener() {
+        total_amount.setBackground(new java.awt.Color(255, 255, 255));
+        total_amount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextField6ActionPerformed(evt);
+                total_amountActionPerformed(evt);
             }
         });
 
@@ -297,10 +350,10 @@ public class sell_ui extends javax.swing.JFrame {
         TxtVATLabel2.setForeground(new java.awt.Color(51, 51, 51));
         TxtVATLabel2.setText("ภาษีมูลค่าเพิ่ม 7% VAT");
 
-        TextField7.setBackground(new java.awt.Color(255, 255, 255));
-        TextField7.addActionListener(new java.awt.event.ActionListener() {
+        vat.setBackground(new java.awt.Color(255, 255, 255));
+        vat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextField7ActionPerformed(evt);
+                vatActionPerformed(evt);
             }
         });
 
@@ -308,10 +361,10 @@ public class sell_ui extends javax.swing.JFrame {
         TxtTotalLabel1.setForeground(new java.awt.Color(51, 51, 51));
         TxtTotalLabel1.setText("รวมเงินทั้งสิ้น TOTAL");
 
-        TextField8.setBackground(new java.awt.Color(255, 255, 255));
-        TextField8.addActionListener(new java.awt.event.ActionListener() {
+        totalText.setBackground(new java.awt.Color(255, 255, 255));
+        totalText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextField8ActionPerformed(evt);
+                totalTextActionPerformed(evt);
             }
         });
 
@@ -346,6 +399,61 @@ public class sell_ui extends javax.swing.JFrame {
         });
 
         jDateChooser1.setBackground(new java.awt.Color(255, 255, 255));
+        jDateChooser1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jDateChooser1ActionPerformed(evt);
+            }
+        });
+
+        TitleTxtLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        TitleTxtLabel2.setForeground(new java.awt.Color(51, 51, 51));
+        TitleTxtLabel2.setText("สินค้าที่ขาย");
+
+        item_sell.setBackground(new java.awt.Color(255, 255, 255));
+        item_sell.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                item_sellActionPerformed(evt);
+            }
+        });
+
+        Refresh.setForeground(new java.awt.Color(0, 0, 0));
+        Refresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/refresh-button.png"))); // NOI18N
+        Refresh.setText("Refresh");
+        Refresh.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RefreshMouseClicked(evt);
+            }
+        });
+
+        DelButton1.setBackground(new java.awt.Color(255, 255, 255));
+        DelButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        DelButton1.setForeground(new java.awt.Color(51, 51, 51));
+        DelButton1.setText("เเก้ไขข้อมูล");
+        DelButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DelButton1MouseClicked(evt);
+            }
+        });
+        DelButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DelButton1ActionPerformed(evt);
+            }
+        });
+
+        calculate_button.setBackground(new java.awt.Color(255, 255, 255));
+        calculate_button.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        calculate_button.setForeground(new java.awt.Color(51, 51, 51));
+        calculate_button.setText("คำนวณราคา");
+        calculate_button.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                calculate_buttonMouseClicked(evt);
+            }
+        });
+        calculate_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                calculate_buttonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout BgPanelLeftLayout = new javax.swing.GroupLayout(BgPanelLeft);
         BgPanelLeft.setLayout(BgPanelLeftLayout);
@@ -358,59 +466,72 @@ public class sell_ui extends javax.swing.JFrame {
                         .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(TitleTxtLeftLabel1)
                             .addGroup(BgPanelLeftLayout.createSequentialGroup()
-                                .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(TitleTxtLeftLabel2)
                                     .addComponent(name_con, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(BgPanelLeftLayout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(87, 87, 87)
                                 .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(phone_con, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(TitleTxtRightLabel2)
                                     .addComponent(TitleTxtRightLabel1)
-                                    .addComponent(name_emp, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(TitleLeftLabel1))
+                                    .addComponent(name_emp, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addContainerGap(45, Short.MAX_VALUE))
                     .addGroup(BgPanelLeftLayout.createSequentialGroup()
-                        .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(TitleTxtLabel1)
-                            .addComponent(address_con, javax.swing.GroupLayout.DEFAULT_SIZE, 787, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BgPanelLeftLayout.createSequentialGroup()
-                                .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(TxtPtotalLabel1)
-                                    .addComponent(TextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(BgPanelLeftLayout.createSequentialGroup()
-                                        .addComponent(TxtVATLabel2)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(TextField7))
-                                .addGap(18, 18, 18)
-                                .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(TitleLeftLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Refresh)
+                        .addGap(54, 54, 54))
+                    .addGroup(BgPanelLeftLayout.createSequentialGroup()
+                        .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TitleTxtLabel2)
+                            .addComponent(item_sell, javax.swing.GroupLayout.PREFERRED_SIZE, 787, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 787, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(TitleTxtLabel1)
+                                .addComponent(address_con, javax.swing.GroupLayout.PREFERRED_SIZE, 787, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BgPanelLeftLayout.createSequentialGroup()
+                                    .addComponent(DelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(DelButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(AddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BgPanelLeftLayout.createSequentialGroup()
                                     .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(TextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(TxtTotalLabel1))
-                                    .addGroup(BgPanelLeftLayout.createSequentialGroup()
-                                        .addComponent(DelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(33, 33, 33)
-                                        .addComponent(AddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(jScrollPane2))
+                                        .addGroup(BgPanelLeftLayout.createSequentialGroup()
+                                            .addComponent(TxtPtotalLabel1)
+                                            .addGap(0, 0, Short.MAX_VALUE))
+                                        .addComponent(total_amount))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(BgPanelLeftLayout.createSequentialGroup()
+                                            .addComponent(TxtVATLabel2)
+                                            .addGap(0, 0, Short.MAX_VALUE))
+                                        .addComponent(vat))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(TxtTotalLabel1)
+                                        .addGroup(BgPanelLeftLayout.createSequentialGroup()
+                                            .addComponent(totalText, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(27, 27, 27)
+                                            .addComponent(calculate_button))))))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         BgPanelLeftLayout.setVerticalGroup(
             BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BgPanelLeftLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addComponent(TitleLeftLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TitleLeftLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Refresh))
+                .addGap(27, 27, 27)
                 .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(TitleTxtRightLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(TitleTxtLeftLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(name_emp, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(name_emp, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TitleTxtLeftLabel2)
@@ -419,26 +540,32 @@ public class sell_ui extends javax.swing.JFrame {
                 .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(name_con, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(phone_con, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TitleTxtLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(address_con, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TitleTxtLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(item_sell, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TxtVATLabel2)
                     .addComponent(TxtPtotalLabel1)
                     .addComponent(TxtTotalLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                    .addComponent(totalText, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vat, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(total_amount, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(calculate_button))
+                .addGap(18, 18, 18)
                 .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(AddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DelButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(44, 44, 44))
         );
 
@@ -571,7 +698,7 @@ public class sell_ui extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(BgPanelRightop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 740, Short.MAX_VALUE))
                     .addComponent(BgPanelLeft, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -638,17 +765,17 @@ public class sell_ui extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_address_conActionPerformed
 
-    private void TextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField6ActionPerformed
+    private void total_amountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_total_amountActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextField6ActionPerformed
+    }//GEN-LAST:event_total_amountActionPerformed
 
-    private void TextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField7ActionPerformed
+    private void vatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vatActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextField7ActionPerformed
+    }//GEN-LAST:event_vatActionPerformed
 
-    private void TextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField8ActionPerformed
+    private void totalTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalTextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextField8ActionPerformed
+    }//GEN-LAST:event_totalTextActionPerformed
 
     private void DelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DelButtonActionPerformed
         // TODO add your handling code here:
@@ -679,23 +806,58 @@ public class sell_ui extends javax.swing.JFrame {
         Statement stmt = null;
         String type = jComboBox1.getSelectedItem().toString();
         String search = searchbox.getText();
+        DefaultTableModel dtm = (DefaultTableModel) right_table.getModel();
+        dtm.setRowCount(0);
         try {
             Class.forName("org.sqlite.JDBC");
             c = DriverManager.getConnection("jdbc:sqlite:database.db");
             stmt = c.createStatement();
             if (type.equals("Product ID")) {
                 ResultSet rs = stmt.executeQuery("SELECT * FROM sell_data WHERE Product_id = '" + search + "'");
-                right_table.setModel(DbUtils.resultSetToTableModel(rs));
+                while (rs.next()) {
+                    String s1 = rs.getString("PRODUCT_ID");
+                    String s2 = rs.getString("SALE_DATE");
+                    String s3 = rs.getString("SALE_EMPLOYEE");
+                    String s4 = rs.getString("CONTACT_NAME");
+                    String s5 = rs.getString("CONTACT_PHONE");
+                    String s6 = rs.getString("CONTACT_ADDRESS");
+                    String s7 = rs.getString("PRODUCT_LIST");
+                    String table_data[] = {s1, s2, s3, s4, s5, s6, s7};
+                    DefaultTableModel tblModel = (DefaultTableModel) right_table.getModel();
+                    tblModel.addRow(table_data);
+                }
                 rs.close();
             }
             if (type.equals("Sale date")) {
                 ResultSet rs = stmt.executeQuery("SELECT * FROM sell_data WHERE Sale_date = '" + search + "'");
-                right_table.setModel(DbUtils.resultSetToTableModel(rs));
+                while (rs.next()) {
+                    String s1 = rs.getString("PRODUCT_ID");
+                    String s2 = rs.getString("SALE_DATE");
+                    String s3 = rs.getString("SALE_EMPLOYEE");
+                    String s4 = rs.getString("CONTACT_NAME");
+                    String s5 = rs.getString("CONTACT_PHONE");
+                    String s6 = rs.getString("CONTACT_ADDRESS");
+                    String s7 = rs.getString("PRODUCT_LIST");
+                    String table_data[] = {s1, s2, s3, s4, s5, s6, s7};
+                    DefaultTableModel tblModel = (DefaultTableModel) right_table.getModel();
+                    tblModel.addRow(table_data);
+                }
                 rs.close();
             }
             if (type.equals("Name contact")) {
-                ResultSet rs = stmt.executeQuery("SELECT * FROM sell_data WHERE Cotact_name = '" + search + "'");
-                right_table.setModel(DbUtils.resultSetToTableModel(rs));
+                ResultSet rs = stmt.executeQuery("SELECT * FROM sell_data WHERE Contact_name = '" + search + "'");
+                while (rs.next()) {
+                    String s1 = rs.getString("PRODUCT_ID");
+                    String s2 = rs.getString("SALE_DATE");
+                    String s3 = rs.getString("SALE_EMPLOYEE");
+                    String s4 = rs.getString("CONTACT_NAME");
+                    String s5 = rs.getString("CONTACT_PHONE");
+                    String s6 = rs.getString("CONTACT_ADDRESS");
+                    String s7 = rs.getString("PRODUCT_LIST");
+                    String table_data[] = {s1, s2, s3, s4, s5, s6, s7};
+                    DefaultTableModel tblModel = (DefaultTableModel) right_table.getModel();
+                    tblModel.addRow(table_data);
+                }
                 rs.close();
             }
             stmt.close();
@@ -709,6 +871,119 @@ public class sell_ui extends javax.swing.JFrame {
     private void AddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButtonActionPerformed
         // TODO add your handling code here:
         // add data sell
+    }//GEN-LAST:event_AddButtonActionPerformed
+
+    private void DelButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DelButtonMouseClicked
+        // TODO add your handling code here:
+        Connection c = null;
+        PreparedStatement pat = null;
+        PreparedStatement pat1 = null;
+        int row = right_table.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) right_table.getModel();
+        DefaultTableModel model1 = (DefaultTableModel) left_table.getModel();
+        try {
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:database.db");
+            String delete = "DELETE FROM sell_data WHERE Product_id = ?";
+            pat = c.prepareStatement(delete);
+            pat.setString(1, model.getValueAt(row, 0).toString());
+            String delete1 = "DELETE FROM product_data WHERE Product_id = ?";
+            pat1 = c.prepareStatement(delete1);
+            pat1.setString(1, model1.getValueAt(row, 0).toString());
+            pat1.execute();
+            pat.execute();
+
+            int a = JOptionPane.showConfirmDialog(null, "Are you sure to delete this item? : " + model.getValueAt(row, 2).toString(), "Alert", JOptionPane.INFORMATION_MESSAGE);
+            if (a == JOptionPane.YES_OPTION) {
+                JOptionPane.showMessageDialog(null, "This item has been deleted");
+                fetchitemDetailsCS();
+            }
+        } catch (Exception b) {
+            JOptionPane.showMessageDialog(null, b);
+        }
+    }//GEN-LAST:event_DelButtonMouseClicked
+
+    private void right_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_right_tableMouseClicked
+        // TODO add your handling code here:
+        Connection conn = null;
+        Statement stmt = null;
+        DefaultTableModel dtm = (DefaultTableModel) left_table.getModel();
+        dtm.setRowCount(0);
+        int row = right_table.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) right_table.getModel();
+        jDateChooser1.setText(model.getValueAt(row, 1).toString());
+        name_emp.setText(model.getValueAt(row, 2).toString());
+        name_con.setText(model.getValueAt(row, 3).toString());
+        phone_con.setText(model.getValueAt(row, 4).toString());
+        address_con.setText(model.getValueAt(row, 5).toString());
+        item_sell.setText(model.getValueAt(row, 6).toString());
+        String contact = name_con.getText();
+        String pro_id = model.getValueAt(row, 0).toString();
+        try {
+            Class.forName("org.sqlite.JDBC");
+            conn = DriverManager.getConnection("jdbc:sqlite:database.db");
+            conn.setAutoCommit(false);
+            stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery( "SELECT * FROM sell_data WHERE CONTACT_NAME = '"+contact+"'" );
+            String total = rs.getString("TOTAL");
+            String text_total = total + " บาท";
+            totalText.setText(text_total);
+            ResultSet rs1 = stmt.executeQuery( "SELECT * FROM product_data WHERE PRODUCT_ID = '"+pro_id+"'" );
+        
+            String s1 = rs.getString("PRODUCT_ID");
+            String s2 = rs1.getString("ITEM1");
+            String s3 = rs1.getString("QUANTITY1");
+            String s4 = rs1.getString("UNIT1");
+            String s5 = rs1.getString("AMOUNT1");
+            String s6 = rs1.getString("ITEM2");
+            String s7 = rs1.getString("QUANTITY2");
+            String s8 = rs1.getString("UNIT2");
+            String s9 = rs1.getString("AMOUNT2");
+            String s10 = rs1.getString("ITEM3");
+            String s11 = rs1.getString("QUANTITY3");
+            String s12 = rs1.getString("UNIT3");
+            String s13 = rs1.getString("AMOUNT3");
+            String s14 = rs1.getString("ITEM4");
+            String s15 = rs1.getString("QUANTITY4");
+            String s16 = rs1.getString("UNIT4");
+            String s17 = rs1.getString("AMOUNT4");
+            String s18 = rs1.getString("ITEM5");
+            String s19 = rs1.getString("QUANTITY5");
+            String s20 = rs1.getString("UNIT5");
+            String s21 = rs1.getString("AMOUNT5");
+            
+            String table_data1[] = {s1, s2, s3, s4, s5};
+            String table_data2[] = {s1, s6, s7, s8, s9};
+            String table_data3[] = {s1, s10, s11, s12, s13};
+            String table_data4[] = {s1, s14, s15, s16, s17};
+            String table_data5[] = {s1, s18, s19, s20, s21};
+            DefaultTableModel tblModel = (DefaultTableModel) left_table.getModel();
+            tblModel.addRow(table_data1);
+            tblModel.addRow(table_data2);
+            tblModel.addRow(table_data3);
+            tblModel.addRow(table_data4);
+            tblModel.addRow(table_data5);
+            
+            int num1 = Integer.parseInt(s5);
+            int num2 = Integer.parseInt(s9);
+            int num3 = Integer.parseInt(s13);
+            int num4 = Integer.parseInt(s17);
+            int num5 = Integer.parseInt(s21);
+            
+            int total_sum = num1+num2+num3+num4+num5;
+            String sum_string = Integer.toString(total_sum);
+            total_amount.setText(sum_string);
+            name_con.setEditable(false);
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (Exception b) {
+            JOptionPane.showMessageDialog(null, b);
+        }
+    }//GEN-LAST:event_right_tableMouseClicked
+
+    private void AddButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddButtonMouseClicked
+        // TODO add your handling code here:
         Connection c = null;
         Statement stmt = null;
         try {
@@ -716,18 +991,199 @@ public class sell_ui extends javax.swing.JFrame {
             c = DriverManager.getConnection("jdbc:sqlite:database.db");
             c.setAutoCommit(false);
             stmt = c.createStatement();
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            String saledete = sdf.format(jDateChooser1.getDate());
+            DefaultTableModel model = (DefaultTableModel) left_table.getModel();
+            String num_text1 = model.getValueAt(0, 2).toString();
+            String num_text2 = model.getValueAt(0, 3).toString();
+            String num_text3 = model.getValueAt(1, 2).toString();
+            String num_text4 = model.getValueAt(1, 3).toString();
+            String num_text5 = model.getValueAt(2, 2).toString();
+            String num_text6 = model.getValueAt(2, 3).toString();
+            String num_text7 = model.getValueAt(3, 2).toString();
+            String num_text8 = model.getValueAt(3, 3).toString();
+            String num_text9 = model.getValueAt(4, 2).toString();
+            String num_text10 = model.getValueAt(4, 3).toString();
+            int num1 = Integer.parseInt(num_text1);
+            int num2 = Integer.parseInt(num_text2);
+            int num3 = Integer.parseInt(num_text3);
+            int num4 = Integer.parseInt(num_text4);
+            int num5 = Integer.parseInt(num_text5);
+            int num6 = Integer.parseInt(num_text6);
+            int num7 = Integer.parseInt(num_text7);
+            int num8 = Integer.parseInt(num_text8);
+            int num9 = Integer.parseInt(num_text9);
+            int num10 = Integer.parseInt(num_text10);
+            int sum_num1 = num1 * num2;
+            int sum_num2 = num3 * num4;
+            int sum_num3 = num5 * num6;
+            int sum_num4 = num7 * num8;
+            int sum_num5 = num9 * num10;
+            String sum_string1 = Integer.toString(sum_num1);
+            String sum_string2 = Integer.toString(sum_num2);
+            String sum_string3 = Integer.toString(sum_num3);
+            String sum_string4 = Integer.toString(sum_num4);
+            String sum_string5 = Integer.toString(sum_num5);
+            String saledete = jDateChooser1.getText();
             String nameemp = name_emp.getText();
             String namecon = name_con.getText();
             String phonecon = phone_con.getText();
             String addresscon = address_con.getText();
-            String sql = "INSERT INTO sell_data(Sale_date,Sale_employee,Contact_name,Contact_phone,Contact_address) VALUES('" + saledete + "','" + nameemp + "','" + namecon + "','" + phonecon + "','" + addresscon + "')";
+            String item_list = item_sell.getText();
+            String total = totalText.getText();
+            String random_id = getRandomNumberString();
+            ResultSet rs1 = stmt.executeQuery("SELECT * FROM sell_data WHERE Contact_Name = '" + namecon + "'");
+            String id_product = rs1.getString("PRODUCT_ID");
+            String contact_name = rs1.getString("CONTACT_NAME");
+            rs1.close();
+            
+            while (random_id.equals(id_product)) {
+                random_id = getRandomNumberString();
+                if (!random_id.equals(id_product)) {
+                    break;
+                }
+            }
+            if (!namecon.equals(contact_name)) {
+                String sql = "INSERT INTO sell_data(PRODUCT_ID,Sale_date,Sale_employee,Contact_name,Contact_phone,Contact_address,Product_list,Total) VALUES('" + random_id + "','" + saledete + "','" + nameemp + "','" + namecon + "','" + phonecon + "','" + addresscon + "','" + item_list + "','" + total + "')";
+                stmt.executeUpdate(sql);
+
+                String table_sql = "INSERT INTO product_data(PRODUCT_ID,ITEM1,QUANTITY1,UNIT1,AMOUNT1,ITEM2,QUANTITY2,UNIT2,AMOUNT2,ITEM3,QUANTITY3,UNIT3,AMOUNT3,ITEM4,QUANTITY4,UNIT4,AMOUNT4,ITEM5,QUANTITY5,UNIT5,AMOUNT5) "
+                        + "VALUES('" + random_id + "','" + model.getValueAt(0, 1).toString() + "','" + model.getValueAt(0, 2).toString() + "','" + model.getValueAt(0, 3).toString() + "','" + sum_string1 + "',"
+                        + "'" + model.getValueAt(1, 1).toString() + "','" + model.getValueAt(1, 2).toString() + "','" + model.getValueAt(1, 3).toString() + "','" + sum_string2 + "',"
+                        + "'" + model.getValueAt(2, 1).toString() + "','" + model.getValueAt(2, 2).toString() + "','" + model.getValueAt(2, 3).toString() + "','" + sum_string3 + "',"
+                        + "'" + model.getValueAt(3, 1).toString() + "','" + model.getValueAt(3, 2).toString() + "','" + model.getValueAt(3, 3).toString() + "','" + sum_string4 + "',"
+                        + "'" + model.getValueAt(4, 1).toString() + "','" + model.getValueAt(4, 2).toString() + "','" + model.getValueAt(4, 3).toString() + "','" + sum_string5 + "')";
+                stmt.executeUpdate(table_sql);
+                String user1 = user.getUser();
+                All_Data account = new All_Data();
+                account.setUser(user1);
+                stmt.close();
+                c.commit();
+                int a = JOptionPane.showConfirmDialog(null, "Please confirm your input:", "Alert", JOptionPane.INFORMATION_MESSAGE);
+                if (a == JOptionPane.YES_OPTION) {
+                    JOptionPane.showMessageDialog(null, "Add Sell Complete.", "ALERT", JOptionPane.INFORMATION_MESSAGE);
+                    fetchitemDetailsCS();
+                    vat.setText("7");
+                }
+            } else if (namecon.equals(contact_name)) {
+                JOptionPane.showMessageDialog(null, "This information could not be added because this person's name already exists in the database.", "ALERT", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception b) {
+            if (c != null) {
+                try {
+                    c.rollback();
+                } catch (Exception ex) {
+                }
+            }
+            System.err.println(b.getClass().getName() + ": " + b.getMessage());
+        } finally {
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (Exception ex) {
+                }
+            }
+            if (c != null) {
+                try {
+                    c.close();
+                } catch (Exception ex) {
+                }
+            }
+        }
+        
+    }//GEN-LAST:event_AddButtonMouseClicked
+
+    private void jDateChooser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDateChooser1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jDateChooser1ActionPerformed
+
+    private void item_sellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_sellActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_item_sellActionPerformed
+
+    private void RefreshMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RefreshMouseClicked
+        // TODO add your handling code here:
+        DefaultTableModel dtm = (DefaultTableModel) left_table.getModel();
+        dtm.setRowCount(0);
+        fetchitemDetailsCS();
+        vat.setText("7");
+        total_amount.setText("0");
+    }//GEN-LAST:event_RefreshMouseClicked
+    private int count = 0;
+    
+    private void DelButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DelButton1MouseClicked
+        // TODO add your handling code here:
+        Connection c = null;
+        Statement stmt = null;
+        Statement stmt1 = null;
+        try {
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:database.db");
+            c.setAutoCommit(false);
+            stmt = c.createStatement();
+            stmt1 = c.createStatement();
+            DefaultTableModel model = (DefaultTableModel) left_table.getModel();
+            String num_text1 = model.getValueAt(0, 2).toString();
+            String num_text2 = model.getValueAt(0, 3).toString();
+            String num_text3 = model.getValueAt(1, 2).toString();
+            String num_text4 = model.getValueAt(1, 3).toString();
+            String num_text5 = model.getValueAt(2, 2).toString();
+            String num_text6 = model.getValueAt(2, 3).toString();
+            String num_text7 = model.getValueAt(3, 2).toString();
+            String num_text8 = model.getValueAt(3, 3).toString();
+            String num_text9 = model.getValueAt(4, 2).toString();
+            String num_text10 = model.getValueAt(4, 3).toString();
+            int num1 = Integer.parseInt(num_text1);
+            int num2 = Integer.parseInt(num_text2);
+            int num3 = Integer.parseInt(num_text3);
+            int num4 = Integer.parseInt(num_text4);
+            int num5 = Integer.parseInt(num_text5);
+            int num6 = Integer.parseInt(num_text6);
+            int num7 = Integer.parseInt(num_text7);
+            int num8 = Integer.parseInt(num_text8);
+            int num9 = Integer.parseInt(num_text9);
+            int num10 = Integer.parseInt(num_text10);
+            int sum_num1 = num1 * num2;
+            int sum_num2 = num3 * num4;
+            int sum_num3 = num5 * num6;
+            int sum_num4 = num7 * num8;
+            int sum_num5 = num9 * num10;
+            String sum_string1 = Integer.toString(sum_num1);
+            String sum_string2 = Integer.toString(sum_num2);
+            String sum_string3 = Integer.toString(sum_num3);
+            String sum_string4 = Integer.toString(sum_num4);
+            String sum_string5 = Integer.toString(sum_num5);
+            String saledete = jDateChooser1.getText();
+            String nameemp = name_emp.getText();
+            String namecon = name_con.getText();
+            String phonecon = phone_con.getText();
+            String addresscon = address_con.getText();
+            String item_list = item_sell.getText();
+            String total = totalText.getText();
+            String random_id = getRandomNumberString();
+            ResultSet rs1 = stmt.executeQuery("SELECT * FROM sell_data WHERE Contact_Name = '" + namecon + "'");
+            String id_product = rs1.getString("PRODUCT_ID");
+            rs1.close();
+
+            while (random_id.equals(id_product)) {
+                random_id = getRandomNumberString();
+                if (!random_id.equals(id_product)) {
+                    break;
+                }
+            }
+            
+            String sql = ("UPDATE sell_data SET Sale_date = '" + saledete + "',Sale_employee = '" + nameemp + "',Contact_phone = '" + phonecon + "',Contact_address = '" + addresscon + "',Product_list = '" + item_list + "' ,Total = '" + total + "' WHERE Contact_Name = '"+namecon+"'");
             stmt.executeUpdate(sql);
+
+            String table_sql = ("UPDATE product_data SET ITEM1 = '" + model.getValueAt(0, 1).toString() + "',QUANTITY1 = '" + model.getValueAt(0, 2).toString() + "',UNIT1 = '" + model.getValueAt(0, 3).toString() + "',AMOUNT1 = '" + sum_string1 + "',"
+                    + "ITEM2 = '" + model.getValueAt(1, 1).toString() + "',QUANTITY2 = '" + model.getValueAt(1, 2).toString() + "',UNIT2 = '" + model.getValueAt(1, 3).toString() + "',AMOUNT2 = '" + sum_string2 + "',"
+                    + "ITEM3 = '" + model.getValueAt(2, 1).toString() + "',QUANTITY3 = '" + model.getValueAt(2, 2).toString() + "',UNIT3 = '" + model.getValueAt(2, 3).toString() + "',AMOUNT3 = '" + sum_string3 + "',"
+                    + "ITEM4 = '" + model.getValueAt(3, 1).toString() + "',QUANTITY4 = '" + model.getValueAt(3, 2).toString() + "',UNIT4 = '" + model.getValueAt(3, 3).toString() + "',AMOUNT4 = '" + sum_string4 + "',"
+                    + "ITEM5 = '" + model.getValueAt(4, 1).toString() + "',QUANTITY5 = '" + model.getValueAt(4, 2).toString() + "',UNIT5 = '" + model.getValueAt(4, 3).toString() + "',AMOUNT5 = '" + sum_string5 + "' WHERE PRODUCT_ID = '"+model.getValueAt(0, 0).toString()+"'");
+            stmt1.executeUpdate(table_sql);
             String user1 = user.getUser();
             All_Data account = new All_Data();
             account.setUser(user1);
             stmt.close();
+            stmt1.close();
             c.commit();
         } catch (Exception b) {
             if (c != null) {
@@ -753,44 +1209,91 @@ public class sell_ui extends javax.swing.JFrame {
         }
         int a = JOptionPane.showConfirmDialog(null, "Please confirm your input:", "Alert", JOptionPane.INFORMATION_MESSAGE);
         if (a == JOptionPane.YES_OPTION) {
-            JOptionPane.showMessageDialog(null, "Add Sell Complete.", "ALERT", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Update Sell Complete.", "ALERT", JOptionPane.INFORMATION_MESSAGE);
             fetchitemDetailsCS();
+            vat.setText("7");
         }
-    }//GEN-LAST:event_AddButtonActionPerformed
+    }//GEN-LAST:event_DelButton1MouseClicked
 
-    private void DelButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DelButtonMouseClicked
+    private void DelButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DelButton1ActionPerformed
         // TODO add your handling code here:
-        Connection c = null;
-        PreparedStatement pat = null;
-        int row = right_table.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel) right_table.getModel();
+    }//GEN-LAST:event_DelButton1ActionPerformed
 
-        try {
-            Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:database.db");
-            String delete = "DELETE FROM sell_data WHERE Product_id = ?";
-            pat = c.prepareStatement(delete);
-            pat.setString(1, model.getValueAt(row, 0).toString());
-
-            pat.execute();
-
-            int a = JOptionPane.showConfirmDialog(null, "Are you sure to delete this item? : " + model.getValueAt(row, 2).toString(), "Alert", JOptionPane.INFORMATION_MESSAGE);
-            if (a == JOptionPane.YES_OPTION) {
-                JOptionPane.showMessageDialog(null, "This item has been deleted");
-                fetchitemDetailsCS();
-            }
-        } catch (Exception b) {
-            JOptionPane.showMessageDialog(null, b);
-        }
-    }//GEN-LAST:event_DelButtonMouseClicked
-
-    private void right_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_right_tableMouseClicked
+    private void calculate_buttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_calculate_buttonMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_right_tableMouseClicked
+        calculate_vate();
+    }//GEN-LAST:event_calculate_buttonMouseClicked
 
-    private void AddButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddButtonMouseClicked
+    private void calculate_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculate_buttonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_AddButtonMouseClicked
+
+    }//GEN-LAST:event_calculate_buttonActionPerformed
+
+    private void left_tableMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_left_tableMouseMoved
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) left_table.getModel();
+        String num_text1 = model.getValueAt(0, 2).toString();
+        String num_text2 = model.getValueAt(0, 3).toString();
+        String num_text3 = model.getValueAt(1, 2).toString();
+        String num_text4 = model.getValueAt(1, 3).toString();
+        String num_text5 = model.getValueAt(2, 2).toString();
+        String num_text6 = model.getValueAt(2, 3).toString();
+        String num_text7 = model.getValueAt(3, 2).toString();
+        String num_text8 = model.getValueAt(3, 3).toString();
+        String num_text9 = model.getValueAt(4, 2).toString();
+        String num_text10 = model.getValueAt(4, 3).toString();
+        int num1 = Integer.parseInt(num_text1);
+        int num2 = Integer.parseInt(num_text2);
+        int num3 = Integer.parseInt(num_text3);
+        int num4 = Integer.parseInt(num_text4);
+        int num5 = Integer.parseInt(num_text5);
+        int num6 = Integer.parseInt(num_text6);
+        int num7 = Integer.parseInt(num_text7);
+        int num8 = Integer.parseInt(num_text8);
+        int num9 = Integer.parseInt(num_text9);
+        int num10 = Integer.parseInt(num_text10);
+        int sum_num1 = num1 * num2;
+        int sum_num2 = num3 * num4;
+        int sum_num3 = num5 * num6;
+        int sum_num4 = num7 * num8;
+        int sum_num5 = num9 * num10;
+        String sum_string1 = Integer.toString(sum_num1);
+        String sum_string2 = Integer.toString(sum_num2);
+        String sum_string3 = Integer.toString(sum_num3);
+        String sum_string4 = Integer.toString(sum_num4);
+        String sum_string5 = Integer.toString(sum_num5);
+        String d1 = model.getValueAt(0, 0).toString();
+        String d2 = model.getValueAt(0, 1).toString();
+        String d3 = model.getValueAt(0, 2).toString();
+        String d4 = model.getValueAt(0, 3).toString();
+        String d5 = model.getValueAt(1, 1).toString();
+        String d6 = model.getValueAt(1, 2).toString();
+        String d7 = model.getValueAt(1, 3).toString();
+        String d8 = model.getValueAt(2, 1).toString();
+        String d9 = model.getValueAt(2, 2).toString();
+        String d10 = model.getValueAt(2, 3).toString();
+        String d11 = model.getValueAt(3, 1).toString();
+        String d12 = model.getValueAt(3, 2).toString();
+        String d13 = model.getValueAt(3, 3).toString();
+        String d14 = model.getValueAt(4, 1).toString();
+        String d15 = model.getValueAt(4, 2).toString();
+        String d16 = model.getValueAt(4, 3).toString();
+        String table_data1[] = {d1, d2, d3, d4,sum_string1};
+        String table_data2[] = {d1, d5, d6, d7,sum_string2};
+        String table_data3[] = {d1, d8, d9, d10,sum_string3};
+        String table_data4[] = {d1, d11, d12, d13,sum_string4};
+        String table_data5[] = {d1, d14, d15, d16,sum_string5};
+        DefaultTableModel tblModel = (DefaultTableModel) left_table.getModel();
+        tblModel.setRowCount(0);
+        tblModel.addRow(table_data1);
+        tblModel.addRow(table_data2);
+        tblModel.addRow(table_data3);
+        tblModel.addRow(table_data4);
+        tblModel.addRow(table_data5);
+        int total_sum = sum_num1 + sum_num2 + sum_num3 + sum_num4 + sum_num5;
+        String sum_string = Integer.toString(total_sum);
+        total_amount.setText(sum_string);
+    }//GEN-LAST:event_left_tableMouseMoved
 
     /**
      * @param args the command line arguments
@@ -839,12 +1342,12 @@ public class sell_ui extends javax.swing.JFrame {
     private javax.swing.JPanel BgPanelLeft;
     private javax.swing.JPanel BgPanelRightop;
     private javax.swing.JButton DelButton;
+    private javax.swing.JButton DelButton1;
+    private javax.swing.JLabel Refresh;
     private javax.swing.JButton Search_Button;
-    private javax.swing.JTextField TextField6;
-    private javax.swing.JTextField TextField7;
-    private javax.swing.JTextField TextField8;
     private javax.swing.JLabel TitleLeftLabel1;
     private javax.swing.JLabel TitleTxtLabel1;
+    private javax.swing.JLabel TitleTxtLabel2;
     private javax.swing.JLabel TitleTxtLeftLabel1;
     private javax.swing.JLabel TitleTxtLeftLabel2;
     private javax.swing.JLabel TitleTxtRightLabel1;
@@ -853,10 +1356,12 @@ public class sell_ui extends javax.swing.JFrame {
     private javax.swing.JLabel TxtTotalLabel1;
     private javax.swing.JLabel TxtVATLabel2;
     private javax.swing.JTextField address_con;
+    private javax.swing.JButton calculate_button;
+    private javax.swing.JTextField item_sell;
     private javax.swing.JLabel jBack;
     private javax.swing.JButton jButtonlogout;
     private javax.swing.JComboBox<String> jComboBox1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JTextField jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelDate;
@@ -872,5 +1377,8 @@ public class sell_ui extends javax.swing.JFrame {
     private javax.swing.JTextField phone_con;
     private javax.swing.JTable right_table;
     private javax.swing.JTextField searchbox;
+    private javax.swing.JTextField totalText;
+    private javax.swing.JTextField total_amount;
+    private javax.swing.JTextField vat;
     // End of variables declaration//GEN-END:variables
 }

@@ -298,7 +298,7 @@ public class employee_history_ui extends javax.swing.JFrame {
         All_Data account = new All_Data();
         account.setUser(a1);
         account.setFirst(a2);
-        employee_search search_employee = new employee_search(account);
+        employee_search_ui1 search_employee = new employee_search_ui1(account);
         search_employee.setVisible(true);
         dispose();
     }//GEN-LAST:event_Button_Search_EmployeeMouseClicked

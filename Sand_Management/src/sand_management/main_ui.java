@@ -39,7 +39,6 @@ public class main_ui extends javax.swing.JFrame {
             String a1 = user.getUser();
             ResultSet rs = stmt.executeQuery("SELECT * FROM user_data WHERE username = '" + a1 + "'");
             String position1 = rs.getString("position");
-            System.out.println(position1);
             if (position1.equals("IT")) {
             } else if (position1.equals("CEO")) {
             } else if (position1.equals("Secretary") || position1.equals("เลขานุการ")) {

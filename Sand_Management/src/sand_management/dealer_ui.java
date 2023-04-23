@@ -38,11 +38,26 @@ public class dealer_ui extends javax.swing.JFrame {
         setTime();
     }
     
+    public static String getRandomNumberString() {
+        Random rnd = new Random();
+        int number = rnd.nextInt(999999);
+        return String.format("%06d", number);
+    }
+    
     public void fetchitemDetailsCS() {
         Connection c = null;
         Statement stmt = null;
+        CompanyTextField2.setEditable(true);
         DefaultTableModel dtm = (DefaultTableModel) Dealer_table.getModel();
         dtm.setRowCount(0);
+        jDate.setText("");
+        CompanyTextField2.setText("");
+        ContactTextField3.setText("");
+        AddressTextField6.setText("");
+        ContactPhone.setText("");
+        Fax_number.setText("");
+        EmailText.setText("");
+        item_sell_text.setText("");
         try {
             Class.forName("org.sqlite.JDBC");
             c = DriverManager.getConnection("jdbc:sqlite:database.db");
@@ -50,9 +65,9 @@ public class dealer_ui extends javax.swing.JFrame {
             ResultSet rs1 = stmt.executeQuery("SELECT * FROM purchase_data");
             while (rs1.next()) {
                 String s1 = rs1.getString("Company");
-                String s2 = rs1.getString("ContactName");
-                String s3 = rs1.getString("PhoneNumber");
-                String s4 = rs1.getString("ContactAddress");
+                String s2 = rs1.getString("Contact_Name");
+                String s3 = rs1.getString("Phone_Number");
+                String s4 = rs1.getString("Contact_Address");
                 String s5 = rs1.getString("Fax_num");
                 String s6 = rs1.getString("Email");
                 String table_data[] = {s1, s2, s3, s4, s5, s6};
@@ -101,7 +116,7 @@ public class dealer_ui extends javax.swing.JFrame {
         ContactPhone = new javax.swing.JTextField();
         TitleTxtLabel1 = new javax.swing.JLabel();
         Fax_number = new javax.swing.JTextField();
-        DelButton1 = new javax.swing.JButton();
+        EditButton = new javax.swing.JButton();
         AddButton2 = new javax.swing.JButton();
         AddressTextField6 = new javax.swing.JTextField();
         label_tax = new javax.swing.JLabel();
@@ -112,6 +127,8 @@ public class dealer_ui extends javax.swing.JFrame {
         EmailText = new javax.swing.JTextField();
         item_sell_text = new javax.swing.JTextField();
         label_tax2 = new javax.swing.JLabel();
+        DelButton1 = new javax.swing.JButton();
+        Refresh = new javax.swing.JLabel();
         BgPanelRightop = new javax.swing.JPanel();
         Titledropdown = new javax.swing.JLabel();
         dropdownlist01 = new javax.swing.JComboBox<>();
@@ -180,16 +197,16 @@ public class dealer_ui extends javax.swing.JFrame {
             }
         });
 
-        DelButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        DelButton1.setText("ลบข้อมูล");
-        DelButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        EditButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        EditButton.setText("เเก้ไขข้อมูล");
+        EditButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                DelButton1MouseClicked(evt);
+                EditButtonMouseClicked(evt);
             }
         });
-        DelButton1.addActionListener(new java.awt.event.ActionListener() {
+        EditButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DelButton1ActionPerformed(evt);
+                EditButtonActionPerformed(evt);
             }
         });
 
@@ -253,6 +270,28 @@ public class dealer_ui extends javax.swing.JFrame {
         label_tax2.setForeground(new java.awt.Color(0, 0, 0));
         label_tax2.setText("รายละเอียดของสินค้าที่ขาย");
 
+        DelButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        DelButton1.setText("ลบข้อมูล");
+        DelButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DelButton1MouseClicked(evt);
+            }
+        });
+        DelButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DelButton1ActionPerformed(evt);
+            }
+        });
+
+        Refresh.setForeground(new java.awt.Color(0, 0, 0));
+        Refresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/refresh-button.png"))); // NOI18N
+        Refresh.setText("Refresh");
+        Refresh.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RefreshMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout BgPanelLeftLayout = new javax.swing.GroupLayout(BgPanelLeft);
         BgPanelLeft.setLayout(BgPanelLeftLayout);
         BgPanelLeftLayout.setHorizontalGroup(
@@ -261,8 +300,32 @@ public class dealer_ui extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(BgPanelLeftLayout.createSequentialGroup()
-                        .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TitleLeftLabel1)
+                        .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(item_sell_text, javax.swing.GroupLayout.PREFERRED_SIZE, 787, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(label_tax2)
+                                .addComponent(EmailText, javax.swing.GroupLayout.PREFERRED_SIZE, 787, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(TitleTxtLabel2)
+                                .addComponent(label_tax1)
+                                .addComponent(Fax_number, javax.swing.GroupLayout.PREFERRED_SIZE, 787, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(AddressTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 787, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(label_tax)
+                                .addComponent(TitleTxtRightLabel1)
+                                .addComponent(CompanyTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(TitleTxtLabel1))
+                            .addGroup(BgPanelLeftLayout.createSequentialGroup()
+                                .addComponent(DelButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(EditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(AddButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(BgPanelLeftLayout.createSequentialGroup()
+                        .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(BgPanelLeftLayout.createSequentialGroup()
+                                .addComponent(TitleLeftLabel1)
+                                .addGap(225, 225, 225)
+                                .addComponent(Refresh))
                             .addGroup(BgPanelLeftLayout.createSequentialGroup()
                                 .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(ContactTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -273,33 +336,15 @@ public class dealer_ui extends javax.swing.JFrame {
                                     .addComponent(ContactPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(TitleTxtRightLabel2)
                                     .addComponent(jDate, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(45, Short.MAX_VALUE))
-                    .addGroup(BgPanelLeftLayout.createSequentialGroup()
-                        .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(item_sell_text, javax.swing.GroupLayout.PREFERRED_SIZE, 787, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label_tax2)
-                            .addComponent(EmailText, javax.swing.GroupLayout.PREFERRED_SIZE, 787, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TitleTxtLabel2)
-                            .addComponent(label_tax1)
-                            .addComponent(Fax_number, javax.swing.GroupLayout.PREFERRED_SIZE, 787, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(AddressTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 787, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label_tax)
-                            .addComponent(TitleTxtRightLabel1)
-                            .addComponent(CompanyTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(TitleTxtLabel1)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BgPanelLeftLayout.createSequentialGroup()
-                                    .addGap(479, 479, 479)
-                                    .addComponent(DelButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(AddButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addContainerGap(45, Short.MAX_VALUE))))
         );
         BgPanelLeftLayout.setVerticalGroup(
             BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BgPanelLeftLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addComponent(TitleLeftLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TitleLeftLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Refresh))
                 .addGap(31, 31, 31)
                 .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TitleTxtRightLabel1)
@@ -336,8 +381,9 @@ public class dealer_ui extends javax.swing.JFrame {
                 .addComponent(item_sell_text, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(DelButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AddButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(AddButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DelButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22))
         );
 
@@ -559,38 +605,51 @@ public class dealer_ui extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Fax_numberActionPerformed
 
-    private void DelButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DelButton1MouseClicked
+    private void EditButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditButtonMouseClicked
         // TODO add your handling code here:
         Connection c = null;
-        PreparedStatement pat = null;
-        int row = Dealer_table.getSelectedRow();
-        String del = Dealer_table.getModel().getValueAt(row,0).toString();
-        DefaultTableModel model = (DefaultTableModel) Dealer_table.getModel();
+        Statement stmt = null;
         try {
             Class.forName("org.sqlite.JDBC");
             c = DriverManager.getConnection("jdbc:sqlite:database.db");
-            String delete = "DELETE FROM purchase_data WHERE Company = '"+del+"'";
-            pat = c.prepareStatement(delete);
-            pat.execute();
-            int a = JOptionPane.showConfirmDialog(null, "Are you sure to delete this item? : " + model.getValueAt(row, 2).toString(), "Alert", JOptionPane.INFORMATION_MESSAGE);
+            c.setAutoCommit(false);
+            stmt = c.createStatement();
+            String a1 = jDate.getText();
+            String a2 = CompanyTextField2.getText();
+            String a3 = ContactTextField3.getText();
+            String a4 = AddressTextField6.getText();
+            String a5 = ContactPhone.getText();
+            String a6 = Fax_number.getText();
+            String a7 = EmailText.getText();
+            String a8 = item_sell_text.getText();
+            DefaultTableModel model = (DefaultTableModel) Dealer_table.getModel();
+            int a = JOptionPane.showConfirmDialog(null, "Please confirm your input:", "Alert", JOptionPane.INFORMATION_MESSAGE);
             if (a == JOptionPane.YES_OPTION) {
-                JOptionPane.showMessageDialog(null, "This item has been deleted");
+                JOptionPane.showMessageDialog(null, "Update successfully");
+                String sql = ("UPDATE purchase_data SET DATE = '" + a1 + "',CONTACT_NAME = '" + a3 + "',CONTACT_ADDRESS = '" + a4 + "',PHONE_NUMBER = '" + a5 + "',FAX_NUM = '" + a6 + "',EMAIL = '" + a7 + "',DETAILS = '" + a8 + "'  WHERE COMPANY = '" + a2 + "'");
+                stmt.executeUpdate(sql);
+                c.commit();
+                stmt.close();
+                c.close();
                 fetchitemDetailsCS();
             }
-        } catch (Exception b) {
-            JOptionPane.showMessageDialog(null, b);
         }
-    }//GEN-LAST:event_DelButton1MouseClicked
+        catch ( Exception b ) {
+            System.err.println( b.getClass().getName() + ": " + b.getMessage() );
+            System.exit(0);
+        }
+    }//GEN-LAST:event_EditButtonMouseClicked
 
-    private void DelButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DelButton1ActionPerformed
+    private void EditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_DelButton1ActionPerformed
+    }//GEN-LAST:event_EditButtonActionPerformed
 
     private void AddButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddButton2MouseClicked
         // TODO add your handling code here:
         Connection conn = null;
         Statement stmt = null;
-
+        String sp2 = "-";
+        String sp3 = "0";
         try {
             Class.forName("org.sqlite.JDBC");
             conn = DriverManager.getConnection("jdbc:sqlite:database.db");
@@ -604,11 +663,28 @@ public class dealer_ui extends javax.swing.JFrame {
             String p6 = Fax_number.getText();
             String p7 = EmailText.getText();
             String p8 = item_sell_text.getText();
-            String sql = "INSERT INTO purchase_data(Date,Company,ContactName,ContactAddress,PhoneNumber,Fax_num,Email,Details) VALUES('" + p1 + "','" + p2 + "','" + p3 + "','" + p4 + "','" + p5 + "','" + p6 + "','" + p7 + "','" + p8 + "')";
-            stmt.executeUpdate(sql);
-            stmt.close();
-            conn.commit();
-
+            String random = getRandomNumberString();
+            ResultSet rs1 = stmt.executeQuery("SELECT * FROM purchase_data WHERE COMPANY = '" + p2 + "'");
+            String company = rs1.getString("COMPANY");
+            rs1.close();
+            if (!p2.equals(company)) {
+                String sql = "INSERT INTO purchase_data(Product_id,Date,Company,Contact_Name,Contact_Address,Phone_Number,Fax_num,Email,Details) VALUES('" + random + "','" + p1 + "','" + p2 + "','" + p3 + "','" + p4 + "','" + p5 + "','" + p6 + "','" + p7 + "','" + p8 + "')";
+                String table_sql = "INSERT INTO product_data(PRODUCT_ID,ITEM1,QUANTITY1,UNIT1,AMOUNT1,ITEM2,QUANTITY2,UNIT2,AMOUNT2,ITEM3,QUANTITY3,UNIT3,AMOUNT3,ITEM4,QUANTITY4,UNIT4,AMOUNT4,ITEM5,QUANTITY5,UNIT5,AMOUNT5) "
+                        + "VALUES('" + random +"','"+sp2+"','"+sp3+"','"+sp3+"','"+sp3+"','"+sp2+"','"+sp3+"','"+sp3+"','"+sp3+"','"+sp2+"','"+sp3+"','"+sp3+"','"+sp3+"','"+sp2+"','"+sp3+"','"+sp3+"','"+sp3+"','"+sp2+"','"+sp3+"','"+sp3+"','"+sp3+"')";
+                stmt.executeUpdate(table_sql);
+                stmt.executeUpdate(sql);
+                stmt.close();
+                conn.commit();
+                
+                int a = JOptionPane.showConfirmDialog(null, "Please confirm your input:", "Alert", JOptionPane.INFORMATION_MESSAGE);
+                if (a == JOptionPane.YES_OPTION) {
+                    JOptionPane.showMessageDialog(null, "Add Sell Complete.", "ALERT", JOptionPane.INFORMATION_MESSAGE);
+                    fetchitemDetailsCS();
+                }
+            }
+            else if (p2.equals(company)){
+                JOptionPane.showMessageDialog(null, "This information cannot be added because the name of this company is already in the database.", "ALERT", JOptionPane.ERROR_MESSAGE);
+            }
         } catch (Exception b) {
             if (conn != null) {
                 try {
@@ -625,12 +701,6 @@ public class dealer_ui extends javax.swing.JFrame {
                 }
             }
         }
-        int a = JOptionPane.showConfirmDialog(null, "Please confirm your input:", "Alert", JOptionPane.INFORMATION_MESSAGE);
-        if (a == JOptionPane.YES_OPTION) {
-            JOptionPane.showMessageDialog(null, "Add Sell Complete.", "ALERT", JOptionPane.INFORMATION_MESSAGE);
-            fetchitemDetailsCS();
-        }
-        fetchitemDetailsCS();
     }//GEN-LAST:event_AddButton2MouseClicked
 
     private void AddButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButton2ActionPerformed
@@ -662,9 +732,9 @@ public class dealer_ui extends javax.swing.JFrame {
                 ResultSet rs = stmt.executeQuery("SELECT * FROM purchase_data WHERE Company = '" + search + "'");
                 while (rs.next()) {
                     String s1 = rs.getString("Company");
-                    String s2 = rs.getString("ContactName");
-                    String s3 = rs.getString("PhoneNumber");
-                    String s4 = rs.getString("ContactAddress");
+                    String s2 = rs.getString("Contact_Name");
+                    String s3 = rs.getString("Phone_Number");
+                    String s4 = rs.getString("Contact_Address");
                     String s5 = rs.getString("Fax_num");
                     String s6 = rs.getString("Email");
                     String table_data[] = {s1, s2, s3, s4, s5, s6};
@@ -675,12 +745,12 @@ public class dealer_ui extends javax.swing.JFrame {
                 rs.close();
             }
             if (type.equals("Contact Name")) {
-                ResultSet rs = stmt.executeQuery("SELECT * FROM purchase_data WHERE ContactName = '" + search + "'");
+                ResultSet rs = stmt.executeQuery("SELECT * FROM purchase_data WHERE Contact_Name = '" + search + "'");
                 while (rs.next()) {
                     String s1 = rs.getString("Company");
-                    String s2 = rs.getString("ContactName");
-                    String s3 = rs.getString("PhoneNumber");
-                    String s4 = rs.getString("ContactAddress");
+                    String s2 = rs.getString("Contact_Name");
+                    String s3 = rs.getString("Phone_Number");
+                    String s4 = rs.getString("Contact_Address");
                     String s5 = rs.getString("Fax_num");
                     String s6 = rs.getString("Email");
                     String table_data[] = {s1, s2, s3, s4, s5, s6};
@@ -720,11 +790,12 @@ public class dealer_ui extends javax.swing.JFrame {
             conn = DriverManager.getConnection("jdbc:sqlite:database.db");
             conn.setAutoCommit(false);
             stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery( "SELECT * FROM purchase_data WHERE ContactName = '"+contact+"'" );
+            ResultSet rs = stmt.executeQuery( "SELECT * FROM purchase_data WHERE Contact_Name = '"+contact+"'" );
             String date_time = rs.getString("Date");
             String detail = rs.getString("Details");
             jDate.setText(date_time);
             item_sell_text.setText(detail);
+            CompanyTextField2.setEditable(false);
             rs.close();
             stmt.close();
             conn.close();
@@ -783,6 +854,54 @@ public class dealer_ui extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_item_sell_textActionPerformed
 
+    private void DelButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DelButton1MouseClicked
+        // TODO add your handling code here:
+        Connection c = null;
+        PreparedStatement pat = null;
+        PreparedStatement pat1 = null;
+        Statement stmt = null;
+        String p2 = CompanyTextField2.getText();
+        int row = Dealer_table.getSelectedRow();
+        String del = Dealer_table.getModel().getValueAt(row,0).toString();
+        DefaultTableModel model = (DefaultTableModel) Dealer_table.getModel();
+        try {
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:database.db");
+            c.setAutoCommit(false);
+            stmt = c.createStatement();
+            ResultSet rs1 = stmt.executeQuery("SELECT * FROM purchase_data WHERE COMPANY = '" + p2 + "'");
+            String id = rs1.getString("PRODUCT_ID");
+            rs1.close();
+            
+            String delete = "DELETE FROM purchase_data WHERE Company = '"+del+"'";
+            pat = c.prepareStatement(delete);
+            pat.execute();
+            
+            String delete1 = "DELETE FROM product_data WHERE Product_id = '"+id+"'";
+            pat1 = c.prepareStatement(delete1);
+            pat1.execute();
+            stmt.close();
+            c.commit();
+            c.close();
+            int a = JOptionPane.showConfirmDialog(null, "Are you sure to delete this item? : " + model.getValueAt(row, 2).toString(), "Alert", JOptionPane.INFORMATION_MESSAGE);
+            if (a == JOptionPane.YES_OPTION) {
+                JOptionPane.showMessageDialog(null, "This item has been deleted");
+                fetchitemDetailsCS();
+            }
+        } catch (Exception b) {
+            JOptionPane.showMessageDialog(null, b);
+        }
+    }//GEN-LAST:event_DelButton1MouseClicked
+
+    private void DelButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DelButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DelButton1ActionPerformed
+
+    private void RefreshMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RefreshMouseClicked
+        // TODO add your handling code here:
+        fetchitemDetailsCS();
+    }//GEN-LAST:event_RefreshMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -828,8 +947,10 @@ public class dealer_ui extends javax.swing.JFrame {
     private javax.swing.JTextField ContactTextField3;
     private javax.swing.JTable Dealer_table;
     private javax.swing.JButton DelButton1;
+    private javax.swing.JButton EditButton;
     private javax.swing.JTextField EmailText;
     private javax.swing.JTextField Fax_number;
+    private javax.swing.JLabel Refresh;
     private javax.swing.JTextField TextSearchField1;
     private javax.swing.JLabel TitleLeftLabel1;
     private javax.swing.JLabel TitleSearch;

@@ -39,11 +39,24 @@ public class customer_ui extends javax.swing.JFrame {
         setTime();
     }
     
+    public static String getRandomNumberString() {
+        Random rnd = new Random();
+        int number = rnd.nextInt(999999);
+        return String.format("%06d", number);
+    }
+    
     public void fetchitemDetailsCS() {
         Connection c = null;
         Statement stmt = null;
+        CompanyTextField2.setEditable(true);
         DefaultTableModel dtm = (DefaultTableModel) Customer_table.getModel();
         dtm.setRowCount(0);
+        jDate.setText("");
+        ContactTextField3.setText("");
+        ContactPhone.setText("");
+        AdressTextField6.setText("");
+        Tax_number.setText("");
+        CompanyTextField2.setText("");
         try {
             Class.forName("org.sqlite.JDBC");
             c = DriverManager.getConnection("jdbc:sqlite:database.db");
@@ -120,6 +133,8 @@ public class customer_ui extends javax.swing.JFrame {
         TitleTxtRightLabel3 = new javax.swing.JLabel();
         label_tax1 = new javax.swing.JLabel();
         jDate = new javax.swing.JTextField();
+        EditButton = new javax.swing.JButton();
+        Refresh = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Customer_table = new javax.swing.JTable();
 
@@ -381,6 +396,28 @@ public class customer_ui extends javax.swing.JFrame {
             }
         });
 
+        EditButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        EditButton.setText("เเก้ไขข้อมูล");
+        EditButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                EditButtonMouseClicked(evt);
+            }
+        });
+        EditButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditButtonActionPerformed(evt);
+            }
+        });
+
+        Refresh.setForeground(new java.awt.Color(0, 0, 0));
+        Refresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sand_management/picture/refresh-button.png"))); // NOI18N
+        Refresh.setText("Refresh");
+        Refresh.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RefreshMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout BgPanelLeftLayout = new javax.swing.GroupLayout(BgPanelLeft);
         BgPanelLeft.setLayout(BgPanelLeftLayout);
         BgPanelLeftLayout.setHorizontalGroup(
@@ -389,42 +426,49 @@ public class customer_ui extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(BgPanelLeftLayout.createSequentialGroup()
-                        .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TitleLeftLabel1)
+                        .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(BgPanelLeftLayout.createSequentialGroup()
-                                .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(ContactTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(TitleTxtLeftLabel2))
-                                .addGap(87, 87, 87)
-                                .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(TitleTxtRightLabel3)
-                                    .addComponent(ContactPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(TitleTxtRightLabel2)
-                                    .addComponent(jDate, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(45, Short.MAX_VALUE))
+                                .addComponent(DelButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(EditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(AddButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(label_tax1)
+                                .addComponent(Tax_number, javax.swing.GroupLayout.PREFERRED_SIZE, 787, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(AdressTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 787, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(label_tax)
+                                .addComponent(TitleTxtRightLabel1)
+                                .addComponent(CompanyTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(BgPanelLeftLayout.createSequentialGroup()
                         .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(label_tax1)
-                            .addComponent(Tax_number, javax.swing.GroupLayout.PREFERRED_SIZE, 787, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(AdressTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 787, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label_tax)
-                            .addComponent(TitleTxtRightLabel1)
-                            .addComponent(CompanyTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(TitleTxtLabel1)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BgPanelLeftLayout.createSequentialGroup()
-                                    .addGap(479, 479, 479)
-                                    .addComponent(DelButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(AddButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(TitleTxtLabel1)
+                            .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, BgPanelLeftLayout.createSequentialGroup()
+                                    .addComponent(TitleLeftLabel1)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(Refresh))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, BgPanelLeftLayout.createSequentialGroup()
+                                    .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(ContactTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(TitleTxtLeftLabel2))
+                                    .addGap(87, 87, 87)
+                                    .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(TitleTxtRightLabel3)
+                                        .addComponent(ContactPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(TitleTxtRightLabel2)
+                                        .addComponent(jDate, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addContainerGap(45, Short.MAX_VALUE))))
         );
         BgPanelLeftLayout.setVerticalGroup(
             BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BgPanelLeftLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addComponent(TitleLeftLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TitleLeftLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Refresh))
+                .addGap(27, 27, 27)
                 .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TitleTxtRightLabel1)
                     .addComponent(TitleTxtRightLabel3))
@@ -450,10 +494,11 @@ public class customer_ui extends javax.swing.JFrame {
                 .addComponent(Tax_number, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(label_tax1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 398, Short.MAX_VALUE)
                 .addGroup(BgPanelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DelButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AddButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(AddButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22))
         );
 
@@ -629,15 +674,31 @@ public class customer_ui extends javax.swing.JFrame {
         // TODO add your handling code here:
         Connection c = null;
         PreparedStatement pat = null;
+        PreparedStatement pat1 = null;
+        Statement stmt = null;
+        String p2 = CompanyTextField2.getText();
         int row = Customer_table.getSelectedRow();
         String del = Customer_table.getModel().getValueAt(row,0).toString();
         DefaultTableModel model = (DefaultTableModel) Customer_table.getModel();
         try {
             Class.forName("org.sqlite.JDBC");
             c = DriverManager.getConnection("jdbc:sqlite:database.db");
+            c.setAutoCommit(false);
+            stmt = c.createStatement();
+            ResultSet rs1 = stmt.executeQuery("SELECT * FROM sell_data WHERE COMPANY = '" + p2 + "'");
+            String id = rs1.getString("PRODUCT_ID");
+            rs1.close();
+            
             String delete = "DELETE FROM sell_data WHERE COMPANY = '"+del+"'";
             pat = c.prepareStatement(delete);
             pat.execute();
+            
+            String delete1 = "DELETE FROM product_data WHERE Product_id = '"+id+"'";
+            pat1 = c.prepareStatement(delete1);
+            pat1.execute();
+            stmt.close();
+            c.commit();
+            c.close();
             int a = JOptionPane.showConfirmDialog(null, "Are you sure to delete this item? : " + model.getValueAt(row, 2).toString(), "Alert", JOptionPane.INFORMATION_MESSAGE);
             if (a == JOptionPane.YES_OPTION) {
                 JOptionPane.showMessageDialog(null, "This item has been deleted");
@@ -680,6 +741,7 @@ public class customer_ui extends javax.swing.JFrame {
             ResultSet rs = stmt.executeQuery( "SELECT * FROM sell_data WHERE CONTACT_NAME = '"+contact+"'" );
             String date_time = rs.getString("SALE_DATE");
             jDate.setText(date_time);
+            CompanyTextField2.setEditable(false);
             rs.close();
             stmt.close();
             conn.close();
@@ -692,7 +754,8 @@ public class customer_ui extends javax.swing.JFrame {
         // TODO add your handling code here:
         Connection conn = null;
         Statement stmt = null;
-
+        String sp2 = "-";
+        String sp3 = "0";
         try {
             Class.forName("org.sqlite.JDBC");
             conn = DriverManager.getConnection("jdbc:sqlite:database.db");
@@ -704,10 +767,27 @@ public class customer_ui extends javax.swing.JFrame {
             String p4 = AdressTextField6.getText();
             String p5 = Tax_number.getText();
             String p6 = CompanyTextField2.getText();
-            String sql = "INSERT INTO sell_data(SALE_DATE,CONTACT_NAME,CONTACT_PHONE,CONTACT_ADDRESS,TAX_NUM,COMPANY) VALUES('" + p1 + "','" + p2 + "','" + p3 + "','" + p4 + "','" + p5 + "','" + p6 + "')";
-            stmt.executeUpdate(sql);
-            stmt.close();
-            conn.commit();
+            String random = getRandomNumberString();
+            ResultSet rs1 = stmt.executeQuery("SELECT * FROM sell_data WHERE COMPANY = '" + p6 + "'");
+            String company = rs1.getString("COMPANY");
+            rs1.close();
+            if (!p6.equals(company)) {
+                String sql = "INSERT INTO sell_data(PRODUCT_ID,SALE_DATE,CONTACT_NAME,CONTACT_PHONE,CONTACT_ADDRESS,TAX_NUM,COMPANY) VALUES('" + random + "','" + p1 + "','" + p2 + "','" + p3 + "','" + p4 + "','" + p5 + "','" + p6 + "')";
+                String table_sql = "INSERT INTO product_data(PRODUCT_ID,ITEM1,QUANTITY1,UNIT1,AMOUNT1,ITEM2,QUANTITY2,UNIT2,AMOUNT2,ITEM3,QUANTITY3,UNIT3,AMOUNT3,ITEM4,QUANTITY4,UNIT4,AMOUNT4,ITEM5,QUANTITY5,UNIT5,AMOUNT5) "
+                        + "VALUES('" + random +"','"+sp2+"','"+sp3+"','"+sp3+"','"+sp3+"','"+sp2+"','"+sp3+"','"+sp3+"','"+sp3+"','"+sp2+"','"+sp3+"','"+sp3+"','"+sp3+"','"+sp2+"','"+sp3+"','"+sp3+"','"+sp3+"','"+sp2+"','"+sp3+"','"+sp3+"','"+sp3+"')";
+                stmt.executeUpdate(table_sql);
+                stmt.executeUpdate(sql);
+                stmt.close();
+                conn.commit();
+                int a = JOptionPane.showConfirmDialog(null, "Please confirm your input:", "Alert", JOptionPane.INFORMATION_MESSAGE);
+                if (a == JOptionPane.YES_OPTION) {
+                    JOptionPane.showMessageDialog(null, "Add Sell Complete.", "ALERT", JOptionPane.INFORMATION_MESSAGE);
+                    fetchitemDetailsCS();
+                }
+            }
+            else if (p6.equals(company)){
+                JOptionPane.showMessageDialog(null, "This information cannot be added because the name of this company is already in the database.", "ALERT", JOptionPane.ERROR_MESSAGE);
+            }
 
         } catch (Exception b) {
             if (conn != null) {
@@ -725,17 +805,54 @@ public class customer_ui extends javax.swing.JFrame {
                 }
             }
         }
-        int a = JOptionPane.showConfirmDialog(null, "Please confirm your input:", "Alert", JOptionPane.INFORMATION_MESSAGE);
-        if (a == JOptionPane.YES_OPTION) {
-            JOptionPane.showMessageDialog(null, "Add Sell Complete.", "ALERT", JOptionPane.INFORMATION_MESSAGE);
-            fetchitemDetailsCS();
-        }
-        fetchitemDetailsCS();
+        
     }//GEN-LAST:event_AddButton2MouseClicked
 
     private void jjDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjDateActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jjDateActionPerformed
+
+    private void EditButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditButtonMouseClicked
+        // TODO add your handling code here:
+        Connection c = null;
+        Statement stmt = null;
+        try {
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:database.db");
+            c.setAutoCommit(false);
+            stmt = c.createStatement();
+            String a1 = jDate.getText();
+            String a2 = CompanyTextField2.getText();
+            String a3 = ContactTextField3.getText();
+            String a4 = AdressTextField6.getText();
+            String a5 = ContactPhone.getText();
+            String a6 = Tax_number.getText();
+            DefaultTableModel model = (DefaultTableModel) Customer_table.getModel();
+            int a = JOptionPane.showConfirmDialog(null, "Please confirm your input:", "Alert", JOptionPane.INFORMATION_MESSAGE);
+            if (a == JOptionPane.YES_OPTION) {
+                JOptionPane.showMessageDialog(null, "Update successfully");
+                String sql = ("UPDATE sell_data SET SALE_DATE = '" + a1 + "',CONTACT_NAME = '" + a3 + "',CONTACT_PHONE = '" + a5 + "',CONTACT_ADDRESS = '" + a4 + "',TAX_NUM = '" + a6 + "' WHERE COMPANY = '" + a2 + "'");
+                stmt.executeUpdate(sql);
+                c.commit();
+                stmt.close();
+                c.close();
+                fetchitemDetailsCS();
+            }
+        }
+        catch ( Exception b ) {
+            System.err.println( b.getClass().getName() + ": " + b.getMessage() );
+            System.exit(0);
+        }
+    }//GEN-LAST:event_EditButtonMouseClicked
+
+    private void EditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EditButtonActionPerformed
+
+    private void RefreshMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RefreshMouseClicked
+        // TODO add your handling code here:
+        fetchitemDetailsCS();
+    }//GEN-LAST:event_RefreshMouseClicked
 
     /**
      * @param args the command line arguments
@@ -782,6 +899,8 @@ public class customer_ui extends javax.swing.JFrame {
     private javax.swing.JTextField ContactTextField3;
     private javax.swing.JTable Customer_table;
     private javax.swing.JButton DelButton1;
+    private javax.swing.JButton EditButton;
+    private javax.swing.JLabel Refresh;
     private javax.swing.JTextField Tax_number;
     private javax.swing.JTextField TextSearchField1;
     private javax.swing.JLabel TitleLeftLabel1;
