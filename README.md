@@ -5,4 +5,3 @@
 <h5 align="left">Platform : Windows , MacOS(Intel)</h5>
 <h5 align="left">Language and Database : Java , Azure SQL database , Power apps</h5>
 <h5 align="left">Editor (IDE) : VsCode , NetBeans 15 , Microsoft Azure</h5>
-"# Sand-Management-Project" 
